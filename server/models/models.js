@@ -39,8 +39,8 @@ const Product = sequelize.define('product', {
     autoIncrement: true
   },
   name: {type: DataTypes.STRING, allowNull: false},
-  description: {type: DataTypes.TEXT},
   price: {type: DataTypes.DECIMAL(10, 2), allowNull: false},
+  description: {type: DataTypes.TEXT},
   discountPercent: {type: DataTypes.INTEGER, defaultValue: 0},
   rating: {type: DataTypes.DECIMAL(3, 2), defaultValue: 0},
   reviewCount: {type: DataTypes.INTEGER, defaultValue: 0},
@@ -159,7 +159,7 @@ const PromoCodeUsage = sequelize.define('promo_code_usage', {
   usedAt: {type: DataTypes.DATE, defaultValue: DataTypes.NOW}
 })
 
-const ProductList = sequelize.define('product_list', {
+const ProductsCategory = sequelize.define('product_list', {
   id: {
     type: DataTypes.INTEGER,
     primaryKey: true,
@@ -172,7 +172,6 @@ const ProductList = sequelize.define('product_list', {
   },
   productIds: {
     type: DataTypes.JSONB,
-    allowNull: false,
     defaultValue: []
   }
 })
@@ -237,5 +236,5 @@ module.exports = {
   ProductStyle,
   PromoCode,
   PromoCodeUsage,
-  ProductList
+  ProductsCategory
 }
