@@ -1,4 +1,4 @@
-export const ACCOUNT_ROUTE = '/account'
+export const PROFILE_ROUTE = '/account'
 export const HOME_ROUTE = '/'
 export const CATALOG_ROUTE = '/catalog'
 export const DETAILS_ROUTE = '/catalog/:id'

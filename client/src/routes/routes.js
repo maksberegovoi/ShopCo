@@ -1,6 +1,6 @@
 import AdminPage from "../pages/AdminPage/AdminPage.jsx";
 import {
-  ACCOUNT_ROUTE,
+  PROFILE_ROUTE,
   ADMIN_ROUTE,
   CART_ROUTE,
   CATALOG_ROUTE, DETAILS_ROUTE, FAQ_ROUTE, HOME_ROUTE, REVIEWS_ROUTE,
@@ -36,5 +36,5 @@ export const publicRoutes = [
 
 export const privateRoutes = [
   {path: ADMIN_ROUTE, Component: AdminPage},
-  {path: ACCOUNT_ROUTE, Component: AccountPage},
+  {path: PROFILE_ROUTE, Component: AccountPage},
 ]

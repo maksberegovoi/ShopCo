@@ -1,0 +1,30 @@
+.header {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    padding: 24px 100px;
+}
+
+.linkIcon {
+    width: 24px;
+    height: 24px;
+}
+
+.logo {
+    color: var(--color-text-black);
+
+    font-size: 32px;
+    font-style: normal;
+    font-weight: 700;
+    line-height: normal;
+}
+
+.iconsContainer {
+    display: flex;
+    gap: 14px;
+}
+
+nav {
+    display: flex;
+    gap: 24px;
+}
