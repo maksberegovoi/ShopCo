@@ -1,9 +1,11 @@
 :root {
-    --font-family-heading: 'Popins', sans-serif;
+    --font-family-heading: 'Poppins', sans-serif;
     --font-family-text: 'Inter', sans-serif;
 
     --color-text-black: #000000;
     --color-text-grey: rgba(0, 0, 0, 0.60);
+
+    --color-accent: #054D39FF;
 }
 
 *,
@@ -119,11 +121,21 @@ html {
 }
 
 body {
-    min-height: 100vh;
+    height: 100vh;
+    height: 100dvh;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    font-family: var(--font-family-heading);
 }
 
 body {
