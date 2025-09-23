@@ -7,10 +7,10 @@
     border-radius: 62px;
     background: #F0F0F0;
     width: 750px;
+}
 
-    /*@media screen and (max-width: 768px) {*/
-    /*    display: none;*/
-    /*}*/
+button {
+    flex-shrink: 0;
 }
 
 .container:focus-within {

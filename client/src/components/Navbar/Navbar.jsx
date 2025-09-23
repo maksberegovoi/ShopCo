@@ -13,46 +13,71 @@ import Svg from "../../UI/Svg/Svg.jsx";
 
 const Navbar = () => {
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
+  const [isPromo, setIsPromo] = useState(true);
 
   const menu = [
     { name: "Home", path: HOME_ROUTE },
     { name: "Catalog", path: CATALOG_ROUTE },
+    { name: "Catalog", path: CATALOG_ROUTE },
   ];
+
   const iconLinks = [
     { name: "Cart", path: CART_ROUTE, href: `${sprite}#icon-cart` },
     { name: "Profile", path: PROFILE_ROUTE, href: `${sprite}#icon-profile` },
   ];
+
+  const toggleMenu = () => {
+    setIsBurgerMenu(!isBurgerMenu);
+  };
+
   return (
-    <header className={styles.header}>
-      <NavLink to={HOME_ROUTE}>
-        <span className={styles.logo}>SHOP.CO</span>
-      </NavLink>
-      <nav className={isBurgerMenu ? styles.menuOpened : styles.menu}>
-        {menu.map((link) => (
-          <NavLink to={link.path} key={link.path} className={styles.link}>
-            {link.name}
-          </NavLink>
-        ))}
-        <button
-          className={styles.closeBtn}
-          onClick={() => setIsBurgerMenu(false)}
-        >
-          <Svg href={`${sprite}#icon-close`} />
+    <header>
+      <div className={isPromo ? styles.promo : styles.promoClosed}>
+        <p>
+          Sign up and get 20% off to your first order.
+          <button className={styles.promoBtn}>Sign Up Now</button>
+        </p>
+        <button className={styles.promoClose} onClick={() => setIsPromo(false)}>
+          <Svg href={`${sprite}#icon-close`} width={20} height={20} />
         </button>
-      </nav>
-      <Search />
-      <div className={styles.iconsContainer}>
-        {iconLinks.map((link) => (
-          <NavLink to={link.path} key={link.path} aria-label={link.name}>
-            <Svg href={link.href} classname={styles.linkIcon} />
-          </NavLink>
-        ))}
-        <button
-          className={styles.burgerButton}
-          onClick={() => setIsBurgerMenu(true)}
+      </div>
+      <div className={styles.headerMain}>
+        <NavLink to={HOME_ROUTE}>
+          <span className={styles.logo}>SHOP.CO</span>
+        </NavLink>
+        <nav
+          className={`${styles.menu} ${isBurgerMenu ? styles.menuOpened : ""}`}
         >
-          <Svg href={`${sprite}#icon-burger-menu`} />
-        </button>
+          {menu.map((link) => (
+            <NavLink
+              to={link.path}
+              key={link.path}
+              className={styles.link}
+              onClick={toggleMenu}
+            >
+              {link.name}
+            </NavLink>
+          ))}
+          <button className={styles.closeBtn} onClick={toggleMenu}>
+            asdasdasd
+            <Svg href={`${sprite}#icon-close`} className={styles.closeBtn} />
+          </button>
+        </nav>
+        <Search />
+        <div className={styles.iconsContainer}>
+          <Search variant="icon" />
+          {iconLinks.map((link) => (
+            <NavLink to={link.path} key={link.path} aria-label={link.name}>
+              <Svg href={link.href} classname={styles.linkIcon} />
+            </NavLink>
+          ))}
+          <button className={styles.burgerButton} onClick={toggleMenu}>
+            <Svg href={`${sprite}#icon-burger-menu`} />
+          </button>
+        </div>
+        {isBurgerMenu && (
+          <div className={styles.overlay} onClick={toggleMenu} />
+        )}
       </div>
     </header>
   );
