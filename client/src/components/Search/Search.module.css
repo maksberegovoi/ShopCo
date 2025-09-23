@@ -1,12 +1,11 @@
 .container {
     display: flex;
     align-items: center;
-    justify-content: center;
     padding: 12px 16px;
     gap: 12px;
     border-radius: 62px;
     background: #F0F0F0;
-    width: 750px;
+    max-width: 750px;
 }
 
 button {
@@ -23,7 +22,7 @@ button {
 
 
 .search {
-    width: 100%;
+
 
 }
 
