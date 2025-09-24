@@ -11,12 +11,11 @@ const Search = () => {
     if (search.trim().length < 1) return;
     console.log(search);
   };
-  console.log(styles.container);
 
   return (
     <div className={styles.container}>
       <button onClick={handleSearch}>
-        <Svg href={`${sprite}#icon-search`} classname={styles.icon} />
+        <Svg href={`${sprite}#icon-search`} styles={styles.icon} />
       </button>
       <input
         className={styles.search}

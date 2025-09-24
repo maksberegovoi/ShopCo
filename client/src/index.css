@@ -6,13 +6,7 @@
     --color-text-grey: rgba(0, 0, 0, 0.60);
 
     --color-accent: #054D39FF;
-
-
-
-    --container-width: 120rem;
-    --container-padding-x: 6.25rem;
 }
-
 *,
 *::before,
 *::after {
@@ -69,6 +63,7 @@ input[type="search"]::-ms-clear {
 details > summary {
     list-style: none;
 }
+
 details > summary::-webkit-details-marker {
     display: none;
 }
@@ -140,11 +135,17 @@ body {
     font-family: var(--font-family-text);
     display: flex;
     flex-direction: column;
-    margin: 0 auto;
 }
 
 .container {
-    max-width: calc(var(--container-width) + var(--container-padding-x) * 2);
+    max-width: calc(120rem + 6.25rem * 2);
     margin-inline: auto;
-    padding-inline: var(--container-padding-x);
+    padding-inline: 6.25rem;
+
+    @media screen and (max-width: 1024px) {
+        padding-inline: 2rem;
+    }
+    @media screen and (max-width: 480px) {
+        padding-inline: 1rem;
+    }
 }

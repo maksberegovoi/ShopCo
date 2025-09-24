@@ -1,29 +1,42 @@
 header {
     display: flex;
     flex-direction: column;
+    border-bottom: 1px solid lightgrey;
+    /*overflow-x: hidden;*/
+
 }
 
 .headerMain {
     display: flex;
-    gap: clamp(1.5rem, 2vw, 2.5rem);
+    gap: 2.5rem;
     align-items: center;
-    justify-content: center;
-    padding: min(1.25em, 5%) min(6.25em, 5%);
-    border-bottom: 1px solid lightgrey;
-
+    justify-content: space-between;
+    padding-block: 1.5rem;
     position: relative;
+    width: 100%;
 
+    @media screen and (max-width: 1024px) {
+        gap: 1.5rem
+    }
+    @media screen and (max-width: 780px) {
+        gap: 1rem
+    }
 }
 
 .promo {
+    display: block;
+    background-color: black;
+}
+
+.promoContainer {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
-    background-color: black;
-    color: white;
-    padding: min(0.5em, 5%) min(6.5em, 5%);
 
-    font-size: 14px;
+    color: white;
+    padding-block: min(0.45rem, 5%);
+
+    font-size: 0.85rem;
     font-style: normal;
     font-weight: 400;
     line-height: normal;
@@ -37,37 +50,53 @@ header {
 .promoBtn {
     text-decoration: underline;
     text-align: center;
-    margin-left: 5px;
+    margin-left: 0.35rem;
 }
 
 .promoClose {
     justify-self: end;
+    fill: white;
 }
 
-.menu {
+.navContainer {
     display: flex;
-    gap: 24px;
+    flex-direction: column;
+    align-items: center;
+
+
 
     @media screen and (max-width: 768px) {
         position: fixed;
         top: 0;
-        right: -100%;
-        width: 300px;
+        left: -500%;
+        width: 19rem;
         height: 100%;
         background: white;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 30px;
+        gap: 2rem;
         z-index: 999;
-        transition: right 0.3s ease-in-out;
+        transition: left 0.3s ease-in-out;
         box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+        padding: 1.5rem;
+    }
+}
+
+.menu {
+    display: flex;
+    gap: 1.5rem;
+
+    @media screen and (max-width: 1024px) {
+        gap: 1rem;
+    }
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: center;
     }
 }
 
 @media screen and (max-width: 768px) {
-    .menuOpened {
-        right: 0;
+    .mobileNav {
+        left: 0;
     }
 }
 
@@ -87,8 +116,8 @@ header {
 }
 
 .linkIcon {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
     transition: fill 0.3s ease;
 }
 
@@ -105,14 +134,14 @@ header {
     text-decoration: none;
 
     @media screen and (max-width: 768px) {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
     }
 
 }
 
 .iconsContainer {
     display: flex;
-    gap: 14px;
+    gap: 0.7rem;
     flex-shrink: 0;
     align-items: center;
     margin-left: auto;
@@ -123,8 +152,8 @@ header {
     display: none;
     cursor: pointer;
     fill: black;
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
 
     @media screen and (max-width: 768px) {
         display: block;
@@ -136,25 +165,26 @@ header {
     background: none;
     border: none;
     cursor: pointer;
-    padding: 5px;
+    padding: 0.35rem;
 
     @media screen and (max-width: 768px) {
         display: block;
     }
-
-
 }
 
 .closeBtn {
+    color: black;
     display: none;
     position: absolute;
-    top: 20px;
-    right: 20px;
+    top: 15px;
+    right: 15px;
     cursor: pointer;
     fill: black;
-    z-index: 0;
+    width: 20px;
+    height: 20px;
 
     @media screen and (max-width: 768px) {
+        display: block;
         fill: black;
     }
 }
@@ -172,5 +202,46 @@ header {
     @media screen and (max-width: 768px) {
         display: block;
     }
+}
+
+.searchDesktopContainer {
+    width: 100%;
+    @media screen and (max-width: 768px) {
+        display: none;
+    }
+}
+
+
+.searchMobileContainer {
+    display: block;
+    width: 100%;
+    padding-block: 0.5rem;
+    border-top: 1px solid lightgrey;
+
+    @media screen and (min-width: 768px) {
+        display: block;
+    }
+}
+
+.dropdownContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 25px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.dropdownContainer:hover {
+    color: var(--color-accent);
+}
+
+.dropdownContainer:hover .dropdownIcon{
+    fill: var(--color-accent);
+}
+
+.dropdownIcon {
+    transform: rotate(-90deg);
+    fill: grey;
 }
 
