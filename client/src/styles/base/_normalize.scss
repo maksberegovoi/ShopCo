@@ -1,12 +1,3 @@
-:root {
-    --font-family-heading: 'Poppins', sans-serif;
-    --font-family-text: 'Inter', sans-serif;
-
-    --color-text-black: #000000;
-    --color-text-grey: rgba(0, 0, 0, 0.60);
-
-    --color-accent: #054D39FF;
-}
 *,
 *::before,
 *::after {
@@ -89,7 +80,7 @@ input[type="number"]::-webkit-inner-spin-button {
 }
 
 textarea {
-    resize: vertical; /* Разрешаем resize только по вертикали */
+    resize: vertical;
 }
 
 article,
@@ -118,34 +109,4 @@ h6 {
 
 html {
     scroll-behavior: smooth;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-    font-family: var(--font-family-heading);
-}
-
-body {
-    min-height: 100vh;
-    min-height: 100dvh;
-    font-family: var(--font-family-text);
-    display: flex;
-    flex-direction: column;
-}
-
-.container {
-    max-width: calc(120rem + 6.25rem * 2);
-    margin-inline: auto;
-    padding-inline: 6.25rem;
-
-    @media screen and (max-width: 1024px) {
-        padding-inline: 2rem;
-    }
-    @media screen and (max-width: 480px) {
-        padding-inline: 1rem;
-    }
 }

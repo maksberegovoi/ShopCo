@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Svg from "../../UI/Svg/Svg.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
-import styles from "./Accordion.module.css";
+import styles from "./Accordion.module.scss";
 
 const Accordion = ({ title, children, onToggle, absolute = false }) => {
   const [isOpen, setIsOpen] = useState(false);

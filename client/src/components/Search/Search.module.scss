@@ -1,11 +1,12 @@
+@use '../../styles/helpers' as *;
+
 .container {
     display: flex;
     align-items: center;
-    padding: 0.75rem 1rem;
-    gap: 0.75rem;
-    border-radius: 4rem;
+    padding: rem(12) rem(16);
+    gap: rem(12);
+    border-radius: rem(62);
     background: #F0F0F0;
-
 }
 
 button {
@@ -13,11 +14,11 @@ button {
 }
 
 .container:focus-within {
-    border: 1px solid var(--color-accent);
+    border: rem(1) solid var(--color-accent);
 }
 
 .container:hover {
-    border: 1px solid var(--color-accent);
+    border: rem(1) solid var(--color-accent);
 }
 
 
@@ -28,6 +29,6 @@ button {
 .icon {
     cursor: pointer;
     fill: grey;
-    width: 1.5rem;
-    height: 1.5rem;
+    width: rem(24);
+    height: rem(24);
 }

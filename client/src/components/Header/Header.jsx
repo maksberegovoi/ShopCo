@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styles from "./Header.module.css";
+import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
 import {
   PROFILE_ROUTE,
@@ -80,14 +80,14 @@ const Header = () => {
           <Svg href={`${sprite}#icon-burger-menu`} />
         </button>
         <NavLink to={HOME_ROUTE}>
-          <span className={styles.logo}>SHOP.CO</span>
+          <span className="logo">SHOP.CO</span>
         </NavLink>
         <div
           className={`${styles.navContainer} ${isBurgerMenu ? styles.mobileNav : ""}`}
         >
           {isBurgerMenu && (
             <NavLink to={HOME_ROUTE}>
-              <span className={styles.logo}>SHOP.CO</span>
+              <span className={"logo"}>SHOP.CO</span>
             </NavLink>
           )}
           {isBurgerMenu && <Search />}

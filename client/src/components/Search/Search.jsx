@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Search.module.css";
+import styles from "./Search.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
 import Svg from "../../UI/Svg/Svg.jsx";
 

@@ -1,0 +1,22 @@
+@use '../helpers/index' as *;
+
+:root {
+    --color-text-black: #000000;
+    --color-text-grey: rgba(0, 0, 0, 0.60);
+    --color-accent: #054D39FF;
+
+    --font-family-heading: 'Oswald', sans-serif;
+    --font-family-text: 'Inter', sans-serif;
+
+    --container-width: #{rem(1920)};
+    --container-padding-x: #{rem(100)};
+
+    --transition-duration: 0.2s;
+
+    @include desktop-below {
+        --container-padding-x: #{rem(32)};
+    }
+    @include tablet-below {
+        --container-padding-x: #{rem(16)};
+    }
+}
