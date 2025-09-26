@@ -87,7 +87,7 @@ const Footer = () => {
           <NavLink to={HOME_ROUTE}>
             <span className="logo">SHOP.CO</span>
           </NavLink>
-          <p className={styles.text}>
+          <p>
             We have clothes that suits your style and which you’re proud to
             wear. From women to men.
           </p>
