@@ -1,0 +1,76 @@
+[
+    {
+        "name": "New Arrivals",
+        "products":  [
+            {
+                "name": "T-SHIRT WITH TAPE DETAILS",
+                "price": 120,
+                "img": "../images/image7.png",
+                "rating": 3.5,
+                "discount": 20
+
+            },
+            {
+                "name": "SKINNY FIT JEANS",
+                "price": 240,
+                "img": "../images/image7.png",
+                "rating": 4,
+                "discount": 25
+
+            },
+            {
+                "name": "CHECKERED SHIRT",
+                "price": 180,
+                "img": "../images/image7.png",
+                "rating": 5,
+                "discount": 0
+
+            },
+            {
+                "name": "SLEEVE STRIPED T-SHIRT",
+                "price": 130,
+                "img": "../images/image7.png",
+                "rating": 4.5,
+                "discount": 0
+
+            }
+        ]
+    },
+    {
+        "name": "Top Selling",
+        "products":  [
+            {
+                "name": "T-SHIRT WITH TAPE DETAILS",
+                "price": 120,
+                "img": "../images/image7.png",
+                "rating": 3.5,
+                "discount": 0
+
+            },
+            {
+                "name": "SKINNY FIT JEANS",
+                "price": 240,
+                "img": "../images/image7.png",
+                "rating": 4,
+                "discount": 20
+
+            },
+            {
+                "name": "CHECKERED SHIRT",
+                "price": 180,
+                "img": "../images/image7.png",
+                "rating": 5,
+                "discount": 15
+
+            },
+            {
+                "name": "SLEEVE STRIPED T-SHIRT",
+                "price": 130,
+                "img": "../images/image7.png",
+                "rating": 4.5,
+                "discount": 0
+
+            }
+        ]
+    }
+]

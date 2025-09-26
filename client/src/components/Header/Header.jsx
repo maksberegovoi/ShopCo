@@ -23,9 +23,9 @@ const Header = () => {
   ];
 
   const dropdownLinks = [
-    { name: "Men", path: HOME_ROUTE },
-    { name: "Women", path: HOME_ROUTE },
-    { name: "Kids", path: HOME_ROUTE },
+    { name: "Men", path: "/1" },
+    { name: "Women", path: "/2" },
+    { name: "Kids", path: "/3" },
   ];
 
   const iconLinks = [
@@ -95,7 +95,12 @@ const Header = () => {
             <Accordion title={"Shop"} absolute={!isBurgerMenu}>
               {dropdownLinks.map((link) => (
                 <div key={link.name} className={styles.dropdownContainer}>
-                  <NavLink to={link.path} className={styles.link}>
+                  <NavLink
+                    to={link.path}
+                    className={({ isActive }) =>
+                      isActive ? `${styles.link} ${styles.active}` : styles.link
+                    }
+                  >
                     {link.name}
                   </NavLink>
                   <Svg

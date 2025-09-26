@@ -101,6 +101,7 @@ header {
 
 
 .link {
+    position: relative;
     color: var(--color-text-black);
     text-decoration: none;
     transition: color 0.3s ease;
@@ -115,7 +116,6 @@ header {
 .linkIcon:hover {
     fill: var(--color-accent);
 }
-
 
 .iconsContainer {
     display: flex;
@@ -211,4 +211,5 @@ header {
     transform: rotate(-90deg);
     fill: grey;
 }
+
 

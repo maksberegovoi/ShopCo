@@ -53,6 +53,14 @@ const Footer = () => {
     { name: "Github", icon: `${sprite}#icon-github`, href: "/" },
   ];
 
+  const badges = [
+    { name: "Visa", icon: `${sprite}#icon-visa` },
+    { name: "MasterCard", icon: `${sprite}#icon-mastercard` },
+    { name: "PayPal", icon: `${sprite}#icon-paypal` },
+    { name: "GooglePay", icon: `${sprite}#icon-google-pay` },
+    { name: "ApplePay", icon: `${sprite}#icon-apple-pay` },
+  ];
+
   return (
     <footer className={`container`}>
       <div className={styles.subscription}>
@@ -108,31 +116,9 @@ const Footer = () => {
       <div className={styles.subFooter}>
         <p>Shop.co © 2000-2023, All Rights Reserved</p>
         <div className={styles.badges}>
-          <Svg
-            href={`${sprite}#icon-visa`}
-            width={40}
-            height={25}
-            styles={styles.badge}
-          />
-          <Svg
-            href={`${sprite}#icon-mastercard`}
-            width={40}
-            height={25}
-            styles={styles.badge}
-          />
-          <Svg
-            href={`${sprite}#icon-paypal`}
-            width={40}
-            height={25}
-            styles={styles.badge}
-          />
-          <Svg
-            href={`${sprite}#icon-applePay`}
-            width={40}
-            height={25}
-            styles={styles.badge}
-          />
-          <Svg href={`${sprite}#icon-googlePay`} width={40} height={25} />
+          {badges.map((badge) => (
+            <Svg href={badge.icon} width={40} height={25} />
+          ))}
         </div>
       </div>
     </footer>

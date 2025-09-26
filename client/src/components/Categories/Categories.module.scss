@@ -1,0 +1,17 @@
+@use '../../styles/helpers' as *;
+
+.category {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(55);
+}
+
+.categoryButton {
+    border: rem(1) solid lightgrey;
+    border-radius: rem(62);
+    background-color: transparent;
+    padding: rem(16) rem(54);
+    width: auto;
+    color: black;
+}

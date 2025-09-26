@@ -1,3 +1,5 @@
+@use '../../styles/helpers' as *;
+
 .accordionContainer {
     flex-shrink: 0;
     overflow: hidden;
@@ -7,16 +9,17 @@
     display: flex;
     justify-content: space-between;
     flex-shrink: 0;
-    gap: 0.25rem;
+    gap: rem(4);
     cursor: pointer;
+    color: black;
 }
 
 .accordionContent {
     display: flex;
     flex-direction: column;
-    gap: 0.5rem;
-    margin-top: 0.5rem;
-    padding-left: 0.5rem;
+    gap: rem(5);
+    margin-top: rem(8);
+    padding-left: rem(10);
     background-color: white;
 }
 .absolute {

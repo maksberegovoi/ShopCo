@@ -1,0 +1,6 @@
+@use '../../styles/helpers' as *;
+
+.list {
+    display: flex;
+    gap: rem(20);
+}

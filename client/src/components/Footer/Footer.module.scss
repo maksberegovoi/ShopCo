@@ -4,7 +4,7 @@ footer {
     display: flex;
     flex-direction: column;
     gap: rem(48);
-
+    flex-shrink: 0;
 }
 
 .subscription {
@@ -30,7 +30,10 @@ footer {
         display: flex;
         flex-direction: column;
         gap: rem(12);
-        width: 100%;
+
+        @include tablet-below {
+            width: 100%;
+        }
     }
 
     .emailContainer{
@@ -89,7 +92,10 @@ footer {
     padding: rem(7);
     width: rem(28);
     height: rem(28);
-
+}
+.socialLink:hover {
+    fill: var(--color-accent);
+    border-color: var(--color-accent);
 }
 
 .socials {

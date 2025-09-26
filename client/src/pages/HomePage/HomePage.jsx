@@ -1,19 +1,16 @@
 import React from "react";
+import styles from "./HomePage.module.scss";
+import Categories from "../../components/Categories/Categories.jsx";
 
 const HomePage = () => {
   const categories = [{ name: "New Arrival" }, { name: "Top Sale" }];
   return (
     <main className={"container"}>
-      <section style={{ height: 500 }}>
+      <section className={styles.hero}>
         <h1>HERO TITLE</h1>
         <div>CONTENT</div>
       </section>
-      {categories.map((category) => (
-        <section style={{ height: 500 }}>
-          <h2>{category.name}</h2>
-          <div>Content</div>
-        </section>
-      ))}
+      <Categories />
     </main>
   );
 };
