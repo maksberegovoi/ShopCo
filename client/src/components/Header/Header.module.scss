@@ -107,15 +107,7 @@ header {
     transition: color 0.3s ease;
 }
 
-.linkIcon {
-    width: rem(24);
-    height: rem(24);
-    transition: fill 0.3s ease;
-}
 
-.linkIcon:hover {
-    fill: var(--color-accent);
-}
 
 .iconsContainer {
     display: flex;
@@ -130,16 +122,7 @@ header {
 
 }
 
-.iconSearch {
-    cursor: pointer;
-    fill: black;
-    width: rem(24);
-    height: rem(24);
 
-    @include tablet-above {
-        display: none;
-    }
-}
 
 .burgerButton {
     @include tablet-above {
@@ -147,20 +130,7 @@ header {
     }
 }
 
-.closeBtn {
-    color: black;
-    position: absolute;
-    top: rem(15);
-    right: rem(15);
-    cursor: pointer;
-    fill: black;
-    width: rem(24);
-    height: rem(24);
 
-    @include tablet-above {
-        display: none;
-    }
-}
 
 .overlay {
     position: fixed;
@@ -199,11 +169,11 @@ header {
     cursor: pointer;
 }
 
-.dropdownContainer:hover {
+.dropdownContainer:hover .link {
     color: var(--color-accent);
 }
 
-.dropdownContainer:hover .dropdownIcon{
+.dropdownContainer:hover .iconArrowRight{
     fill: var(--color-accent);
 }
 
@@ -212,4 +182,50 @@ header {
     fill: grey;
 }
 
+.iconLink {
+    width: rem(24);
+    height: rem(24);
+    transition: fill 0.3s ease;
+}
+
+.iconLink:hover {
+    fill: var(--color-accent);
+}
+
+.iconSearch {
+    cursor: pointer;
+    fill: black;
+    width: rem(24);
+    height: rem(24);
+
+    @include tablet-above {
+        display: none;
+    }
+}
+
+.iconMenu {
+    width: rem(24);
+    height: rem(24);
+}
+
+.iconClose {
+    color: black;
+    position: absolute;
+    top: rem(15);
+    right: rem(15);
+    cursor: pointer;
+    fill: black;
+    width: rem(24);
+    height: rem(24);
+
+    @include tablet-above {
+        display: none;
+    }
+}
+
+.iconArrowRight {
+    transform: rotate(-90deg);
+    width: rem(16);
+    height: rem(16);
+}
 

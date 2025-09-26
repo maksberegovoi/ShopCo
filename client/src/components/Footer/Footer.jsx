@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "./Footer.module.scss";
-import Svg from "../../UI/Svg/Svg.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import { NavLink } from "react-router-dom";
 import { HOME_ROUTE } from "../../utils/consts.js";
@@ -69,10 +68,16 @@ const Footer = () => {
         </h2>
         <div className={styles.emailWrapper}>
           <div className={styles.emailContainer}>
-            <Svg href={`${sprite}#icon-mail`} />
-            <input type="text" placeholder={"Enter your email address"} />
+            <svg className={styles.iconEmail}>
+              <use href={`${sprite}#icon-mail`}></use>
+            </svg>
+            <input
+              className={styles.emailInput}
+              type="text"
+              placeholder={"Enter your email address"}
+            />
           </div>
-          <MyButton classname={styles.mailButton}>
+          <MyButton classname={styles.mailButton} color={"white"}>
             Subscribe to Newsletter
           </MyButton>
         </div>
@@ -89,11 +94,14 @@ const Footer = () => {
           <div className={styles.socials}>
             {socials.map((social) => (
               <NavLink
+                key={social.name}
                 to={social.href}
                 aria-label={social.name}
                 className={styles.socialLink}
               >
-                <Svg href={social.icon} width={20} height={20}></Svg>
+                <svg className={styles.iconSocial}>
+                  <use href={social.icon}></use>
+                </svg>
               </NavLink>
             ))}
           </div>
@@ -101,11 +109,11 @@ const Footer = () => {
         <div className={styles.columnsContainer}>
           <ul className={styles.columns}>
             {columns.map((column) => (
-              <li className={styles.column}>
+              <li key={column.title} className={styles.column}>
                 <h4 className={styles.columnTitle}>{column.title}</h4>
                 <div className={styles.columnLinks}>
                   {column.links.map((link) => (
-                    <NavLink className={styles.columnLink}>{link.name}</NavLink>
+                    <NavLink key={link.name}>{link.name}</NavLink>
                   ))}
                 </div>
               </li>
@@ -117,7 +125,9 @@ const Footer = () => {
         <p>Shop.co © 2000-2023, All Rights Reserved</p>
         <div className={styles.badges}>
           {badges.map((badge) => (
-            <Svg href={badge.icon} width={40} height={25} />
+            <svg key={badge.name} className={styles.iconBadge}>
+              <use href={badge.icon}></use>
+            </svg>
           ))}
         </div>
       </div>

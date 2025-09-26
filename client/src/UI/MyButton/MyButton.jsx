@@ -8,6 +8,7 @@ const MyButton = ({
   handleClick,
   to,
   type = "button",
+  color = "black",
   ...props
 }) => {
   const navigate = useNavigate();
@@ -23,7 +24,10 @@ const MyButton = ({
 
   return (
     <button
-      className={`${styles.MyButton} ${classname}`}
+      className={`
+        ${classname} ${styles.MyButton} 
+        ${color === "black" ? styles.black : ""} 
+        ${color === "white" ? styles.white : ""}`}
       onClick={onClick}
       type={type}
       {...props}

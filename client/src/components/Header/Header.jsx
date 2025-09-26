@@ -9,7 +9,6 @@ import {
 } from "../../utils/consts.js";
 import Search from "../Search/Search.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
-import Svg from "../../UI/Svg/Svg.jsx";
 import Accordion from "../Accordion/Accordion.jsx";
 
 const Header = () => {
@@ -67,7 +66,9 @@ const Header = () => {
             onClick={() => setIsPromo(false)}
             aria-label="close promo"
           >
-            <Svg href={`${sprite}#icon-close`} width={20} height={20} />
+            <svg className={styles.iconClose}>
+              <use href={`${sprite}#icon-close`}></use>
+            </svg>
           </button>
         </div>
       </div>
@@ -77,7 +78,9 @@ const Header = () => {
           onClick={toggleMenu}
           aria-label="open menu"
         >
-          <Svg href={`${sprite}#icon-burger-menu`} />
+          <svg className={styles.iconMenu}>
+            <use href={`${sprite}#icon-burger-menu`}></use>
+          </svg>
         </button>
         <NavLink to={HOME_ROUTE}>
           <span className="logo">SHOP.CO</span>
@@ -95,20 +98,12 @@ const Header = () => {
             <Accordion title={"Shop"} absolute={!isBurgerMenu}>
               {dropdownLinks.map((link) => (
                 <div key={link.name} className={styles.dropdownContainer}>
-                  <NavLink
-                    to={link.path}
-                    className={({ isActive }) =>
-                      isActive ? `${styles.link} ${styles.active}` : styles.link
-                    }
-                  >
+                  <NavLink to={link.path} className={styles.link}>
                     {link.name}
                   </NavLink>
-                  <Svg
-                    href={`${sprite}#icon-arrow`}
-                    width={16}
-                    height={16}
-                    styles={styles.dropdownIcon}
-                  />
+                  <svg className={styles.iconArrowRight}>
+                    <use href={`${sprite}#icon-arrow`}></use>
+                  </svg>
                 </div>
               ))}
             </Accordion>
@@ -128,12 +123,9 @@ const Header = () => {
               onClick={toggleMenu}
               aria-label="close menu"
             >
-              <Svg
-                href={`${sprite}#icon-close`}
-                width={20}
-                height={20}
-                styles={styles.closeBtn}
-              />
+              <svg className={styles.iconClose}>
+                <use href={`${sprite}#icon-close`}></use>
+              </svg>
             </button>
           </nav>
         </div>
@@ -142,11 +134,15 @@ const Header = () => {
         </div>
         <div className={styles.iconsContainer}>
           <button onClick={toggleMobileSearch} aria-label="search button">
-            <Svg href={`${sprite}#icon-search`} styles={styles.iconSearch} />
+            <svg className={styles.iconSearch}>
+              <use href={`${sprite}#icon-search`}></use>
+            </svg>
           </button>
           {iconLinks.map((link) => (
             <NavLink to={link.path} key={link.path} aria-label={link.name}>
-              <Svg href={link.href} styles={styles.linkIcon} />
+              <svg className={styles.iconLink}>
+                <use href={link.href}></use>
+              </svg>
             </NavLink>
           ))}
         </div>

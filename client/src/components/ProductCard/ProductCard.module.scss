@@ -1,24 +1,45 @@
 @use '../../styles/helpers' as *;
 
 .card {
+    flex-shrink: 0;
     display: flex;
     flex-direction: column;
     color: var(--color-text-black);
-    width: rem(300);
+    width: rem(200);
+    height: 100%;
     gap: rem(16);
+
+    @include tablet-above {
+        width: rem(270);
+    }
 }
 
+
 .cardImage {
-    height: rem(270);
+    cursor: pointer;
+    height: rem(200);
     border-radius: rem(20);
     object-fit: cover;
+
+    @include tablet-above {
+        height: rem(270);
+    }
 }
 
 .cardContent {
     display: flex;
+    align-items: flex-start;
     flex-direction: column;
     gap: rem(8);
 }
+
+.cardName {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 100%;
+}
+
 .ratingContainer {
     @include fluid-text(14,12);
     display: flex;
@@ -33,6 +54,7 @@
 }
 
 .priceContainer {
+    @include  fluid-text(24, 20);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -55,3 +77,12 @@
     font-size: rem(12);
 }
 
+.iconStar {
+    width: rem(16);
+    height: rem(16);
+
+    @include tablet-above {
+        width: rem(18);
+        height: rem(18);
+    }
+}

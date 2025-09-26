@@ -1,25 +1,39 @@
 import React from "react";
-import Svg from "../../UI/Svg/Svg.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import { renderRatingStars } from "../../utils/productRatingStars.js";
 import styles from "./ProductCard.module.scss";
 import { applyPriceDiscount } from "../../utils/applyPriceDiscount.js";
+import { generatePath, useNavigate } from "react-router-dom";
+import { DETAILS_ROUTE } from "../../utils/consts.js";
+import { generateSlug } from "../../utils/generateSlug.js";
 
 const ProductCard = ({ product }) => {
+  const navigate = useNavigate();
+  const handleClick = () => {
+    navigate(
+      generatePath(DETAILS_ROUTE, {
+        id: product.id,
+        slug: generateSlug(product.name),
+      }),
+    );
+  };
+
   return (
     <li className={styles.card}>
-      <img src={product.img} alt="product image" className={styles.cardImage} />
+      <img
+        src={product.img}
+        alt="product image"
+        className={styles.cardImage}
+        onClick={handleClick}
+      />
       <div className={styles.cardContent}>
         <h5 className={styles.cardName}>{product.name}</h5>
         <div className={styles.ratingContainer}>
           <div className={styles.ratingIconsContainer}>
             {renderRatingStars(product.rating).map((starType, index) => (
-              <Svg
-                key={index}
-                href={`${sprite}#icon-${starType}`}
-                alt={`${starType} star`}
-                classname={styles.iconStar}
-              />
+              <svg key={index} className={styles.iconStar}>
+                <use href={`${sprite}#icon-${starType}`}></use>
+              </svg>
             ))}
           </div>
           <p className={styles.ratingNumber}>
@@ -38,6 +52,7 @@ const ProductCard = ({ product }) => {
               {product.price}
             </p>
             <p className={styles.discount}>
+              {"-"}
               {product.discount}
               {"%"}
             </p>

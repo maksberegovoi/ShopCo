@@ -4,13 +4,26 @@
     @include fluid-text(16, 14);
     padding: rem(12) rem(16);
     border-radius: rem(62);
-    background-color: black;
-    color: white;
     font-weight: 500;
     width: 100%;
 }
 
-.MyButton:hover {
-    background-color: var(--color-accent);
+.white {
+    background-color: white;
     color: black;
+
+    &:hover {
+        background-color: var(--color-accent)!important;
+        color: white !important;
+    }
+}
+
+.black {
+    background-color: black;
+    color: white;
+
+    &:hover {
+        background-color: var(--color-accent)!important;
+        color: black!important;
+    }
 }

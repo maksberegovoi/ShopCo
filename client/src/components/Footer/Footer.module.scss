@@ -38,18 +38,27 @@ footer {
 
     .emailContainer{
         display: flex;
+        align-items: center;
         gap: rem(12);
         border-radius: rem(62);
         background-color: white;
         padding: rem(12) rem(16);
     }
 
-    .mailButton {
-        background-color: white;
-        color: black;
+    .emailInput {
+        width: 100%;
     }
     .mailButton:hover {
         color: white;
+    }
+    .iconEmail {
+        width: rem(20);
+        height: rem(20);
+
+        @include tablet-above {
+            width: rem(24);
+            height: rem(24);
+        }
     }
 }
 
@@ -92,6 +101,9 @@ footer {
     padding: rem(7);
     width: rem(28);
     height: rem(28);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .socialLink:hover {
     fill: var(--color-accent);
@@ -102,6 +114,11 @@ footer {
     display: flex;
     gap: rem(8);
     margin-top: rem(24);
+}
+
+.iconSocial {
+    width: rem(20);
+    height: rem(20);
 }
 
 .columnsContainer {
@@ -177,6 +194,11 @@ footer {
 
     @include tablet-above {
         gap: rem(12);
+    }
+
+    .iconBadge {
+        width: rem(40);
+        height: rem(25);
     }
 }
 

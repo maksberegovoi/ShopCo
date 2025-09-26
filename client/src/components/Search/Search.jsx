@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Search.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
-import Svg from "../../UI/Svg/Svg.jsx";
 
 const Search = () => {
   const [search, setSearch] = useState("");
@@ -15,7 +14,9 @@ const Search = () => {
   return (
     <div className={styles.container}>
       <button onClick={handleSearch}>
-        <Svg href={`${sprite}#icon-search`} styles={styles.icon} />
+        <svg className={styles.icon}>
+          <use href={`${sprite}#icon-search`}></use>
+        </svg>
       </button>
       <input
         className={styles.search}

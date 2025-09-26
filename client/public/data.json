@@ -3,6 +3,7 @@
         "name": "New Arrivals",
         "products":  [
             {
+                "id": 1,
                 "name": "T-SHIRT WITH TAPE DETAILS",
                 "price": 120,
                 "img": "../images/image7.png",
@@ -11,6 +12,7 @@
 
             },
             {
+                "id": 2,
                 "name": "SKINNY FIT JEANS",
                 "price": 240,
                 "img": "../images/image7.png",
@@ -19,6 +21,7 @@
 
             },
             {
+                "id": 3,
                 "name": "CHECKERED SHIRT",
                 "price": 180,
                 "img": "../images/image7.png",
@@ -27,6 +30,7 @@
 
             },
             {
+                "id": 4,
                 "name": "SLEEVE STRIPED T-SHIRT",
                 "price": 130,
                 "img": "../images/image7.png",
@@ -40,6 +44,7 @@
         "name": "Top Selling",
         "products":  [
             {
+                "id": 5,
                 "name": "T-SHIRT WITH TAPE DETAILS",
                 "price": 120,
                 "img": "../images/image7.png",
@@ -48,6 +53,7 @@
 
             },
             {
+                "id": 6,
                 "name": "SKINNY FIT JEANS",
                 "price": 240,
                 "img": "../images/image7.png",
@@ -56,6 +62,7 @@
 
             },
             {
+                "id": 7,
                 "name": "CHECKERED SHIRT",
                 "price": 180,
                 "img": "../images/image7.png",
@@ -64,6 +71,7 @@
 
             },
             {
+                "id": 8,
                 "name": "SLEEVE STRIPED T-SHIRT",
                 "price": 130,
                 "img": "../images/image7.png",

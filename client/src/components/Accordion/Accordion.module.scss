@@ -36,6 +36,8 @@
 
 .icon {
     transition: transform 0.3s ease;
+    width: rem(16);
+    height: rem(16);
 }
 
 .active {
