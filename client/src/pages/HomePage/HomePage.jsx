@@ -6,7 +6,7 @@ import Hero from "./Hero/Hero.jsx";
 
 const HomePage = () => {
   return (
-    <main className={"container"}>
+    <main>
       <Hero />
       <section>
         <Categories />

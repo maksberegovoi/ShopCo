@@ -80,7 +80,7 @@ footer {
 .description {
     display: flex;
     flex-direction: column;
-    width: rem(350);
+    max-width: rem(350);
 
     @include tablet-above {
         width: rem(200);

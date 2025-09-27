@@ -12,30 +12,30 @@ const Hero = () => {
   ];
 
   return (
-    <section className={`${styles.hero} container`}>
-      <div className={styles.heroContent}>
-        <h1 className={styles.heroTitle}>
-          FIND CLOTHES THAT MATCHES YOUR STYLE
-        </h1>
-        <p className={styles.heroDescription}>
-          Browse through our diverse range of meticulously crafted garments,
-          designed to bring out your individuality and cater to your sense of
-          style.
-        </p>
-        <MyButton to={CATALOG_ROUTE} classname={styles.heroBtn}>
-          Shop Now
-        </MyButton>
-        <dl className={styles.metrics}>
-          {metrics.map((metric) => (
-            <div className={styles.metricsColumn}>
-              <dt className={styles.metricsTitle}>{metric.title}</dt>
-              <dd className={styles.metricsdesc}>{metric.description}</dd>
-            </div>
-          ))}
-        </dl>
-      </div>
-      <div className={styles.imgWrapper}>
-        <img className={styles.heroImg} src={heroBg} alt="" />
+    <section className={styles.hero}>
+      <div className={`${styles.heroContainer} container`}>
+        <div className={styles.heroContent}>
+          <h1 className={styles.heroTitle}>
+            FIND CLOTHES THAT MATCHES YOUR STYLE
+          </h1>
+          <p className={styles.heroDescription}>
+            Browse through our diverse range of meticulously crafted garments,
+            designed to bring out your individuality and cater to your sense of
+            style.
+          </p>
+          <MyButton to={CATALOG_ROUTE} classname={styles.heroBtn}>
+            Shop Now
+          </MyButton>
+          <dl className={styles.metrics}>
+            {metrics.map((metric) => (
+              <div className={styles.metricsColumn}>
+                <dt className={styles.metricsTitle}>{metric.title}</dt>
+                <dd className={styles.metricsdesc}>{metric.description}</dd>
+              </div>
+            ))}
+          </dl>
+        </div>
+        <img className={styles.heroImage} src={heroBg} alt="" />
       </div>
     </section>
   );

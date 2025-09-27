@@ -1,54 +1,80 @@
 @use '../../../styles/helpers' as *;
 
 .hero {
-
+    background-color: #F2F0F1;
+    overflow: hidden;
 }
-.heroContent {
+
+.heroContainer {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+
+    @include tablet-above {
+        flex-direction: row;
+    }
+}
+
+.heroContent {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    padding-top: rem(40);
     gap: rem(32);
-    padding-block: rem(120);
+
+    @include tablet-above {
+        min-width: rem(390);
+    }
 }
 
 .heroImage {
-    object-fit: cover;
+    object-position: bottom;
+    @include tablet-above {
+        object-fit: cover;
+    }
 }
 
 .heroBtn {
-    width: 211px;
+    max-width: 211px;
 }
 .metrics {
     display: flex;
-    align-items: center;
     justify-content: center;
+    column-gap: rem(16);
+    row-gap: rem(6);
     flex-wrap: wrap;
-    column-gap: rem(32);
-    row-gap: rem(12);
 
-    @include tablet-below {
-
+    @include mobile-above {
+        column-gap: rem(64);
     }
 
     @include tablet-above {
         justify-content: flex-start;
+        column-gap: rem(64);
+        flex-wrap: nowrap;
     }
-
 }
 
 .metricsColumn {
     display: flex;
     flex-direction: column;
-    padding-right: rem(32);
+    position: relative;
 
-    &:first-child {
-        border-right: 1px solid lightgrey;
-    }
 
-    @include tablet-above {
-        &:not(:last-child) {
-            border-right: 1px solid lightgrey;
+    &:not(:last-child)::after {
+        position: absolute;
+        right: rem(-32);
+        content: '';
+        width: rem(1);
+        height: 100%;
+        background-color: lightgrey;
+
+        @include mobile-below {
+            right: rem(-8);
         }
+
     }
+
 }
 
 .metricsTitle {
