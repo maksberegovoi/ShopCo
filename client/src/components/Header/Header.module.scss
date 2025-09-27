@@ -55,7 +55,9 @@ header {
     margin-left: rem(5)
 }
 
-.promoClose {
+.iconPromoClose {
+    width: rem(20);
+    height: rem(20);
     justify-self: end;
     fill: white;
 }

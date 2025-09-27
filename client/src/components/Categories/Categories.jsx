@@ -8,7 +8,7 @@ import ProductCard from "../ProductCard/ProductCard.jsx";
 const Categories = () => {
   console.log(data);
   return (
-    <>
+    <section className={"container"}>
       {data.map((category) => (
         <div key={category.name} className={styles.category}>
           <h2 className={styles.title}>{category.name}</h2>
@@ -26,7 +26,7 @@ const Categories = () => {
           </MyButton>
         </div>
       ))}
-    </>
+    </section>
   );
 };
 

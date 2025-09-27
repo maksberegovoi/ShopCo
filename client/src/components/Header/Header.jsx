@@ -61,12 +61,8 @@ const Header = () => {
             Sign up and get 20% off to your first order.
             <button className={styles.promoBtn}>Sign Up Now</button>
           </p>
-          <button
-            className={styles.promoClose}
-            onClick={() => setIsPromo(false)}
-            aria-label="close promo"
-          >
-            <svg className={styles.iconClose}>
+          <button onClick={() => setIsPromo(false)} aria-label="close promo">
+            <svg className={styles.iconPromoClose}>
               <use href={`${sprite}#icon-close`}></use>
             </svg>
           </button>

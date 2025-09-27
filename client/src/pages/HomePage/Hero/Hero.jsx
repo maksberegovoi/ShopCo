@@ -48,7 +48,7 @@ const Hero = () => {
             ))}
           </dl>
         </div>
-        <img className={styles.heroImage} src={heroBg} alt="" />
+        <img className={styles.heroImage} src={heroBg} alt="background image" />
       </div>
       <div className={styles.brands}>
         <div className={`${styles.brandContainer} container`}>
