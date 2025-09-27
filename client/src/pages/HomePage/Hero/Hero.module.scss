@@ -82,3 +82,28 @@
     font-weight: 700;
     color: black;
 }
+
+.brands {
+    background-color: black;
+}
+
+.brandContainer {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: rem(30);
+    padding-block: rem(35);
+
+    @include tablet-above {
+        padding-block: rem(45);
+    }
+}
+
+.brandImg {
+    height: rem(23);
+
+    @include tablet-above {
+        height: rem(36);
+    }
+
+}
