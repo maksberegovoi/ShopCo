@@ -20,12 +20,14 @@ const ProductCard = ({ product }) => {
 
   return (
     <li className={styles.card}>
-      <img
-        src={product.img}
-        alt="product image"
-        className={styles.cardImage}
-        onClick={handleClick}
-      />
+      <div className={styles.imgContainer}>
+        <img
+          src={product.img}
+          alt="product image"
+          className={styles.cardImage}
+          onClick={handleClick}
+        />
+      </div>
       <div className={styles.cardContent}>
         <h5 className={styles.cardName}>{product.name}</h5>
         <div className={styles.ratingContainer}>
@@ -36,7 +38,7 @@ const ProductCard = ({ product }) => {
               </svg>
             ))}
           </div>
-          <p className={styles.ratingNumber}>
+          <p>
             {product.rating}/
             <span className={styles.ratingNumberAccent}>5</span>
           </p>
@@ -65,6 +67,9 @@ const ProductCard = ({ product }) => {
             </p>
           </div>
         )}
+        <svg className={styles.iconCart}>
+          <use href={`${sprite}#icon-cart`}></use>
+        </svg>
       </div>
     </li>
   );

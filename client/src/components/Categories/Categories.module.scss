@@ -22,10 +22,19 @@
 }
 
 .list {
-    display: flex;
-    flex-grow: 1;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: rem(20);
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: rem(25);
     width: 100%;
+
+    @include mobile-above {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    @include tablet-above {
+        grid-template-columns: repeat(4, 1fr);
+        column-gap: rem(20);
+    }
+
 }

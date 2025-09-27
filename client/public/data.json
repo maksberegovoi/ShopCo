@@ -4,10 +4,10 @@
         "products":  [
             {
                 "id": 1,
-                "name": "T-SHIRT WITH TAPE DETAILS",
-                "price": 120,
+                "name": "T-SHIRT WITH TAPE DETAILS1",
+                "price": 20000,
                 "img": "../images/image7.png",
-                "rating": 3.5,
+                "rating": 5,
                 "discount": 20
 
             },
@@ -17,7 +17,7 @@
                 "price": 240,
                 "img": "../images/image7.png",
                 "rating": 4,
-                "discount": 25
+                "discount": 0
 
             },
             {
