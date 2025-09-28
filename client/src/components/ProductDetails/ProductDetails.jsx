@@ -2,6 +2,9 @@ import React, { useState } from "react";
 import styles from "./ProductDetails.module.scss";
 import { renderRatingStars } from "../../utils/productRatingStars.js";
 import sprite from "../../../assets/icons/sprite.svg";
+import ColorSelector from "../ColorSelector/ColorSelector.jsx";
+import SizeSelector from "../SizeSelector/SizeSelector.jsx";
+import MyButton from "../../UI/MyButton/MyButton.jsx";
 
 const ProductDetails = () => {
   const product = {
@@ -15,8 +18,8 @@ const ProductDetails = () => {
     discount: 20,
     rating: 5,
     quantity: 100,
-    colors: ["red", "yellow", "blue", "white", "black", "brown", "green"],
-    availiableColors: ["brown", "black", "green"],
+    colors: ["brown", "green", "purple"],
+    sizes: ["Small", "Medium", "Large", "X-Large"],
     gallery: [
       "/images/productDetails/img-1.png",
       "/images/productDetails/img-2.png",
@@ -67,10 +70,14 @@ const ProductDetails = () => {
       },
     ],
   };
-
+  const [selectedColor, setSelectedColor] = useState(product.colors[0]);
+  const [selectedSize, setSelectedSize] = useState(product.sizes[0]);
+  const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState(
     "../../../public/images/productDetails/img-1.png",
   );
+
+  const addToCard = () => {};
 
   return (
     <div className={styles.container}>
@@ -93,8 +100,12 @@ const ProductDetails = () => {
             </button>
           ))}
         </div>
-        <div className={styles.mainImage}>
-          <img src={mainImage} alt="Main product" className={styles.image} />
+        <div className={styles.mainImageContainer}>
+          <img
+            src={mainImage}
+            alt="Main product"
+            className={styles.mainImage}
+          />
         </div>
       </div>
       <div className={styles.content}>
@@ -128,8 +139,40 @@ const ProductDetails = () => {
           </div>
           <p>{product.description}</p>
         </div>
-        <div>
-          <p>Select Colors</p>
+        <ColorSelector
+          colors={product.colors}
+          selectedColor={selectedColor}
+          onColorChange={setSelectedColor}
+        />
+        <SizeSelector
+          sizes={product.sizes}
+          selectedSize={selectedSize}
+          onSizeChange={setSelectedSize}
+        />
+        <div className={styles.footer}>
+          <div className={styles.quantity}>
+            <button
+              disabled={quantity <= 1}
+              onClick={() => setQuantity(quantity - 1)}
+              aria-label="minus one item"
+            >
+              <svg className={styles.iconQuantity}>
+                <use href={`${sprite}#icon-minus`}></use>
+              </svg>
+            </button>
+            <p>{quantity}</p>
+            <button
+              onClick={() => setQuantity(quantity + 1)}
+              aria-label="plus one item"
+            >
+              <svg className={styles.iconQuantity}>
+                <use href={`${sprite}#icon-plus`}></use>
+              </svg>
+            </button>
+          </div>
+          <MyButton classname={styles.btnCart} handleClick={addToCard}>
+            Add to Cart
+          </MyButton>
         </div>
       </div>
     </div>

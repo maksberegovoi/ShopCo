@@ -6,7 +6,6 @@
     justify-content: space-around;
     border-bottom: 1px solid lightgrey;
     margin-bottom: 400px;
-
 }
 
 .link {
@@ -23,7 +22,7 @@
         left: 50%;
         bottom: 4px;
         height: rem(1);
-        width: rem(500);
+        width: 150%;
         background: linear-gradient(
                 90deg,
                 transparent 0%,
@@ -32,5 +31,9 @@
                 transparent 100%
         );
         transform: translateX(-50%);
+
+        @include tablet-above {
+            width: rem(200);
+        }
     }
 }

@@ -20,7 +20,7 @@ const DetailsPage = () => {
               isActive ? `${styles.link} ${styles.active}` : styles.link
             }
           >
-            Product Details
+            Details
           </NavLink>
           <NavLink
             to={generatePath(REVIEWS_ROUTE)}
