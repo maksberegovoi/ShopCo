@@ -1,9 +1,9 @@
 import React from "react";
 import styles from "./ProductTypes.module.scss";
-import casualImg from "../../../../public/images/productTypes/casual.png";
-import gymImg from "../../../../public/images/productTypes/gym.png";
-import partyImg from "../../../../public/images/productTypes/party.png";
-import formalImg from "../../../../public/images/productTypes/formal.png";
+import casualImg from "/images/productTypes/casual.png";
+import gymImg from "/images/productTypes/gym.png";
+import partyImg from "/images/productTypes/party.png";
+import formalImg from "/images/productTypes/formal.png";
 import { useNavigate } from "react-router-dom";
 import { CATALOG_ROUTE } from "../../../utils/consts.js";
 
