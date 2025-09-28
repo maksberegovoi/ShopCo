@@ -1,0 +1,81 @@
+@use '../../styles/helpers' as *;
+
+
+
+
+.thumbnailImage,
+.mainImage {
+    width: rem(250);
+    height: rem(300);
+}
+
+
+
+
+
+
+
+
+
+
+.ratingContainer {
+    @include fluid-text(14,12);
+    display: flex;
+    align-items: center;
+    gap: rem(13);
+}
+
+.ratingIconsContainer {
+    display: flex;
+}
+
+.ratingNumberAccent {
+    color: var(--color-text-grey);
+}
+
+.iconStar {
+    width: rem(16);
+    height: rem(16);
+
+    @include tablet-above {
+        width: rem(18);
+        height: rem(18);
+    }
+}
+
+.priceContainer {
+    @include  fluid-text(24, 20);
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: rem(5);
+}
+
+.currentPrice {
+    color: var(--color-text-black);
+}
+
+.originalPrice {
+    text-decoration-line: line-through;
+    color: var(--color-text-grey);
+}
+.discount {
+    border-radius: 62px;
+    background: rgba(255, 51, 51, 0.10);
+    color: red;
+    padding: rem(4) rem(12);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 500;
+    font-size: rem(10);
+
+    position: absolute;
+    top: 0;
+    right: 0;
+    pointer-events: none;
+
+    @include desktop-above {
+        font-size: rem(14);
+    }
+}

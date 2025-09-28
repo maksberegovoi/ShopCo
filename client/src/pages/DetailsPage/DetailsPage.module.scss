@@ -1,0 +1,36 @@
+@use '../../styles/helpers' as *;
+
+
+.tooglerContainer {
+    display: flex;
+    justify-content: space-around;
+    border-bottom: 1px solid lightgrey;
+    margin-bottom: 400px;
+
+}
+
+.link {
+    position: relative;
+    padding-block: rem(24);
+}
+
+.active {
+    color: var(--color-accent);
+    scale: 1.15;
+    &::after {
+        content: '';
+        position: absolute;
+        left: 50%;
+        bottom: 4px;
+        height: rem(1);
+        width: rem(500);
+        background: linear-gradient(
+                90deg,
+                transparent 0%,
+                var(--color-accent) 20%,
+                var(--color-accent) 80%,
+                transparent 100%
+        );
+        transform: translateX(-50%);
+    }
+}
