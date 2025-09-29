@@ -91,3 +91,13 @@ textarea,
 [contenteditable="true"] {
     caret-color: auto;
 }
+
+.icon-star {
+    width: rem(16);
+    height: rem(16);
+
+    @include tablet-above {
+        width: rem(18);
+        height: rem(18);
+    }
+}

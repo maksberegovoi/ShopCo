@@ -1,6 +1,6 @@
 import React from "react";
 import sprite from "../../../assets/icons/sprite.svg";
-import { renderRatingStars } from "../../utils/productRatingStars.js";
+import { renderRatingStars } from "../../utils/productRatingStars.jsx";
 import styles from "./ProductCard.module.scss";
 import { generatePath, useNavigate } from "react-router-dom";
 import { DETAILS_ROUTE } from "../../utils/consts.js";
@@ -31,11 +31,7 @@ const ProductCard = ({ product }) => {
         <h5 className={styles.cardName}>{product.name}</h5>
         <div className={styles.ratingContainer}>
           <div className={styles.ratingIconsContainer}>
-            {renderRatingStars(product.rating).map((starType, index) => (
-              <svg key={index} className={styles.iconStar}>
-                <use href={`${sprite}#icon-${starType}`}></use>
-              </svg>
-            ))}
+            {renderRatingStars(product.rating)}
           </div>
           <p>
             {product.rating}/

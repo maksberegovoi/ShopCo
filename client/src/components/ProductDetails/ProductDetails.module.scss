@@ -5,10 +5,10 @@
     display: grid;
     grid-template-columns: 1fr;
     gap: rem(20);
-    margin-top: rem(50);
+    padding-block: rem(30);
 
     @include tablet-above {
-        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); // ← 50/50 с возможностью сжатия
+        grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
         align-items: start;
     }
 }
@@ -146,15 +146,6 @@
     color: var(--color-text-grey);
 }
 
-.iconStar {
-    width: rem(16);
-    height: rem(16);
-
-    @include tablet-above {
-        width: rem(18);
-        height: rem(18);
-    }
-}
 
 .priceContainer {
     @include  fluid-text(24, 20);

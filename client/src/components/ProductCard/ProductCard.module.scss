@@ -108,16 +108,6 @@
     }
 }
 
-.iconStar {
-    width: rem(16);
-    height: rem(16);
-
-    @include tablet-above {
-        width: rem(18);
-        height: rem(18);
-    }
-}
-
 .iconCart {
     display: none;
     cursor: pointer;

@@ -5,7 +5,6 @@
     display: flex;
     justify-content: space-around;
     border-bottom: 1px solid lightgrey;
-    margin-bottom: 400px;
 }
 
 .link {
@@ -36,4 +35,8 @@
             width: rem(200);
         }
     }
+}
+
+.outlet {
+    padding-block: rem(45);
 }

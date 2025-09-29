@@ -1,0 +1,47 @@
+@use '../../styles/helpers' as *;
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(25);
+}
+
+
+.list {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: rem(20);
+    column-gap: rem(20);
+
+    @include tablet-above {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.rating {
+    display: flex;
+    gap: rem(6);
+}
+
+.item {
+    padding: rem(24);
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    border: rem(1) solid lightgrey;
+    border-radius: rem(20);
+    width: 100%;
+    height: 100%;
+
+    @include tablet-above {
+        padding: rem(28) rem(32);
+    }
+}
+
+.btn {
+    width: rem(300);
+    border: rem(1) solid lightgrey;
+}
