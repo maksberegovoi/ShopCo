@@ -74,7 +74,7 @@ const DetailsPage = () => {
     <>
       <section className={"container"}>
         <ProductDetails product={product} />
-        <div className={styles.tooglerContainer}>
+        <div className={styles.togglerContainer}>
           <NavLink
             to=""
             end

@@ -1,0 +1,11 @@
+@use '../../styles/helpers' as *;
+
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+
+    @include tablet-above {
+        grid-template-columns: 20% 1fr;
+    }
+}
