@@ -21,7 +21,7 @@ const ProductCard = ({ product }) => {
     <li className={styles.card}>
       <div className={styles.imgContainer}>
         <img
-          src={product.img}
+          src={product.gallery[0]}
           alt="product image"
           className={styles.cardImage}
           onClick={handleClick}

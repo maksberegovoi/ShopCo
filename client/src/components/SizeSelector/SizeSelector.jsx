@@ -8,13 +8,14 @@ const SizeSelector = ({ sizes, selectedSize, onSizeChange }) => {
       <div className={styles.sizeOptions}>
         {sizes.map((size) => (
           <button
-            key={size}
+            disabled={!size.available}
+            key={size.name}
             className={`${styles.size} ${
               selectedSize === size ? styles.active : ""
             }`}
             onClick={() => onSizeChange(size)}
           >
-            {size}
+            {size.name}
           </button>
         ))}
       </div>

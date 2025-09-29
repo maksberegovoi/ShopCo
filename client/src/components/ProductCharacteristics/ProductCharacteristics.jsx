@@ -19,37 +19,34 @@ const ProductCharacteristics = () => {
         info: [
           { key: "gender", value: "male" },
           { key: "season", value: "All Season" },
-          { key: "collection", value: "Spring/Summer 2025" },
-          { key: "type", value: "t-shirt" },
+          { key: "collection", value: "Athletic Pro 2025" },
+          { key: "type", value: "Hoodie" },
         ],
       },
       {
         title: "Materials",
         info: [
-          { key: "material", value: "male" },
-          { key: "Fabric Weight", value: "180 GSM" },
-          { key: "Texture", value: "Soft, Breathable" },
-          { key: "Stretch", value: "Slight Stretch" },
+          { key: "material", value: "92% Polyester, 8% Elastane" },
+          { key: "Fabric Weight", value: "280 GSM" },
+          { key: "Texture", value: "Technical Fabric, Quick-dry" },
+          { key: "Stretch", value: "4-Way Stretch" },
         ],
       },
       {
         title: "Fit & Sizing",
         info: [
-          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Fit Type", value: "Athletic Fit" },
           { key: "Length", value: "Standard Length" },
-          { key: "Sleeve Type", value: "Short Sleeve" },
-          { key: "Neckline", value: "Round Neck" },
+          { key: "Sleeve Type", value: "Raglan Long Sleeve" },
+          { key: "Hood", value: "Performance Hood with Drawstring" },
         ],
       },
       {
         title: "Care Instructions",
         info: [
           { key: "Washing", value: "Machine wash cold (30°C max)" },
-          {
-            key: "Drying",
-            value: "Tumble dry low or hang dry",
-          },
-          { key: "Ironing", value: "Iron on low heat, avoid print area" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Do not iron" },
           { key: "Bleaching", value: "Do not bleach" },
         ],
       },

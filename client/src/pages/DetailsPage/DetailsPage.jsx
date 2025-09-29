@@ -10,15 +10,52 @@ const DetailsPage = () => {
     id: 1,
     name: "T-SHIRT WITH TAPE DETAILS",
     description:
-      "This graphic t-shirt which is perfect for any occasion." +
-      " Crafted from a soft and breathable fabric, it offers superior comfort and style.",
+      "This graphic t-shirt which is perfect for any occasion. Crafted from a soft and breathable fabric, it offers superior comfort and style.",
     price: 800,
     basePrice: 10000,
     discount: 20,
     rating: 5,
     quantity: 100,
-    colors: ["brown", "green", "purple"],
-    sizes: ["Small", "Medium", "Large", "X-Large"],
+    gender: "unisex",
+    type: "t-shirt",
+    style: "casual",
+    sizes: [
+      { name: "brown", available: true },
+      { name: "green", available: false },
+      { name: "purple", available: true },
+      { name: "black", available: false },
+    ],
+    colors: [
+      { name: "small", available: true },
+      { name: "medium", available: true },
+      { name: "large", available: true },
+      { name: "x-large", available: false },
+    ],
+    details: {
+      productInfo: {
+        season: "All Season",
+        collection: "Spring/Summer 2025",
+        type: "t-shirt",
+      },
+      materials: {
+        material: "Cotton",
+        fabricWeight: "180 GSM",
+        texture: "Soft, Breathable",
+        stretch: "Slight Stretch",
+      },
+      fit: {
+        fitType: "Regular Fit",
+        length: "Standard",
+        sleeveType: "Short Sleeve",
+        neckline: "Round Neck",
+      },
+      care: {
+        washing: "Machine wash cold (30°C)",
+        drying: "Tumble dry low or hang dry",
+        ironing: "Iron on low heat",
+        bleaching: "Do not bleach",
+      },
+    },
     gallery: [
       "/images/productDetails/img-1.png",
       "/images/productDetails/img-2.png",
@@ -40,7 +77,7 @@ const DetailsPage = () => {
         postDate: "August 14, 2023",
       },
       {
-        author: "Posted on August 14, 2023",
+        author: "Ethan R.",
         comment:
           "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
         rating: 5,

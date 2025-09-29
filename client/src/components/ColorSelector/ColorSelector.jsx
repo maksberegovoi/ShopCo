@@ -25,9 +25,10 @@ const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
       <div className={styles.colorOptions}>
         {colors.map((color) => (
           <button
-            key={color}
+            disabled={!color.available}
+            key={color.name}
             className={styles.colorSwatch}
-            style={{ backgroundColor: getColorValue(color) }}
+            style={{ backgroundColor: getColorValue(color.name) }}
             onClick={() => onColorChange(color)}
             aria-label={color}
             title={color}
