@@ -1,0 +1,45 @@
+@use '../../styles/helpers/index' as *;
+
+.accordionContainer {
+    flex-shrink: 0;
+    overflow: hidden;
+}
+
+.accordion {
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    gap: rem(4);
+    cursor: pointer;
+    color: black;
+}
+
+.accordionContent {
+    display: flex;
+    flex-direction: column;
+    gap: rem(5);
+    margin-top: rem(8);
+    padding-left: rem(10);
+    background-color: white;
+}
+.absolute {
+    position: absolute;
+}
+
+.accordion:hover {
+    color: var(--color-accent);
+}
+
+.accordion:hover .icon {
+    fill: var(--color-accent);
+}
+
+.icon {
+    transition: transform 0.3s ease;
+    width: rem(16);
+    height: rem(16);
+}
+
+.active {
+    transform: rotate(180deg);
+}

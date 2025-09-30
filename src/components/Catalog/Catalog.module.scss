@@ -1,0 +1,36 @@
+@use '../../styles/helpers/index' as *;
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: rem(25);
+}
+
+.list {
+    display: grid;
+    column-gap: rem(20);
+    row-gap: rem(25);
+    width: 100%;
+    place-items: center;
+
+    grid-template-columns: minmax(0, 1fr);
+
+    @include mobile-above {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    }
+
+    @include tablet-above {
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    }
+}
+

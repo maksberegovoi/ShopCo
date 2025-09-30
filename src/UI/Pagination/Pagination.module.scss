@@ -1,0 +1,54 @@
+@use '../../styles/helpers/index' as *;
+
+
+.pagination {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(8);
+    margin-top: auto;
+}
+
+.pages {
+    display: flex;
+    align-items: center;
+}
+
+.page {
+    flex-shrink: 0;
+    padding: rem(12) rem(12);
+    border-radius: rem(8);
+    transition: all 0.2s;
+
+    &.active {
+        background: rgba(0, 0, 0, 0.06);
+        color: black;
+    }
+}
+
+.navBtn {
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: rem(8) rem(14);
+    border-radius: rem(8);
+    border: 1px solid rgba(0, 0, 0, 0.10);
+    gap: rem(8);
+}
+
+
+.arrow {
+    width: rem(16);
+    height: rem(16);
+
+    @include tablet-above {
+        width: rem(20);
+        height: rem(20);
+
+    }
+}
+
+.arrowLeft {
+    transform: rotate(-180deg);
+}

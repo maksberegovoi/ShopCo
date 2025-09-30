@@ -1,0 +1,34 @@
+@use '../../styles/helpers/index' as *;
+
+.container {
+    display: flex;
+    align-items: center;
+    padding: rem(12) rem(16);
+    gap: rem(12);
+    border-radius: rem(62);
+    background: #F0F0F0;
+}
+
+button {
+    flex-shrink: 0;
+}
+
+.container:focus-within {
+    border: rem(1) solid var(--color-accent);
+}
+
+.container:hover {
+    border: rem(1) solid var(--color-accent);
+}
+
+
+.search {
+    width: 100%;
+}
+
+.icon {
+    cursor: pointer;
+    fill: grey;
+    width: rem(24);
+    height: rem(24);
+}

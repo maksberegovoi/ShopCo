@@ -1,0 +1,43 @@
+@use '../../styles/helpers/index' as *;
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: rem(16);
+}
+
+.sizeOptions {
+    display: flex;
+    gap: rem(8);
+    flex-wrap: wrap;
+}
+
+.size {
+    padding: rem(10) rem(20);
+    border: 1px solid lightgrey;
+    background: #F0F0F0;
+    border-radius: rem(62);
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+    @include tablet-above {
+        padding: rem(12) rem(24);
+    }
+
+    @include hover {
+        border-color: var(--color-accent);
+        scale: 1.1;
+    }
+
+    &.active {
+        background-color: var(--color-accent);
+        color: white;
+    }
+
+    &:disabled {
+        cursor: not-allowed;
+        pointer-events: none;
+        opacity: 0.6;
+    }
+}
+

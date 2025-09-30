@@ -1,0 +1,23 @@
+@use '../../styles/helpers/index' as *;
+
+
+.loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: rem(200);
+}
+
+.spinner {
+    width: rem(40);
+    height: rem(40);
+    border: rem(2) solid #f3f3f3;
+    border-top: rem(4) solid black;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}

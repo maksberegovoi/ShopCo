@@ -1,0 +1,40 @@
+@use '../../styles/helpers/index' as *;
+
+
+.wrapper {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.title {
+    font-size: rem(128);
+    font-weight: 700;
+    color: black;
+    margin-bottom: rem(16);
+}
+
+.subtitle {
+    font-size: rem(24);
+    margin-bottom: rem(32);
+}
+
+.link {
+    display: inline-block;
+    padding: rem(12) rem(24);
+    background: #0070f3;
+    color: #fff;
+    border-radius: rem(8);
+    text-decoration: none;
+    transition: background 0.3s ease;
+
+    &:hover {
+        background: #0059c1;
+    }
+}
+
+.btn {width: rem(300)}
+

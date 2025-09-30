@@ -1,0 +1,25 @@
+@use '../../styles/helpers/index' as *;
+
+
+
+.wrapper {
+    padding: rem(24);
+    background: #ffe6e6;
+    border: 1px solid #ff4d4f;
+    border-radius: rem(8);
+    text-align: center;
+    margin: rem(16) auto;
+    max-width: rem(400);
+}
+
+.title {
+    font-size: rem(20);
+    font-weight: 700;
+    color: #d9363e;
+    margin-bottom: rem(8);
+}
+
+.message {
+    font-size: rem(16);
+    color: #333;
+}
