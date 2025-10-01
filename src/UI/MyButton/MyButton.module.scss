@@ -12,17 +12,30 @@
     background-color: white;
     color: black;
 
-    &:hover {
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    @include hover{
         background-color: var(--color-accent)!important;
         color: white !important;
     }
+
+
+
 }
 
 .black {
     background-color: black;
     color: white;
 
-    &:hover {
+    &:disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+    }
+
+    @include hover{
         background-color: var(--color-accent)!important;
         color: black!important;
     }

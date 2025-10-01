@@ -48,8 +48,10 @@ footer {
     .emailInput {
         width: 100%;
     }
-    .mailButton:hover {
-        color: white;
+    .mailButton {
+        @include hover {
+            color: white;
+        }
     }
     .iconEmail {
         width: rem(20);
@@ -100,11 +102,13 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
+
+    @include hover {
+        fill: var(--color-accent);
+        border-color: var(--color-accent);
+    }
 }
-.socialLink:hover {
-    fill: var(--color-accent);
-    border-color: var(--color-accent);
-}
+
 
 .socials {
     display: flex;

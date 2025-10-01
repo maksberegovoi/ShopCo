@@ -118,7 +118,7 @@
     width: rem(29);
     height: rem(29);
 
-    &:hover {
-        fill: var(--color-accent);
+    @include hover {
+        fill: var(--color-accent)
     }
 }

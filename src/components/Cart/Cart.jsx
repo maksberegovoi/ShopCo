@@ -64,7 +64,7 @@ const Cart = () => {
   const removeItem = (product) => {
     dispatch(removeFromCart(product))
   }
-
+  console.log(products)
   return (
     <div className={styles.container}>
       <h2>Your cart</h2>
@@ -84,6 +84,7 @@ const Cart = () => {
                     alt={product.name}
                     onClick={() => handleImgClick(product)}
                   />
+                  {product.discount > 0 && <span className={styles.imgDiscount}>-{product.discount}%</span>}
                 </div>
                 <div className={styles.info}>
                   <dl className={styles.details}>
@@ -180,8 +181,14 @@ const Cart = () => {
                 onChange={(e) => setPromoCode(e.target.value)}
               />
             </div>
-            <MyButton disabled={promoCodeDiscountValue > 0} handleClick={handleCheckPromoCode} classname={styles.promoBtn} color={"white"}>
-              {isLoading ? <Loader /> : "Check code"}
+            <MyButton
+              disabled={promoCodeDiscountValue > 0}
+              handleClick={handleCheckPromoCode}
+              classname={styles.promoBtn}
+              color={"white"}
+            >
+              {isLoading ? <Loader classname={styles.promoLoader}/> : "Check" +
+                " code"}
             </MyButton>
           </div>
 

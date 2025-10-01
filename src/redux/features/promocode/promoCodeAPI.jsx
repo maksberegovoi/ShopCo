@@ -8,7 +8,7 @@ export const promoCodeApi = createApi({
   endpoints:(builder) => ({
     checkPromoCode: builder.query({
       queryFn: async ({ code } = {}) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 300));
 
         const response = promocodes.filter(promoCode => promoCode.code === code)
 

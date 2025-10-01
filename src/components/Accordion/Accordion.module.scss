@@ -26,12 +26,14 @@
     position: absolute;
 }
 
-.accordion:hover {
-    color: var(--color-accent);
-}
+.accordion {
+    @include hover {
+        color: var(--color-accent);
 
-.accordion:hover .icon {
-    fill: var(--color-accent);
+        .icon {
+            fill: var(--color-accent);
+        }
+    }
 }
 
 .icon {

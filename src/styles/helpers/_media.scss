@@ -41,17 +41,20 @@ $desktop: 1440;
 }
 
 @mixin hover($hasActiveEffectOnMobile: true) {
-    @media (any-hover: hover) {
-        &:hover {
-            @content;
-        }
-    }
-
-    @if ($hasActiveEffectOnMobile) {
-        @media (any-hover: none) {
-            &:active {
+    &:not(:disabled) {
+        @media (any-hover: hover) {
+            &:hover {
                 @content;
             }
         }
+
+        @if ($hasActiveEffectOnMobile) {
+            @media (any-hover: none) {
+                &:active {
+                    @content;
+                }
+            }
+        }
     }
+
 }

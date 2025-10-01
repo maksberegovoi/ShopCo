@@ -17,8 +17,10 @@ button {
     border: rem(1) solid var(--color-accent);
 }
 
-.container:hover {
-    border: rem(1) solid var(--color-accent);
+.container {
+    @include hover {
+        border: rem(1) solid var(--color-accent);
+    }
 }
 
 

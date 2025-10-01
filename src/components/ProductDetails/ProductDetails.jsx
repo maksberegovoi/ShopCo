@@ -30,6 +30,7 @@ const ProductDetails = ({ product, isLoading }) => {
         name: product.name,
         price: product.price,
         basePrice: product.basePrice,
+        discount: product.discount,
         img: product.gallery[0],
         color: selectedColor,
         size: selectedSize,

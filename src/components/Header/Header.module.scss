@@ -169,15 +169,17 @@ header {
     gap: rem(25);
     flex-shrink: 0;
     cursor: pointer;
+
+    @include hover {
+        .link {
+            color: var(--color-accent);
+        }
+        .iconArrowRight {
+            fill: var(--color-accent);
+        }
+    }
 }
 
-.dropdownContainer:hover .link {
-    color: var(--color-accent);
-}
-
-.dropdownContainer:hover .iconArrowRight{
-    fill: var(--color-accent);
-}
 
 .dropdownIcon {
     transform: rotate(-90deg);
@@ -188,10 +190,10 @@ header {
     width: rem(24);
     height: rem(24);
     transition: fill 0.3s ease;
-}
 
-.iconLink:hover {
-    fill: var(--color-accent);
+    @include hover {
+        fill: var(--color-accent);
+    }
 }
 
 .iconSearch {
