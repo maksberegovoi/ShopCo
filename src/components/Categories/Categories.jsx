@@ -1,22 +1,29 @@
 import React from "react";
-import data from "../../../public/data.json";
 import styles from "./Categories.module.scss";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
 import { CATALOG_ROUTE } from "../../utils/consts.js";
 import ProductCard from "../ProductCard/ProductCard.jsx";
+import {
+  useGetCategoriesQuery
+} from "../../redux/features/categories/categoriesAPI.js";
+import Loader from "../../UI/Loader/Loader.jsx";
+import Error from "../Error/Error.jsx";
+
 
 const Categories = () => {
-  console.log(data);
+  const {data: categories, isLoading, isError} = useGetCategoriesQuery()
+  if (isLoading) return <Loader/>
+  if (isError) return <Error/>
   return (
     <section className={"container"}>
-      {data.map((category) => (
+      {categories.map((category) => (
         <div key={category.name} className={styles.category}>
-          <h2 className={styles.title}>{category.name}</h2>
-          <ul className={styles.list}>
-            {category.products.map((product) => (
-              <ProductCard key={product.name} product={product} />
-            ))}
-          </ul>
+          <h2>{category.name}</h2>
+           <ul className={styles.list}>
+              {category.products.map((product) => (
+                <ProductCard key={product.id} product={product} />
+              ))}
+            </ul>
           <MyButton
             to={CATALOG_ROUTE}
             classname={styles.categoryButton}

@@ -11,6 +11,7 @@ import {
 import rootReducer from "./rootReducer.js";
 import { productsApi } from "./features/products/productsAPI.js";
 import {promoCodeApi} from "./features/promocode/promoCodeAPI.jsx";
+import categoriesApi from "./features/categories/categoriesAPI.js";
 
 export const store = configureStore({
   reducer: rootReducer,
@@ -19,7 +20,7 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(productsApi.middleware,promoCodeApi.middleware),
+    }).concat(productsApi.middleware,promoCodeApi.middleware,categoriesApi.middleware),
 });
 
 export const persistor = persistStore(store);

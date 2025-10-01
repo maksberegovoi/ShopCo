@@ -21,14 +21,14 @@ const ProductCard = ({ product }) => {
     <li className={styles.card}>
       <div className={styles.imgContainer}>
         <img
-          src={product.gallery[0]}
+          src={product.gallery[0] || ''}
           alt="product image"
           className={styles.cardImage}
           onClick={handleClick}
         />
       </div>
       <div className={styles.cardContent}>
-        <h5 className={styles.cardName}>{product.name}</h5>
+        <h5 className={styles.cardName}>{product?.name || ''}</h5>
         <div className={styles.ratingContainer}>
           <div className={styles.ratingIconsContainer}>
             {renderRatingStars(product.rating)}
@@ -46,7 +46,7 @@ const ProductCard = ({ product }) => {
               <span className={styles.discount}>-{product.discount}%</span>
             </>
           ) : (
-            <span>${product.price}</span>
+            <span>${product.price || 0}</span>
           )}
         </div>
         <svg className={styles.iconCart}>

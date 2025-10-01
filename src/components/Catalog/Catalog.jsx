@@ -9,7 +9,7 @@ import Pagination from "../../UI/Pagination/Pagination.jsx";
 const Catalog = () => {
   const [page, setPage] = useState(1);
   const limit = 9;
-  const { data, isLoading, error, isError } = useGetAllProductsQuery({
+  const { data, isLoading, isError } = useGetAllProductsQuery({
     page,
     limit,
   });
@@ -21,7 +21,7 @@ const Catalog = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h3>FilterName</h3>
-        <div className={styles.productsNumber}>
+        <div>
           <p>
             Showing {data.limit} of {data.total} Products
           </p>
