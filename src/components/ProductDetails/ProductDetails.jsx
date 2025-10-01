@@ -9,17 +9,21 @@ import Loader from "../../UI/Loader/Loader.jsx";
 import {useDispatch, useSelector} from "react-redux";
 import { addToCart, removeFromCart } from "../../redux/features/cart/cartSlice.js";
 import toast from "react-hot-toast";
-import {cartProducts} from "../../redux/features/cart/cartSelectors.js";
 
 const ProductDetails = ({ product, isLoading }) => {
   const dispatch = useDispatch();
-  const [selectedColor, setSelectedColor] = useState(product.colors[0].name);
-  const [selectedSize, setSelectedSize] = useState(product.sizes[0].name);
+  const [selectedColor, setSelectedColor] = useState(null);
+  const [selectedSize, setSelectedSize] = useState(null);
   const [quantity, setQuantity] = useState(1);
   const [mainImage, setMainImage] = useState(product.gallery[0]);
 
   const addToCard = () => {
-
+    if(!selectedColor) {
+      return toast.error('Choose the color')
+    }
+    if(!selectedSize) {
+      return toast.error('Choose the size')
+    }
     dispatch(
       addToCart({
         id: product.id,
@@ -32,7 +36,10 @@ const ProductDetails = ({ product, isLoading }) => {
         quantity: quantity,
       }),
     );
-    toast.success('Added to your cart')
+    setSelectedSize(null)
+    setSelectedColor(null)
+    setQuantity(1)
+    toast.success('Added to your cart');
   };
 
   if (isLoading) return <Loader />;

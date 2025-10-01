@@ -6,44 +6,36 @@ import { generatePath, useNavigate } from "react-router-dom";
 import { DETAILS_ROUTE } from "../../utils/consts.js";
 import { generateSlug } from "../../utils/generateSlug.js";
 import { useDispatch, useSelector } from "react-redux";
-import { cartProducts } from "../../redux/features/cart/cartSelectors.js";
+import {
+  calculateSummary, cartDeliveryFee,
+  cartProducts, cartPromoCodeDiscount
+} from "../../redux/features/cart/cartSelectors.js";
 import {
   decrementQuantity,
   incrementQuantity,
-  removeFromCart
+  removeFromCart, setPromoCodeDiscount
 } from "../../redux/features/cart/cartSlice.js";
 import {
   useLazyCheckPromoCodeQuery
 } from "../../redux/features/promocode/promoCodeAPI.jsx";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader/Loader.jsx";
+import {nanoid} from "@reduxjs/toolkit";
+
 
 const Cart = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const [promocode, setPromocode] = useState("");
-  const [isPromo, setIsPromo] = useState(false);
-  const [promoValue, setPromoValue] = useState(0);
-  const [checkPromoCode, { isLoading }] = useLazyCheckPromoCodeQuery();
-
   const products = useSelector(cartProducts);
 
-  const { priceBeforeDiscount, priceAfterDiscount } = products.reduce(
-    (acc, product) => ({
-      priceBeforeDiscount: acc.priceBeforeDiscount + Number(product.basePrice || 0),
-      priceAfterDiscount: acc.priceAfterDiscount + Number(product.price || 0),
-    }),
-    { priceBeforeDiscount: 0, priceAfterDiscount: 0 }
-  );
+  const {subTotal, total, discount, promoCodeDiscountValue} = useSelector(calculateSummary)
+  const deliveryFee = useSelector(cartDeliveryFee)
 
-  const deliveryFee = 15;
+  const [promoCode, setPromoCode] = useState("");
+  const promoCodeDiscount = useSelector(cartPromoCodeDiscount)
+  const [checkPromoCode, { isLoading }] = useLazyCheckPromoCodeQuery();
 
-  const subtotal = priceBeforeDiscount;
-  const afterProductDiscount = priceAfterDiscount;
-  const productDiscount = subtotal - afterProductDiscount;
-  const promoAmount = isPromo ? (afterProductDiscount * (promoValue / 100)) : 0;
-  const total = (afterProductDiscount - promoAmount) + deliveryFee;
 
   const handleImgClick = (product) => {
     navigate(
@@ -55,21 +47,23 @@ const Cart = () => {
   };
 
   const handleCheckPromoCode = async () => {
-    if (!promocode.trim()) {
+    if (!promoCode.trim()) {
       toast.error("Enter promo code");
       return;
     }
 
     try {
-      const result = await checkPromoCode({ code: promocode }).unwrap();
-      // ожидаем, что result.value — число (процент)
-      setPromoValue(Number(result.value) || 0);
-      setIsPromo(true);
+      const result = await checkPromoCode({ code: promoCode }).unwrap();
+      dispatch(setPromoCodeDiscount(Number(result.value)))
       toast.success(`Promo code applied! Discount: ${result.value}%`);
     } catch (err) {
       toast.error(err.data || "Invalid promo code");
     }
   };
+
+  const removeItem = (product) => {
+    dispatch(removeFromCart(product))
+  }
 
   return (
     <div className={styles.container}>
@@ -82,7 +76,7 @@ const Cart = () => {
         ) : (
           <ul className={styles.list}>
             {products.map((product) => (
-              <li key={product.id} className={styles.item}>
+              <li key={nanoid()} className={styles.item}>
                 <div className={styles.imageWrapper}>
                   <img
                     className={styles.image}
@@ -96,7 +90,7 @@ const Cart = () => {
                     <div className={styles.header}>
                       <h5>{product.name}</h5>
                       <button
-                        onClick={() => dispatch(removeFromCart(product.id))}
+                        onClick={()=> removeItem(product)}
                         type="button"
                         aria-label="delete product"
                       >
@@ -118,7 +112,7 @@ const Cart = () => {
                     <h4>${product.price}</h4>
                     <div className={styles.quantity}>
                       <button
-                        onClick={() => dispatch(decrementQuantity(product.id))}
+                        onClick={() => dispatch(decrementQuantity(product))}
                         aria-label="minus one item"
                       >
                         <svg className={styles.iconQuantity}>
@@ -127,7 +121,7 @@ const Cart = () => {
                       </button>
                       <p>{product.quantity}</p>
                       <button
-                        onClick={() => dispatch(incrementQuantity(product.id))}
+                        onClick={() => dispatch(incrementQuantity(product))}
                         aria-label="plus one item"
                       >
                         <svg className={styles.iconQuantity}>
@@ -146,33 +140,33 @@ const Cart = () => {
           <dl className={styles.summaryList}>
             <div className={styles.summaryItem}>
               <dt className={styles.label}>Subtotal</dt>
-              <dd className={styles.amount}>${subtotal.toFixed(2)}</dd>
+              <dd className={styles.amount}>${subTotal}</dd>
             </div>
 
             <div className={styles.summaryItem}>
               <dt className={styles.label}>Discount</dt>
               <dd className={`${styles.amount} ${styles.discount}`}>
-                - ${productDiscount.toFixed(2)}
+                - ${discount}
               </dd>
             </div>
 
-            {isPromo && (
+            {promoCodeDiscountValue > 0 && (
               <div className={styles.summaryItem}>
-                <dt className={styles.label}>Promo ({promoValue}%)</dt>
+                <dt className={styles.label}>Promo (-{promoCodeDiscount}%)</dt>
                 <dd className={`${styles.amount} ${styles.discount}`}>
-                  - ${promoAmount.toFixed(2)}
+                  - ${promoCodeDiscountValue}
                 </dd>
               </div>
             )}
 
             <div className={styles.summaryItem}>
               <dt className={styles.label}>Delivery Fee</dt>
-              <dd className={styles.amount}>${deliveryFee.toFixed(2)}</dd>
+              <dd className={styles.amount}>${deliveryFee}</dd>
             </div>
           </dl>
           <div className={styles.summaryItem}>
             <dt className={styles.label}>Total</dt>
-            <dd className={styles.amount}>${total.toFixed(2)}</dd>
+            <dd className={styles.amount}>${total}</dd>
           </div>
           <div className={styles.promo}>
             <div className={styles.promoInput}>
@@ -181,12 +175,12 @@ const Cart = () => {
               </svg>
               <input
                 type="text"
-                placeholder="Add promo code ('FREE' / 'FRONTEND')"
-                value={promocode}
-                onChange={(e) => setPromocode(e.target.value)}
+                placeholder="Add promo code ('FREE' / 'PROMOCODE')"
+                value={promoCode}
+                onChange={(e) => setPromoCode(e.target.value)}
               />
             </div>
-            <MyButton handleClick={handleCheckPromoCode} classname={styles.promoBtn} color={"white"}>
+            <MyButton disabled={promoCodeDiscountValue > 0} handleClick={handleCheckPromoCode} classname={styles.promoBtn} color={"white"}>
               {isLoading ? <Loader /> : "Check code"}
             </MyButton>
           </div>

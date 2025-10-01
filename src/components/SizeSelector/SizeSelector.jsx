@@ -11,7 +11,7 @@ const SizeSelector = ({ sizes, selectedSize, onSizeChange }) => {
             disabled={!size.available}
             key={size.name}
             className={`${styles.size} ${
-              selectedSize === size ? styles.active : ""
+              selectedSize === size.name ? styles.active : ""
             }`}
             onClick={() => onSizeChange(size.name)}
           >

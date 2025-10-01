@@ -220,6 +220,10 @@
 .promoBtn {
     width: 100%;
     border: 1px solid lightgrey;
+
+    &:disabled {
+        cursor: not-allowed;
+    }
 }
 
 .iconArrow {

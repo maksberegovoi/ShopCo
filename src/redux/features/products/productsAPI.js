@@ -4,11 +4,11 @@ import { mockProducts } from "../../../../data/produсts.js";
 export const productsApi = createApi({
   reducerPath: "productsApi",
   baseQuery: fakeBaseQuery(),
-  tagTypes: ["Products", "Reviews"],
+  tagTypes: ["Products", "Reviews", "Details"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
       queryFn: async ({ page = 1, limit = 9 } = {}) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         const start = (page - 1) * limit;
         const end = start + limit;
@@ -37,7 +37,7 @@ export const productsApi = createApi({
 
     getProductById: builder.query({
       queryFn: async (id) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         const product = mockProducts.find(
           (product) => product.id === parseInt(id),
@@ -59,11 +59,12 @@ export const productsApi = createApi({
           },
         };
       },
+      providesTags: ["Products"],
     }),
 
     getProductReviews: builder.query({
       queryFn: async (id) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         const product = mockProducts.find(
           (product) => product.id === parseInt(id),
@@ -71,11 +72,12 @@ export const productsApi = createApi({
 
         return { data: product?.reviews || [] };
       },
+      providesTags: ["Reviews"],
     }),
 
     getProductDetails: builder.query({
       queryFn: async (id) => {
-        await new Promise((resolve) => setTimeout(resolve, 500));
+        await new Promise((resolve) => setTimeout(resolve, 200));
 
         const product = mockProducts.find(
           (product) => product.id === parseInt(id),
@@ -83,6 +85,7 @@ export const productsApi = createApi({
 
         return { data: product?.details || [] };
       },
+      providesTags: ["Details"],
     }),
   }),
 });

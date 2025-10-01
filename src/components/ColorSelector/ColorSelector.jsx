@@ -28,7 +28,7 @@ const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
             disabled={!color.available}
             key={color.name}
             className={
-              selectedColor === color
+              selectedColor === color.name
                 ? `${styles.colorSwatch} ${styles.active}`
                 : styles.colorSwatch
             }
@@ -43,7 +43,7 @@ const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
           >
             <svg
               className={
-                selectedColor === color
+                selectedColor === color.name
                   ? `${styles.iconCheckMark} ${styles.active}`
                   : styles.iconCheckMark
               }
