@@ -113,12 +113,7 @@ const Header = () => {
                 {link.name}
               </NavLink>
             ))}
-            <button
-              type="button"
-              className={styles.closeBtn}
-              onClick={toggleMenu}
-              aria-label="close menu"
-            >
+            <button type="button" onClick={toggleMenu} aria-label="close menu">
               <svg className={styles.iconClose}>
                 <use href={`${sprite}#icon-close`}></use>
               </svg>

@@ -3,18 +3,18 @@ import { createSlice } from "@reduxjs/toolkit";
 const filtersSlice = createSlice({
   name: "filters",
   initialState: {
-    types: [],
+    type: "",
     colors: [],
     sizes: [],
-    styles: [],
+    style: "",
     maxPrice: 1000,
   },
   reducers: {
     toggleType: (state, action) => {
-      if (state.types.includes(action.payload)) {
-        state.types = state.types.filter((type) => type !== action.payload);
+      if (state.type === action.payload) {
+        state.type = "";
       } else {
-        state.types.push(action.payload);
+        state.type = action.payload;
       }
     },
     toggleColor: (state, action) => {
@@ -32,10 +32,10 @@ const filtersSlice = createSlice({
       }
     },
     toggleStyle: (state, action) => {
-      if (state.styles.includes(action.payload)) {
-        state.styles = state.styles.filter((style) => style !== action.payload);
+      if (state.style === action.payload) {
+        state.style = "";
       } else {
-        state.styles.push(action.payload);
+        state.style = action.payload;
       }
     },
     setMaxPrice: (state, action) => {

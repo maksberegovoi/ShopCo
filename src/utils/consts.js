@@ -25,4 +25,16 @@ export const colorMap = [
   { name: "yellow", hex: "#FFFF00" },
 ];
 
-export const sizeMap = [""];
+export const typeMap = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
+export const sizeMap = [
+  "XX-Small",
+  "X-Small",
+  "Small",
+  "Medium",
+  "Large",
+  "X-Large",
+  "XX-Large",
+  "3X-Large",
+  "4X-Large",
+];
+export const styleMap = ["Casual", "Formal", "Party", "Gym"];

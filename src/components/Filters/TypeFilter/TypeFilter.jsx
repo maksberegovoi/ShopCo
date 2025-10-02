@@ -1,17 +1,32 @@
 import React from "react";
 import sprite from "../../../../assets/icons/sprite.svg";
 import styles from "./TypeFilter.module.scss";
+import { typeMap } from "../../../utils/consts.js";
+import { useDispatch, useSelector } from "react-redux";
+import { toggleType } from "../../../redux/features/filters/filtersSlice.js";
+import { filtersType } from "../../../redux/features/filters/filtersSelector.js";
 
 const TypeFilter = () => {
-  const types = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
+  const dispatch = useDispatch();
+  const handleClick = (type) => {
+    dispatch(toggleType(type));
+  };
 
-  const handleClick = () => {};
+  const selectedType = useSelector(filtersType);
 
   return (
     <div className={styles.container}>
-      {types.map((type) => (
-        <div className={styles.option}>
-          <button type="button" onClick={handleClick}>
+      {typeMap.map((type) => (
+        <div
+          key={type}
+          className={
+            selectedType === type
+              ? `${styles.option} ${styles.active}`
+              : styles.option
+          }
+          onClick={() => handleClick(type)}
+        >
+          <button type="button" aria-label={`type ${type}`}>
             {type}
           </button>
           <svg className={styles.icon}>

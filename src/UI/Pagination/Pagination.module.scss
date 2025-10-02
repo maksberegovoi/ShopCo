@@ -2,11 +2,23 @@
 
 
 .pagination {
+    width: 100%;
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: rem(8);
+    padding-top: rem(44);
     margin-top: auto;
+
+    &::after {
+        position: absolute;
+        content: '';
+        width: 100%;
+        height: rem(1);
+        background-color: rgba(0, 0, 0, 0.10);
+        top: rem(22);
+    }
 }
 
 .pages {
@@ -15,15 +27,24 @@
 }
 
 .page {
-    flex-shrink: 0;
     padding: rem(12) rem(12);
     border-radius: rem(8);
     transition: all 0.2s;
+
+    &:hover:not(.active) {
+        background: rgba(0, 0, 0, 0.03);
+    }
 
     &.active {
         background: rgba(0, 0, 0, 0.06);
         color: black;
     }
+}
+
+.dots {
+    padding: rem(12) rem(8);
+    color: rgba(0, 0, 0, 0.4);
+    user-select: none;
 }
 
 .navBtn {
@@ -34,7 +55,28 @@
     padding: rem(8) rem(14);
     border-radius: rem(8);
     border: 1px solid rgba(0, 0, 0, 0.10);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     gap: rem(8);
+
+    &:active:not(:disabled) {
+        transform: scale(0.8);
+        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+    }
+
+    &:hover:not(:disabled) {
+        background: rgba(0, 0, 0, 0.03);
+    }
+
+    &:disabled {
+        opacity: 0.4;
+        cursor: not-allowed;
+    }
+}
+
+.btnText {
+    @include mobile-below {
+        display: none;
+    }
 }
 
 

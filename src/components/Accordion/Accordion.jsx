@@ -13,7 +13,7 @@ const Accordion = ({ title, children, absolute = false, visible = false }) => {
     <div className={styles.accordionContainer}>
       <div className={styles.accordion} onClick={toggle}>
         <p>{title}</p>
-        <button aria-label={`open filter ${title}`}>
+        <button aria-label={`open ${title} menu`}>
           <svg
             className={isOpen ? `${styles.icon} ${styles.active}` : styles.icon}
           >

@@ -1,18 +1,39 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Catalog.module.scss";
 import ProductCard from "../ProductCard/ProductCard.jsx";
 import { useGetAllProductsQuery } from "../../redux/features/products/productsAPI.js";
 import Loader from "../../UI/Loader/Loader.jsx";
 import Error from "../Error/Error.jsx";
 import Pagination from "../../UI/Pagination/Pagination.jsx";
+import { useDeviceType } from "../../hooks/useDeviceType.js";
+import Accordion from "../Accordion/Accordion.jsx";
+import sprite from "../../../assets/icons/sprite.svg";
+import Filters from "../Filters/Filters.jsx";
 
 const Catalog = () => {
+  const deviceType = useDeviceType();
   const [page, setPage] = useState(1);
-  const limit = 9;
+  const limit = deviceType === "desktop" ? 9 : 6;
   const { data, isLoading, isError } = useGetAllProductsQuery({
     page,
     limit,
   });
+
+  const [isFilters, setIsFilters] = useState(false);
+  const toggleFilters = () => {
+    setIsFilters(!isFilters);
+  };
+  useEffect(() => {
+    if (isFilters && deviceType !== "desktop") {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isFilters, deviceType]);
 
   if (isLoading) return <Loader />;
   if (isError) return <Error />;
@@ -21,13 +42,36 @@ const Catalog = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h3>FilterName</h3>
-        <div>
+        <div className={styles.headerContent}>
+          <button
+            className={styles.filters}
+            onClick={toggleFilters}
+            aria-label="toggle filters"
+          >
+            Filters
+            <svg className={styles.iconFilters}>
+              <use href={`${sprite}#icon-filters`}></use>
+            </svg>
+          </button>
           <p>
             Showing {data.limit} of {data.total} Products
           </p>
+          <div className={styles.sort}>
+            <p>Sort By:</p>
+            <Accordion title={"Most popular"} absolute={true} />
+          </div>
         </div>
       </div>
-      <ul className={styles.list}>
+      <Filters
+        isOpen={isFilters}
+        handleClick={setIsFilters}
+        deviceType={deviceType}
+      />
+      <ul
+        className={
+          isFilters ? `${styles.list} ${styles.noEvents}` : styles.list
+        }
+      >
         {data.items.map((product) => (
           <ProductCard key={product.id} product={product} />
         ))}

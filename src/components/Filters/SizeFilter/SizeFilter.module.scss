@@ -1,0 +1,30 @@
+@use '../../../styles/helpers/index' as *;
+
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(8);
+}
+
+.btn {
+    color: black;
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: rem(25);
+    padding: rem(10) rem(20);
+
+    @include laptop-above {
+        padding: rem(10) rem(15);
+    }
+    
+    @include hover {
+        background-color: var(--color-accent);
+        color: white;
+
+    }
+}
+.active {
+    color: white;
+    background-color: black;
+}

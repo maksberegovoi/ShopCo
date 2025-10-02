@@ -5,6 +5,11 @@ footer {
     flex-direction: column;
     gap: rem(48);
     flex-shrink: 0;
+    padding-top: rem(50);
+
+    @include tablet-above {
+        padding-top: rem(80);
+    }
 }
 
 .subscription {
@@ -15,10 +20,12 @@ footer {
     align-items: center;
     justify-content: space-between;
     gap: 32px;
-    padding: rem(36) rem(64);
+    padding: rem(32) rem(23);
+
 
     @include tablet-above {
         flex-direction: row;
+        padding: rem(36) rem(64);
     }
 
     .subscriptionTitle {

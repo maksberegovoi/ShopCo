@@ -2,6 +2,7 @@
 
 $mobile: 390;
 $tablet: 768;
+$laptop: 1024;
 $desktop: 1440;
 
 @mixin desktop-above {
@@ -12,6 +13,18 @@ $desktop: 1440;
 
 @mixin desktop-below {
     @media (width <= rem($desktop)) {
+        @content;
+    }
+}
+
+@mixin laptop-above {
+    @media (width > rem($laptop)) {
+        @content;
+    }
+}
+
+@mixin laptop-below {
+    @media (width <= rem($laptop)) {
         @content;
     }
 }

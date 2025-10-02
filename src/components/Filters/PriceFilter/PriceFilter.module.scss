@@ -1,17 +1,43 @@
 @use '../../../styles/helpers/index' as *;
 
+
+
+.container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(5);
+}
+
 .range {
+    -webkit-appearance: none;
+    background-color: black;
+    border-radius: rem(20);
+    height: rem(10);
+    width: 100%;
     position: relative;
     cursor: pointer;
     caret-color: transparent;
+
+    &::-webkit-slider-thumb {
+        -webkit-appearance: none;
+        appearance: none;
+        width: 20px;
+        height: 20px;
+        background: white;
+        /* Твой цвет */
+        border-radius: 50%;
+        cursor: pointer;
+        border: 1px solid black;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
 }
 
 .rangeValue {
     position: absolute;
-    bottom: -25px;
-    font-size: 14px;
+    bottom: rem(-20);
     font-weight: bold;
-    color: #333;
+    color: black;
 
     white-space: nowrap;
 }

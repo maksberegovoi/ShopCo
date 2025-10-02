@@ -12,7 +12,7 @@ const Breadcrumb = () => {
   if (pathnames.length === 0) return null;
 
   return (
-    <nav className={styles.breadcrumbs} aria-label="breadcrumb">
+    <nav className={`${styles.breadcrumbs} container`} aria-label="breadcrumb">
       <Link to="/">Home</Link>
       {pathnames.map((name, index) => {
         const routeTo = "/" + pathnames.slice(0, index + 1).join("/");

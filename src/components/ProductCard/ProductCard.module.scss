@@ -7,14 +7,12 @@
     color: var(--color-text-black);
     height: 100%;
     width: 100%;
-    max-width: rem(270);
 
     border-radius: rem(20);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    transition: all 0.2s ease ;
 
     @include mobile-above {
-        max-width: clamp(170px, 75%, 270px);
     }
 
     @include tablet-above {
@@ -23,7 +21,7 @@
 
     @include hover{
         box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-        scale: 1.1;
+        scale: 1.05;
     }
 }
 

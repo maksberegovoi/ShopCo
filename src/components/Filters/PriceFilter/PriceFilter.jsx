@@ -39,21 +39,25 @@ const PriceFilter = () => {
 
   return (
     <>
-      <input
-        type="range"
-        min="0"
-        max="1000"
-        step="10"
-        value={price}
-        ref={valueRef}
-        onChange={handleChange}
-        onMouseUp={handleMouseUp}
-        onTouchEnd={handleMouseUp}
-        className={styles.range}
-      />
-      <span className={styles.rangeValue} ref={rangeRef}>
-        {price}
-      </span>
+      <div className={styles.container}>
+        <p>0$</p>
+        <input
+          type="range"
+          min="0"
+          max="1000"
+          step="10"
+          value={price}
+          ref={valueRef}
+          onChange={handleChange}
+          onMouseUp={handleMouseUp}
+          onTouchEnd={handleMouseUp}
+          className={styles.range}
+        />
+        <p>1000$</p>
+        <span className={styles.rangeValue} ref={rangeRef}>
+          {price}$
+        </span>
+      </div>
     </>
   );
 };

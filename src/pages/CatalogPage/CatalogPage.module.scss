@@ -1,12 +1,2 @@
 @use '../../styles/helpers/index' as *;
 
-
-.container {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: rem(20);
-
-    @include tablet-above {
-        grid-template-columns: 20% 1fr;
-    }
-}
