@@ -3,18 +3,35 @@
 .filterBox {
     display: flex;
     flex-direction: column;
-    gap: rem(36);
+    gap: rem(44);
     width: 100%;
     border: 1px solid lightgrey;
     border-radius: rem(20);
     padding: rem(20);
+
+    & > *:not(:last-child) {
+        position: relative;
+
+        &::after {
+            position: absolute;
+            content: '';
+            bottom: -22px;
+            left: 0;
+            height: rem(1);
+            width: 100%;
+            background: rgba(0, 0, 0, 0.10);
+
+            @include tablet-above {
+                bottom: -24px;
+            }
+        }
+    }
 
     @include tablet-above {
         padding: rem(20) rem(24);
         gap: rem(48);
     }
 }
-
 .section {
     position: relative;
 
@@ -140,13 +157,3 @@
     color: white;
 }
 
-.applyBtn {
-    width: 100%;
-    padding: 10px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    background: black;
-    color: white;
-    cursor: pointer;
-}

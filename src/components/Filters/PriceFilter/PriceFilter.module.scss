@@ -1,0 +1,17 @@
+@use '../../../styles/helpers/index' as *;
+
+.range {
+    position: relative;
+    cursor: pointer;
+    caret-color: transparent;
+}
+
+.rangeValue {
+    position: absolute;
+    bottom: -25px;
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+
+    white-space: nowrap;
+}

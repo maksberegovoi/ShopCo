@@ -1,0 +1,35 @@
+@use '../../../styles/helpers/index' as *;
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    row-gap: rem(16);
+    column-gap: rem(15);
+}
+
+.color {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: rem(50);
+    width: rem(37);
+    height: rem(37);
+    border: 1px solid lightgrey !important;
+    @include hover {
+        scale: 1.3;
+    }
+    &.active {
+        border-color: var(--color-accent);
+    }
+}
+
+.iconCheckMark {
+    fill: transparent;
+    filter: drop-shadow(0 0 1px rgba(0, 0, 0, 20));
+    width: rem(17);
+    height: rem(17);
+
+    &.active {
+        fill: white;
+    }
+}

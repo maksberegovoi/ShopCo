@@ -2,18 +2,18 @@ import React, { useState } from "react";
 import sprite from "../../../assets/icons/sprite.svg";
 import styles from "./Accordion.module.scss";
 
-const Accordion = ({ title, children, onToggle, absolute = false }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const Accordion = ({ title, children, absolute = false, visible = false }) => {
+  const [isOpen, setIsOpen] = useState(visible);
 
   const toggle = () => {
     setIsOpen(!isOpen);
   };
 
   return (
-    <div className={styles.accordionContainer} onClick={toggle}>
-      <div className={styles.accordion}>
+    <div className={styles.accordionContainer}>
+      <div className={styles.accordion} onClick={toggle}>
         <p>{title}</p>
-        <button onClick={onToggle}>
+        <button aria-label={`open filter ${title}`}>
           <svg
             className={isOpen ? `${styles.icon} ${styles.active}` : styles.icon}
           >

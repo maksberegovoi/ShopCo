@@ -1,0 +1,30 @@
+@use '../../../styles/helpers/index' as *;
+
+
+
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: rem(20);
+}
+
+.option {
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+
+    @include hover {
+        & >* {
+            fill: var(--color-accent);
+            color: var(--color-accent);
+        }
+    }
+}
+
+.icon {
+    width: rem(16);
+    height: rem(16);
+    fill: var(--color-text-grey);
+    transform: rotate(-90deg);
+}
+

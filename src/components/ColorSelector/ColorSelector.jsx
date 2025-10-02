@@ -1,22 +1,14 @@
 import React from "react";
 import styles from "./ColorSelector.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
+import { colorMap } from "../../utils/consts.js";
 
 const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
   const getColorValue = (colorName) => {
-    const colorMap = {
-      black: "#000000",
-      red: "#FF0000",
-      blue: "#0000FF",
-      green: "#314F4A",
-      grey: "#808080",
-      white: "#FFFFFF",
-      brown: "#4F4631",
-      pink: "#FFC0CB",
-      purple: "#31344F",
-      yellow: "#FFFF00",
-    };
-    return colorMap[colorName.toLowerCase()] || "transparent";
+    const color = colorMap.find(
+      (color) => color.name === colorName.toLowerCase(),
+    );
+    return color ? color.hex : "transparent";
   };
 
   return (
