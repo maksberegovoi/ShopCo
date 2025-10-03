@@ -9,20 +9,40 @@ import { useDeviceType } from "../../hooks/useDeviceType.js";
 import Accordion from "../Accordion/Accordion.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import Filters from "../Filters/Filters.jsx";
+import { useFilters } from "../../hooks/useFilters.js";
 
 const Catalog = () => {
   const deviceType = useDeviceType();
   const [page, setPage] = useState(1);
   const limit = deviceType === "desktop" ? 9 : 6;
+  const { filters, setSortBy } = useFilters();
   const { data, isLoading, isError } = useGetAllProductsQuery({
     page,
     limit,
+    filters,
   });
+
+  const [sortTitle, setSortTitle] = useState("Most Popular");
+  const handleSort = (e, sortBy) => {
+    setSortTitle(e.target.textContent);
+    setSortBy(sortBy);
+  };
 
   const [isFilters, setIsFilters] = useState(false);
   const toggleFilters = () => {
     setIsFilters(!isFilters);
   };
+
+  const catalogTitle = () => {
+    if (filters.style && filters.type) {
+      return;
+    }
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [page]);
+
   useEffect(() => {
     if (isFilters && deviceType !== "desktop") {
       document.body.style.overflow = "hidden";
@@ -41,7 +61,10 @@ const Catalog = () => {
   return (
     <div className={styles.container}>
       <div className={styles.header}>
-        <h3>FilterName</h3>
+        <h3>
+          {[filters.style, filters.type].filter(Boolean).join(" • ") ||
+            "Catalog"}
+        </h3>
         <div className={styles.headerContent}>
           <button
             className={styles.filters}
@@ -58,7 +81,20 @@ const Catalog = () => {
           </p>
           <div className={styles.sort}>
             <p>Sort By:</p>
-            <Accordion title={"Most popular"} absolute={true} />
+            <Accordion title={sortTitle} absolute={true}>
+              <div className={styles.sortItems}>
+                <button onClick={(e) => handleSort(e, "PriceUp")}>
+                  Price Up
+                </button>
+                <button onClick={(e) => handleSort(e, "priceDown")}>
+                  Price Down
+                </button>
+                <button onClick={(e) => handleSort(e, "discount")}>
+                  Discount
+                </button>
+                <button onClick={(e) => handleSort(e, "rating")}>Rating</button>
+              </div>
+            </Accordion>
           </div>
         </div>
       </div>
@@ -67,15 +103,15 @@ const Catalog = () => {
         handleClick={setIsFilters}
         deviceType={deviceType}
       />
-      <ul
-        className={
-          isFilters ? `${styles.list} ${styles.noEvents}` : styles.list
-        }
-      >
-        {data.items.map((product) => (
-          <ProductCard key={product.id} product={product} />
-        ))}
-      </ul>
+      {data.items.length > 0 ? (
+        <ul className={styles.list}>
+          {data.items.map((product) => (
+            <ProductCard key={product.id} product={product} />
+          ))}
+        </ul>
+      ) : (
+        <h3 style={{ textAlign: "center" }}>No products found</h3>
+      )}
       <Pagination
         page={page}
         total={data.total}

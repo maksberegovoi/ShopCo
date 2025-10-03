@@ -69,9 +69,22 @@
         display: flex;
         gap: rem(5);
     }
-}
 
+    .sortItems {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: rem(5);
+
+        & button {
+            @include hover {
+                color: var(--color-accent);
+            }
+        }
+    }
+}
 .list {
+
     display: grid;
     column-gap: rem(20);
     row-gap: rem(40);

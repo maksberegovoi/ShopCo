@@ -2,16 +2,13 @@ import React from "react";
 import { colorMap } from "../../../utils/consts.js";
 import styles from "./ColorFilter.module.scss";
 import sprite from "../../../../assets/icons/sprite.svg";
-import { useDispatch, useSelector } from "react-redux";
-import { filtersColors } from "../../../redux/features/filters/filtersSelector.js";
-import { toggleColor } from "../../../redux/features/filters/filtersSlice.js";
+import { useFilters } from "../../../hooks/useFilters.js";
 
 const ColorFilter = () => {
-  const dispatch = useDispatch();
-  const filterColors = useSelector(filtersColors);
+  const { filters, toggleColor } = useFilters();
 
   const handleClick = (color) => {
-    dispatch(toggleColor(color));
+    toggleColor(color);
   };
 
   return (
@@ -20,7 +17,7 @@ const ColorFilter = () => {
         <button
           key={color.name}
           className={
-            filterColors.includes(color.name)
+            filters.colors.includes(color.name)
               ? `${styles.color} ${styles.active}`
               : styles.color
           }
@@ -31,7 +28,7 @@ const ColorFilter = () => {
         >
           <svg
             className={
-              filterColors.includes(color.name)
+              filters.colors.includes(color.name)
                 ? `${styles.iconCheckMark} ${styles.active}`
                 : styles.iconCheckMark
             }

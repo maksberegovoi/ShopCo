@@ -1,17 +1,13 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleSize } from "../../../redux/features/filters/filtersSlice.js";
-import { filtersSizes } from "../../../redux/features/filters/filtersSelector.js";
 import styles from "./SizeFilter.module.scss";
 import { sizeMap } from "../../../utils/consts.js";
+import { useFilters } from "../../../hooks/useFilters.js";
 
 const SizeFilter = () => {
-  const dispatch = useDispatch();
+  const { filters, toggleSize } = useFilters();
   const handleClick = (size) => {
-    dispatch(toggleSize(size));
+    toggleSize(size);
   };
-
-  const selectedSizes = useSelector(filtersSizes);
 
   return (
     <div className={styles.container}>
@@ -20,7 +16,7 @@ const SizeFilter = () => {
           key={size}
           onClick={() => handleClick(size)}
           className={
-            selectedSizes.includes(size)
+            filters.sizes.includes(size)
               ? `${styles.btn} ${styles.active}`
               : styles.btn
           }

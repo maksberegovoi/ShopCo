@@ -120,3 +120,17 @@
         fill: var(--color-accent)
     }
 }
+
+.colors {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(5);
+}
+
+.color {
+    width: rem(25);
+    height: rem(25);
+    border: 1px solid lightgrey;
+    border-radius: rem(50);
+
+}

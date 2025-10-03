@@ -15,6 +15,7 @@ const Header = () => {
   const [isMobileSearch, setIsMobileSearch] = useState(false);
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
   const [isPromo, setIsPromo] = useState(true);
+  const [isAccordion, setIsAccordion] = useState(false);
 
   const menu = [
     { name: "Home", path: HOME_ROUTE },
@@ -22,9 +23,9 @@ const Header = () => {
   ];
 
   const dropdownLinks = [
-    { name: "Men", path: "/1" },
-    { name: "Women", path: "/2" },
-    { name: "Kids", path: "/3" },
+    { name: "Men", path: `${CATALOG_ROUTE}?gender=male` },
+    { name: "Women", path: `${CATALOG_ROUTE}?gender=female` },
+    { name: "Unisex", path: `${CATALOG_ROUTE}?gender=unisex` },
   ];
 
   const iconLinks = [
@@ -91,15 +92,23 @@ const Header = () => {
           )}
           {isBurgerMenu && <Search />}
           <nav className={styles.menu}>
-            <Accordion title={"Shop"} absolute={!isBurgerMenu}>
+            <Accordion
+              title={"Shop for"}
+              absolute={!isBurgerMenu}
+              visible={isAccordion}
+            >
               {dropdownLinks.map((link) => (
                 <div key={link.name} className={styles.dropdownContainer}>
-                  <NavLink to={link.path} className={styles.link}>
+                  <NavLink
+                    to={link.path}
+                    className={styles.link}
+                    onClick={() => setIsAccordion(!isAccordion)}
+                  >
                     {link.name}
+                    <svg className={styles.iconArrowRight}>
+                      <use href={`${sprite}#icon-arrow`}></use>
+                    </svg>
                   </NavLink>
-                  <svg className={styles.iconArrowRight}>
-                    <use href={`${sprite}#icon-arrow`}></use>
-                  </svg>
                 </div>
               ))}
             </Accordion>

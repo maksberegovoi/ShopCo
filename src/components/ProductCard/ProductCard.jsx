@@ -5,10 +5,12 @@ import styles from "./ProductCard.module.scss";
 import { generatePath, useNavigate } from "react-router-dom";
 import { DETAILS_ROUTE } from "../../utils/consts.js";
 import { generateSlug } from "../../utils/generateSlug.js";
+import { getColorValue } from "../../utils/getColorValue.js";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const handleClick = () => {
+    console.log("click img");
     navigate(
       generatePath(DETAILS_ROUTE, {
         id: product.id,
@@ -21,14 +23,14 @@ const ProductCard = ({ product }) => {
     <li className={styles.card}>
       <div className={styles.imgContainer}>
         <img
-          src={product.gallery[0] || ''}
+          src={product.gallery[0] || ""}
           alt="product image"
           className={styles.cardImage}
           onClick={handleClick}
         />
       </div>
       <div className={styles.cardContent}>
-        <h5 className={styles.cardName}>{product?.name || ''}</h5>
+        <h5 className={styles.cardName}>{product?.name || ""}</h5>
         <div className={styles.ratingContainer}>
           <div className={styles.ratingIconsContainer}>
             {renderRatingStars(product.rating)}
@@ -37,6 +39,24 @@ const ProductCard = ({ product }) => {
             {product.rating}/
             <span className={styles.ratingNumberAccent}>5</span>
           </p>
+        </div>
+        <div className={styles.colors}>
+          {product.colors.map((color) => (
+            <span
+              key={color.name}
+              className={styles.color}
+              style={{
+                backgroundColor: getColorValue(color.name),
+                opacity: color.available ? 1 : 0.2,
+                cursor: color.available ? "auto" : "not-allowed",
+              }}
+              title={
+                getColorValue(color.name) === "transparent"
+                  ? "unknown"
+                  : color.name
+              }
+            ></span>
+          ))}
         </div>
         <div className={styles.priceContainer}>
           {product.discount > 0 ? (

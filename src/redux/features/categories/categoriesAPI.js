@@ -10,6 +10,7 @@ const categoriesApi = createApi({
     getCategories: builder.query({
       queryFn: async () => {
         await new Promise((resolve) => setTimeout(resolve, 300));
+
         const productsMap = new Map(mockProducts.map((p) => [p.id, p]));
 
         const categories = mockCategories.map((category) => ({
@@ -17,7 +18,7 @@ const categoriesApi = createApi({
           products: category.products
             .map((id) => productsMap.get(id))
             .map(
-              ({ id, name, price, basePrice, discount, gallery, rating }) => ({
+              ({
                 id,
                 name,
                 price,
@@ -25,6 +26,16 @@ const categoriesApi = createApi({
                 discount,
                 gallery,
                 rating,
+                colors,
+              }) => ({
+                id,
+                name,
+                price,
+                basePrice,
+                discount,
+                gallery,
+                rating,
+                colors,
               }),
             ),
         }));

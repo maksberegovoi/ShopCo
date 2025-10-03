@@ -1,18 +1,13 @@
-import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleStyle } from "../../../redux/features/filters/filtersSlice.js";
-import { filtersStyle } from "../../../redux/features/filters/filtersSelector.js";
 import styles from "../TypeFilter/TypeFilter.module.scss";
 import { styleMap } from "../../../utils/consts.js";
 import sprite from "../../../../assets/icons/sprite.svg";
+import { useFilters } from "../../../hooks/useFilters.js";
 
 const StyleFilter = () => {
-  const dispatch = useDispatch();
+  const { filters, toggleStyle } = useFilters();
   const handleClick = (style) => {
-    dispatch(toggleStyle(style));
+    toggleStyle(style);
   };
-
-  const selectedStyle = useSelector(filtersStyle);
 
   return (
     <div className={styles.container}>
@@ -20,7 +15,7 @@ const StyleFilter = () => {
         <div
           key={style}
           className={
-            selectedStyle === style
+            filters.style === style
               ? `${styles.option} ${styles.active}`
               : styles.option
           }

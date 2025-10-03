@@ -1,16 +1,9 @@
 import React from "react";
 import styles from "./ColorSelector.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
-import { colorMap } from "../../utils/consts.js";
+import { getColorValue } from "../../utils/getColorValue.js";
 
 const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
-  const getColorValue = (colorName) => {
-    const color = colorMap.find(
-      (color) => color.name === colorName.toLowerCase(),
-    );
-    return color ? color.hex : "transparent";
-  };
-
   return (
     <div className={styles.colorSelector}>
       <p>Select Colors</p>
@@ -24,7 +17,10 @@ const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
                 ? `${styles.colorSwatch} ${styles.active}`
                 : styles.colorSwatch
             }
-            style={{ backgroundColor: getColorValue(color.name) }}
+            style={{
+              backgroundColor: getColorValue(color.name),
+              opacity: color.available ? 1 : 0.3,
+            }}
             onClick={() => onColorChange(color.name)}
             aria-label={color.name}
             title={

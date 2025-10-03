@@ -10,19 +10,21 @@ export const ADMIN_ROUTE = "/admin";
 export const ADMIN_ROLE = "ADMIN";
 export const USER_ROLE = "USER";
 
-export const LOCAL_STORAGE_AUTH_TOKEN = "auth-token";
+export const maxProductPrice = 1000;
 
 export const colorMap = [
-  { name: "black", hex: "#000000" },
-  { name: "red", hex: "#FF0000" },
-  { name: "blue", hex: "#0000FF" },
+  { name: "black", hex: "#0A0A0A" },
+  { name: "red", hex: "#DC2626" },
+  { name: "blue", hex: "#2563EB" },
   { name: "green", hex: "#314F4A" },
-  { name: "grey", hex: "#808080" },
-  { name: "white", hex: "#FFFFFF" },
+  { name: "gray", hex: "#6B7280" },
+  { name: "white", hex: "#FEFEFE" },
   { name: "brown", hex: "#4F4631" },
-  { name: "pink", hex: "#FFC0CB" },
+  { name: "pink", hex: "#EC4899" },
   { name: "purple", hex: "#31344F" },
-  { name: "yellow", hex: "#FFFF00" },
+  { name: "yellow", hex: "#EAB308" },
+  { name: "beige", hex: "#F5F5DC" },
+  { name: "orange", hex: "#EA580C" },
 ];
 
 export const typeMap = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];

@@ -1,5 +1,6 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { mockProducts } from "../../../../data/produсts.js";
+import { filterProducts } from "../../../utils/filterProducts.js";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -7,28 +8,36 @@ export const productsApi = createApi({
   tagTypes: ["Products", "Reviews", "Details"],
   endpoints: (builder) => ({
     getAllProducts: builder.query({
-      queryFn: async ({ page = 1, limit = 9 } = {}) => {
+      queryFn: async ({ page = 1, limit = 9, filters = {} } = {}) => {
         await new Promise((resolve) => setTimeout(resolve, 200));
+
+        const filteredProducts = filterProducts(filters, mockProducts);
 
         const start = (page - 1) * limit;
         const end = start + limit;
+        const paginatedProducts = filteredProducts
+          .slice(start, end)
+          .map((product) => ({
+            id: product.id,
+            name: product.name,
+            price: product.price,
+            basePrice: product.basePrice,
+            discount: product.discount,
+            rating: product.rating,
+            gallery: [product.gallery[0]],
 
-        const products = mockProducts.slice(start, end).map((product) => ({
-          id: product.id,
-          name: product.name,
-          price: product.price,
-          basePrice: product.basePrice,
-          discount: product.discount,
-          rating: product.rating,
-          gallery: [product.gallery[0]],
-        }));
+            brand: product.brand,
+            colors: product.colors,
+            sizes: product.sizes,
+          }));
 
         return {
           data: {
-            items: products,
-            total: mockProducts.length,
+            items: paginatedProducts,
+            total: filteredProducts.length,
             page: page,
             limit: limit,
+            totalUnfiltered: mockProducts.length,
           },
         };
       },

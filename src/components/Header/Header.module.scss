@@ -101,16 +101,6 @@ header {
     }
 }
 
-
-.link {
-    position: relative;
-    color: var(--color-text-black);
-    text-decoration: none;
-    transition: color 0.3s ease;
-}
-
-
-
 .iconsContainer {
     display: flex;
     gap: rem(12);
@@ -162,6 +152,15 @@ header {
     border-top: rem(1) solid lightgrey;
 }
 
+.link {
+    display: flex;
+    align-items: center;
+    gap: rem(10);
+    color: var(--color-text-black);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
 .dropdownContainer {
     display: flex;
     align-items: center;
@@ -169,6 +168,8 @@ header {
     gap: rem(25);
     flex-shrink: 0;
     cursor: pointer;
+
+
 
     @include hover {
         .link {

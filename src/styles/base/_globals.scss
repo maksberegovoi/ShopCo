@@ -84,6 +84,10 @@ a {
     &[class] {
         text-decoration: none;
     }
+
+    &:active:not(:disabled) {
+        transform: scale(0.8);
+    }
 }
 
 input,
@@ -99,5 +103,11 @@ textarea,
     @include tablet-above {
         width: rem(18);
         height: rem(18);
+    }
+}
+
+button {
+    &:active:not(:disabled) {
+        transform: scale(0.8);
     }
 }

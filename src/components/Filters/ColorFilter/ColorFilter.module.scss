@@ -1,12 +1,10 @@
 @use '../../../styles/helpers/index' as *;
 
 .container {
-    margin-top: rem(15);
     display: flex;
     flex-wrap: wrap;
     row-gap: rem(5);
-    column-gap: rem(3);
-    max-width: rem(200);
+    column-gap: rem(10);
 }
 
 .color {

@@ -11,6 +11,7 @@ export const mockProducts = [
     quantity: 100,
     gender: "unisex",
     type: "T-shirts",
+    brand: "gucci",
     style: "Casual",
     sizes: [
       { name: "Small", available: true },
@@ -103,6 +104,7 @@ export const mockProducts = [
     quantity: 85,
     gender: "male",
     type: "Jeans",
+    brand: "zara",
     style: "Casual",
     sizes: [
       { name: "Medium", available: true },
@@ -186,6 +188,7 @@ export const mockProducts = [
     quantity: 60,
     gender: "male",
     type: "Shirts",
+    brand: "prada",
     style: "Formal",
     sizes: [
       { name: "Small", available: true },
@@ -278,6 +281,7 @@ export const mockProducts = [
     quantity: 120,
     gender: "unisex",
     type: "Hoodie",
+    brand: "versace",
     style: "Casual",
     sizes: [
       { name: "X-Small", available: true },
@@ -379,6 +383,7 @@ export const mockProducts = [
     quantity: 95,
     gender: "male",
     type: "Shorts",
+    brand: "calvinKlein",
     style: "Gym",
     sizes: [
       { name: "Small", available: true },
@@ -463,6 +468,7 @@ export const mockProducts = [
     quantity: 45,
     gender: "male",
     type: "Shirts",
+    brand: "zara",
     style: "Party",
     sizes: [
       { name: "Small", available: false },
@@ -555,6 +561,7 @@ export const mockProducts = [
     quantity: 200,
     gender: "female",
     type: "T-shirts",
+    brand: "gucci",
     style: "Casual",
     sizes: [
       { name: "XX-Small", available: true },
@@ -645,6 +652,7 @@ export const mockProducts = [
     quantity: 70,
     gender: "unisex",
     type: "Shorts",
+    brand: "prada",
     style: "Casual",
     sizes: [
       { name: "Small", available: true },
@@ -730,6 +738,7 @@ export const mockProducts = [
     quantity: 55,
     gender: "male",
     type: "Hoodie",
+    brand: "versace",
     style: "Gym",
     sizes: [
       { name: "Medium", available: true },
@@ -823,6 +832,7 @@ export const mockProducts = [
     quantity: 30,
     gender: "female",
     type: "Formal",
+    brand: "zara",
     style: "Formal",
     sizes: [
       { name: "X-Small", available: true },
@@ -916,6 +926,7 @@ export const mockProducts = [
     quantity: 80,
     gender: "male",
     type: "T-shirts",
+    brand: "calvinKlein",
     style: "Party",
     sizes: [
       { name: "Small", available: true },
@@ -1001,6 +1012,7 @@ export const mockProducts = [
     quantity: 110,
     gender: "female",
     type: "Jeans",
+    brand: "gucci",
     style: "Casual",
     sizes: [
       { name: "XX-Small", available: true },
@@ -1093,6 +1105,7 @@ export const mockProducts = [
     quantity: 90,
     gender: "unisex",
     type: "T-shirts",
+    brand: "prada",
     style: "Casual",
     sizes: [
       { name: "Small", available: true },
@@ -1178,6 +1191,7 @@ export const mockProducts = [
     quantity: 65,
     gender: "male",
     type: "T-shirts",
+    brand: "versace",
     style: "Gym",
     sizes: [
       { name: "Small", available: true },
@@ -1270,6 +1284,7 @@ export const mockProducts = [
     quantity: 40,
     gender: "female",
     type: "Shirts",
+    brand: "zara",
     style: "Party",
     sizes: [
       { name: "XX-Small", available: false },
@@ -1361,6 +1376,7 @@ export const mockProducts = [
     quantity: 75,
     gender: "male",
     type: "Shorts",
+    brand: "gucci",
     style: "Casual",
     sizes: [
       { name: "Small", available: true },
@@ -1447,6 +1463,7 @@ export const mockProducts = [
     quantity: 25,
     gender: "unisex",
     type: "Hoodie",
+    brand: "calvinKlein",
     style: "Casual",
     sizes: [
       { name: "Small", available: true },
@@ -1538,6 +1555,7 @@ export const mockProducts = [
     quantity: 85,
     gender: "male",
     type: "Shorts",
+    brand: "prada",
     style: "Casual",
     sizes: [
       { name: "Small", available: true },
@@ -1621,6 +1639,7 @@ export const mockProducts = [
     quantity: 50,
     gender: "male",
     type: "Formal",
+    brand: "versace",
     style: "Formal",
     sizes: [
       { name: "Small", available: true },
@@ -1711,6 +1730,7 @@ export const mockProducts = [
     quantity: 120,
     gender: "unisex",
     type: "T-shirts",
+    brand: "zara",
     style: "Casual",
     sizes: [
       { name: "X-Small", available: true },
@@ -1802,6 +1822,7 @@ export const mockProducts = [
     quantity: 60,
     gender: "female",
     type: "Hoodie",
+    brand: "gucci",
     style: "Gym",
     sizes: [
       { name: "XX-Small", available: true },
@@ -1894,6 +1915,7 @@ export const mockProducts = [
     quantity: 95,
     gender: "female",
     type: "Jeans",
+    brand: "prada",
     style: "Casual",
     sizes: [
       { name: "XX-Small", available: false },
@@ -1979,6 +2001,7 @@ export const mockProducts = [
     quantity: 45,
     gender: "female",
     type: "T-shirts",
+    brand: "calvinKlein",
     style: "Party",
     sizes: [
       { name: "X-Small", available: true },
@@ -2069,6 +2092,7 @@ export const mockProducts = [
     quantity: 70,
     gender: "male",
     type: "Shirts",
+    brand: "versace",
     style: "Formal",
     sizes: [
       { name: "Small", available: true },
@@ -2159,6 +2183,7 @@ export const mockProducts = [
     quantity: 100,
     gender: "unisex",
     type: "Shorts",
+    brand: "zara",
     style: "Gym",
     sizes: [
       { name: "Small", available: true },
@@ -2243,6 +2268,7 @@ export const mockProducts = [
     quantity: 55,
     gender: "female",
     type: "Casual",
+    brand: "gucci",
     style: "Casual",
     sizes: [
       { name: "X-Small", available: true },

@@ -1,16 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PriceFilter.module.scss";
-import { useDispatch, useSelector } from "react-redux";
-import { filtersMaxPrice } from "../../../redux/features/filters/filtersSelector.js";
-import { setMaxPrice } from "../../../redux/features/filters/filtersSlice.js";
+import { maxProductPrice } from "../../../utils/consts.js";
+import { useFilters } from "../../../hooks/useFilters.js";
 
 const PriceFilter = () => {
-  const dispatch = useDispatch();
-
   const rangeRef = useRef(null);
   const valueRef = useRef(null);
-  const maxPrice = useSelector(filtersMaxPrice);
-  const [price, setPrice] = useState(maxPrice);
+  const [price, setPrice] = useState(maxProductPrice);
+
+  const { setMaxPrice } = useFilters();
 
   const handleChange = (e) => {
     setPrice(e.target.value);
@@ -18,7 +16,7 @@ const PriceFilter = () => {
   };
 
   const handleMouseUp = () => {
-    dispatch(setMaxPrice(price));
+    setMaxPrice(price);
   };
 
   const updatePosition = (inputEl) => {
@@ -44,7 +42,7 @@ const PriceFilter = () => {
         <input
           type="range"
           min="0"
-          max="1000"
+          max={maxProductPrice}
           step="10"
           value={price}
           ref={valueRef}
@@ -53,7 +51,7 @@ const PriceFilter = () => {
           onTouchEnd={handleMouseUp}
           className={styles.range}
         />
-        <p>1000$</p>
+        <p>{maxProductPrice}$</p>
         <span className={styles.rangeValue} ref={rangeRef}>
           {price}$
         </span>

@@ -8,8 +8,10 @@ import PriceFilter from "./PriceFilter/PriceFilter.jsx";
 import TypeFilter from "./TypeFilter/TypeFilter.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
+import { useFilters } from "../../hooks/useFilters.js";
 
 const Filters = ({ isOpen, handleClick, deviceType }) => {
+  const { resetFilters } = useFilters();
   return (
     <div
       className={
@@ -25,26 +27,24 @@ const Filters = ({ isOpen, handleClick, deviceType }) => {
         </button>
       </div>
       <div className={styles.content}>
-        <Accordion title={"Type"} visible={true}>
+        <Accordion title={"Type"} visible={true} closeOnClick={false}>
           <TypeFilter />
         </Accordion>
-        <Accordion title={"Price"} visible={true}>
+        <Accordion title={"Price"} visible={true} closeOnClick={false}>
           <PriceFilter />
         </Accordion>
-        <Accordion title={"Colors"} visible={true}>
+        <Accordion title={"Colors"} visible={true} closeOnClick={false}>
           <ColorFilter />
         </Accordion>
-        <Accordion title={"Size"} visible={true}>
+        <Accordion title={"Size"} visible={true} closeOnClick={false}>
           <SizeFilter />
         </Accordion>
-        <Accordion title={"Dress Style"} visible={true}>
+        <Accordion title={"Dress Style"} visible={true} closeOnClick={false}>
           <StyleFilter />
         </Accordion>
-        {deviceType !== "desktop" && (
-          <MyButton handleClick={() => handleClick()} classname={styles.btn}>
-            Close Filters
-          </MyButton>
-        )}
+        <MyButton handleClick={() => resetFilters()} classname={styles.btn}>
+          Reset Filters
+        </MyButton>
       </div>
     </div>
   );

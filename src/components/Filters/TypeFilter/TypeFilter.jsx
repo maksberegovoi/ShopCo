@@ -2,17 +2,14 @@ import React from "react";
 import sprite from "../../../../assets/icons/sprite.svg";
 import styles from "./TypeFilter.module.scss";
 import { typeMap } from "../../../utils/consts.js";
-import { useDispatch, useSelector } from "react-redux";
-import { toggleType } from "../../../redux/features/filters/filtersSlice.js";
-import { filtersType } from "../../../redux/features/filters/filtersSelector.js";
+import { useFilters } from "../../../hooks/useFilters.js";
 
 const TypeFilter = () => {
-  const dispatch = useDispatch();
-  const handleClick = (type) => {
-    dispatch(toggleType(type));
-  };
+  const { filters, toggleType } = useFilters();
 
-  const selectedType = useSelector(filtersType);
+  const handleClick = (type) => {
+    toggleType(type);
+  };
 
   return (
     <div className={styles.container}>
@@ -20,7 +17,7 @@ const TypeFilter = () => {
         <div
           key={type}
           className={
-            selectedType === type
+            filters.type === type
               ? `${styles.option} ${styles.active}`
               : styles.option
           }
