@@ -27,6 +27,8 @@ const categoriesApi = createApi({
                 gallery,
                 rating,
                 colors,
+                brand,
+                sizes,
               }) => ({
                 id,
                 name,
@@ -36,6 +38,8 @@ const categoriesApi = createApi({
                 gallery,
                 rating,
                 colors,
+                brand,
+                sizes,
               }),
             ),
         }));

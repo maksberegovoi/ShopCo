@@ -5,10 +5,8 @@ import styles from "./Breadcrumb.module.scss";
 const Breadcrumb = () => {
   const location = useLocation();
 
-  // Разделяем путь на сегменты, пропуская пустые строки
   const pathnames = location.pathname.split("/").filter((x) => x);
 
-  // Если на главной странице — не рендерим
   if (pathnames.length === 0) return null;
 
   return (

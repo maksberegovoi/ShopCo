@@ -62,8 +62,10 @@ const Catalog = () => {
     <div className={styles.container}>
       <div className={styles.header}>
         <h3>
-          {[filters.style, filters.type].filter(Boolean).join(" • ") ||
-            "Catalog"}
+          {filters.category
+            ? filters.category
+            : [filters.style, filters.type].filter(Boolean).join(" • ") ||
+              "Catalog"}
         </h3>
         <div className={styles.headerContent}>
           <button

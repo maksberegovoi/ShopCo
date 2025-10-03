@@ -25,6 +25,7 @@
     display: grid;
     place-items: center;
     row-gap: rem(25);
+    column-gap: rem(20);
     width: 100%;
 
     grid-template-columns: minmax(0, 1fr);

@@ -19,8 +19,24 @@ export const useFilters = () => {
       sizes,
       style: searchParams.get("style") || "",
       maxPrice: Number(searchParams.get("maxPrice")) || 1000,
+      category: searchParams.get("category") || "",
     };
   }, [searchParams]);
+
+  const toggleCategory = useCallback(
+    (category) => {
+      setSearchParams((prev) => {
+        const params = new URLSearchParams(prev);
+        if (params.get("category") === category) {
+          params.delete("category");
+        } else {
+          params.set("category", category);
+        }
+        return params;
+      });
+    },
+    [setSearchParams],
+  );
 
   const toggleType = useCallback(
     (type) => {
@@ -180,5 +196,6 @@ export const useFilters = () => {
     setSortBy,
     toggleBrand,
     resetFilters,
+    toggleCategory,
   };
 };
