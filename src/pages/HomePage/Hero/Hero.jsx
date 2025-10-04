@@ -28,10 +28,8 @@ const Hero = () => {
     <section className={styles.hero}>
       <div className={`${styles.heroContainer} container`}>
         <div className={styles.heroContent}>
-          <h1 className={styles.heroTitle}>
-            FIND CLOTHES THAT MATCHES YOUR STYLE
-          </h1>
-          <p className={styles.heroDescription}>
+          <h1>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
+          <p>
             Browse through our diverse range of meticulously crafted garments,
             designed to bring out your individuality and cater to your sense of
             style.
@@ -43,7 +41,7 @@ const Hero = () => {
             {metrics.map((metric) => (
               <div key={metric.title} className={styles.metricsColumn}>
                 <dt className={styles.metricsTitle}>{metric.title}</dt>
-                <dd className={styles.metricsdesc}>{metric.description}</dd>
+                <dd>{metric.description}</dd>
               </div>
             ))}
           </dl>

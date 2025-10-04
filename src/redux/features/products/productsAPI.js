@@ -72,14 +72,45 @@ export const productsApi = createApi({
     }),
 
     getProductReviews: builder.query({
-      queryFn: async (id) => {
+      queryFn: async ({ page = 1, limit = 6, id } = {}) => {
         await new Promise((resolve) => setTimeout(resolve, 200));
+
+        const start = (page - 1) * limit;
+        const end = start + limit;
 
         const product = mockProducts.find(
           (product) => product.id === parseInt(id),
         );
 
-        return { data: product?.reviews || [] };
+        const allReviews = product?.reviews || [];
+        const items = allReviews.slice(start, end);
+        const hasMore = end < allReviews.length;
+
+        return {
+          data: {
+            items,
+            hasMore,
+            page,
+            limit,
+            total: allReviews.length,
+          },
+        };
+      },
+      serializeQueryArgs: ({ endpointName, queryArgs }) => {
+        return `${endpointName}-${queryArgs.id}`;
+      },
+      merge: (currentCache, newData) => {
+        if (newData.page === 1) {
+          return newData;
+        }
+
+        return {
+          ...newData,
+          items: [...currentCache.items, ...newData.items],
+        };
+      },
+      forceRefetch: ({ currentArg, previousArg }) => {
+        return currentArg?.page !== previousArg?.page;
       },
       providesTags: ["Reviews"],
     }),

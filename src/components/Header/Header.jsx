@@ -1,12 +1,7 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Header.module.scss";
 import { NavLink } from "react-router-dom";
-import {
-  PROFILE_ROUTE,
-  CART_ROUTE,
-  HOME_ROUTE,
-  CATALOG_ROUTE,
-} from "../../utils/consts.js";
+import { CART_ROUTE, HOME_ROUTE, CATALOG_ROUTE } from "../../utils/consts.js";
 import Search from "../Search/Search.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import Accordion from "../Accordion/Accordion.jsx";
@@ -30,7 +25,7 @@ const Header = () => {
 
   const iconLinks = [
     { name: "Cart", path: CART_ROUTE, href: `${sprite}#icon-cart` },
-    { name: "Profile", path: PROFILE_ROUTE, href: `${sprite}#icon-profile` },
+    { name: "Profile", path: "*", href: `${sprite}#icon-profile` },
   ];
 
   const toggleMenu = () => {

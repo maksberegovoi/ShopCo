@@ -10,7 +10,6 @@ import { getColorValue } from "../../utils/getColorValue.js";
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
   const handleClick = () => {
-    console.log("click img");
     navigate(
       generatePath(DETAILS_ROUTE, {
         id: product.id,
@@ -20,13 +19,12 @@ const ProductCard = ({ product }) => {
   };
 
   return (
-    <li className={styles.card}>
+    <li className={styles.card} onClick={handleClick}>
       <div className={styles.imgContainer}>
         <img
           src={product.gallery[0] || ""}
           alt="product image"
           className={styles.cardImage}
-          onClick={handleClick}
         />
       </div>
       <div className={styles.cardContent}>
@@ -58,7 +56,7 @@ const ProductCard = ({ product }) => {
             ></span>
           ))}
         </div>
-        <div className={styles.priceContainer}>
+        <div className={styles.priceContainer} translate="no">
           {product.discount > 0 ? (
             <>
               <span>${product.price}</span>

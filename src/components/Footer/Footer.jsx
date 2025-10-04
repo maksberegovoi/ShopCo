@@ -10,37 +10,37 @@ const Footer = () => {
     {
       title: "Company",
       links: [
-        { name: "About", path: "/" },
-        { name: "Features", path: "/" },
-        { name: "Works", path: "/" },
-        { name: "Career", path: "/" },
+        { name: "About", path: "*" },
+        { name: "Features", path: "*" },
+        { name: "Works", path: "*" },
+        { name: "Career", path: "*" },
       ],
     },
     {
       title: "Help",
       links: [
-        { name: "Customer Support", path: "/" },
-        { name: "Delivery Details", path: "/" },
-        { name: "Terms & Conditions", path: "/" },
-        { name: "Privacy Policy", path: "/" },
+        { name: "Customer Support", path: "*" },
+        { name: "Delivery Details", path: "*" },
+        { name: "Terms & Conditions", path: "*" },
+        { name: "Privacy Policy", path: "*" },
       ],
     },
     {
       title: "Faq",
       links: [
-        { name: "Account", path: "/" },
-        { name: "Manage Delivers", path: "/" },
-        { name: "Orders", path: "/" },
-        { name: "Payments", path: "/" },
+        { name: "Account", path: "*" },
+        { name: "Manage Delivers", path: "*" },
+        { name: "Orders", path: "*" },
+        { name: "Payments", path: "*" },
       ],
     },
     {
       title: "Resources",
       links: [
-        { name: "Free eBooks", path: "/" },
-        { name: "Development Tutorial", path: "/" },
-        { name: "How to - Blog", path: "/" },
-        { name: "Youtube Playlist", path: "/" },
+        { name: "Free eBooks", path: "*" },
+        { name: "Development Tutorial", path: "*" },
+        { name: "How to - Blog", path: "*" },
+        { name: "Youtube Playlist", path: "*" },
       ],
     },
   ];

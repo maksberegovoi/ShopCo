@@ -1,31 +1,38 @@
-import React from "react";
+import React, { useState } from "react";
 import styles from "./Reviews.module.scss";
 import { renderRatingStars } from "../../utils/productRatingStars.jsx";
-import MyButton from "../../UI/MyButton/MyButton.jsx";
 import { useGetProductReviewsQuery } from "../../redux/features/products/productsAPI.js";
 import Loader from "../../UI/Loader/Loader.jsx";
 import { useParams } from "react-router-dom";
 import Error from "../Error/Error.jsx";
+import MyButton from "../../UI/MyButton/MyButton.jsx";
 
 const Reviews = () => {
   const { id } = useParams();
+  const [page, setPage] = useState(1);
+  const limit = 6;
+
   const {
-    data: reviews,
+    data: reviewsData,
     isLoading,
     isError,
-    error,
-  } = useGetProductReviewsQuery(id);
+  } = useGetProductReviewsQuery({ id, page, limit });
 
-  const loadMore = () => {};
+  const loadMore = () => setPage((prev) => prev + 1);
 
-  if (isLoading) return <Loader />;
+  if (isLoading && page === 1) return <Loader />;
   if (isError) return <Error />;
+
+  const { items: reviews = [], hasMore = false } = reviewsData || {};
 
   return (
     <div className={styles.container}>
       <ul className={styles.list}>
-        {reviews.map((review) => (
-          <li className={styles.item}>
+        {reviews.map((review, index) => (
+          <li
+            key={review.id || `${review.comment}-${index}`}
+            className={styles.item}
+          >
             <span className={styles.rating}>
               {renderRatingStars(review.rating)}
             </span>
@@ -35,9 +42,11 @@ const Reviews = () => {
           </li>
         ))}
       </ul>
-      <MyButton handleClick={loadMore} color={"white"} classname={styles.btn}>
-        Load More
-      </MyButton>
+      {hasMore && (
+        <MyButton handleClick={loadMore} color={"white"} classname={styles.btn}>
+          Load More
+        </MyButton>
+      )}
     </div>
   );
 };

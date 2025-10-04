@@ -19,12 +19,7 @@
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding-top: rem(40);
     gap: rem(32);
-
-    @include tablet-above {
-        min-width: rem(390);
-    }
 }
 
 .heroImage {

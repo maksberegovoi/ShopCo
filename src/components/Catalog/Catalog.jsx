@@ -33,12 +33,6 @@ const Catalog = () => {
     setIsFilters(!isFilters);
   };
 
-  const catalogTitle = () => {
-    if (filters.style && filters.type) {
-      return;
-    }
-  };
-
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
@@ -85,7 +79,7 @@ const Catalog = () => {
             <p>Sort By:</p>
             <Accordion title={sortTitle} absolute={true}>
               <div className={styles.sortItems}>
-                <button onClick={(e) => handleSort(e, "PriceUp")}>
+                <button onClick={(e) => handleSort(e, "priceUp")}>
                   Price Up
                 </button>
                 <button onClick={(e) => handleSort(e, "priceDown")}>

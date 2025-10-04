@@ -7,21 +7,21 @@ import { DETAILS_ROUTE } from "../../utils/consts.js";
 import { generateSlug } from "../../utils/generateSlug.js";
 import { useDispatch, useSelector } from "react-redux";
 import {
-  calculateSummary, cartDeliveryFee,
-  cartProducts, cartPromoCodeDiscount
+  calculateSummary,
+  cartDeliveryFee,
+  cartProducts,
+  cartPromoCodeDiscount,
 } from "../../redux/features/cart/cartSelectors.js";
 import {
   decrementQuantity,
   incrementQuantity,
-  removeFromCart, setPromoCodeDiscount
+  removeFromCart,
+  setPromoCodeDiscount,
 } from "../../redux/features/cart/cartSlice.js";
-import {
-  useLazyCheckPromoCodeQuery
-} from "../../redux/features/promocode/promoCodeAPI.jsx";
+import { useLazyCheckPromoCodeQuery } from "../../redux/features/promocode/promoCodeAPI.jsx";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader/Loader.jsx";
-import {nanoid} from "@reduxjs/toolkit";
-
+import { nanoid } from "@reduxjs/toolkit";
 
 const Cart = () => {
   const dispatch = useDispatch();
@@ -29,20 +29,20 @@ const Cart = () => {
 
   const products = useSelector(cartProducts);
 
-  const {subTotal, total, discount, promoCodeDiscountValue} = useSelector(calculateSummary)
-  const deliveryFee = useSelector(cartDeliveryFee)
+  const { subTotal, total, discount, promoCodeDiscountValue } =
+    useSelector(calculateSummary);
+  const deliveryFee = useSelector(cartDeliveryFee);
 
   const [promoCode, setPromoCode] = useState("");
-  const promoCodeDiscount = useSelector(cartPromoCodeDiscount)
+  const promoCodeDiscount = useSelector(cartPromoCodeDiscount);
   const [checkPromoCode, { isLoading }] = useLazyCheckPromoCodeQuery();
-
 
   const handleImgClick = (product) => {
     navigate(
       generatePath(DETAILS_ROUTE, {
         id: product.id,
         slug: generateSlug(product.name),
-      })
+      }),
     );
   };
 
@@ -54,7 +54,7 @@ const Cart = () => {
 
     try {
       const result = await checkPromoCode({ code: promoCode }).unwrap();
-      dispatch(setPromoCodeDiscount(Number(result.value)))
+      dispatch(setPromoCodeDiscount(Number(result.value)));
       toast.success(`Promo code applied! Discount: ${result.value}%`);
     } catch (err) {
       toast.error(err.data || "Invalid promo code");
@@ -62,9 +62,8 @@ const Cart = () => {
   };
 
   const removeItem = (product) => {
-    dispatch(removeFromCart(product))
-  }
-  console.log(products)
+    dispatch(removeFromCart(product));
+  };
   return (
     <div className={styles.container}>
       <h2>Your cart</h2>
@@ -84,14 +83,18 @@ const Cart = () => {
                     alt={product.name}
                     onClick={() => handleImgClick(product)}
                   />
-                  {product.discount > 0 && <span className={styles.imgDiscount}>-{product.discount}%</span>}
+                  {product.discount > 0 && (
+                    <span className={styles.imgDiscount}>
+                      -{product.discount}%
+                    </span>
+                  )}
                 </div>
                 <div className={styles.info}>
                   <dl className={styles.details}>
                     <div className={styles.header}>
                       <h5>{product.name}</h5>
                       <button
-                        onClick={()=> removeItem(product)}
+                        onClick={() => removeItem(product)}
                         type="button"
                         aria-label="delete product"
                       >
@@ -187,8 +190,11 @@ const Cart = () => {
               classname={styles.promoBtn}
               color={"white"}
             >
-              {isLoading ? <Loader classname={styles.promoLoader}/> : "Check" +
-                " code"}
+              {isLoading ? (
+                <Loader classname={styles.promoLoader} />
+              ) : (
+                "Check" + " code"
+              )}
             </MyButton>
           </div>
 

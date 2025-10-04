@@ -6,9 +6,7 @@ const Search = () => {
   const [search, setSearch] = useState("");
 
   const handleSearch = (e) => {
-    console.log("click");
     if (search.trim().length < 1) return;
-    console.log(search);
   };
 
   return (

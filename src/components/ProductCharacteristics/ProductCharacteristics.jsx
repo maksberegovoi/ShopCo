@@ -7,14 +7,11 @@ import Error from "../Error/Error.jsx";
 
 const ProductCharacteristics = () => {
   const { id } = useParams();
-  const {
-    data: details,
-    isLoading,
-    isError,
-    error,
-  } = useGetProductDetailsQuery(id);
+  const { data: details, isLoading, isError } = useGetProductDetailsQuery(id);
+
   if (isLoading) return <Loader />;
   if (isError) return <Error />;
+
   return (
     <div className={styles.container}>
       {details.map((detail) => (

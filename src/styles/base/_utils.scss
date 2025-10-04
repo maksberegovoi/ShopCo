@@ -17,3 +17,7 @@
 .visually-hidden {
     @include visually-hidden;
 }
+
+.no-translate {
+    translate: none;
+}
