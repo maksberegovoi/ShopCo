@@ -37,7 +37,6 @@ export const productsApi = createApi({
             total: filteredProducts.length,
             page: page,
             limit: limit,
-            totalUnfiltered: mockProducts.length,
           },
         };
       },

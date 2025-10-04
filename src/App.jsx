@@ -3,14 +3,14 @@ import { BrowserRouter } from "react-router-dom";
 import AppRouter from "./components/AppRouter.jsx";
 import Header from "./components/Header/Header.jsx";
 import Footer from "./components/Footer/Footer.jsx";
-import Breadcrumb from "./UI/Breadcrumb/Breadcrumb.jsx";
+import Breadcrumbs from "./UI/Breadcrumb/Breadcrumb.jsx";
 import { Toaster } from "react-hot-toast";
 
 function App() {
   return (
     <BrowserRouter>
       <Header />
-      <Breadcrumb />
+      <Breadcrumbs />
       <AppRouter />
       <Footer />
       <Toaster

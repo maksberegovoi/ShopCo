@@ -10,7 +10,7 @@ import sprite from "../../../assets/icons/sprite.svg";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
 import { useFilters } from "../../hooks/useFilters.js";
 
-const Filters = ({ isOpen, handleClick, deviceType }) => {
+const Filters = ({ isOpen, handleClick }) => {
   const { resetFilters } = useFilters();
   return (
     <div
@@ -46,6 +46,9 @@ const Filters = ({ isOpen, handleClick, deviceType }) => {
           Reset Filters
         </MyButton>
       </div>
+      <MyButton handleClick={() => handleClick()} color={"white"}>
+        Close
+      </MyButton>
     </div>
   );
 };

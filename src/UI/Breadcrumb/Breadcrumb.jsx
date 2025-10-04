@@ -1,46 +1,40 @@
 import React from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { useBreadcrumbs } from "../../hooks/useBreadcrumbs";
 import styles from "./Breadcrumb.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
 
 const Breadcrumb = () => {
-  const location = useLocation();
+  const breadcrumbs = useBreadcrumbs();
 
-  const pathnames = location.pathname
-    .split("/")
-    .filter((x) => x)
-    .filter((name) => isNaN(Number(name)));
-
-  if (pathnames.length === 0) return null;
+  if (breadcrumbs.length <= 1 && breadcrumbs[0]?.path === "/") {
+    return null;
+  }
 
   return (
-    <nav className={`${styles.breadcrumbs} container`} aria-label="breadcrumb">
-      <Link to="/" className={styles.link}>
-        Home
-        <svg className={styles.icon}>
-          <use href={`${sprite}#icon-arrow`}></use>
-        </svg>
-      </Link>
+    <nav className={`container`} aria-label="breadcrumb">
+      <ol className={styles.breadcrumbs}>
+        {breadcrumbs.map((crumb, index) => {
+          const isLastPage = index === breadcrumbs.length - 1;
 
-      {pathnames.map((name, index) => {
-        const routeTo = "/" + pathnames.slice(0, index + 1).join("/");
-        const isLast = index === pathnames.length - 1;
-
-        return (
-          <span key={routeTo} className={styles.item}>
-            {isLast ? (
-              <span className={styles.current}>{decodeURIComponent(name)}</span>
-            ) : (
-              <Link to={routeTo} className={styles.link}>
-                {decodeURIComponent(name)}
-                <svg className={styles.icon}>
-                  <use href={`${sprite}#icon-arrow`}></use>
-                </svg>
-              </Link>
-            )}
-          </span>
-        );
-      })}
+          return (
+            <li key={crumb.url + index} className={styles.item}>
+              {isLastPage ? (
+                <span className={styles.current} aria-current="page">
+                  {crumb.name}
+                </span>
+              ) : (
+                <Link to={crumb.url} className={styles.link}>
+                  {crumb.name}
+                  <svg className={styles.icon}>
+                    <use href={`${sprite}#icon-arrow`}></use>
+                  </svg>
+                </Link>
+              )}
+            </li>
+          );
+        })}
+      </ol>
     </nav>
   );
 };

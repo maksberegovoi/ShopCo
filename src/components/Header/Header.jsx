@@ -25,7 +25,7 @@ const Header = () => {
 
   const iconLinks = [
     { name: "Cart", path: CART_ROUTE, href: `${sprite}#icon-cart` },
-    { name: "Profile", path: "*", href: `${sprite}#icon-profile` },
+    // { name: "Profile", path: "*", href: `${sprite}#icon-profile` },
   ];
 
   const toggleMenu = () => {

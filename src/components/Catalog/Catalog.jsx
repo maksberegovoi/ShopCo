@@ -12,9 +12,9 @@ import Filters from "../Filters/Filters.jsx";
 import { useFilters } from "../../hooks/useFilters.js";
 
 const Catalog = () => {
-  const deviceType = useDeviceType();
+  const { isDesktop } = useDeviceType();
   const [page, setPage] = useState(1);
-  const limit = deviceType === "desktop" ? 9 : 6;
+  const limit = isDesktop ? 9 : 6;
   const { filters, setSortBy } = useFilters();
   const { data, isLoading, isError } = useGetAllProductsQuery({
     page,
@@ -22,7 +22,7 @@ const Catalog = () => {
     filters,
   });
 
-  const [sortTitle, setSortTitle] = useState("Most Popular");
+  const [sortTitle, setSortTitle] = useState("Most popular");
   const handleSort = (e, sortBy) => {
     setSortTitle(e.target.textContent);
     setSortBy(sortBy);
@@ -38,7 +38,7 @@ const Catalog = () => {
   }, [page]);
 
   useEffect(() => {
-    if (isFilters && deviceType !== "desktop") {
+    if (isFilters && !isDesktop) {
       document.body.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
@@ -47,7 +47,7 @@ const Catalog = () => {
     return () => {
       document.body.style.overflow = "";
     };
-  }, [isFilters, deviceType]);
+  }, [isFilters, isDesktop]);
 
   if (isLoading) return <Loader />;
   if (isError) return <Error />;
@@ -67,13 +67,12 @@ const Catalog = () => {
             onClick={toggleFilters}
             aria-label="toggle filters"
           >
-            Filters
             <svg className={styles.iconFilters}>
               <use href={`${sprite}#icon-filters`}></use>
             </svg>
           </button>
           <p>
-            Showing {data.limit} of {data.total} Products
+            Showing {data.items.length} of {data.total} products
           </p>
           <div className={styles.sort}>
             <p>Sort By:</p>
@@ -94,11 +93,7 @@ const Catalog = () => {
           </div>
         </div>
       </div>
-      <Filters
-        isOpen={isFilters}
-        handleClick={setIsFilters}
-        deviceType={deviceType}
-      />
+      <Filters isOpen={isFilters} handleClick={setIsFilters} />
       {data.items.length > 0 ? (
         <ul className={styles.list}>
           {data.items.map((product) => (

@@ -138,9 +138,8 @@ footer {
 
 .columns {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     row-gap: rem(24);
-    column-gap: rem(16);
 
     @include tablet-above {
         grid-template-columns: repeat(4, auto);

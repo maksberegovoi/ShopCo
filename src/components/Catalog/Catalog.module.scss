@@ -14,12 +14,16 @@
     justify-content: space-between;
     align-items: center;
     flex-wrap: wrap;
+    column-gap: rem(30);
+    & h3 {
+
+    }
 }
 
 .headerContent {
     display: flex;
     align-items: center;
-    flex-wrap: wrap;
+    justify-content: space-between;
     gap: rem(12);
     min-height: rem(40);
 
@@ -65,10 +69,10 @@
 
 
 .sort {
-    @include tablet-above {
-        display: flex;
-        gap: rem(5);
-    }
+    min-width: 0;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: rem(5);
 
     .sortItems {
         display: flex;
