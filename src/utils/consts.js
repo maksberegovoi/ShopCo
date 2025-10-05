@@ -1,11 +1,11 @@
+import { useRef } from "react";
+
 export const HOME_ROUTE = "/";
 export const CATALOG_ROUTE = "/catalog";
 export const DETAILS_ROUTE = "/catalog/:id/:slug";
 export const CART_ROUTE = "/cart";
 export const REVIEWS_ROUTE = "reviews";
 export const FAQ_ROUTE = "faq";
-
-export const maxProductPrice = 1000;
 
 export const colorMap = [
   { name: "black", hex: "#0A0A0A" },
@@ -22,7 +22,6 @@ export const colorMap = [
   { name: "orange", hex: "#EA580C" },
 ];
 
-export const typeMap = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
 export const sizeMap = [
   "XX-Small",
   "X-Small",
@@ -34,4 +33,8 @@ export const sizeMap = [
   "3X-Large",
   "4X-Large",
 ];
-export const styleMap = ["Casual", "Formal", "Party", "Gym"];
+
+export const stylesMap = ["Casual", "Formal", "Party", "Gym"];
+export const maxProductPrice = 1000;
+export const typesMap = ["T-shirts", "Shorts", "Shirts", "Hoodie", "Jeans"];
+export const brandsMap = ["zara", "gucci", "versace", "calvinKlein", "prada"];

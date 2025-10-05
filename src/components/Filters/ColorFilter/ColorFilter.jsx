@@ -4,11 +4,11 @@ import styles from "./ColorFilter.module.scss";
 import sprite from "../../../../assets/icons/sprite.svg";
 import { useFilters } from "../../../hooks/useFilters.js";
 
-const ColorFilter = () => {
-  const { filters, toggleColor } = useFilters();
+const ColorFilter = ({ handler }) => {
+  const { filters } = useFilters();
 
   const handleClick = (color) => {
-    toggleColor(color);
+    handler(color);
   };
 
   return (

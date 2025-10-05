@@ -1,8 +1,14 @@
 @use '../../../styles/helpers/index' as *;
 
 
-
 .container {
+    display: flex;
+    flex-direction: column;
+    gap: rem(10);
+}
+
+.content {
+    position: relative;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -25,7 +31,7 @@
         width: 20px;
         height: 20px;
         background: white;
-        /* Твой цвет */
+
         border-radius: 50%;
         cursor: pointer;
         border: 1px solid black;
@@ -38,6 +44,6 @@
     bottom: rem(-20);
     font-weight: bold;
     color: black;
-
+    transform: translateX(0);
     white-space: nowrap;
 }

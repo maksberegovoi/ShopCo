@@ -1,34 +1,34 @@
 import React from "react";
 import styles from "../FilterButtons.module.scss";
+import { brandsMap } from "../../../utils/consts.js";
 import { useFilters } from "../../../hooks/useFilters.js";
-import { sizeMap } from "../../../utils/consts.js";
 
-const SizeFilter = ({ handler }) => {
+const BrandFilter = ({ handler }) => {
   const { filters } = useFilters();
 
-  const handleClick = (size) => {
-    handler(size);
+  const handleClick = (brand) => {
+    handler(brand);
   };
 
   return (
     <div className={styles.container}>
-      {sizeMap.map((size) => (
+      {brandsMap.map((brand) => (
         <button
-          key={size}
-          onClick={() => handleClick(size)}
+          key={brand}
+          onClick={() => handleClick(brand)}
           className={
-            filters.sizes.includes(size)
+            filters.brands.includes(brand)
               ? `${styles.btn} ${styles.active}`
               : styles.btn
           }
           type="button"
-          aria-label={size}
+          aria-label={brand}
         >
-          {size}
+          {brand}
         </button>
       ))}
     </div>
   );
 };
 
-export default SizeFilter;
+export default BrandFilter;

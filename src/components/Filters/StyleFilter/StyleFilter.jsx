@@ -1,33 +1,34 @@
-import styles from "../TypeFilter/TypeFilter.module.scss";
-import { styleMap } from "../../../utils/consts.js";
+import styles from "../FilterRows.module.scss";
 import sprite from "../../../../assets/icons/sprite.svg";
 import { useFilters } from "../../../hooks/useFilters.js";
+import { stylesMap } from "../../../utils/consts.js";
 
-const StyleFilter = () => {
-  const { filters, toggleStyle } = useFilters();
+const StyleFilter = ({ handler }) => {
+  const { filters } = useFilters();
+
   const handleClick = (style) => {
-    toggleStyle(style);
+    handler(style);
   };
 
   return (
     <div className={styles.container}>
-      {styleMap.map((style) => (
-        <div
+      {stylesMap.map((style) => (
+        <button
           key={style}
+          type="button"
+          aria-label={`style ${style}`}
+          onClick={() => handleClick(style)}
           className={
             filters.style === style
               ? `${styles.option} ${styles.active}`
               : styles.option
           }
-          onClick={() => handleClick(style)}
         >
-          <button type="button" aria-label={`style ${style}`}>
-            {style}
-          </button>
+          {style}
           <svg className={styles.icon}>
             <use href={`${sprite}#icon-arrow`}></use>
           </svg>
-        </div>
+        </button>
       ))}
     </div>
   );

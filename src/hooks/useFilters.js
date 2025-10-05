@@ -23,6 +23,24 @@ export const useFilters = () => {
     };
   }, [searchParams]);
 
+  const resetFilters = useCallback(() => {
+    setSearchParams((prev) => {
+      const params = new URLSearchParams(prev);
+
+      params.delete("colors");
+      params.delete("category");
+      params.delete("sizes");
+      params.delete("brands");
+      params.delete("sortBy");
+      params.delete("gender");
+      params.delete("type");
+      params.delete("style");
+      params.delete("maxPrice");
+
+      return params;
+    });
+  }, [setSearchParams]);
+
   const toggleCategory = useCallback(
     (category) => {
       setSearchParams((prev) => {
@@ -168,23 +186,6 @@ export const useFilters = () => {
     },
     [setSearchParams],
   );
-
-  const resetFilters = useCallback(() => {
-    setSearchParams((prev) => {
-      const params = new URLSearchParams(prev);
-
-      params.delete("colors");
-      params.delete("sizes");
-      params.delete("brands");
-      params.delete("sortBy");
-      params.delete("gender");
-      params.delete("type");
-      params.delete("style");
-      params.delete("maxPrice");
-
-      return params;
-    });
-  }, [setSearchParams]);
 
   return {
     filters,

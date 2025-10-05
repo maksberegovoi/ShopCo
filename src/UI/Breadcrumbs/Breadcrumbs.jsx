@@ -1,10 +1,10 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { useBreadcrumbs } from "../../hooks/useBreadcrumbs";
-import styles from "./Breadcrumb.module.scss";
+import { useBreadcrumbs } from "../../hooks/useBreadCrumbs";
+import styles from "./Breadcrumbs.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
 
-const Breadcrumb = () => {
+const Breadcrumbs = () => {
   const breadcrumbs = useBreadcrumbs();
 
   if (breadcrumbs.length <= 1 && breadcrumbs[0]?.path === "/") {
@@ -39,4 +39,4 @@ const Breadcrumb = () => {
   );
 };
 
-export default Breadcrumb;
+export default Breadcrumbs;

@@ -1,6 +1,7 @@
 @use '../../styles/helpers/index' as *;
 
 .card {
+    text-align: left;
     cursor: pointer;
     position: relative;
     display: flex;

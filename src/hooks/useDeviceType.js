@@ -4,7 +4,7 @@ export const useDeviceType = () => {
   const [deviceType, setDeviceType] = useState({
     isMobile: false,
     isTablet: false,
-    isDesktop: true,
+    isDesktop: false,
   });
 
   useEffect(() => {

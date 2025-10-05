@@ -1,14 +1,11 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PriceFilter.module.scss";
 import { maxProductPrice } from "../../../utils/consts.js";
-import { useFilters } from "../../../hooks/useFilters.js";
 
-const PriceFilter = () => {
+const PriceFilter = ({ handler }) => {
   const rangeRef = useRef(null);
   const valueRef = useRef(null);
   const [price, setPrice] = useState(maxProductPrice);
-
-  const { setMaxPrice } = useFilters();
 
   const handleChange = (e) => {
     setPrice(e.target.value);
@@ -16,7 +13,7 @@ const PriceFilter = () => {
   };
 
   const handleMouseUp = () => {
-    setMaxPrice(price);
+    handler(price);
   };
 
   const updatePosition = (inputEl) => {
@@ -24,9 +21,11 @@ const PriceFilter = () => {
 
     const { min, max, value, offsetWidth } = inputEl;
     const percent = (value - min) / (max - min);
-    const newLeft = percent * offsetWidth;
 
-    rangeRef.current.style.left = `${newLeft - rangeRef.current.offsetWidth / 2}px`;
+    const thumbWidth = rangeRef.current.offsetWidth;
+    const newLeft = percent * offsetWidth - thumbWidth / 2;
+
+    rangeRef.current.style.left = `${newLeft}px`;
   };
 
   useEffect(() => {
@@ -36,27 +35,25 @@ const PriceFilter = () => {
   }, []);
 
   return (
-    <>
-      <div className={styles.container}>
-        <p>0$</p>
-        <input
-          type="range"
-          min="0"
-          max={maxProductPrice}
-          step="10"
-          value={price}
-          ref={valueRef}
-          onChange={handleChange}
-          onMouseUp={handleMouseUp}
-          onTouchEnd={handleMouseUp}
-          className={styles.range}
-        />
-        <p>{maxProductPrice}$</p>
-        <span className={styles.rangeValue} ref={rangeRef}>
-          {price}$
-        </span>
-      </div>
-    </>
+    <div className={styles.content}>
+      <p>1$</p>
+      <input
+        type="range"
+        min="1"
+        max={maxProductPrice}
+        step="1"
+        value={price}
+        ref={valueRef}
+        onChange={handleChange}
+        onMouseUp={handleMouseUp}
+        onTouchEnd={handleMouseUp}
+        className={styles.range}
+      />
+      <p>{maxProductPrice}$</p>
+      <span className={styles.rangeValue} ref={rangeRef}>
+        {price}$
+      </span>
+    </div>
   );
 };
 

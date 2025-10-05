@@ -1,35 +1,35 @@
 import React from "react";
 import sprite from "../../../../assets/icons/sprite.svg";
-import styles from "./TypeFilter.module.scss";
-import { typeMap } from "../../../utils/consts.js";
+import styles from "../FilterRows.module.scss";
 import { useFilters } from "../../../hooks/useFilters.js";
+import { typesMap } from "../../../utils/consts.js";
 
-const TypeFilter = () => {
-  const { filters, toggleType } = useFilters();
+const TypeFilter = ({ handler }) => {
+  const { filters } = useFilters();
 
   const handleClick = (type) => {
-    toggleType(type);
+    handler(type);
   };
 
   return (
     <div className={styles.container}>
-      {typeMap.map((type) => (
-        <div
+      {typesMap.map((type) => (
+        <button
           key={type}
+          type="button"
+          aria-label={`type ${type}`}
+          onClick={() => handleClick(type)}
           className={
             filters.type === type
               ? `${styles.option} ${styles.active}`
               : styles.option
           }
-          onClick={() => handleClick(type)}
         >
-          <button type="button" aria-label={`type ${type}`}>
-            {type}
-          </button>
+          {type}
           <svg className={styles.icon}>
             <use href={`${sprite}#icon-arrow`}></use>
           </svg>
-        </div>
+        </button>
       ))}
     </div>
   );
