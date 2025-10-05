@@ -6,10 +6,8 @@ import partyImg from "/images/productTypes/party.png";
 import formalImg from "/images/productTypes/formal.png";
 import { NavLink, useNavigate } from "react-router-dom";
 import { CATALOG_ROUTE } from "../../../utils/consts.js";
-import { useFilters } from "../../../hooks/useFilters.js";
 
 const ProductStyles = () => {
-  const { toggleStyle } = useFilters();
   const navigate = useNavigate();
   const handleClick = () => {
     navigate(CATALOG_ROUTE);

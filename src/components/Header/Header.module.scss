@@ -72,6 +72,7 @@ header {
         position: fixed;
         top: 0;
         left: -500%;
+        width: 100%;
         max-width: rem(300);
         height: 100%;
         background: white;
@@ -79,7 +80,7 @@ header {
         z-index: 999;
         transition: left 0.3s ease-in-out;
         box-shadow: rem(-5) 0 rem(15) rgba(0, 0, 0, 0.1);
-        padding: rem(24);
+        padding: rem(40) rem(20);
     }
 }
 
@@ -216,7 +217,7 @@ header {
 .iconClose {
     color: black;
     position: absolute;
-    top: rem(15);
+    top: rem(-50);
     right: rem(15);
     cursor: pointer;
     fill: black;

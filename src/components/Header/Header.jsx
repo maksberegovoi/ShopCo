@@ -5,8 +5,10 @@ import { CART_ROUTE, HOME_ROUTE, CATALOG_ROUTE } from "../../utils/consts.js";
 import Search from "../Search/Search.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import Accordion from "../Accordion/Accordion.jsx";
+import { useDeviceType } from "../../hooks/useDeviceType.js";
 
 const Header = () => {
+  const { isMobile } = useDeviceType();
   const [isMobileSearch, setIsMobileSearch] = useState(false);
   const [isBurgerMenu, setIsBurgerMenu] = useState(false);
   const [isPromo, setIsPromo] = useState(true);
@@ -16,13 +18,11 @@ const Header = () => {
     { name: "Home", path: HOME_ROUTE },
     { name: "Catalog", path: CATALOG_ROUTE },
   ];
-
   const dropdownLinks = [
     { name: "Men", path: `${CATALOG_ROUTE}?gender=male` },
     { name: "Women", path: `${CATALOG_ROUTE}?gender=female` },
     { name: "Unisex", path: `${CATALOG_ROUTE}?gender=unisex` },
   ];
-
   const iconLinks = [
     { name: "Cart", path: CART_ROUTE, href: `${sprite}#icon-cart` },
     // { name: "Profile", path: "*", href: `${sprite}#icon-profile` },
@@ -36,18 +36,11 @@ const Header = () => {
   };
 
   useEffect(() => {
-    const mobileModal = () => {
-      if (window.innerWidth > 768) {
-        setIsMobileSearch(false);
-        setIsBurgerMenu(false);
-      }
-    };
-    window.addEventListener("resize", mobileModal);
-
-    return () => {
-      window.removeEventListener("resize", mobileModal);
-    };
-  }, []);
+    if (!isMobile) {
+      setIsMobileSearch(false);
+      setIsBurgerMenu(false);
+    }
+  }, [isMobile]);
 
   return (
     <header>
@@ -85,7 +78,6 @@ const Header = () => {
               <span className={"logo"}>SHOP.CO</span>
             </NavLink>
           )}
-          {isBurgerMenu && <Search />}
           <nav className={styles.menu}>
             <Accordion
               title={"Shop for"}
@@ -117,8 +109,13 @@ const Header = () => {
                 {link.name}
               </NavLink>
             ))}
-            <button type="button" onClick={toggleMenu} aria-label="close menu">
-              <svg className={styles.iconClose}>
+            <button
+              type="button"
+              onClick={toggleMenu}
+              aria-label="close menu"
+              className={styles.iconClose}
+            >
+              <svg>
                 <use href={`${sprite}#icon-close`}></use>
               </svg>
             </button>

@@ -7,9 +7,9 @@ import { useDeviceType } from "../../hooks/useDeviceType.js";
 import { useFilters } from "../../hooks/useFilters.js";
 import { useGetAllProductsQuery } from "../../redux/features/products/productsAPI.js";
 import Pagination from "../../UI/Pagination/Pagination.jsx";
-import ProductCard from "../../components/ProductCard/ProductCard.jsx";
 import Accordion from "../../components/Accordion/Accordion.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
+import Catalog from "../../components/Catalog/Catalog.jsx";
 
 const CatalogPage = () => {
   const { isDesktop } = useDeviceType();
@@ -104,15 +104,7 @@ const CatalogPage = () => {
           <Filters isOpen={isFilters} handleClick={setIsFilters} />
         </aside>
         <div className={styles.catalogContainer}>
-          {data.items.length > 0 ? (
-            <ul className={styles.list}>
-              {data.items.map((product) => (
-                <ProductCard key={product.id} product={product} />
-              ))}
-            </ul>
-          ) : (
-            <h3>No products found</h3>
-          )}
+          <Catalog products={data.items} />
           <Pagination
             page={page}
             total={data.total}

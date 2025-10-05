@@ -2,6 +2,7 @@ import { sortProducts } from "./sortProducts.js";
 
 export const filterProducts = (filters, items) => {
   let filteredProducts = [...items];
+  console.log(filters);
   if (filters.brands && filters.brands.length > 0) {
     filteredProducts = filteredProducts.filter((product) =>
       filters.brands.includes(product.brand),

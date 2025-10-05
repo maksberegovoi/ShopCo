@@ -2,10 +2,10 @@ import React from "react";
 import styles from "./Categories.module.scss";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
 import { CATALOG_ROUTE } from "../../utils/consts.js";
-import ProductCard from "../ProductCard/ProductCard.jsx";
 import { useGetCategoriesQuery } from "../../redux/features/categories/categoriesAPI.js";
 import Loader from "../../UI/Loader/Loader.jsx";
 import Error from "../Error/Error.jsx";
+import Catalog from "../Catalog/Catalog.jsx";
 
 const Categories = () => {
   const { data: categories, isLoading, isError } = useGetCategoriesQuery();
@@ -16,11 +16,10 @@ const Categories = () => {
       {categories.map((category) => (
         <div key={category.name} className={styles.category}>
           <h2>{category.name}</h2>
-          <ul className={styles.list}>
-            {category.products.slice(0, 4).map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </ul>
+          <Catalog
+            products={category.products.slice(0, 4)}
+            style={styles.list}
+          />
           <MyButton
             to={`${CATALOG_ROUTE}?category=${category.name}`}
             classname={styles.categoryButton}

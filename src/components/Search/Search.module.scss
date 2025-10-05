@@ -1,28 +1,26 @@
 @use '../../styles/helpers/index' as *;
 
+
 .container {
+    position: relative;
+}
+
+.searchBox {
     display: flex;
     align-items: center;
     padding: rem(12) rem(16);
     gap: rem(12);
     border-radius: rem(62);
     background: #F0F0F0;
-}
 
-button {
-    flex-shrink: 0;
-}
+    &:focus-within {
+        border: rem(1) solid var(--color-accent);
+    }
 
-.container:focus-within {
-    border: rem(1) solid var(--color-accent);
-}
-
-.container {
     @include hover {
         border: rem(1) solid var(--color-accent);
     }
 }
-
 
 .search {
     width: 100%;
@@ -33,4 +31,43 @@ button {
     fill: grey;
     width: rem(24);
     height: rem(24);
+}
+
+.content {
+    position: absolute;
+    padding: rem(15);
+
+    background-color: white;
+    border: 1px solid lightgrey;
+    border-radius: rem(20);
+
+    max-height: rem(400);
+    width: 100%;
+    text-align: center;
+
+    display: flex;
+    align-items: center;
+    gap: rem(15);
+    flex-direction: column;
+
+    & > * {
+        a {
+            @include mobile-below {
+                flex-direction: row;
+            }
+            @include laptop-above {
+                flex-direction: row;
+            }
+        }
+    }
+}
+.catalog {
+    overflow-x: hidden;
+    @include tablet-above {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+}
+
+.searchBtn {
+    width: rem(200);
 }

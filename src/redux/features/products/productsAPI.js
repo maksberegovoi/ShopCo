@@ -1,6 +1,7 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { mockProducts } from "../../../../data/produсts.js";
 import { filterProducts } from "../../../utils/filterProducts.js";
+import { searchProducts } from "../../../utils/searchProducts.js";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -126,6 +127,35 @@ export const productsApi = createApi({
       },
       providesTags: ["Details"],
     }),
+    searchProducts: builder.query({
+      queryFn: async (searchQuery) => {
+        await new Promise((resolve) => setTimeout(resolve, 300));
+
+        if (!searchQuery || searchQuery.trim().length < 2) {
+          return { data: { items: [] } };
+        }
+
+        const result = searchProducts(mockProducts, searchQuery);
+
+        const products = result.map((product) => ({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          basePrice: product.basePrice,
+          discount: product.discount,
+          rating: product.rating,
+          gallery: product.gallery,
+          colors: product.colors,
+        }));
+
+        return {
+          data: {
+            items: products,
+          },
+        };
+      },
+      providesTags: ["Products"],
+    }),
   }),
 });
 
@@ -134,4 +164,5 @@ export const {
   useGetProductByIdQuery,
   useGetProductReviewsQuery,
   useGetProductDetailsQuery,
+  useSearchProductsQuery,
 } = productsApi;

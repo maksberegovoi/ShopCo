@@ -22,22 +22,7 @@
 }
 
 .list {
-    display: grid;
-    place-items: center;
-    row-gap: rem(25);
-    column-gap: rem(20);
-    width: 100%;
-
-    grid-template-columns: minmax(0, 1fr);
-
-    @include mobile-above {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-
-    }
-
     @include tablet-above {
-        grid-template-columns: repeat(4, minmax(0, 1fr));
-        column-gap: rem(20);
+        grid-template-columns: repeat(4, minmax(0, 1fr)) !important;
     }
-
 }
