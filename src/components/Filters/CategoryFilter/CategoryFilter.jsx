@@ -1,6 +1,5 @@
 import React from "react";
 import styles from "../FilterRows.module.scss";
-import { typesMap } from "../../../utils/consts.js";
 import sprite from "../../../../assets/icons/sprite.svg";
 import { useFilters } from "../../../hooks/useFilters.js";
 import { useGetCategoriesQuery } from "../../../redux/features/categories/categoriesAPI.js";

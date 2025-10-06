@@ -2,6 +2,7 @@ import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
 import { mockProducts } from "../../../../data/produсts.js";
 import { filterProducts } from "../../../utils/filterProducts.js";
 import { searchProducts } from "../../../utils/searchProducts.js";
+import { mockCategories } from "../../../../data/categories.js";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",
@@ -12,7 +13,23 @@ export const productsApi = createApi({
       queryFn: async ({ page = 1, limit = 9, filters = {} } = {}) => {
         await new Promise((resolve) => setTimeout(resolve, 200));
 
-        const filteredProducts = filterProducts(filters, mockProducts);
+        let filteredProducts;
+
+        if (filters.category) {
+          const filterCategory = mockCategories.find(
+            (category) => category.name === filters.category,
+          );
+          if (filterCategory) {
+            const categoryProducts = mockProducts.filter((product) =>
+              filterCategory.products.includes(product.id),
+            );
+            filteredProducts = filterProducts(filters, categoryProducts);
+          } else {
+            filteredProducts = [];
+          }
+        } else {
+          filteredProducts = filterProducts(filters, mockProducts);
+        }
 
         const start = (page - 1) * limit;
         const end = start + limit;
