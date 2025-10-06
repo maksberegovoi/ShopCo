@@ -78,11 +78,60 @@ export const mockProducts = [
         postDate: "August 28, 2024",
       },
       {
-        author: "Tom B.",
+        author: "Sophia L.",
         comment:
-          "Nice graphic and good quality cotton. Would buy again in another color.",
+          "Great shirt! The material is breathable and comfortable all day. Really love the design.",
+        rating: 5,
+        postDate: "September 1, 2024",
+      },
+      {
+        author: "Mark T.",
+        comment:
+          "Fits well and looks exactly like the pictures. Good value for the price.",
         rating: 4,
-        postDate: "September 2, 2024",
+        postDate: "September 5, 2024",
+      },
+      {
+        author: "Emily R.",
+        comment:
+          "Nice quality, but the sleeves are slightly shorter than I expected. Still a solid purchase.",
+        rating: 4,
+        postDate: "September 12, 2024",
+      },
+      {
+        author: "James K.",
+        comment:
+          "The fabric is soft and durable. Washed it a couple of times and no shrinkage so far.",
+        rating: 5,
+        postDate: "September 15, 2024",
+      },
+      {
+        author: "Olivia M.",
+        comment:
+          "Good casual t-shirt, but the black color shows lint easily. Otherwise, very comfortable.",
+        rating: 4,
+        postDate: "September 20, 2024",
+      },
+      {
+        author: "Daniel P.",
+        comment:
+          "Awesome print and fits perfectly. I wear it almost every week!",
+        rating: 5,
+        postDate: "September 22, 2024",
+      },
+      {
+        author: "Chloe S.",
+        comment:
+          "Very stylish and soft fabric. Love the modern streetwear vibe.",
+        rating: 5,
+        postDate: "September 25, 2024",
+      },
+      {
+        author: "Michael B.",
+        comment:
+          "Overall good quality, but I wish there were more color options available.",
+        rating: 4,
+        postDate: "September 28, 2024",
       },
     ],
   },
@@ -163,6 +212,64 @@ export const mockProducts = [
         rating: 4,
         postDate: "June 12, 2023",
       },
+      [
+        {
+          author: "Liam W.",
+          comment:
+            "Very comfortable and fits true to size. The stripes give it a nice touch without being flashy.",
+          rating: 4,
+          postDate: "June 18, 2023",
+        },
+        {
+          author: "Sophia H.",
+          comment:
+            "Good quality cotton and nice stitching. Perfect for everyday wear.",
+          rating: 5,
+          postDate: "June 22, 2023",
+        },
+        {
+          author: "Noah R.",
+          comment:
+            "Classic design, but the black fabric shows lint easily. Still a solid t-shirt overall.",
+          rating: 4,
+          postDate: "June 25, 2023",
+        },
+        {
+          author: "Mia K.",
+          comment:
+            "Soft and breathable material. Loved the fit and style for casual outings.",
+          rating: 5,
+          postDate: "June 28, 2023",
+        },
+        {
+          author: "Oliver J.",
+          comment:
+            "The stripes look very elegant. Washed it a few times and the fabric held up well.",
+          rating: 5,
+          postDate: "July 2, 2023",
+        },
+        {
+          author: "Ava S.",
+          comment:
+            "Nice shirt overall. Would be great if there were more color options.",
+          rating: 4,
+          postDate: "July 5, 2023",
+        },
+        {
+          author: "Lucas T.",
+          comment:
+            "Comfortable fit and good material. Perfect for casual workwear.",
+          rating: 4,
+          postDate: "July 10, 2023",
+        },
+        {
+          author: "Isabella M.",
+          comment:
+            "Simple yet stylish. The quality is good for the price, highly recommend.",
+          rating: 5,
+          postDate: "July 12, 2023",
+        },
+      ],
     ],
   },
   {
@@ -241,6 +348,64 @@ export const mockProducts = [
         rating: 5,
         postDate: "April 5, 2023",
       },
+      [
+        {
+          author: "Ethan S.",
+          comment:
+            "Very stylish and comfortable. The slim fit gives a sharp look for meetings.",
+          rating: 5,
+          postDate: "April 10, 2023",
+        },
+        {
+          author: "Sophia L.",
+          comment:
+            "Fabric feels premium and breathable. Perfect for long office hours.",
+          rating: 5,
+          postDate: "April 12, 2023",
+        },
+        {
+          author: "James K.",
+          comment:
+            "Classic design, washes well without losing shape. Highly recommend.",
+          rating: 5,
+          postDate: "April 15, 2023",
+        },
+        {
+          author: "Olivia M.",
+          comment:
+            "Fit is perfect and the checkered pattern is elegant without being too bold.",
+          rating: 5,
+          postDate: "April 18, 2023",
+        },
+        {
+          author: "Liam T.",
+          comment:
+            "Good quality shirt. Slight stretch makes it very comfortable for movement.",
+          rating: 5,
+          postDate: "April 20, 2023",
+        },
+        {
+          author: "Mia R.",
+          comment:
+            "Excellent craftsmanship and smooth texture. Looks professional every time I wear it.",
+          rating: 5,
+          postDate: "April 22, 2023",
+        },
+        {
+          author: "Noah P.",
+          comment:
+            "Love the color options. Navy is my favorite, pairs well with formal trousers.",
+          rating: 5,
+          postDate: "April 25, 2023",
+        },
+        {
+          author: "Isabella F.",
+          comment:
+            "Slim fit and classic collar make it ideal for office or formal events. Very satisfied.",
+          rating: 5,
+          postDate: "April 28, 2023",
+        },
+      ],
     ],
   },
   {
@@ -318,6 +483,64 @@ export const mockProducts = [
         rating: 5,
         postDate: "May 20, 2023",
       },
+      [
+        {
+          author: "Ella M.",
+          comment:
+            "Love the design and the word 'Courage' really stands out. Comfortable fit for casual wear.",
+          rating: 5,
+          postDate: "May 25, 2023",
+        },
+        {
+          author: "Ryan K.",
+          comment:
+            "Good quality cotton and soft on the skin. Slightly loose fit which I like.",
+          rating: 4,
+          postDate: "May 28, 2023",
+        },
+        {
+          author: "Mia S.",
+          comment:
+            "Nice t-shirt overall, but the white version shows stains easily. Still a favorite for casual outings.",
+          rating: 4,
+          postDate: "June 1, 2023",
+        },
+        {
+          author: "Liam T.",
+          comment:
+            "The print looks amazing and doesn’t fade after washing. Great streetwear piece.",
+          rating: 5,
+          postDate: "June 3, 2023",
+        },
+        {
+          author: "Sophia R.",
+          comment:
+            "Relaxed fit makes it comfortable to wear all day. Perfect for casual style.",
+          rating: 5,
+          postDate: "June 6, 2023",
+        },
+        {
+          author: "Noah P.",
+          comment:
+            "Fabric feels premium and breathable. Good quality for the price.",
+          rating: 4,
+          postDate: "June 10, 2023",
+        },
+        {
+          author: "Olivia L.",
+          comment:
+            "Bold design, very trendy. I get compliments whenever I wear it.",
+          rating: 5,
+          postDate: "June 12, 2023",
+        },
+        {
+          author: "James H.",
+          comment:
+            "Comfortable and stylish, fits true to size. Would buy again in another color.",
+          rating: 4,
+          postDate: "June 15, 2023",
+        },
+      ],
     ],
   },
   {
@@ -393,6 +616,64 @@ export const mockProducts = [
         rating: 4,
         postDate: "August 15, 2023",
       },
+      [
+        {
+          author: "Liam T.",
+          comment:
+            "Great fit and very comfortable. The faded wash looks modern and stylish.",
+          rating: 5,
+          postDate: "August 18, 2023",
+        },
+        {
+          author: "Sophia M.",
+          comment:
+            "Nice quality denim. Slight stretch makes them easy to move in. True to size.",
+          rating: 4,
+          postDate: "August 20, 2023",
+        },
+        {
+          author: "Noah R.",
+          comment:
+            "The skinny fit is perfect, but the gray color shows dust easily. Otherwise happy with purchase.",
+          rating: 4,
+          postDate: "August 22, 2023",
+        },
+        {
+          author: "Mia K.",
+          comment:
+            "Love the mid-rise fit and full-length cut. Very comfortable for daily wear.",
+          rating: 5,
+          postDate: "August 25, 2023",
+        },
+        {
+          author: "Oliver J.",
+          comment:
+            "Fabric quality is solid, washes well without losing color. Highly recommend.",
+          rating: 5,
+          postDate: "August 28, 2023",
+        },
+        {
+          author: "Ava S.",
+          comment:
+            "Good jeans for casual outings. The faded look adds a nice touch to street style.",
+          rating: 4,
+          postDate: "August 30, 2023",
+        },
+        {
+          author: "Lucas P.",
+          comment:
+            "Fits as expected, comfortable stretch. Very happy with this purchase.",
+          rating: 5,
+          postDate: "September 2, 2023",
+        },
+        {
+          author: "Isabella R.",
+          comment:
+            "Stylish jeans, perfect for pairing with sneakers. Fabric is soft yet durable.",
+          rating: 4,
+          postDate: "September 5, 2023",
+        },
+      ],
     ],
   },
   {
@@ -717,10 +998,10 @@ export const mockProducts = [
     brand: "Levi’s",
     style: "Casual",
     sizes: [
-      { name: "30", available: true },
-      { name: "32", available: true },
-      { name: "34", available: true },
-      { name: "36", available: false },
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: false },
     ],
     colors: [
       { name: "dark-blue", available: true },
@@ -1108,76 +1389,6 @@ export const mockProducts = [
         rating: 5,
         postDate: "August 16, 2023",
       },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
-      {
-        author: "Ethan R.",
-        comment:
-          "This t-shirt is a must-have for anyone who appreciates good design. The minimalistic yet stylish pattern caught my eye, and the fit is perfect. I can see the designer's touch in every aspect of this shirt.",
-        rating: 5,
-        postDate: "August 16, 2023",
-      },
     ],
   },
   {
@@ -1269,64 +1480,6 @@ export const mockProducts = [
         rating: 4,
         postDate: "July 22, 2023",
       },
-      {
-        author: "Ryan T.",
-        comment: "Comfortable and stylish. Perfect for casual outings.",
-        rating: 3,
-        postDate: "July 25, 2023",
-      },
-      {
-        author: "Michael B.",
-        comment:
-          "Great jeans, but the fit is a bit tighter than I expected. Quality is good though.",
-        rating: 4,
-        postDate: "July 22, 2023",
-      },
-      {
-        author: "Ryan T.",
-        comment: "Comfortable and stylish. Perfect for casual outings.",
-        rating: 3,
-        postDate: "July 25, 2023",
-      },
-      {
-        author: "Michael B.",
-        comment:
-          "Great jeans, but the fit is a bit tighter than I expected. Quality is good though.",
-        rating: 4,
-        postDate: "July 22, 2023",
-      },
-      {
-        author: "Ryan T.",
-        comment: "Comfortable and stylish. Perfect for casual outings.",
-        rating: 3,
-        postDate: "July 25, 2023",
-      },
-      {
-        author: "Michael B.",
-        comment:
-          "Great jeans, but the fit is a bit tighter than I expected. Quality is good though.",
-        rating: 4,
-        postDate: "July 22, 2023",
-      },
-      {
-        author: "Ryan T.",
-        comment: "Comfortable and stylish. Perfect for casual outings.",
-        rating: 3,
-        postDate: "July 25, 2023",
-      },
-      {
-        author: "Michael B.",
-        comment:
-          "Great jeans, but the fit is a bit tighter than I expected. Quality is good though.",
-        rating: 4,
-        postDate: "July 22, 2023",
-      },
-      {
-        author: "Ryan T.",
-        comment: "Comfortable and stylish. Perfect for casual outings.",
-        rating: 3,
-        postDate: "July 25, 2023",
-      },
     ],
   },
   {
@@ -1399,48 +1552,6 @@ export const mockProducts = [
       "/images/coming-soon-3.png",
     ],
     reviews: [
-      {
-        author: "David K.",
-        comment:
-          "Excellent shirt for work. The fit is perfect and it doesn't wrinkle easily.",
-        rating: 5,
-        postDate: "September 5, 2023",
-      },
-      {
-        author: "James P.",
-        comment:
-          "Good quality fabric and nice pattern. Very professional looking.",
-        rating: 4,
-        postDate: "September 10, 2023",
-      },
-      {
-        author: "Robert L.",
-        comment:
-          "Fits well and looks great with a tie. Highly recommend for office wear.",
-        rating: 5,
-        postDate: "September 12, 2023",
-      },
-      {
-        author: "David K.",
-        comment:
-          "Excellent shirt for work. The fit is perfect and it doesn't wrinkle easily.",
-        rating: 5,
-        postDate: "September 5, 2023",
-      },
-      {
-        author: "James P.",
-        comment:
-          "Good quality fabric and nice pattern. Very professional looking.",
-        rating: 4,
-        postDate: "September 10, 2023",
-      },
-      {
-        author: "Robert L.",
-        comment:
-          "Fits well and looks great with a tie. Highly recommend for office wear.",
-        rating: 5,
-        postDate: "September 12, 2023",
-      },
       {
         author: "David K.",
         comment:

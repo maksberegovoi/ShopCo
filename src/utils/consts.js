@@ -1,5 +1,3 @@
-import { useRef } from "react";
-
 export const HOME_ROUTE = "/";
 export const CATALOG_ROUTE = "/catalog";
 export const DETAILS_ROUTE = "/catalog/:id/:slug";
