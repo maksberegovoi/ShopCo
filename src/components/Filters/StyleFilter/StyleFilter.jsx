@@ -25,9 +25,11 @@ const StyleFilter = ({ handler }) => {
           }
         >
           {style}
-          <svg className={styles.icon}>
-            <use href={`${sprite}#icon-arrow`}></use>
-          </svg>
+          {filters.style === style && (
+            <svg className={styles.icon}>
+              <use href={`${sprite}#icon-check-mark`}></use>
+            </svg>
+          )}
         </button>
       ))}
     </div>

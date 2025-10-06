@@ -26,9 +26,11 @@ const TypeFilter = ({ handler }) => {
           }
         >
           {type}
-          <svg className={styles.icon}>
-            <use href={`${sprite}#icon-arrow`}></use>
-          </svg>
+          {filters.type === type && (
+            <svg className={styles.icon}>
+              <use href={`${sprite}#icon-check-mark`}></use>
+            </svg>
+          )}
         </button>
       ))}
     </div>

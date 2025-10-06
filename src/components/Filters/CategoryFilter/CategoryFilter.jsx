@@ -30,9 +30,11 @@ const CategoryFilter = ({ handler }) => {
           }
         >
           {name}
-          <svg className={styles.icon}>
-            <use href={`${sprite}#icon-arrow`}></use>
-          </svg>
+          {filters.category === name && (
+            <svg className={styles.icon}>
+              <use href={`${sprite}#icon-check-mark`}></use>
+            </svg>
+          )}
         </button>
       ))}
     </div>
