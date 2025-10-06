@@ -1,5 +1,1023 @@
 export const mockProducts = [
   {
+    id: 40,
+    name: "ONE LIFE GRAPHIC T-SHIRT",
+    description:
+      "Make a bold statement with this One Life graphic t-shirt. Designed with a modern streetwear vibe and premium cotton comfort for everyday wear.",
+    price: 110,
+    basePrice: 130,
+    discount: 15,
+    rating: 5,
+    quantity: 95,
+    gender: "male",
+    type: "T-shirts",
+    brand: "h&m",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+      { name: "XX-Large", available: false },
+    ],
+    colors: [
+      { name: "black", available: true },
+      { name: "white", available: true },
+      { name: "gray", available: true },
+      { name: "beige", available: false },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Spring/Summer" },
+          { key: "collection", value: "Urban Spirit 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "180 GSM" },
+          { key: "Texture", value: "Soft Jersey" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Length", value: "Standard Length" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Neckline", value: "Crew Neck" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold (30°C max)" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Iron inside out on low heat" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/one-life-graphic-t-shirt.png",
+      "/images/one-life-graphic-t-shirt-2.png",
+      "/images/one-life-graphic-t-shirt-3.png",
+    ],
+    reviews: [
+      {
+        author: "Ryan D.",
+        comment:
+          "Love the print and fit! The fabric feels soft and high-quality. Perfect casual tee.",
+        rating: 5,
+        postDate: "August 28, 2024",
+      },
+      {
+        author: "Tom B.",
+        comment:
+          "Nice graphic and good quality cotton. Would buy again in another color.",
+        rating: 4,
+        postDate: "September 2, 2024",
+      },
+    ],
+  },
+  {
+    id: 27,
+    name: "BLACK STRIPED T-SHIRT",
+    description:
+      "Classic black t-shirt with subtle white stripes for a sleek and modern look. Perfect for casual or semi-casual outfits.",
+    price: 120,
+    basePrice: 120,
+    discount: 0,
+    rating: 4,
+    quantity: 95,
+    gender: "male",
+    type: "T-shirts",
+    brand: "calvinKlein",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: false },
+      { name: "XX-Large", available: false },
+    ],
+    colors: [
+      { name: "black", available: true },
+      { name: "white", available: true },
+      { name: "gray", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "All Seasons" },
+          { key: "collection", value: "Urban Line 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "180 GSM" },
+          { key: "Texture", value: "Soft Knit" },
+          { key: "Stretch", value: "No Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Neckline", value: "Crew Neck" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold" },
+          { key: "Drying", value: "Line dry" },
+          { key: "Ironing", value: "Low heat" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/black-striped-t-shirt.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Ethan P.",
+        comment:
+          "Simple and clean look. The stripes make it stand out just enough.",
+        rating: 4,
+        postDate: "June 12, 2023",
+      },
+    ],
+  },
+  {
+    id: 28,
+    name: "CHECKERED FORMAL SHIRT",
+    description:
+      "A timeless checkered shirt for formal occasions or office wear. Offers a structured look with breathable fabric.",
+    price: 150,
+    basePrice: 180,
+    discount: 15,
+    rating: 5,
+    quantity: 60,
+    gender: "male",
+    type: "Shirts",
+    brand: "HugoBoss",
+    style: "Formal",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+      { name: "XX-Large", available: false },
+    ],
+    colors: [
+      { name: "navy", available: true },
+      { name: "gray", available: true },
+      { name: "black", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "All Seasons" },
+          { key: "collection", value: "Executive Line 2025" },
+          { key: "type", value: "Shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "98% Cotton, 2% Elastane" },
+          { key: "Fabric Weight", value: "200 GSM" },
+          { key: "Texture", value: "Smooth Weave" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Slim Fit" },
+          { key: "Length", value: "Regular" },
+          { key: "Sleeve Type", value: "Long Sleeve" },
+          { key: "Collar", value: "Classic Collar" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash warm" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Warm iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/checkered-formal-shirt.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Daniel R.",
+        comment: "Excellent quality, perfect fit for office wear.",
+        rating: 5,
+        postDate: "April 5, 2023",
+      },
+    ],
+  },
+  {
+    id: 29,
+    name: "COURAGE GRAPHIC T-SHIRT",
+    description:
+      "Bold graphic print t-shirt featuring the word 'Courage'. Perfect for streetwear looks and casual confidence.",
+    price: 90,
+    basePrice: 110,
+    discount: 20,
+    rating: 4,
+    quantity: 110,
+    gender: "male",
+    type: "T-shirts",
+    brand: "Nike",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+    ],
+    colors: [
+      { name: "white", available: true },
+      { name: "black", available: true },
+      { name: "beige", available: false },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Spring/Summer" },
+          { key: "collection", value: "Street Style 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Organic Cotton" },
+          { key: "Fabric Weight", value: "170 GSM" },
+          { key: "Texture", value: "Soft Jersey" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Relaxed Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Neckline", value: "Crew Neck" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Cold gentle cycle" },
+          { key: "Drying", value: "Hang dry" },
+          { key: "Ironing", value: "Inside out" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/courage-graphic-t-shirt.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Leo H.",
+        comment: "Soft fabric and great message. Fits perfectly!",
+        rating: 5,
+        postDate: "May 20, 2023",
+      },
+    ],
+  },
+  {
+    id: 30,
+    name: "FADED SKINNY JEANS",
+    description:
+      "Stylish skinny jeans with a faded wash and flexible fit. Designed for comfort and a modern street look.",
+    price: 250,
+    basePrice: 280,
+    discount: 10,
+    rating: 4,
+    quantity: 50,
+    gender: "male",
+    type: "Jeans",
+    brand: "Levi’s",
+    style: "Casual",
+    sizes: [
+      { name: "30", available: true },
+      { name: "32", available: true },
+      { name: "34", available: true },
+      { name: "36", available: false },
+    ],
+    colors: [
+      { name: "light-blue", available: true },
+      { name: "gray", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "All Seasons" },
+          { key: "collection", value: "Denim Classics 2025" },
+          { key: "type", value: "Jeans" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "98% Cotton, 2% Elastane" },
+          { key: "Fabric Weight", value: "400 GSM" },
+          { key: "Texture", value: "Denim" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Skinny Fit" },
+          { key: "Length", value: "Full Length" },
+          { key: "Waist Rise", value: "Mid Rise" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Cold wash separately" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Low iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/faded-skinny-jeans.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Chris J.",
+        comment: "Love the faded style, very comfortable.",
+        rating: 4,
+        postDate: "August 15, 2023",
+      },
+    ],
+  },
+  {
+    id: 31,
+    name: "GRADIENT GRAPHIC T-SHIRT",
+    description:
+      "Eye-catching t-shirt featuring a smooth gradient print with a soft and breathable feel. Great for summer days and modern outfits.",
+    price: 110,
+    basePrice: 140,
+    discount: 20,
+    rating: 5,
+    quantity: 90,
+    gender: "male",
+    type: "T-shirts",
+    brand: "Zara",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+    ],
+    colors: [
+      { name: "blue", available: true },
+      { name: "pink", available: true },
+      { name: "purple", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Spring/Summer" },
+          { key: "collection", value: "Modern Prints 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "180 GSM" },
+          { key: "Texture", value: "Smooth Jersey" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Neckline", value: "Crew Neck" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold" },
+          { key: "Drying", value: "Hang to dry" },
+          { key: "Ironing", value: "Low iron inside out" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/gradient-graphic-t-shirt.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Ryan K.",
+        comment:
+          "The gradient print looks amazing in person. Super soft fabric.",
+        rating: 5,
+        postDate: "July 25, 2023",
+      },
+    ],
+  },
+  {
+    id: 32,
+    name: "LOOSE FIT BERMUDA SHORTS",
+    description:
+      "Comfortable loose-fit bermuda shorts made from lightweight cotton. Perfect for beach days and casual outings.",
+    price: 160,
+    basePrice: 200,
+    discount: 20,
+    rating: 4,
+    quantity: 120,
+    gender: "male",
+    type: "Shorts",
+    brand: "H&M",
+    style: "Casual",
+    sizes: [
+      { name: "S", available: true },
+      { name: "M", available: true },
+      { name: "L", available: true },
+      { name: "XL", available: true },
+    ],
+    colors: [
+      { name: "beige", available: true },
+      { name: "navy", available: true },
+      { name: "olive", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Summer" },
+          { key: "collection", value: "Comfort Wear 2025" },
+          { key: "type", value: "Shorts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "160 GSM" },
+          { key: "Texture", value: "Twill" },
+          { key: "Stretch", value: "No Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Loose Fit" },
+          { key: "Length", value: "Knee Length" },
+          { key: "Closure", value: "Button & Zip" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Medium iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/loose-fit-bermuda-shorts.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Owen D.",
+        comment: "Super comfy and perfect for summer.",
+        rating: 4,
+        postDate: "June 10, 2023",
+      },
+    ],
+  },
+  {
+    id: 33,
+    name: "POLO WITH CONTRAST TRIMS",
+    description:
+      "Elegant polo shirt with contrast collar and sleeve trims. A refined choice for casual Fridays or smart outings.",
+    price: 170,
+    basePrice: 200,
+    discount: 15,
+    rating: 5,
+    quantity: 75,
+    gender: "male",
+    type: "T-shirts",
+    brand: "Lacoste",
+    style: "Smart Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+    ],
+    colors: [
+      { name: "white", available: true },
+      { name: "navy", available: true },
+      { name: "black", available: false },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "All Seasons" },
+          { key: "collection", value: "Classic Polo 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "95% Cotton, 5% Elastane" },
+          { key: "Fabric Weight", value: "200 GSM" },
+          { key: "Texture", value: "Pique Knit" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Collar", value: "Contrast Polo Collar" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Gentle machine wash" },
+          { key: "Drying", value: "Line dry" },
+          { key: "Ironing", value: "Low iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/polo-with-contrast-trims.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Liam W.",
+        comment: "High-quality polo, love the trim detailing.",
+        rating: 5,
+        postDate: "March 30, 2023",
+      },
+    ],
+  },
+  {
+    id: 34,
+    name: "POLO WITH TIPPING DETAILS",
+    description:
+      "Refined polo with subtle tipping details on the collar and sleeves. Perfect mix of sporty and elegant style.",
+    price: 160,
+    basePrice: 180,
+    discount: 10,
+    rating: 4,
+    quantity: 65,
+    gender: "male",
+    type: "T-shirts",
+    brand: "Tommy Hilfiger",
+    style: "Smart Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+    ],
+    colors: [
+      { name: "navy", available: true },
+      { name: "white", available: true },
+      { name: "burgundy", available: false },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Spring/Summer" },
+          { key: "collection", value: "Heritage 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "190 GSM" },
+          { key: "Texture", value: "Pique Cotton" },
+          { key: "Stretch", value: "No Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Slim Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Collar", value: "Polo with Tipping" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Warm iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/polo-with-tipping-details.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Aaron T.",
+        comment: "Great fit, the tipping adds a nice touch.",
+        rating: 4,
+        postDate: "August 2, 2023",
+      },
+    ],
+  },
+  {
+    id: 35,
+    name: "SKINNY FIT JEANS",
+    description:
+      "Modern skinny fit jeans designed for everyday wear. Comfortable stretch denim with a clean and versatile look.",
+    price: 220,
+    basePrice: 250,
+    discount: 12,
+    rating: 5,
+    quantity: 80,
+    gender: "male",
+    type: "Jeans",
+    brand: "Levi’s",
+    style: "Casual",
+    sizes: [
+      { name: "30", available: true },
+      { name: "32", available: true },
+      { name: "34", available: true },
+      { name: "36", available: false },
+    ],
+    colors: [
+      { name: "dark-blue", available: true },
+      { name: "black", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "All Seasons" },
+          { key: "collection", value: "Urban Denim 2025" },
+          { key: "type", value: "Jeans" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "99% Cotton, 1% Elastane" },
+          { key: "Fabric Weight", value: "390 GSM" },
+          { key: "Texture", value: "Denim" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Skinny Fit" },
+          { key: "Length", value: "Full Length" },
+          { key: "Waist Rise", value: "Mid Rise" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Cold wash" },
+          { key: "Drying", value: "Air dry" },
+          { key: "Ironing", value: "Low iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/skinny-fit-jeans.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Jake M.",
+        comment: "Perfect skinny fit and great color fade.",
+        rating: 5,
+        postDate: "May 15, 2023",
+      },
+    ],
+  },
+  {
+    id: 36,
+    name: "SLEEVE STRIPED T-SHIRT",
+    description:
+      "Casual t-shirt featuring sporty sleeve stripes. A retro-inspired piece that pairs perfectly with jeans or shorts.",
+    price: 100,
+    basePrice: 120,
+    discount: 15,
+    rating: 4,
+    quantity: 85,
+    gender: "male",
+    type: "T-shirts",
+    brand: "Adidas",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+    ],
+    colors: [
+      { name: "white", available: true },
+      { name: "gray", available: true },
+      { name: "navy", available: false },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Spring/Summer" },
+          { key: "collection", value: "Retro Sports 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "180 GSM" },
+          { key: "Texture", value: "Soft Knit" },
+          { key: "Stretch", value: "No Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Neckline", value: "Crew Neck" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold" },
+          { key: "Drying", value: "Line dry" },
+          { key: "Ironing", value: "Low heat" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/sleeve-striped-t-shirt.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Alex F.",
+        comment: "Nice sporty look, fits great.",
+        rating: 4,
+        postDate: "July 1, 2023",
+      },
+    ],
+  },
+  {
+    id: 37,
+    name: "T-SHIRT WITH TAPE DETAILS",
+    description:
+      "Modern t-shirt with side tape detailing for a sporty edge. Lightweight and ideal for everyday casual wear.",
+    price: 115,
+    basePrice: 130,
+    discount: 12,
+    rating: 5,
+    quantity: 100,
+    gender: "male",
+    type: "T-shirts",
+    brand: "Puma",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+    ],
+    colors: [
+      { name: "black", available: true },
+      { name: "white", available: true },
+      { name: "gray", available: true },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Summer" },
+          { key: "collection", value: "Sport Street 2025" },
+          { key: "type", value: "T-shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "175 GSM" },
+          { key: "Texture", value: "Soft Jersey" },
+          { key: "Stretch", value: "Slight Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Regular Fit" },
+          { key: "Length", value: "Standard" },
+          { key: "Sleeve Type", value: "Short Sleeve" },
+          { key: "Neckline", value: "Crew Neck" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold" },
+          { key: "Drying", value: "Tumble dry low" },
+          { key: "Ironing", value: "Low iron" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/t-shirt-with-tape-details.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Noah S.",
+        comment: "The tape detail looks stylish and modern.",
+        rating: 5,
+        postDate: "August 18, 2023",
+      },
+    ],
+  },
+  {
+    id: 38,
+    name: "VERTICAL STRIPED SHIRT",
+    description:
+      "Stay effortlessly stylish with this vertical striped shirt. Designed for both casual and semi-formal occasions, offering a clean and modern look.",
+    price: 145,
+    basePrice: 160,
+    discount: 10,
+    rating: 5,
+    quantity: 90,
+    gender: "male",
+    type: "Shirts",
+    brand: "zara",
+    style: "Casual",
+    sizes: [
+      { name: "Small", available: true },
+      { name: "Medium", available: true },
+      { name: "Large", available: true },
+      { name: "X-Large", available: true },
+      { name: "XX-Large", available: false },
+    ],
+    colors: [
+      { name: "white", available: true },
+      { name: "blue", available: true },
+      { name: "black", available: true },
+      { name: "gray", available: false },
+    ],
+    details: [
+      {
+        title: "Product information",
+        info: [
+          { key: "gender", value: "male" },
+          { key: "season", value: "Spring/Summer" },
+          { key: "collection", value: "Urban Line 2025" },
+          { key: "type", value: "Shirts" },
+        ],
+      },
+      {
+        title: "Materials",
+        info: [
+          { key: "material", value: "100% Cotton" },
+          { key: "Fabric Weight", value: "160 GSM" },
+          { key: "Texture", value: "Smooth Poplin" },
+          { key: "Stretch", value: "No Stretch" },
+        ],
+      },
+      {
+        title: "Fit & Sizing",
+        info: [
+          { key: "Fit Type", value: "Slim Fit" },
+          { key: "Length", value: "Regular Length" },
+          { key: "Sleeve Type", value: "Long Sleeve" },
+          { key: "Collar", value: "Classic Turn-Down Collar" },
+        ],
+      },
+      {
+        title: "Care Instructions",
+        info: [
+          { key: "Washing", value: "Machine wash cold (30°C max)" },
+          { key: "Drying", value: "Line dry recommended" },
+          { key: "Ironing", value: "Iron on low heat" },
+          { key: "Bleaching", value: "Do not bleach" },
+        ],
+      },
+    ],
+    gallery: [
+      "/images/vertical-striped-shirt.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
+    ],
+    reviews: [
+      {
+        author: "Leo P.",
+        comment:
+          "Love the pattern — makes me look taller and the fabric feels premium.",
+        rating: 5,
+        postDate: "August 10, 2024",
+      },
+      {
+        author: "Derek K.",
+        comment:
+          "Perfect for both office and casual wear. Great color contrast too!",
+        rating: 4,
+        postDate: "August 15, 2024",
+      },
+    ],
+  },
+  {
     id: 1,
     name: "T-SHIRT WITH TAPE DETAILS",
     description:
@@ -64,9 +1082,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon.png",
     ],
     reviews: [
       {
@@ -226,9 +1244,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -376,9 +1394,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -513,9 +1531,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -613,9 +1631,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -699,9 +1717,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -791,9 +1809,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -883,9 +1901,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -969,9 +1987,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1063,9 +2081,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1157,9 +2175,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1243,9 +2261,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1336,9 +2354,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1422,9 +2440,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1515,9 +2533,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1607,9 +2625,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1693,9 +2711,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1785,9 +2803,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1869,9 +2887,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -1961,9 +2979,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -2053,9 +3071,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -2146,9 +3164,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -2231,9 +3249,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -2322,9 +3340,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -2414,9 +3432,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {
@@ -2499,9 +3517,9 @@ export const mockProducts = [
       },
     ],
     gallery: [
-      "/images/productDetails/img-1.png",
-      "/images/productDetails/img-2.png",
-      "/images/productDetails/img-3.png",
+      "/images/coming-soon.png",
+      "/images/coming-soon-2.png",
+      "/images/coming-soon-3.png",
     ],
     reviews: [
       {

@@ -6,8 +6,11 @@ import ColorSelector from "../ColorSelector/ColorSelector.jsx";
 import SizeSelector from "../SizeSelector/SizeSelector.jsx";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
 import Loader from "../../UI/Loader/Loader.jsx";
-import {useDispatch, useSelector} from "react-redux";
-import { addToCart, removeFromCart } from "../../redux/features/cart/cartSlice.js";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  addToCart,
+  removeFromCart,
+} from "../../redux/features/cart/cartSlice.js";
 import toast from "react-hot-toast";
 
 const ProductDetails = ({ product, isLoading }) => {
@@ -18,11 +21,11 @@ const ProductDetails = ({ product, isLoading }) => {
   const [mainImage, setMainImage] = useState(product.gallery[0]);
 
   const addToCard = () => {
-    if(!selectedColor) {
-      return toast.error('Choose the color')
+    if (!selectedColor) {
+      return toast.error("Choose the color");
     }
-    if(!selectedSize) {
-      return toast.error('Choose the size')
+    if (!selectedSize) {
+      return toast.error("Choose the size");
     }
     dispatch(
       addToCart({
@@ -37,10 +40,10 @@ const ProductDetails = ({ product, isLoading }) => {
         quantity: quantity,
       }),
     );
-    setSelectedSize(null)
-    setSelectedColor(null)
-    setQuantity(1)
-    toast.success('Added to your cart');
+    setSelectedSize(null);
+    setSelectedColor(null);
+    setQuantity(1);
+    toast.success("Added to your cart");
   };
 
   if (isLoading) return <Loader />;
@@ -67,9 +70,9 @@ const ProductDetails = ({ product, isLoading }) => {
         </div>
         <div className={styles.mainImageContainer}>
           <img
-            src={mainImage}
             alt="Main product"
             className={styles.mainImage}
+            src={mainImage}
           />
         </div>
       </div>

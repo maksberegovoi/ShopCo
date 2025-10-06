@@ -1,17 +1,13 @@
 import React from "react";
 import styles from "./ProductStyles.module.scss";
-import casualImg from "/images/productTypes/casual.png";
-import gymImg from "/images/productTypes/gym.png";
-import partyImg from "/images/productTypes/party.png";
-import formalImg from "/images/productTypes/formal.png";
-import { NavLink, useNavigate } from "react-router-dom";
+import casualImg from "/images/productStyles/casual.png";
+import gymImg from "/images/productStyles/gym.png";
+import partyImg from "/images/productStyles/party.png";
+import formalImg from "/images/productStyles/formal.png";
+import { NavLink } from "react-router-dom";
 import { CATALOG_ROUTE } from "../../../utils/consts.js";
 
 const ProductStyles = () => {
-  const navigate = useNavigate();
-  const handleClick = () => {
-    navigate(CATALOG_ROUTE);
-  };
   return (
     <section className={`container`}>
       <div className={styles.typesWrapper}>

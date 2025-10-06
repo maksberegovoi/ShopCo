@@ -37,11 +37,11 @@
     overflow: hidden;
 
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transition: box-shadow 0.3s ease;
+    transition: all 0.2s ease;
 
     @include hover {
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.9);
-        scale: 1.02;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+        scale: 1.05;
     }
 
     @include desktop-above {

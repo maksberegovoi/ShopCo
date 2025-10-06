@@ -36,6 +36,10 @@ const CatalogPage = () => {
   };
 
   useEffect(() => {
+    setPage(1);
+  }, [filters]);
+
+  useEffect(() => {
     window.scrollTo(0, 0);
   }, [page]);
 
@@ -78,7 +82,8 @@ const CatalogPage = () => {
             </svg>
           </button>
           <p>
-            Showing {data.items.length} of {data.total} products
+            Showing {(page - 1) * limit + 1} –{" "}
+            {Math.min(page * limit, data.total)} of {data.total} products
           </p>
           <div className={styles.sort}>
             <p>Sort By:</p>

@@ -119,9 +119,19 @@
 }
 
 .color {
-    width: rem(25);
-    height: rem(25);
-    border: 1px solid lightgrey;
-    border-radius: rem(50);
+    position: relative;
 
+    width: rem(27);
+    height: rem(27);
+    border: 1px solid lightgrey;
+    border-radius: 50%;
+}
+
+.iconNotAvailiable {
+    position: absolute;
+    inset: 0;
+    transform: translateX(30%) translateY(30%);
+    fill: red;
+    width: rem(16);
+    height: rem(16);
 }

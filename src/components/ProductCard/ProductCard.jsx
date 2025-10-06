@@ -5,6 +5,7 @@ import { generatePath, useNavigate } from "react-router-dom";
 import { DETAILS_ROUTE } from "../../utils/consts.js";
 import { generateSlug } from "../../utils/generateSlug.js";
 import { getColorValue } from "../../utils/getColorValue.js";
+import sprite from "../../../assets/icons/sprite.svg";
 
 const ProductCard = ({ product }) => {
   const navigate = useNavigate();
@@ -52,7 +53,6 @@ const ProductCard = ({ product }) => {
                 className={styles.color}
                 style={{
                   backgroundColor: getColorValue(color.name),
-                  opacity: color.available ? 1 : 0.2,
                   cursor: color.available ? "auto" : "not-allowed",
                 }}
                 title={
@@ -60,7 +60,16 @@ const ProductCard = ({ product }) => {
                     ? "unknown"
                     : color.name
                 }
-              ></span>
+              >
+                {!color.available && (
+                  <svg
+                    className={styles.iconNotAvailiable}
+                    style={{ fill: color.name === "red" ? "black" : "red" }}
+                  >
+                    <use href={`${sprite}#icon-close`}></use>
+                  </svg>
+                )}
+              </span>
             ))}
           </div>
           <div className={styles.priceContainer} translate="no">

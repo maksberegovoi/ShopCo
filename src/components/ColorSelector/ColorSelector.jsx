@@ -19,7 +19,6 @@ const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
             }
             style={{
               backgroundColor: getColorValue(color.name),
-              opacity: color.available ? 1 : 0.3,
             }}
             onClick={() => onColorChange(color.name)}
             aria-label={color.name}
@@ -29,6 +28,14 @@ const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
                 : color.name
             }
           >
+            {!color.available && (
+              <svg
+                className={styles.iconNotAvailiable}
+                style={{ fill: color.name === "red" ? "black" : "red" }}
+              >
+                <use href={`${sprite}#icon-close`}></use>
+              </svg>
+            )}
             <svg
               className={
                 selectedColor === color.name

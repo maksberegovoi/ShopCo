@@ -31,7 +31,6 @@ export const productsApi = createApi({
             colors: product.colors,
             sizes: product.sizes,
           }));
-
         return {
           data: {
             items: paginatedProducts,
