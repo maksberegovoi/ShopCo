@@ -1,5 +1,5 @@
 import { useSearchParams } from "react-router-dom";
-import { useCallback, useMemo } from "react";
+import { useCallback, useEffect, useMemo } from "react";
 import { maxProductPrice } from "../utils/consts.js";
 
 export const useFilters = () => {
@@ -200,3 +200,7 @@ export const useFilters = () => {
     toggleCategory,
   };
 };
+
+// useEffect(() => {
+//   setPrice(maxProductPrice);
+// }, [resetFilters]);
