@@ -5,7 +5,6 @@
     flex-direction: column;
     color: black;
     gap: rem(20);
-    padding-block: rem(55);
 
     @include tablet-above {
         gap: rem(24);
