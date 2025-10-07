@@ -20,6 +20,8 @@ export const colorMap = [
   { name: "orange", hex: "#EA580C" },
   { name: "burgundy", hex: "#800020" },
   { name: "navy", hex: "#000080" },
+  { name: "dark-blue", hex: "#00008B" },
+  { name: "light-blue", hex: "#ADD8E6" },
 ];
 
 export const sizeMap = [
