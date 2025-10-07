@@ -18,7 +18,7 @@ import {
   removeFromCart,
   setPromoCodeDiscount,
 } from "../../redux/features/cart/cartSlice.js";
-import { useLazyCheckPromoCodeQuery } from "../../redux/features/promocode/promoCodeAPI.jsx";
+import { useLazyCheckPromoCodeQuery } from "../../redux/features/promocode/promoCodeAPI.js";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader/Loader.jsx";
 import { nanoid } from "@reduxjs/toolkit";

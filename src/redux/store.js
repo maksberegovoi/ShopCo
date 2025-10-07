@@ -10,7 +10,7 @@ import {
 } from "redux-persist";
 import rootReducer from "./rootReducer.js";
 import { productsApi } from "./features/products/productsAPI.js";
-import {promoCodeApi} from "./features/promocode/promoCodeAPI.jsx";
+import { promoCodeApi } from "./features/promocode/promoCodeAPI.js";
 import categoriesApi from "./features/categories/categoriesAPI.js";
 
 export const store = configureStore({
@@ -20,7 +20,11 @@ export const store = configureStore({
       serializableCheck: {
         ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER],
       },
-    }).concat(productsApi.middleware,promoCodeApi.middleware,categoriesApi.middleware),
+    }).concat(
+      productsApi.middleware,
+      promoCodeApi.middleware,
+      categoriesApi.middleware,
+    ),
 });
 
 export const persistor = persistStore(store);

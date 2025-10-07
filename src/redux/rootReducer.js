@@ -1,7 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
 import { productsApi } from "./features/products/productsAPI.js";
 import { persistedCartReducer } from "./persistConfig.js";
-import { promoCodeApi } from "./features/promocode/promoCodeAPI.jsx";
+import { promoCodeApi } from "./features/promocode/promoCodeAPI.js";
 import categoriesApi from "./features/categories/categoriesAPI.js";
 
 const rootReducer = combineReducers({
