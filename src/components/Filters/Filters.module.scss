@@ -22,12 +22,15 @@
 
     &.isOpen {
         width: 100%;
-        height: fit-content;
+        height: 100%;
         padding: rem(20) rem(24);
         opacity: 1;
 
         @include laptop-above {
             width: rem(300);
+        }
+        @include laptop-above {
+            height: fit-content;
         }
     }
 

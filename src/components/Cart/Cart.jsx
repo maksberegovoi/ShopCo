@@ -116,6 +116,7 @@ const Cart = () => {
                     <h4>${product.price}</h4>
                     <div className={styles.quantity}>
                       <button
+                        disabled={product.quantity <= 1}
                         onClick={() => dispatch(decrementQuantity(product))}
                         aria-label="minus one item"
                       >

@@ -225,6 +225,16 @@
     @include tablet-above {
         padding: rem(14) rem(20);
     }
+
+    & button {
+        &:disabled {
+            pointer-events: none;
+
+            .iconQuantity {
+                opacity: 0.3;
+            }
+        }
+    }
 }
 
 .iconQuantity {
