@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./ProductDetails.module.scss";
-import { renderRatingStars } from "../../utils/productRatingStars.jsx";
+import { renderRatingStars } from "../../utils/productRatingStars/productRatingStars.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import ColorSelector from "../ColorSelector/ColorSelector.jsx";
 import SizeSelector from "../SizeSelector/SizeSelector.jsx";

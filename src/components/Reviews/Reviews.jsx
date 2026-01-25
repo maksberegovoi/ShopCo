@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import styles from "./Reviews.module.scss";
-import { renderRatingStars } from "../../utils/productRatingStars.jsx";
+import { renderRatingStars } from "../../utils/productRatingStars/productRatingStars.jsx";
 import { useGetProductReviewsQuery } from "../../redux/features/products/productsAPI.js";
 import Loader from "../../UI/Loader/Loader.jsx";
 import { useParams } from "react-router-dom";

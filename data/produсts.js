@@ -1,3 +1,5 @@
+import { buildSearchIndex } from "../src/utils/searchProducts/searchProducts.js";
+
 export const mockProducts = [
   {
     id: 40,
@@ -3656,3 +3658,5 @@ export const mockProducts = [
     ],
   },
 ];
+
+export const indexedProducts = buildSearchIndex(mockProducts);

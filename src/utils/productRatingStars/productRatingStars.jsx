@@ -1,4 +1,4 @@
-import sprite from "../../assets/icons/sprite.svg";
+import sprite from "../../../assets/icons/sprite.svg";
 
 export const renderRatingStars = (rating) => {
   return Array.from({ length: 5 }, (_, index) => {

@@ -1,7 +1,7 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { mockProducts } from "../../../../data/produсts.js";
-import { filterProducts } from "../../../utils/filterProducts.js";
-import { searchProducts } from "../../../utils/searchProducts.js";
+import { indexedProducts, mockProducts } from "../../../../data/produсts.js";
+import { filterProducts } from "../../../utils/filterProducts/filterProducts.js";
+import { searchProducts } from "../../../utils/searchProducts/searchProducts.js";
 import { mockCategories } from "../../../../data/categories.js";
 
 export const productsApi = createApi({
@@ -151,7 +151,7 @@ export const productsApi = createApi({
           return { data: { items: [] } };
         }
 
-        const result = searchProducts(mockProducts, searchQuery);
+        const result = searchProducts(indexedProducts, searchQuery);
 
         const products = result.map((product) => ({
           id: product.id,

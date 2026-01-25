@@ -5,3 +5,5 @@ export const generateSlug = (name) => {
     .replace(/\s+/g, "-")
     .trim();
 };
+
+console.log(generateSlug("T-shirt"));

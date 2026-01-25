@@ -1,10 +1,10 @@
 import React from "react";
-import { renderRatingStars } from "../../utils/productRatingStars.jsx";
+import { renderRatingStars } from "../../utils/productRatingStars/productRatingStars.jsx";
 import styles from "./ProductCard.module.scss";
 import { generatePath, useNavigate } from "react-router-dom";
 import { DETAILS_ROUTE } from "../../utils/consts.js";
-import { generateSlug } from "../../utils/generateSlug.js";
-import { getColorValue } from "../../utils/getColorValue.js";
+import { generateSlug } from "../../utils/generateSlug/generateSlug.js";
+import { getColorValue } from "../../utils/getColorValue/getColorValue.js";
 import sprite from "../../../assets/icons/sprite.svg";
 
 const ProductCard = ({ product }) => {

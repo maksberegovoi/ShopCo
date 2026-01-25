@@ -1,4 +1,4 @@
-import { sortProducts } from "./sortProducts.js";
+import { sortProducts } from "../sortProducts/sortProducts.js";
 
 export const filterProducts = (filters, items) => {
   let filteredProducts = [...items];

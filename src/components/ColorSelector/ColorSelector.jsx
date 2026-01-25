@@ -1,7 +1,7 @@
 import React from "react";
 import styles from "./ColorSelector.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
-import { getColorValue } from "../../utils/getColorValue.js";
+import { getColorValue } from "../../utils/getColorValue/getColorValue.js";
 
 const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
   return (
