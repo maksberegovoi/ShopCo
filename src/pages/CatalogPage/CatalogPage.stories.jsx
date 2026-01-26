@@ -6,6 +6,4 @@ export default {
   component: CatalogPage,
 };
 
-export const EmptyCart = {};
-
-export const CartWithProducts = {};
+export const Default = {};

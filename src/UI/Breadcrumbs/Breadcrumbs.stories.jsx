@@ -4,13 +4,6 @@ import Breadcrumbs from "./Breadcrumbs";
 export default {
   title: "Navigation/Breadcrumbs",
   component: Breadcrumbs,
-  decorators: [
-    (Story) => (
-      <MemoryRouter>
-        <Story />
-      </MemoryRouter>
-    ),
-  ],
 };
 
 export const Default = {
