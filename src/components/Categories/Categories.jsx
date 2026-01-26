@@ -2,7 +2,7 @@ import React from "react";
 import styles from "./Categories.module.scss";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
 import { CATALOG_ROUTE } from "../../utils/consts.js";
-import { useGetCategoriesQuery } from "../../redux/features/categories/categoriesAPI.js";
+import { useGetCategoriesQuery } from "../../api/categories/categoriesAPI.js";
 import Loader from "../../UI/Loader/Loader.jsx";
 import Error from "../Error/Error.jsx";
 import Catalog from "../Catalog/Catalog.jsx";

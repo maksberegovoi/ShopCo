@@ -4,7 +4,7 @@ import { generatePath, NavLink, Outlet, useParams } from "react-router-dom";
 import Loader from "../../UI/Loader/Loader.jsx";
 import styles from "./DetailsPage.module.scss";
 import { FAQ_ROUTE, REVIEWS_ROUTE } from "../../utils/consts.js";
-import { useGetProductByIdQuery } from "../../redux/features/products/productsAPI.js";
+import { useGetProductByIdQuery } from "../../api/products/productsAPI.js";
 import Error from "../../components/Error/Error.jsx";
 
 const DetailsPage = () => {

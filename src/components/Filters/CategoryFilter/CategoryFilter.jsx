@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "../FilterRows.module.scss";
 import sprite from "../../../../assets/icons/sprite.svg";
-import { useFilters } from "../../../hooks/useFilters.js";
-import { useGetCategoriesQuery } from "../../../redux/features/categories/categoriesAPI.js";
+import { useFilters } from "../../../hooks/useFilters/useFilters.js";
+import { useGetCategoriesQuery } from "../../../api/categories/categoriesAPI.js";
 import Loader from "../../../UI/Loader/Loader.jsx";
 import Error from "../../Error/Error.jsx";
 

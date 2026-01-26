@@ -1,6 +1,6 @@
 import styles from "../FilterRows.module.scss";
 import sprite from "../../../../assets/icons/sprite.svg";
-import { useFilters } from "../../../hooks/useFilters.js";
+import { useFilters } from "../../../hooks/useFilters/useFilters.js";
 import { stylesMap } from "../../../utils/consts.js";
 
 const StyleFilter = ({ handler }) => {

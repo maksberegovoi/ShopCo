@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useState } from "react";
 import styles from "./PriceFilter.module.scss";
 import { maxProductPrice } from "../../../utils/consts.js";
-import { useFilters } from "../../../hooks/useFilters.js";
+import { useFilters } from "../../../hooks/useFilters/useFilters.js";
 
 const PriceFilter = ({ handler }) => {
   const rangeRef = useRef(null);

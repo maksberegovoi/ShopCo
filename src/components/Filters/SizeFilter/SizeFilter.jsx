@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "../FilterButtons.module.scss";
-import { useFilters } from "../../../hooks/useFilters.js";
+import { useFilters } from "../../../hooks/useFilters/useFilters.js";
 import { sizeMap } from "../../../utils/consts.js";
 
 const SizeFilter = ({ handler }) => {

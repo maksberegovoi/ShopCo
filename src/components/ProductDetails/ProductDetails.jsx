@@ -7,7 +7,7 @@ import SizeSelector from "../SizeSelector/SizeSelector.jsx";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
 import Loader from "../../UI/Loader/Loader.jsx";
 import { useDispatch } from "react-redux";
-import { addToCart } from "../../redux/features/cart/cartSlice.js";
+import { addToCart } from "../../redux/features/cart/slice/cartSlice.js";
 import toast from "react-hot-toast";
 
 const ProductDetails = ({ product, isLoading }) => {

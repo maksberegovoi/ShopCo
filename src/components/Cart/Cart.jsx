@@ -11,14 +11,14 @@ import {
   cartDeliveryFee,
   cartProducts,
   cartPromoCodeDiscount,
-} from "../../redux/features/cart/cartSelectors.js";
+} from "../../redux/features/cart/selectors/cartSelectors.js";
 import {
   decrementQuantity,
   incrementQuantity,
   removeFromCart,
   setPromoCodeDiscount,
-} from "../../redux/features/cart/cartSlice.js";
-import { useLazyCheckPromoCodeQuery } from "../../redux/features/promocode/promoCodeAPI.js";
+} from "../../redux/features/cart/slice/cartSlice.js";
+import { useLazyCheckPromoCodeQuery } from "../../api/promocode/promoCodeAPI.js";
 import toast from "react-hot-toast";
 import Loader from "../../UI/Loader/Loader.jsx";
 import { nanoid } from "@reduxjs/toolkit";

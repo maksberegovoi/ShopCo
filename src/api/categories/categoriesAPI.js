@@ -1,6 +1,6 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { mockCategories } from "../../../../data/categories.js";
-import { mockProducts } from "../../../../data/produсts.js";
+import { mockCategories } from "../../../data/categories.js";
+import { mockProducts } from "../../../data/produсts.js";
 
 const categoriesApi = createApi({
   reducerPath: "categoriesApi",

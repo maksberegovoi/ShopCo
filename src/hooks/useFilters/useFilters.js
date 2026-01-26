@@ -1,6 +1,6 @@
 import { useSearchParams } from "react-router-dom";
 import { useCallback, useMemo } from "react";
-import { maxProductPrice } from "../utils/consts.js";
+import { maxProductPrice } from "../../utils/consts.js";
 
 export const useFilters = () => {
   const [searchParams, setSearchParams] = useSearchParams();

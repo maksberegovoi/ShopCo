@@ -7,7 +7,7 @@ import PriceFilter from "./PriceFilter/PriceFilter.jsx";
 import TypeFilter from "./TypeFilter/TypeFilter.jsx";
 import sprite from "../../../assets/icons/sprite.svg";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
-import { useFilters } from "../../hooks/useFilters.js";
+import { useFilters } from "../../hooks/useFilters/useFilters.js";
 import BrandFilter from "./BrandFilter/BrandFilter.jsx";
 import CategoryFilter from "./CategoryFilter/CategoryFilter.jsx";
 

@@ -1,8 +1,8 @@
 import { createApi, fakeBaseQuery } from "@reduxjs/toolkit/query/react";
-import { indexedProducts, mockProducts } from "../../../../data/produсts.js";
-import { filterProducts } from "../../../utils/filterProducts/filterProducts.js";
-import { searchProducts } from "../../../utils/searchProducts/searchProducts.js";
-import { mockCategories } from "../../../../data/categories.js";
+import { indexedProducts, mockProducts } from "../../../data/produсts.js";
+import { filterProducts } from "../../utils/filterProducts/filterProducts.js";
+import { searchProducts } from "../../utils/searchProducts/searchProducts.js";
+import { mockCategories } from "../../../data/categories.js";
 
 export const productsApi = createApi({
   reducerPath: "productsApi",

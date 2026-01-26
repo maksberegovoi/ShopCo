@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./ProductCharacteristics.module.scss";
-import { useGetProductDetailsQuery } from "../../redux/features/products/productsAPI.js";
+import { useGetProductDetailsQuery } from "../../api/products/productsAPI.js";
 import Loader from "../../UI/Loader/Loader.jsx";
 import { useParams } from "react-router-dom";
 import Error from "../Error/Error.jsx";

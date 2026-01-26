@@ -2,7 +2,7 @@ import React from "react";
 import { colorMap } from "../../../utils/consts.js";
 import styles from "./ColorFilter.module.scss";
 import sprite from "../../../../assets/icons/sprite.svg";
-import { useFilters } from "../../../hooks/useFilters.js";
+import { useFilters } from "../../../hooks/useFilters/useFilters.js";
 
 const ColorFilter = ({ handler }) => {
   const { filters } = useFilters();

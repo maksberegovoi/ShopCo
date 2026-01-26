@@ -3,7 +3,7 @@ import styles from "./Search.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
 import Catalog from "../Catalog/Catalog.jsx";
 import MyButton from "../../UI/MyButton/MyButton.jsx";
-import { useSearchProductsQuery } from "../../redux/features/products/productsAPI.js";
+import { useSearchProductsQuery } from "../../api/products/productsAPI.js";
 import { useNavigate } from "react-router-dom";
 import Loader from "../../UI/Loader/Loader.jsx";
 
