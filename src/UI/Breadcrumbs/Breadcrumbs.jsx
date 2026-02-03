@@ -1,8 +1,8 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useBreadcrumbs } from '../../hooks/useBreadcrumbs/useBreadCrumbs.js'
 import styles from './Breadcrumbs.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
+import { useBreadcrumbs } from '../../hooks/useBreadcrumbs/useBreadcrumbs.js'
 
 const Breadcrumbs = ({ items }) => {
     const breadcrumbsFromHook = useBreadcrumbs()
