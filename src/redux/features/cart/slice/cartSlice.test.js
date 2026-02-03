@@ -32,21 +32,30 @@ describe('cartSlice', () => {
 
     it('removes product from cart', () => {
         const initial = reducer(undefined, addToCart(product))
-        const state = reducer(initial, removeFromCart({ id: 1, color: 'black', size: 'M' }))
+        const state = reducer(
+            initial,
+            removeFromCart({ id: 1, color: 'black', size: 'M' })
+        )
 
         expect(state.items).toHaveLength(0)
     })
 
     it('increments quantity by 1', () => {
         const initial = reducer(undefined, addToCart(product))
-        const state = reducer(initial, incrementQuantity({ id: 1, color: 'black', size: 'M' }))
+        const state = reducer(
+            initial,
+            incrementQuantity({ id: 1, color: 'black', size: 'M' })
+        )
 
         expect(state.items[0].quantity).toBe(2)
     })
 
     it('decrements quantity but not below 1', () => {
         const initial = reducer(undefined, addToCart(product))
-        const state = reducer(initial, decrementQuantity({ id: 1, color: 'black', size: 'M' }))
+        const state = reducer(
+            initial,
+            decrementQuantity({ id: 1, color: 'black', size: 'M' })
+        )
 
         expect(state.items[0].quantity).toBe(1)
     })

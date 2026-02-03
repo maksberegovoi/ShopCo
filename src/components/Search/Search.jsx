@@ -3,18 +3,20 @@ import styles from './Search.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
 import Catalog from '../Catalog/Catalog.jsx'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
+import { useSearchProductsQuery } from '../../api/products/productsAPI.js'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../../UI/Loader/Loader.jsx'
 
 const Search = () => {
     const [search, setSearch] = useState('')
     const [isOpen, setIsOpen] = useState(true)
-    const [debouncedSearch, setDebouncedSearch] = useState('') // TODO: debouncedSearch
+    const [debouncedSearch, setDebouncedSearch] = useState('')
     const searchRef = useRef(null)
     const navigate = useNavigate()
 
-    const data = {}
-    const isLoading = false
+    const { data, isLoading } = useSearchProductsQuery(debouncedSearch, {
+        skip: debouncedSearch.trim().length < 2
+    })
 
     const handleSearch = () => {
         if (search.trim().length < 2) return
@@ -57,13 +59,12 @@ const Search = () => {
             }
         }
         document.addEventListener('mousedown', handleClickOutside)
-        return () => document.removeEventListener('mousedown', handleClickOutside)
+        return () =>
+            document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
-    /* TODO: remove debouncedSearch and check if it's needed */
     return (
         <div className={styles.container} ref={searchRef}>
-            <p>{debouncedSearch}</p>
             <div className={styles.searchBox}>
                 <button onClick={handleSearch} aria-label="search button">
                     <svg className={styles.icon}>
@@ -85,7 +86,10 @@ const Search = () => {
                         <Loader />
                     ) : (
                         <>
-                            <Catalog products={data?.items || []} style={styles.catalog} />
+                            <Catalog
+                                products={data?.items || []}
+                                style={styles.catalog}
+                            />
                             <MyButton
                                 handleClick={() => setIsOpen(!isOpen)}
                                 classname={styles.searchBtn}

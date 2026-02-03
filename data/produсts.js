@@ -88,7 +88,8 @@ export const mockProducts = [
             },
             {
                 author: 'Mark T.',
-                comment: 'Fits well and looks exactly like the pictures. Good value for the price.',
+                comment:
+                    'Fits well and looks exactly like the pictures. Good value for the price.',
                 rating: 4,
                 postDate: 'September 5, 2024'
             },
@@ -115,13 +116,15 @@ export const mockProducts = [
             },
             {
                 author: 'Daniel P.',
-                comment: 'Awesome print and fits perfectly. I wear it almost every week!',
+                comment:
+                    'Awesome print and fits perfectly. I wear it almost every week!',
                 rating: 5,
                 postDate: 'September 22, 2024'
             },
             {
                 author: 'Chloe S.',
-                comment: 'Very stylish and soft fabric. Love the modern streetwear vibe.',
+                comment:
+                    'Very stylish and soft fabric. Love the modern streetwear vibe.',
                 rating: 5,
                 postDate: 'September 25, 2024'
             },
@@ -206,7 +209,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Ethan P.',
-                comment: 'Simple and clean look. The stripes make it stand out just enough.',
+                comment:
+                    'Simple and clean look. The stripes make it stand out just enough.',
                 rating: 4,
                 postDate: 'June 12, 2023'
             },
@@ -220,7 +224,8 @@ export const mockProducts = [
                 },
                 {
                     author: 'Sophia H.',
-                    comment: 'Good quality cotton and nice stitching. Perfect for everyday wear.',
+                    comment:
+                        'Good quality cotton and nice stitching. Perfect for everyday wear.',
                     rating: 5,
                     postDate: 'June 22, 2023'
                 },
@@ -247,13 +252,15 @@ export const mockProducts = [
                 },
                 {
                     author: 'Ava S.',
-                    comment: 'Nice shirt overall. Would be great if there were more color options.',
+                    comment:
+                        'Nice shirt overall. Would be great if there were more color options.',
                     rating: 4,
                     postDate: 'July 5, 2023'
                 },
                 {
                     author: 'Lucas T.',
-                    comment: 'Comfortable fit and good material. Perfect for casual workwear.',
+                    comment:
+                        'Comfortable fit and good material. Perfect for casual workwear.',
                     rating: 4,
                     postDate: 'July 10, 2023'
                 },
@@ -353,13 +360,15 @@ export const mockProducts = [
                 },
                 {
                     author: 'Sophia L.',
-                    comment: 'Fabric feels premium and breathable. Perfect for long office hours.',
+                    comment:
+                        'Fabric feels premium and breathable. Perfect for long office hours.',
                     rating: 5,
                     postDate: 'April 12, 2023'
                 },
                 {
                     author: 'James K.',
-                    comment: 'Classic design, washes well without losing shape. Highly recommend.',
+                    comment:
+                        'Classic design, washes well without losing shape. Highly recommend.',
                     rating: 5,
                     postDate: 'April 15, 2023'
                 },
@@ -514,13 +523,15 @@ export const mockProducts = [
                 },
                 {
                     author: 'Noah P.',
-                    comment: 'Fabric feels premium and breathable. Good quality for the price.',
+                    comment:
+                        'Fabric feels premium and breathable. Good quality for the price.',
                     rating: 4,
                     postDate: 'June 10, 2023'
                 },
                 {
                     author: 'Olivia L.',
-                    comment: 'Bold design, very trendy. I get compliments whenever I wear it.',
+                    comment:
+                        'Bold design, very trendy. I get compliments whenever I wear it.',
                     rating: 5,
                     postDate: 'June 12, 2023'
                 },
@@ -738,7 +749,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Ryan K.',
-                comment: 'The gradient print looks amazing in person. Super soft fabric.',
+                comment:
+                    'The gradient print looks amazing in person. Super soft fabric.',
                 rating: 5,
                 postDate: 'July 25, 2023'
             }
@@ -1274,13 +1286,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Leo P.',
-                comment: 'Love the pattern — makes me look taller and the fabric feels premium.',
+                comment:
+                    'Love the pattern — makes me look taller and the fabric feels premium.',
                 rating: 5,
                 postDate: 'August 10, 2024'
             },
             {
                 author: 'Derek K.',
-                comment: 'Perfect for both office and casual wear. Great color contrast too!',
+                comment:
+                    'Perfect for both office and casual wear. Great color contrast too!',
                 rating: 4,
                 postDate: 'August 15, 2024'
             }
@@ -1345,12 +1359,19 @@ export const mockProducts = [
                 info: [
                     { key: 'Washing', value: 'Machine wash cold (30°C max)' },
                     { key: 'Drying', value: 'Tumble dry low or hang dry' },
-                    { key: 'Ironing', value: 'Iron on low heat, avoid print area' },
+                    {
+                        key: 'Ironing',
+                        value: 'Iron on low heat, avoid print area'
+                    },
                     { key: 'Bleaching', value: 'Do not bleach' }
                 ]
             }
         ],
-        gallery: ['/images/coming-soon.png', '/images/coming-soon.png', '/images/coming-soon.png'],
+        gallery: [
+            '/images/coming-soon.png',
+            '/images/coming-soon.png',
+            '/images/coming-soon.png'
+        ],
         reviews: [
             {
                 author: 'Samantha D.',
@@ -1545,13 +1566,15 @@ export const mockProducts = [
             },
             {
                 author: 'James P.',
-                comment: 'Good quality fabric and nice pattern. Very professional looking.',
+                comment:
+                    'Good quality fabric and nice pattern. Very professional looking.',
                 rating: 4,
                 postDate: 'September 10, 2023'
             },
             {
                 author: 'Robert L.',
-                comment: 'Fits well and looks great with a tie. Highly recommend for office wear.',
+                comment:
+                    'Fits well and looks great with a tie. Highly recommend for office wear.',
                 rating: 5,
                 postDate: 'September 12, 2023'
             }
@@ -1638,19 +1661,22 @@ export const mockProducts = [
             },
             {
                 author: 'Chris W.',
-                comment: 'Great quality for the price. Very comfortable and fits perfectly.',
+                comment:
+                    'Great quality for the price. Very comfortable and fits perfectly.',
                 rating: 5,
                 postDate: 'October 8, 2023'
             },
             {
                 author: 'Taylor M.',
-                comment: 'Love the colors and the material. Definitely buying another one!',
+                comment:
+                    'Love the colors and the material. Definitely buying another one!',
                 rating: 5,
                 postDate: 'October 12, 2023'
             },
             {
                 author: 'Jordan H.',
-                comment: 'Perfect for chilly evenings. The fleece lining is incredibly soft.',
+                comment:
+                    'Perfect for chilly evenings. The fleece lining is incredibly soft.',
                 rating: 5,
                 postDate: 'October 15, 2023'
             }
@@ -1728,7 +1754,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Marcus J.',
-                comment: "Great shorts for working out. They don't ride up and dry quickly.",
+                comment:
+                    "Great shorts for working out. They don't ride up and dry quickly.",
                 rating: 4,
                 postDate: 'June 18, 2023'
             },
@@ -1798,7 +1825,10 @@ export const mockProducts = [
             {
                 title: 'Care Instructions',
                 info: [
-                    { key: 'Washing', value: 'Hand wash cold or machine wash delicate' },
+                    {
+                        key: 'Washing',
+                        value: 'Hand wash cold or machine wash delicate'
+                    },
                     { key: 'Drying', value: 'Hang dry only' },
                     { key: 'Ironing', value: 'Iron on low heat' },
                     { key: 'Bleaching', value: 'Do not bleach' }
@@ -1820,13 +1850,15 @@ export const mockProducts = [
             },
             {
                 author: 'Anthony G.',
-                comment: 'Fun shirt for summer events. Fabric is light and breathable.',
+                comment:
+                    'Fun shirt for summer events. Fabric is light and breathable.',
                 rating: 4,
                 postDate: 'May 15, 2023'
             },
             {
                 author: 'Lucas P.',
-                comment: 'Nice print but runs a bit large. Still a great shirt for the price.',
+                comment:
+                    'Nice print but runs a bit large. Still a great shirt for the price.',
                 rating: 3,
                 postDate: 'May 20, 2023'
             }
@@ -1904,19 +1936,22 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Sarah J.',
-                comment: 'Perfect basic tee! Soft fabric and great quality. I bought three.',
+                comment:
+                    'Perfect basic tee! Soft fabric and great quality. I bought three.',
                 rating: 5,
                 postDate: 'March 5, 2023'
             },
             {
                 author: 'Nicole P.',
-                comment: 'Comfortable and fits true to size. Goes with everything.',
+                comment:
+                    'Comfortable and fits true to size. Goes with everything.',
                 rating: 4,
                 postDate: 'March 12, 2023'
             },
             {
                 author: 'Amanda K.',
-                comment: 'Exactly what I was looking for. Simple and well-made.',
+                comment:
+                    'Exactly what I was looking for. Simple and well-made.',
                 rating: 5,
                 postDate: 'March 18, 2023'
             }
@@ -1995,13 +2030,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Tom H.',
-                comment: 'Decent shorts for the price. Comfortable but the fit is very loose.',
+                comment:
+                    'Decent shorts for the price. Comfortable but the fit is very loose.',
                 rating: 3,
                 postDate: 'April 8, 2023'
             },
             {
                 author: 'Jessica R.',
-                comment: "Nice summer shorts. They're breathable but wrinkle easily.",
+                comment:
+                    "Nice summer shorts. They're breathable but wrinkle easily.",
                 rating: 3,
                 postDate: 'April 14, 2023'
             }
@@ -2087,7 +2124,8 @@ export const mockProducts = [
             },
             {
                 author: 'Nathan W.',
-                comment: 'Perfect gym hoodie. The material is fantastic and it fits great.',
+                comment:
+                    'Perfect gym hoodie. The material is fantastic and it fits great.',
                 rating: 4,
                 postDate: 'November 8, 2023'
             },
@@ -2180,13 +2218,15 @@ export const mockProducts = [
             },
             {
                 author: 'Catherine M.',
-                comment: 'Professional and elegant. Worth every penny. Fits like a dream.',
+                comment:
+                    'Professional and elegant. Worth every penny. Fits like a dream.',
                 rating: 5,
                 postDate: 'December 10, 2023'
             },
             {
                 author: 'Rachel B.',
-                comment: 'Beautiful blazer for work. Gets compliments every time I wear it.',
+                comment:
+                    'Beautiful blazer for work. Gets compliments every time I wear it.',
                 rating: 5,
                 postDate: 'December 18, 2023'
             }
@@ -2265,13 +2305,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Miguel S.',
-                comment: 'Fun and colorful! Great for summer parties and casual outings.',
+                comment:
+                    'Fun and colorful! Great for summer parties and casual outings.',
                 rating: 4,
                 postDate: 'July 3, 2023'
             },
             {
                 author: 'Jake M.',
-                comment: 'Nice polo with vibrant stripes. Comfortable and looks good.',
+                comment:
+                    'Nice polo with vibrant stripes. Comfortable and looks good.',
                 rating: 4,
                 postDate: 'July 9, 2023'
             }
@@ -2350,7 +2392,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Michelle R.',
-                comment: 'Perfect jeans! They fit great and are so comfortable for everyday wear.',
+                comment:
+                    'Perfect jeans! They fit great and are so comfortable for everyday wear.',
                 rating: 5,
                 postDate: 'February 12, 2023'
             },
@@ -2362,7 +2405,8 @@ export const mockProducts = [
             },
             {
                 author: 'Jennifer A.',
-                comment: 'Love these jeans! They go with everything and hold their shape well.',
+                comment:
+                    'Love these jeans! They go with everything and hold their shape well.',
                 rating: 5,
                 postDate: 'February 28, 2023'
             }
@@ -2441,7 +2485,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Alex P.',
-                comment: 'Love the oversized fit! The graphic is really cool and unique.',
+                comment:
+                    'Love the oversized fit! The graphic is really cool and unique.',
                 rating: 4,
                 postDate: 'January 15, 2023'
             },
@@ -2526,7 +2571,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Tyler J.',
-                comment: 'Excellent compression shirt! Really helps during heavy lifting sessions.',
+                comment:
+                    'Excellent compression shirt! Really helps during heavy lifting sessions.',
                 rating: 5,
                 postDate: 'September 8, 2023'
             },
@@ -2539,7 +2585,8 @@ export const mockProducts = [
             },
             {
                 author: 'Chris L.',
-                comment: 'Perfect for the gym. Stays in place and wicks moisture well.',
+                comment:
+                    'Perfect for the gym. Stays in place and wicks moisture well.',
                 rating: 4,
                 postDate: 'September 22, 2023'
             }
@@ -2618,19 +2665,22 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Sophia G.',
-                comment: 'Absolutely gorgeous! The silk feels amazing and it drapes beautifully.',
+                comment:
+                    'Absolutely gorgeous! The silk feels amazing and it drapes beautifully.',
                 rating: 5,
                 postDate: 'April 5, 2023'
             },
             {
                 author: 'Isabella N.',
-                comment: 'Perfect for dressy occasions. So elegant and well-made.',
+                comment:
+                    'Perfect for dressy occasions. So elegant and well-made.',
                 rating: 5,
                 postDate: 'April 12, 2023'
             },
             {
                 author: 'Emma D.',
-                comment: 'Love this blouse! Worth the investment for special events.',
+                comment:
+                    'Love this blouse! Worth the investment for special events.',
                 rating: 5,
                 postDate: 'April 20, 2023'
             }
@@ -2687,7 +2737,10 @@ export const mockProducts = [
                 info: [
                     { key: 'Fit Type', value: 'Regular Fit' },
                     { key: 'Length', value: 'Above Knee' },
-                    { key: 'Waistband', value: 'Belt Loops with Button Closure' },
+                    {
+                        key: 'Waistband',
+                        value: 'Belt Loops with Button Closure'
+                    },
                     { key: 'Pockets', value: 'Multiple Cargo Pockets' }
                 ]
             },
@@ -2709,7 +2762,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Mark R.',
-                comment: 'Great cargo shorts with plenty of pocket space. Very practical.',
+                comment:
+                    'Great cargo shorts with plenty of pocket space. Very practical.',
                 rating: 4,
                 postDate: 'May 18, 2023'
             },
@@ -2801,13 +2855,15 @@ export const mockProducts = [
             },
             {
                 author: 'Richard T.',
-                comment: 'The quality is outstanding. So warm and comfortable for winter.',
+                comment:
+                    'The quality is outstanding. So warm and comfortable for winter.',
                 rating: 5,
                 postDate: 'December 2, 2023'
             },
             {
                 author: 'Margaret S.',
-                comment: 'Pure luxury. The cashmere is divine and the fit is perfect.',
+                comment:
+                    'Pure luxury. The cashmere is divine and the fit is perfect.',
                 rating: 5,
                 postDate: 'December 8, 2023'
             }
@@ -2863,7 +2919,10 @@ export const mockProducts = [
                 info: [
                     { key: 'Fit Type', value: 'Relaxed Fit' },
                     { key: 'Length', value: 'Above Knee' },
-                    { key: 'Waistband', value: 'Elastic Waistband with Drawstring' },
+                    {
+                        key: 'Waistband',
+                        value: 'Elastic Waistband with Drawstring'
+                    },
                     { key: 'Pockets', value: 'Side Pockets' }
                 ]
             },
@@ -2885,7 +2944,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Carlos M.',
-                comment: 'Perfect for hot summer days! Very comfortable and airy.',
+                comment:
+                    'Perfect for hot summer days! Very comfortable and airy.',
                 rating: 4,
                 postDate: 'June 8, 2023'
             },
@@ -2969,19 +3029,22 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'William H.',
-                comment: 'Excellent trousers for the office. Perfect fit and high quality.',
+                comment:
+                    'Excellent trousers for the office. Perfect fit and high quality.',
                 rating: 5,
                 postDate: 'October 5, 2023'
             },
             {
                 author: 'Henry P.',
-                comment: 'Professional and well-tailored. Worth the investment.',
+                comment:
+                    'Professional and well-tailored. Worth the investment.',
                 rating: 4,
                 postDate: 'October 12, 2023'
             },
             {
                 author: 'George K.',
-                comment: 'Great quality fabric and construction. Highly recommend.',
+                comment:
+                    'Great quality fabric and construction. Highly recommend.',
                 rating: 5,
                 postDate: 'October 18, 2023'
             }
@@ -3060,13 +3123,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Austin R.',
-                comment: 'Love the vintage look! The distressed print is perfect.',
+                comment:
+                    'Love the vintage look! The distressed print is perfect.',
                 rating: 5,
                 postDate: 'August 20, 2023'
             },
             {
                 author: 'Maya C.',
-                comment: 'Great quality and super comfortable. Perfect for casual wear.',
+                comment:
+                    'Great quality and super comfortable. Perfect for casual wear.',
                 rating: 4,
                 postDate: 'August 28, 2023'
             },
@@ -3151,19 +3216,22 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Lily M.',
-                comment: 'Perfect for yoga class! So soft and stretchy, I love it.',
+                comment:
+                    'Perfect for yoga class! So soft and stretchy, I love it.',
                 rating: 5,
                 postDate: 'July 10, 2023'
             },
             {
                 author: 'Hannah S.',
-                comment: 'Great quality and very comfortable. The fit is flattering too.',
+                comment:
+                    'Great quality and very comfortable. The fit is flattering too.',
                 rating: 4,
                 postDate: 'July 18, 2023'
             },
             {
                 author: 'Grace W.',
-                comment: 'Love this hoodie for my morning yoga sessions. Highly recommend!',
+                comment:
+                    'Love this hoodie for my morning yoga sessions. Highly recommend!',
                 rating: 5,
                 postDate: 'July 25, 2023'
             }
@@ -3242,13 +3310,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Chloe T.',
-                comment: 'Love the distressed look! Fits perfectly and very trendy.',
+                comment:
+                    'Love the distressed look! Fits perfectly and very trendy.',
                 rating: 4,
                 postDate: 'May 5, 2023'
             },
             {
                 author: 'Zoe L.',
-                comment: 'Great jeans with a cool edgy vibe. Comfortable to wear all day.',
+                comment:
+                    'Great jeans with a cool edgy vibe. Comfortable to wear all day.',
                 rating: 4,
                 postDate: 'May 12, 2023'
             }
@@ -3293,7 +3363,10 @@ export const mockProducts = [
             {
                 title: 'Materials',
                 info: [
-                    { key: 'material', value: '95% Polyester, 5% Spandex with Sequins' },
+                    {
+                        key: 'material',
+                        value: '95% Polyester, 5% Spandex with Sequins'
+                    },
                     { key: 'Fabric Weight', value: '200 GSM' },
                     { key: 'Texture', value: 'Sequined, Sparkly' },
                     { key: 'Stretch', value: 'Slight Stretch' }
@@ -3326,13 +3399,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Ava M.',
-                comment: 'Absolutely stunning! Got so many compliments at the party.',
+                comment:
+                    'Absolutely stunning! Got so many compliments at the party.',
                 rating: 5,
                 postDate: 'December 15, 2023'
             },
             {
                 author: 'Mia K.',
-                comment: 'Beautiful top! The sequins are high quality and it fits perfectly.',
+                comment:
+                    'Beautiful top! The sequins are high quality and it fits perfectly.',
                 rating: 5,
                 postDate: 'December 22, 2023'
             },
@@ -3416,7 +3491,8 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Andrew S.',
-                comment: 'Excellent quality Oxford shirt. Perfect for work and weekends.',
+                comment:
+                    'Excellent quality Oxford shirt. Perfect for work and weekends.',
                 rating: 5,
                 postDate: 'March 8, 2023'
             },
@@ -3507,13 +3583,15 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Jason P.',
-                comment: 'Great shorts for basketball and running. Very breathable.',
+                comment:
+                    'Great shorts for basketball and running. Very breathable.',
                 rating: 4,
                 postDate: 'April 10, 2023'
             },
             {
                 author: 'Ryan M.',
-                comment: 'Comfortable and lightweight. Perfect for intense workouts.',
+                comment:
+                    'Comfortable and lightweight. Perfect for intense workouts.',
                 rating: 4,
                 postDate: 'April 18, 2023'
             }
@@ -3559,7 +3637,10 @@ export const mockProducts = [
             {
                 title: 'Materials',
                 info: [
-                    { key: 'material', value: '60% Acrylic, 30% Wool, 10% Cashmere' },
+                    {
+                        key: 'material',
+                        value: '60% Acrylic, 30% Wool, 10% Cashmere'
+                    },
                     { key: 'Fabric Weight', value: '380 GSM' },
                     { key: 'Texture', value: 'Soft Knit' },
                     { key: 'Stretch', value: 'Moderate Stretch' }
@@ -3592,19 +3673,22 @@ export const mockProducts = [
         reviews: [
             {
                 author: 'Elizabeth T.',
-                comment: 'So soft and cozy! Perfect for chilly evenings. Love it!',
+                comment:
+                    'So soft and cozy! Perfect for chilly evenings. Love it!',
                 rating: 5,
                 postDate: 'November 10, 2023'
             },
             {
                 author: 'Anna W.',
-                comment: "Beautiful cardigan! The quality is excellent and it's so warm.",
+                comment:
+                    "Beautiful cardigan! The quality is excellent and it's so warm.",
                 rating: 5,
                 postDate: 'November 18, 2023'
             },
             {
                 author: 'Laura H.',
-                comment: 'My favorite cardigan! Goes with everything and feels amazing.',
+                comment:
+                    'My favorite cardigan! Goes with everything and feels amazing.',
                 rating: 5,
                 postDate: 'November 25, 2023'
             }

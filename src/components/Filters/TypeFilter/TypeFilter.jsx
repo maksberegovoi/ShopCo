@@ -20,7 +20,9 @@ const TypeFilter = ({ handler }) => {
                     aria-label={`type ${type}`}
                     onClick={() => handleClick(type)}
                     className={
-                        filters.type === type ? `${styles.option} ${styles.active}` : styles.option
+                        filters.type === type
+                            ? `${styles.option} ${styles.active}`
+                            : styles.option
                     }
                 >
                     {type}

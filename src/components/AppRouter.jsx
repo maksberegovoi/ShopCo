@@ -22,7 +22,8 @@ const AppRouter = () => {
         const currentBasePath = getProductBasePath(currentPath)
         const prevBasePath = getProductBasePath(prevPath)
         const shouldScroll =
-            currentBasePath !== prevBasePath || !currentPath.startsWith('/catalog/')
+            currentBasePath !== prevBasePath ||
+            !currentPath.startsWith('/catalog/')
 
         if (shouldScroll) {
             window.scrollTo(0, 0)
@@ -34,21 +35,35 @@ const AppRouter = () => {
     return (
         <Suspense fallback={<Loader />}>
             <Routes>
-                {publicRoutes.map(({ path, Component, children }) => (
-                    <Route key={path} path={path} element={<Component />}>
-                        {children?.map(({ path: childPath, index, Component: ChildComponent }) =>
-                            index ? (
-                                <Route key="index" index element={<ChildComponent />} />
-                            ) : (
-                                <Route
-                                    key={childPath}
-                                    path={childPath}
-                                    element={<ChildComponent />}
-                                />
-                            )
-                        )}
-                    </Route>
-                ))}
+                {publicRoutes.map((route) => {
+                    const { path, Component, children } = route
+
+                    return (
+                        <Route key={path} path={path} element={<Component />}>
+                            {children?.map((child) => {
+                                const {
+                                    path: childPath,
+                                    index,
+                                    Component: ChildComponent
+                                } = child
+
+                                return index ? (
+                                    <Route
+                                        key="index"
+                                        index
+                                        element={<ChildComponent />}
+                                    />
+                                ) : (
+                                    <Route
+                                        key={childPath}
+                                        path={childPath}
+                                        element={<ChildComponent />}
+                                    />
+                                )
+                            })}
+                        </Route>
+                    )
+                })}
             </Routes>
         </Suspense>
     )

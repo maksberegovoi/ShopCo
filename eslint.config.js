@@ -1,3 +1,4 @@
+// For more info, see https://github.com/storybookjs/eslint-plugin-storybook#configuration-flat-config-format
 import storybook from 'eslint-plugin-storybook'
 
 import js from '@eslint/js'
@@ -25,21 +26,28 @@ export default defineConfig([
             }
         },
         rules: {
-            'no-unused-vars': ['warn', { varsIgnorePattern: '^[A-Z_]' }],
-            'no-undef': ['warn'],
-            'react-hooks/rules-of-hooks': ['warn'],
-            'no-warning-comments': ['warn']
+            'no-unused-vars': ['error', { varsIgnorePattern: '^[A-Z_]' }]
         }
     },
-
+    // tests
     {
-        files: ['**/*.test.{js,jsx}'],
+        files: ['**/*.test.{js,jsx,ts,tsx}'],
         languageOptions: {
             globals: {
                 describe: 'readonly',
                 it: 'readonly',
                 expect: 'readonly',
                 vi: 'readonly'
+            }
+        }
+    },
+
+    {
+        files: ['vite.config.*'],
+        languageOptions: {
+            globals: {
+                __dirname: 'readonly',
+                process: 'readonly'
             }
         }
     },

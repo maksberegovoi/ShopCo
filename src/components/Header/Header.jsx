@@ -50,7 +50,10 @@ const Header = () => {
                         Sign up and get 20% off to your first order.
                         <button className={styles.promoBtn}>Sign Up Now</button>
                     </p>
-                    <button onClick={() => setIsPromo(false)} aria-label="close promo">
+                    <button
+                        onClick={() => setIsPromo(false)}
+                        aria-label="close promo"
+                    >
                         <svg className={styles.iconPromoClose}>
                             <use href={`${sprite}#icon-close`}></use>
                         </svg>
@@ -58,7 +61,11 @@ const Header = () => {
                 </div>
             </div>
             <div className={`${styles.headerMain} container`}>
-                <button className={styles.burgerButton} onClick={toggleMenu} aria-label="open menu">
+                <button
+                    className={styles.burgerButton}
+                    onClick={toggleMenu}
+                    aria-label="open menu"
+                >
                     <svg className={styles.iconMenu}>
                         <use href={`${sprite}#icon-burger-menu`}></use>
                     </svg>
@@ -66,7 +73,9 @@ const Header = () => {
                 <NavLink to={HOME_ROUTE}>
                     <span className="logo">SHOP.CO</span>
                 </NavLink>
-                <div className={`${styles.navContainer} ${isBurgerMenu ? styles.mobileNav : ''}`}>
+                <div
+                    className={`${styles.navContainer} ${isBurgerMenu ? styles.mobileNav : ''}`}
+                >
                     {isBurgerMenu && (
                         <NavLink to={HOME_ROUTE}>
                             <span className={'logo'}>SHOP.CO</span>
@@ -79,15 +88,22 @@ const Header = () => {
                             visible={isAccordion}
                         >
                             {dropdownLinks.map((link) => (
-                                <div key={link.name} className={styles.dropdownContainer}>
+                                <div
+                                    key={link.name}
+                                    className={styles.dropdownContainer}
+                                >
                                     <NavLink
                                         to={link.path}
                                         className={styles.link}
-                                        onClick={() => setIsAccordion(!isAccordion)}
+                                        onClick={() =>
+                                            setIsAccordion(!isAccordion)
+                                        }
                                     >
                                         {link.name}
                                         <svg className={styles.iconArrowRight}>
-                                            <use href={`${sprite}#icon-arrow`}></use>
+                                            <use
+                                                href={`${sprite}#icon-arrow`}
+                                            ></use>
                                         </svg>
                                     </NavLink>
                                 </div>
@@ -119,13 +135,20 @@ const Header = () => {
                     <Search />
                 </div>
                 <div className={styles.iconsContainer}>
-                    <button onClick={toggleMobileSearch} aria-label="search button">
+                    <button
+                        onClick={toggleMobileSearch}
+                        aria-label="search button"
+                    >
                         <svg className={styles.iconSearch}>
                             <use href={`${sprite}#icon-search`}></use>
                         </svg>
                     </button>
                     {iconLinks.map((link) => (
-                        <NavLink to={link.path} key={link.path} aria-label={link.name}>
+                        <NavLink
+                            to={link.path}
+                            key={link.path}
+                            aria-label={link.name}
+                        >
                             <svg className={styles.iconLink}>
                                 <use href={link.href}></use>
                             </svg>
@@ -133,7 +156,9 @@ const Header = () => {
                     ))}
                 </div>
             </div>
-            {isBurgerMenu && <div className={styles.overlay} onClick={toggleMenu} />}
+            {isBurgerMenu && (
+                <div className={styles.overlay} onClick={toggleMenu} />
+            )}
             {isMobileSearch && (
                 <div className={`${styles.searchMobileContainer} container`}>
                     <Search />

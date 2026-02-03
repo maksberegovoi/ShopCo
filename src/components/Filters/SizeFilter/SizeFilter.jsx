@@ -17,7 +17,9 @@ const SizeFilter = ({ handler }) => {
                     key={size}
                     onClick={() => handleClick(size)}
                     className={
-                        filters.sizes.includes(size) ? `${styles.btn} ${styles.active}` : styles.btn
+                        filters.sizes.includes(size)
+                            ? `${styles.btn} ${styles.active}`
+                            : styles.btn
                     }
                     type="button"
                     aria-label={size}

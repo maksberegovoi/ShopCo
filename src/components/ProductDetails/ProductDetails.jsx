@@ -66,7 +66,11 @@ const ProductDetails = ({ product, isLoading }) => {
                     ))}
                 </div>
                 <div className={styles.mainImageContainer}>
-                    <img alt="Main product" className={styles.mainImage} src={mainImage} />
+                    <img
+                        alt="Main product"
+                        className={styles.mainImage}
+                        src={mainImage}
+                    />
                 </div>
             </div>
             <div className={styles.content}>
@@ -77,18 +81,27 @@ const ProductDetails = ({ product, isLoading }) => {
                             {renderRatingStars(product.rating)}
                         </div>
                         <p>
-                            {product.rating}/<span className={styles.ratingNumberAccent}>5</span>
+                            {product.rating}/
+                            <span className={styles.ratingNumberAccent}>5</span>
                         </p>
                     </div>
                     <div className={styles.priceContainer}>
                         {product.discount > 0 ? (
                             <>
-                                <span className={styles.currentPrice}>${product.price}</span>
-                                <span className={styles.originalPrice}>${product.basePrice}</span>
-                                <span className={styles.discount}>-{product.discount}%</span>
+                                <span className={styles.currentPrice}>
+                                    ${product.price}
+                                </span>
+                                <span className={styles.originalPrice}>
+                                    ${product.basePrice}
+                                </span>
+                                <span className={styles.discount}>
+                                    -{product.discount}%
+                                </span>
                             </>
                         ) : (
-                            <span className={styles.currentPrice}>${product.price}</span>
+                            <span className={styles.currentPrice}>
+                                ${product.price}
+                            </span>
                         )}
                     </div>
                     <p>{product.description}</p>
@@ -124,7 +137,10 @@ const ProductDetails = ({ product, isLoading }) => {
                             </svg>
                         </button>
                     </div>
-                    <MyButton classname={styles.btnCart} handleClick={addToCard}>
+                    <MyButton
+                        classname={styles.btnCart}
+                        handleClick={addToCard}
+                    >
                         Add to Cart
                     </MyButton>
                 </div>

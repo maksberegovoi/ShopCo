@@ -21,7 +21,14 @@ const normalize = (value) =>
         .replace(/\s+/g, ' ')
         .trim()
 
-const SEARCH_FIELDS = ['name', 'description', 'brand', 'type', 'style', 'gender']
+const SEARCH_FIELDS = [
+    'name',
+    'description',
+    'brand',
+    'type',
+    'style',
+    'gender'
+]
 
 export const buildSearchIndex = (products) => {
     return products.map((product) => {

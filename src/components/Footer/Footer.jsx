@@ -63,7 +63,9 @@ const Footer = () => {
     return (
         <footer className={`container`}>
             <div className={styles.subscription}>
-                <h2 className={styles.subscriptionTitle}>STAY UPTO DATE ABOUT OUR LATEST OFFERS</h2>
+                <h2 className={styles.subscriptionTitle}>
+                    STAY UPTO DATE ABOUT OUR LATEST OFFERS
+                </h2>
                 <div className={styles.emailWrapper}>
                     <div className={styles.emailContainer}>
                         <svg className={styles.iconEmail}>
@@ -86,8 +88,8 @@ const Footer = () => {
                         <span className="logo">SHOP.CO</span>
                     </NavLink>
                     <p>
-                        We have clothes that suits your style and which you’re proud to wear. From
-                        women to men.
+                        We have clothes that suits your style and which you’re
+                        proud to wear. From women to men.
                     </p>
                     <div className={styles.socials}>
                         {socials.map((social) => (
@@ -108,10 +110,14 @@ const Footer = () => {
                     <ul className={styles.columns}>
                         {columns.map((column) => (
                             <li key={column.title} className={styles.column}>
-                                <h4 className={styles.columnTitle}>{column.title}</h4>
+                                <h4 className={styles.columnTitle}>
+                                    {column.title}
+                                </h4>
                                 <div className={styles.columnLinks}>
                                     {column.links.map((link) => (
-                                        <NavLink key={link.name}>{link.name}</NavLink>
+                                        <NavLink key={link.name}>
+                                            {link.name}
+                                        </NavLink>
                                     ))}
                                 </div>
                             </li>

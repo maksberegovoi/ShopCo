@@ -30,7 +30,11 @@ const cartSlice = createSlice({
 
             state.items = state.items.filter(
                 (product) =>
-                    !(product.id === id && product.size === size && product.color === color)
+                    !(
+                        product.id === id &&
+                        product.size === size &&
+                        product.color === color
+                    )
             )
         },
 
@@ -59,7 +63,9 @@ const cartSlice = createSlice({
 })
 
 const findCartItem = (items, id, color, size) => {
-    return items.find((item) => item.id === id && item.color === color && item.size === size)
+    return items.find(
+        (item) => item.id === id && item.color === color && item.size === size
+    )
 }
 
 export const {

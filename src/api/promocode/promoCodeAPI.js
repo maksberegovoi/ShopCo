@@ -10,10 +10,14 @@ export const promoCodeApi = createApi({
             queryFn: async ({ code } = {}) => {
                 await new Promise((resolve) => setTimeout(resolve, 300))
 
-                const response = mockPromoCodes.filter((promoCode) => promoCode.code === code)
+                const response = mockPromoCodes.filter(
+                    (promoCode) => promoCode.code === code
+                )
 
                 if (response.length === 0) {
-                    return { error: { status: 404, data: 'Promo code not found' } }
+                    return {
+                        error: { status: 404, data: 'Promo code not found' }
+                    }
                 }
 
                 return { data: response[0] }
@@ -23,4 +27,5 @@ export const promoCodeApi = createApi({
     })
 })
 
-export const { useCheckPromoCodeQuery, useLazyCheckPromoCodeQuery } = promoCodeApi
+export const { useCheckPromoCodeQuery, useLazyCheckPromoCodeQuery } =
+    promoCodeApi

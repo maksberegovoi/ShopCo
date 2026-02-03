@@ -1,4 +1,3 @@
-import { MemoryRouter } from 'react-router-dom'
 import Breadcrumbs from './Breadcrumbs'
 
 export default {

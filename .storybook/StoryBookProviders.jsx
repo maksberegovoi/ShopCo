@@ -18,11 +18,18 @@ export const createStore = (preloadedState) =>
             [promoCodeApi.reducerPath]: promoCodeApi.reducer
         },
         middleware: (getDefaultMiddleware) =>
-            getDefaultMiddleware().concat(productsApi.middleware, categoriesApi.middleware),
+            getDefaultMiddleware().concat(
+                productsApi.middleware,
+                categoriesApi.middleware
+            ),
         preloadedState
     })
 
-export const StorybookProviders = ({ children, initialState, initialEntries = ['/'] }) => {
+export const StorybookProviders = ({
+    children,
+    initialState,
+    initialEntries = ['/']
+}) => {
     const storeRef = useRef(null)
 
     if (!storeRef.current) {
@@ -31,7 +38,9 @@ export const StorybookProviders = ({ children, initialState, initialEntries = ['
 
     return (
         <Provider store={storeRef.current}>
-            <MemoryRouter initialEntries={initialEntries}>{children}</MemoryRouter>
+            <MemoryRouter initialEntries={initialEntries}>
+                {children}
+            </MemoryRouter>
         </Provider>
     )
 }

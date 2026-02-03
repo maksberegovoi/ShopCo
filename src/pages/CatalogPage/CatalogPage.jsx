@@ -63,8 +63,9 @@ const CatalogPage = () => {
         <section className={`container`}>
             <div className={styles.header}>
                 <h3>
-                    {[filters.category, filters.style, filters.type].filter(Boolean).join(' • ') ||
-                        'Catalog'}
+                    {[filters.category, filters.style, filters.type]
+                        .filter(Boolean)
+                        .join(' • ') || 'Catalog'}
                 </h3>
                 <div className={styles.headerContent}>
                     <button
@@ -78,18 +79,33 @@ const CatalogPage = () => {
                     </button>
                     <p>
                         Showing {(page - 1) * limit + 1} –{' '}
-                        {Math.min(page * limit, data?.total || 1)} of {data?.total || 0} products
+                        {Math.min(page * limit, data?.total || 1)} of{' '}
+                        {data?.total || 0} products
                     </p>
                     <div className={styles.sort}>
                         <p>Sort By:</p>
                         <Accordion title={sortTitle} absolute={true}>
                             <div className={styles.sortItems}>
-                                <button onClick={(e) => handleSort(e, 'priceUp')}>Price Up</button>
-                                <button onClick={(e) => handleSort(e, 'priceDown')}>
+                                <button
+                                    onClick={(e) => handleSort(e, 'priceUp')}
+                                >
+                                    Price Up
+                                </button>
+                                <button
+                                    onClick={(e) => handleSort(e, 'priceDown')}
+                                >
                                     Price Down
                                 </button>
-                                <button onClick={(e) => handleSort(e, 'discount')}>Discount</button>
-                                <button onClick={(e) => handleSort(e, 'rating')}>Rating</button>
+                                <button
+                                    onClick={(e) => handleSort(e, 'discount')}
+                                >
+                                    Discount
+                                </button>
+                                <button
+                                    onClick={(e) => handleSort(e, 'rating')}
+                                >
+                                    Rating
+                                </button>
                             </div>
                         </Accordion>
                     </div>

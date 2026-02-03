@@ -24,11 +24,21 @@ const ProductCard = ({ product }) => {
 
     return (
         <li className={styles.container}>
-            <a className={styles.card} href={url} onClick={(e) => handleClick(e)}>
+            <a
+                className={styles.card}
+                href={url}
+                onClick={(e) => handleClick(e)}
+            >
                 <div className={styles.imgContainer}>
-                    <img src={product.avatar} alt="product image" className={styles.cardImage} />
+                    <img
+                        src={product.avatar}
+                        alt="product image"
+                        className={styles.cardImage}
+                    />
                     {product?.discount > 0 && (
-                        <span className={styles.discount}>-{product.discount}%</span>
+                        <span className={styles.discount}>
+                            -{product.discount}%
+                        </span>
                     )}
                 </div>
                 <div className={styles.cardContent}>
@@ -38,7 +48,8 @@ const ProductCard = ({ product }) => {
                             {renderRatingStars(product.rating)}
                         </div>
                         <p>
-                            {product.rating}/<span className={styles.ratingNumberAccent}>5</span>
+                            {product.rating}/
+                            <span className={styles.ratingNumberAccent}>5</span>
                         </p>
                     </div>
                     <div className={styles.colors}>
@@ -48,7 +59,9 @@ const ProductCard = ({ product }) => {
                                 className={styles.color}
                                 style={{
                                     backgroundColor: getColorValue(color.name),
-                                    cursor: color.available ? 'auto' : 'not-allowed'
+                                    cursor: color.available
+                                        ? 'auto'
+                                        : 'not-allowed'
                                 }}
                                 title={
                                     getColorValue(color.name) === 'transparent'
@@ -59,9 +72,16 @@ const ProductCard = ({ product }) => {
                                 {!color.available && (
                                     <svg
                                         className={styles.iconNotAvailiable}
-                                        style={{ fill: color.name === 'red' ? 'black' : 'red' }}
+                                        style={{
+                                            fill:
+                                                color.name === 'red'
+                                                    ? 'black'
+                                                    : 'red'
+                                        }}
                                     >
-                                        <use href={`${sprite}#icon-close`}></use>
+                                        <use
+                                            href={`${sprite}#icon-close`}
+                                        ></use>
                                     </svg>
                                 )}
                             </span>
@@ -71,7 +91,9 @@ const ProductCard = ({ product }) => {
                         {product.discount > 0 ? (
                             <>
                                 <span>${product.price}</span>
-                                <span className={styles.originalPrice}>${product.basePrice}</span>
+                                <span className={styles.originalPrice}>
+                                    ${product.basePrice}
+                                </span>
                             </>
                         ) : (
                             <span>${product.price || 0}</span>

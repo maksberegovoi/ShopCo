@@ -1,5 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
-import { FLUSH, PAUSE, PERSIST, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
+import {
+    FLUSH,
+    PAUSE,
+    PERSIST,
+    persistStore,
+    PURGE,
+    REGISTER,
+    REHYDRATE
+} from 'redux-persist'
 import rootReducer from './config/rootReducer.js'
 import { productsApi } from '../api/products/productsAPI.js'
 import { promoCodeApi } from '../api/promocode/promoCodeAPI.js'
@@ -10,9 +18,20 @@ export const store = configureStore({
     middleware: (getDefaultMiddleware) =>
         getDefaultMiddleware({
             serializableCheck: {
-                ignoredActions: [FLUSH, REHYDRATE, PAUSE, PERSIST, PURGE, REGISTER]
+                ignoredActions: [
+                    FLUSH,
+                    REHYDRATE,
+                    PAUSE,
+                    PERSIST,
+                    PURGE,
+                    REGISTER
+                ]
             }
-        }).concat(productsApi.middleware, promoCodeApi.middleware, homePageApi.middleware)
+        }).concat(
+            productsApi.middleware,
+            promoCodeApi.middleware,
+            homePageApi.middleware
+        )
 })
 
 export const persistor = persistStore(store)

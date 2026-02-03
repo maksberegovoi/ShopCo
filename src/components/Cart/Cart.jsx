@@ -29,7 +29,8 @@ const Cart = () => {
 
     const products = useSelector(cartProducts)
 
-    const { subTotal, total, discount, promoCodeDiscountValue } = useSelector(calculateSummary)
+    const { subTotal, total, discount, promoCodeDiscountValue } =
+        useSelector(calculateSummary)
     const deliveryFee = useSelector(cartDeliveryFee)
 
     const [promoCode, setPromoCode] = useState('')
@@ -93,22 +94,32 @@ const Cart = () => {
                                         <div className={styles.header}>
                                             <h5>{product.name}</h5>
                                             <button
-                                                onClick={() => removeItem(product)}
+                                                onClick={() =>
+                                                    removeItem(product)
+                                                }
                                                 type="button"
                                                 aria-label="delete product"
                                             >
-                                                <svg className={styles.iconTrash}>
-                                                    <use href={`${sprite}#icon-trash`}></use>
+                                                <svg
+                                                    className={styles.iconTrash}
+                                                >
+                                                    <use
+                                                        href={`${sprite}#icon-trash`}
+                                                    ></use>
                                                 </svg>
                                             </button>
                                         </div>
                                         <div className={styles.detail}>
                                             <dt>Size:</dt>
-                                            <dd className={styles.value}>{product.size}</dd>
+                                            <dd className={styles.value}>
+                                                {product.size}
+                                            </dd>
                                         </div>
                                         <div className={styles.detail}>
                                             <dt>Color:</dt>
-                                            <dd className={styles.value}>{product.color}</dd>
+                                            <dd className={styles.value}>
+                                                {product.color}
+                                            </dd>
                                         </div>
                                     </dl>
                                     <div className={styles.footer}>
@@ -116,20 +127,44 @@ const Cart = () => {
                                         <div className={styles.quantity}>
                                             <button
                                                 disabled={product.quantity <= 1}
-                                                onClick={() => dispatch(decrementQuantity(product))}
+                                                onClick={() =>
+                                                    dispatch(
+                                                        decrementQuantity(
+                                                            product
+                                                        )
+                                                    )
+                                                }
                                                 aria-label="minus one item"
                                             >
-                                                <svg className={styles.iconQuantity}>
-                                                    <use href={`${sprite}#icon-minus`}></use>
+                                                <svg
+                                                    className={
+                                                        styles.iconQuantity
+                                                    }
+                                                >
+                                                    <use
+                                                        href={`${sprite}#icon-minus`}
+                                                    ></use>
                                                 </svg>
                                             </button>
                                             <p>{product.quantity}</p>
                                             <button
-                                                onClick={() => dispatch(incrementQuantity(product))}
+                                                onClick={() =>
+                                                    dispatch(
+                                                        incrementQuantity(
+                                                            product
+                                                        )
+                                                    )
+                                                }
                                                 aria-label="plus one item"
                                             >
-                                                <svg className={styles.iconQuantity}>
-                                                    <use href={`${sprite}#icon-plus`}></use>
+                                                <svg
+                                                    className={
+                                                        styles.iconQuantity
+                                                    }
+                                                >
+                                                    <use
+                                                        href={`${sprite}#icon-plus`}
+                                                    ></use>
                                                 </svg>
                                             </button>
                                         </div>
@@ -149,13 +184,21 @@ const Cart = () => {
 
                         <div className={styles.summaryItem}>
                             <dt className={styles.label}>Discount</dt>
-                            <dd className={`${styles.amount} ${styles.discount}`}>- ${discount}</dd>
+                            <dd
+                                className={`${styles.amount} ${styles.discount}`}
+                            >
+                                - ${discount}
+                            </dd>
                         </div>
 
                         {promoCodeDiscountValue > 0 && (
                             <div className={styles.summaryItem}>
-                                <dt className={styles.label}>Promo (-{promoCodeDiscount}%)</dt>
-                                <dd className={`${styles.amount} ${styles.discount}`}>
+                                <dt className={styles.label}>
+                                    Promo (-{promoCodeDiscount}%)
+                                </dt>
+                                <dd
+                                    className={`${styles.amount} ${styles.discount}`}
+                                >
                                     - ${promoCodeDiscountValue}
                                 </dd>
                             </div>

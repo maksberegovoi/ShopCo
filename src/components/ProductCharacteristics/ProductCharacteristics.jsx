@@ -1,12 +1,14 @@
 import React from 'react'
 import styles from './ProductCharacteristics.module.scss'
+import { useGetProductDetailsQuery } from '../../api/products/productsAPI.js'
 import Loader from '../../UI/Loader/Loader.jsx'
 import { useParams } from 'react-router-dom'
 import Error from '../Error/Error.jsx'
 
 const ProductCharacteristics = () => {
     const { id } = useParams()
-    const { isLoading, isError, details = [] } = {} // TODO: fix this
+    const { data: details, isLoading, isError } = useGetProductDetailsQuery(id)
+
     if (isLoading) return <Loader />
     if (isError) return <Error />
 

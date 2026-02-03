@@ -6,9 +6,12 @@ export const useFilters = () => {
     const [searchParams, setSearchParams] = useSearchParams()
 
     const filters = useMemo(() => {
-        const colors = searchParams.get('colors')?.split(',').filter(Boolean) || []
-        const sizes = searchParams.get('sizes')?.split(',').filter(Boolean) || []
-        const brands = searchParams.get('brands')?.split(',').filter(Boolean) || []
+        const colors =
+            searchParams.get('colors')?.split(',').filter(Boolean) || []
+        const sizes =
+            searchParams.get('sizes')?.split(',').filter(Boolean) || []
+        const brands =
+            searchParams.get('brands')?.split(',').filter(Boolean) || []
 
         return {
             sortBy: searchParams.get('sortBy') || '',
@@ -75,7 +78,8 @@ export const useFilters = () => {
         (color) => {
             setSearchParams((prev) => {
                 const params = new URLSearchParams(prev)
-                const colors = params.get('colors')?.split(',').filter(Boolean) || []
+                const colors =
+                    params.get('colors')?.split(',').filter(Boolean) || []
 
                 if (colors.includes(color)) {
                     const newColors = colors.filter((c) => c !== color)
@@ -98,7 +102,8 @@ export const useFilters = () => {
         (size) => {
             setSearchParams((prev) => {
                 const params = new URLSearchParams(prev)
-                const sizes = params.get('sizes')?.split(',').filter(Boolean) || []
+                const sizes =
+                    params.get('sizes')?.split(',').filter(Boolean) || []
 
                 if (sizes.includes(size)) {
                     const newSizes = sizes.filter((s) => s !== size)
@@ -168,7 +173,8 @@ export const useFilters = () => {
         (brand) => {
             setSearchParams((prev) => {
                 const params = new URLSearchParams(prev)
-                const brands = params.get('brands')?.split(',').filter(Boolean) || []
+                const brands =
+                    params.get('brands')?.split(',').filter(Boolean) || []
 
                 if (brands.includes(brand)) {
                     const newBrands = brands.filter((c) => c !== brand)

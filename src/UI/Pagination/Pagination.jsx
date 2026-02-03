@@ -43,7 +43,11 @@ const Pagination = ({ page, total, limit, onPageChange }) => {
 
     return (
         <div className={styles.pagination}>
-            <button className={styles.navBtn} onClick={handlePrev} disabled={page === 1}>
+            <button
+                className={styles.navBtn}
+                onClick={handlePrev}
+                disabled={page === 1}
+            >
                 <svg className={`${styles.arrow} ${styles.arrowLeft}`}>
                     <use href={`${sprite}#icon-arrowRight`}></use>
                 </svg>
@@ -62,14 +66,22 @@ const Pagination = ({ page, total, limit, onPageChange }) => {
                         <button
                             key={p}
                             onClick={() => onPageChange(p)}
-                            className={p === page ? `${styles.page} ${styles.active}` : styles.page}
+                            className={
+                                p === page
+                                    ? `${styles.page} ${styles.active}`
+                                    : styles.page
+                            }
                         >
                             {p}
                         </button>
                     )
                 })}
             </div>
-            <button className={styles.navBtn} onClick={handleNext} disabled={page === totalPages}>
+            <button
+                className={styles.navBtn}
+                onClick={handleNext}
+                disabled={page === totalPages}
+            >
                 <span className={styles.btnText}>Next</span>
                 <svg className={`${styles.arrow} ${styles.arrowRight}`}>
                     <use href={`${sprite}#icon-arrowRight`}></use>

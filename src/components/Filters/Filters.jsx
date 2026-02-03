@@ -24,7 +24,11 @@ const Filters = ({ isOpen, handleClick }) => {
     } = useFilters()
 
     const filters = [
-        { name: 'Category', Component: CategoryFilter, handler: toggleCategory },
+        {
+            name: 'Category',
+            Component: CategoryFilter,
+            handler: toggleCategory
+        },
         { name: 'Type', Component: TypeFilter, handler: toggleType },
         { name: 'Price', Component: PriceFilter, handler: setMaxPrice },
         { name: 'Color', Component: ColorFilter, handler: toggleColor },
@@ -34,23 +38,39 @@ const Filters = ({ isOpen, handleClick }) => {
     ]
 
     return (
-        <div className={isOpen ? `${styles.filterBox} ${styles.isOpen}` : styles.filterBox}>
+        <div
+            className={
+                isOpen
+                    ? `${styles.filterBox} ${styles.isOpen}`
+                    : styles.filterBox
+            }
+        >
             <div className={styles.title}>
                 <h4>Filters</h4>
-                <button aria-label="close filters" onClick={() => handleClick()}>
+                <button
+                    aria-label="close filters"
+                    onClick={() => handleClick()}
+                >
                     <svg className={styles.iconClose}>
                         <use href={`${sprite}#icon-close`}></use>
                     </svg>
                 </button>
             </div>
             <div className={styles.content}>
-                {filters.map(({ name, Component, handler }) => (
-                    <div key={name} className={styles.filterWrapper}>
-                        <h6>{name}</h6>
-                        <Component handler={handler} />
-                    </div>
-                ))}
-                <MyButton handleClick={() => resetFilters()} classname={styles.resetFiltersBtn}>
+                {filters.map((filter) => {
+                    const { name, Component, handler } = filter
+
+                    return (
+                        <div key={name} className={styles.filterWrapper}>
+                            <h6>{name}</h6>
+                            <Component handler={handler} />
+                        </div>
+                    )
+                })}
+                <MyButton
+                    handleClick={() => resetFilters()}
+                    classname={styles.resetFiltersBtn}
+                >
                     Reset Filters
                 </MyButton>
             </div>

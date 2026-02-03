@@ -30,22 +30,32 @@ const Hero = () => {
                 <div className={styles.heroContent}>
                     <h1>FIND CLOTHES THAT MATCHES YOUR STYLE</h1>
                     <p>
-                        Browse through our diverse range of meticulously crafted garments, designed
-                        to bring out your individuality and cater to your sense of style.
+                        Browse through our diverse range of meticulously crafted
+                        garments, designed to bring out your individuality and
+                        cater to your sense of style.
                     </p>
                     <MyButton to={CATALOG_ROUTE} classname={styles.heroBtn}>
                         Shop Now
                     </MyButton>
                     <dl className={styles.metrics}>
                         {metrics.map((metric) => (
-                            <div key={metric.title} className={styles.metricsColumn}>
-                                <dt className={styles.metricsTitle}>{metric.title}</dt>
+                            <div
+                                key={metric.title}
+                                className={styles.metricsColumn}
+                            >
+                                <dt className={styles.metricsTitle}>
+                                    {metric.title}
+                                </dt>
                                 <dd>{metric.description}</dd>
                             </div>
                         ))}
                     </dl>
                 </div>
-                <img className={styles.heroImage} src={heroBg} alt="background image" />
+                <img
+                    className={styles.heroImage}
+                    src={heroBg}
+                    alt="background image"
+                />
             </div>
             <div className={styles.brands}>
                 <div className={`${styles.brandContainer} container`}>

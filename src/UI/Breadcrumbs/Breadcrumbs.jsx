@@ -1,11 +1,12 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useBreadcrumbs } from '../../hooks/useBreadCrumbs/useBreadCrumbs.js'
 import styles from './Breadcrumbs.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
+import { useBreadcrumbs } from '../../hooks/useBreadcrumbs/useBreadcrumbs.js'
 
 const Breadcrumbs = ({ items }) => {
-    const breadcrumbs = items ?? useBreadcrumbs()
+    const breadcrumbsFromHook = useBreadcrumbs()
+    const breadcrumbs = items ?? breadcrumbsFromHook
 
     if (breadcrumbs.length <= 1 && breadcrumbs[0]?.path === '/') {
         return null
@@ -20,14 +21,19 @@ const Breadcrumbs = ({ items }) => {
                     return (
                         <li key={crumb.url + index} className={styles.item}>
                             {isLastPage ? (
-                                <span className={styles.current} aria-current="page">
+                                <span
+                                    className={styles.current}
+                                    aria-current="page"
+                                >
                                     {crumb.name}
                                 </span>
                             ) : (
                                 <Link to={crumb.url} className={styles.link}>
                                     {crumb.name}
                                     <svg className={styles.icon}>
-                                        <use href={`${sprite}#icon-arrow`}></use>
+                                        <use
+                                            href={`${sprite}#icon-arrow`}
+                                        ></use>
                                     </svg>
                                 </Link>
                             )}

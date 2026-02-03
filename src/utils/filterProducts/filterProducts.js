@@ -19,24 +19,34 @@ export const filterProducts = (filters, items) => {
 
     if (filters.sizes && filters.sizes.length > 0) {
         filteredProducts = filteredProducts.filter((product) =>
-            filters.sizes.some((size) => product.sizes.some((sizeObj) => sizeObj.name === size))
+            filters.sizes.some((size) =>
+                product.sizes.some((sizeObj) => sizeObj.name === size)
+            )
         )
     }
 
     if (filters.gender) {
-        filteredProducts = filteredProducts.filter((product) => product.gender === filters.gender)
+        filteredProducts = filteredProducts.filter(
+            (product) => product.gender === filters.gender
+        )
     }
 
     if (filters.type) {
-        filteredProducts = filteredProducts.filter((product) => product.type === filters.type)
+        filteredProducts = filteredProducts.filter(
+            (product) => product.type === filters.type
+        )
     }
 
     if (filters.style) {
-        filteredProducts = filteredProducts.filter((product) => product.style === filters.style)
+        filteredProducts = filteredProducts.filter(
+            (product) => product.style === filters.style
+        )
     }
 
     if (filters.maxPrice) {
-        filteredProducts = filteredProducts.filter((product) => product.price <= filters.maxPrice)
+        filteredProducts = filteredProducts.filter(
+            (product) => product.price <= filters.maxPrice
+        )
     }
 
     if (filters.sortBy) {
