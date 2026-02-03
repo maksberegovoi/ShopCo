@@ -4,7 +4,7 @@
     @if math.is-unitless($pixel) {
         @return math.div($pixel, 16) * 1rem;
     } @else {
-        @error 'Use only numbers'
+        @error 'Use only numbers';
     }
 }
 

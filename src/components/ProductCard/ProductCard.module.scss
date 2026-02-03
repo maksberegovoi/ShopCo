@@ -1,7 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
-
 .container {
     height: 100%;
     width: 100%;
@@ -42,7 +40,6 @@
     object-fit: cover;
 }
 
-
 .cardContent {
     display: flex;
     align-items: flex-start;
@@ -67,7 +64,7 @@
 }
 
 .ratingContainer {
-    @include fluid-text(14,12);
+    @include fluid-text(14, 12);
     display: flex;
     gap: rem(13);
 }
@@ -79,7 +76,7 @@
 }
 
 .priceContainer {
-    @include  fluid-text(24, 20);
+    @include fluid-text(24, 20);
     font-weight: 700;
     display: flex;
     align-items: center;
@@ -97,7 +94,7 @@
     pointer-events: none;
 
     border-radius: 62px;
-    background: rgba(255, 51, 51, 0.10);
+    background: rgba(255, 51, 51, 0.1);
     color: red;
     padding: rem(4) rem(12);
     display: flex;
@@ -110,7 +107,6 @@
         font-size: rem(14);
     }
 }
-
 
 .colors {
     display: flex;

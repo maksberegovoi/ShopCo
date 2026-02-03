@@ -1,36 +1,36 @@
-import "../src/main.scss";
-import { StorybookProviders } from "./StoryBookProviders.jsx";
+import '../src/main.scss'
+import { StorybookProviders } from './StoryBookProviders.jsx'
 
 /** @type { import('@storybook/react-vite').Preview } */
 const preview = {
-  parameters: {
-    layout: "centered",
+    parameters: {
+        layout: 'centered',
 
-    controls: {
-      matchers: {
-        color: /(background|color)$/i,
-        date: /Date$/i,
-      },
-    },
+        controls: {
+            matchers: {
+                color: /(background|color)$/i,
+                date: /Date$/i
+            }
+        },
 
-    chromatic: {
-      pauseAnimationAtEnd: true,
-    },
+        chromatic: {
+            pauseAnimationAtEnd: true
+        },
 
-    viewport: {
-      defaultViewport: "desktop",
-    },
+        viewport: {
+            defaultViewport: 'desktop'
+        },
 
-    a11y: {
-      test: "todo",
-    },
-  },
-};
+        a11y: {
+            test: 'todo'
+        }
+    }
+}
 export const decorators = [
-  (Story) => (
-    <StorybookProviders>
-      <Story />
-    </StorybookProviders>
-  ),
-];
-export default preview;
+    (Story) => (
+        <StorybookProviders>
+            <Story />
+        </StorybookProviders>
+    )
+]
+export default preview

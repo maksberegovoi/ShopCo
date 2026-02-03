@@ -1,6 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
 .wrapper {
     min-height: 100vh;
     display: flex;
@@ -36,5 +35,6 @@
     }
 }
 
-.btn {width: rem(300)}
-
+.btn {
+    width: rem(300);
+}

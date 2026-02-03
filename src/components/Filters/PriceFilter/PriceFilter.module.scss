@@ -1,6 +1,5 @@
 @use '../../../styles/helpers/index' as *;
 
-
 .container {
     display: flex;
     flex-direction: column;
@@ -35,7 +34,7 @@
         border-radius: 50%;
         cursor: pointer;
         border: 1px solid black;
-        box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
     }
 }
 

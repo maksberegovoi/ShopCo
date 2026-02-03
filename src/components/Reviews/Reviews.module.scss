@@ -1,13 +1,11 @@
 @use '../../styles/helpers/index' as *;
 
-
 .container {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: rem(25);
 }
-
 
 .list {
     display: grid;

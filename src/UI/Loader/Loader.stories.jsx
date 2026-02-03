@@ -1,8 +1,8 @@
-import Loader from "./Loader";
+import Loader from './Loader'
 
 export default {
-  title: "UI/Loader",
-  component: Loader,
-};
+    title: 'UI/Loader',
+    component: Loader
+}
 
-export const Default = {};
+export const Default = {}
