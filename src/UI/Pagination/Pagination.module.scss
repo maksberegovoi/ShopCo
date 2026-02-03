@@ -1,6 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
 .pagination {
     width: 100%;
     position: relative;
@@ -16,7 +15,7 @@
         content: '';
         width: 100%;
         height: rem(1);
-        background-color: rgba(0, 0, 0, 0.10);
+        background-color: rgba(0, 0, 0, 0.1);
         top: rem(22);
     }
 }
@@ -54,10 +53,9 @@
     justify-content: center;
     padding: rem(8) rem(14);
     border-radius: rem(8);
-    border: 1px solid rgba(0, 0, 0, 0.10);
+    border: 1px solid rgba(0, 0, 0, 0.1);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     gap: rem(8);
-
 
     &:hover:not(:disabled) {
         background: rgba(0, 0, 0, 0.03);
@@ -75,7 +73,6 @@
     }
 }
 
-
 .arrow {
     width: rem(16);
     height: rem(16);
@@ -83,7 +80,6 @@
     @include tablet-above {
         width: rem(20);
         height: rem(20);
-
     }
 }
 

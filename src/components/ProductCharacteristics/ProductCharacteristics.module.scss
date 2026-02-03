@@ -1,6 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
 .container {
     display: grid;
     grid-template-columns: 1fr;
@@ -52,5 +51,3 @@
     text-wrap: balance;
     text-align: right;
 }
-
-

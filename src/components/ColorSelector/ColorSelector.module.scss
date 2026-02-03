@@ -1,6 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
 .colorSelector {
     display: flex;
     flex-direction: column;
@@ -40,7 +39,6 @@
     &:disabled {
         cursor: not-allowed;
     }
-
 }
 
 .iconCheckMark {
@@ -62,4 +60,3 @@
     width: rem(20);
     height: rem(20);
 }
-

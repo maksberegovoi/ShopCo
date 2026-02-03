@@ -47,7 +47,7 @@ select {
     background: none;
 }
 
-input[type="search"]::-ms-clear {
+input[type='search']::-ms-clear {
     display: none;
 }
 
@@ -73,8 +73,8 @@ fieldset {
     border: 0;
 }
 
-input[type="number"]::-webkit-outer-spin-button,
-input[type="number"]::-webkit-inner-spin-button {
+input[type='number']::-webkit-outer-spin-button,
+input[type='number']::-webkit-inner-spin-button {
     -webkit-appearance: none;
     margin: 0;
 }
@@ -106,4 +106,3 @@ h5,
 h6 {
     overflow-wrap: break-word;
 }
-

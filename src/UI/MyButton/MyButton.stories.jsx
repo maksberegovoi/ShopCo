@@ -1,21 +1,21 @@
-import MyButton from "./MyButton";
-import { MemoryRouter } from "react-router-dom";
+import MyButton from './MyButton'
+import { MemoryRouter } from 'react-router-dom'
 
 export default {
-  title: "UI/MyButton",
-  component: MyButton,
-};
+    title: 'UI/MyButton',
+    component: MyButton
+}
 
 export const BlackButton = {
-  args: {
-    color: "black",
-    children: "Button",
-  },
-};
+    args: {
+        color: 'black',
+        children: 'Button'
+    }
+}
 
 export const WhiteButton = {
-  args: {
-    color: "white",
-    children: "Button",
-  },
-};
+    args: {
+        color: 'white',
+        children: 'Button'
+    }
+}

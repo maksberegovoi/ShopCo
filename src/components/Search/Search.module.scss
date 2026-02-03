@@ -1,6 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
 .container {
     position: relative;
 }
@@ -11,7 +10,7 @@
     padding: rem(12) rem(16);
     gap: rem(12);
     border-radius: rem(62);
-    background: #F0F0F0;
+    background: #f0f0f0;
 
     &:focus-within {
         border: rem(1) solid var(--color-accent);
