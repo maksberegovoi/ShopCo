@@ -6,13 +6,16 @@
     "scripts": {
         "dev": "vite --host",
         "build": "vite build",
+
         "lint": "eslint .",
+
         "format": "prettier --write .",
         "format:check": "prettier --check .",
-        "preview": "vite preview",
+
         "test": "vitest",
+        "test:storybook": "vitest --config vite.storybook-test.config.js",
         "storybook": "storybook dev -p 6006",
-        "build-storybook": "storybook build",
+
         "prepare": "husky"
     },
     "lint-staged": {
