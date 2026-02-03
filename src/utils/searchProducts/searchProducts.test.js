@@ -1,6 +1,5 @@
 import { describe, it, expect } from "vitest";
 import { buildSearchIndex, searchProducts } from "./searchProducts";
-import { indexedProducts } from "../../../data/produсts.js";
 
 const products = [
   {

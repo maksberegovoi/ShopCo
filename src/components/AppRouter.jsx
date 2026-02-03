@@ -34,11 +34,19 @@ const AppRouter = () => {
   return (
     <Suspense fallback={<Loader />}>
       <Routes>
-        {publicRoutes.map(({ path, Component, children }) => (
-          <Route key={path} path={path} element={<Component />}>
-            {children?.map(
-              ({ path: childPath, index, Component: ChildComponent }) =>
-                index ? (
+        {publicRoutes.map((route) => {
+          const { path, Component, children } = route;
+
+          return (
+            <Route key={path} path={path} element={<Component />}>
+              {children?.map((child) => {
+                const {
+                  path: childPath,
+                  index,
+                  Component: ChildComponent,
+                } = child;
+
+                return index ? (
                   <Route key="index" index element={<ChildComponent />} />
                 ) : (
                   <Route
@@ -46,10 +54,11 @@ const AppRouter = () => {
                     path={childPath}
                     element={<ChildComponent />}
                   />
-                ),
-            )}
-          </Route>
-        ))}
+                );
+              })}
+            </Route>
+          );
+        })}
       </Routes>
     </Suspense>
   );

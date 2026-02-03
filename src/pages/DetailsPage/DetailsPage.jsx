@@ -9,12 +9,7 @@ import Error from "../../components/Error/Error.jsx";
 
 const DetailsPage = () => {
   const { id } = useParams();
-  const {
-    data: product,
-    isLoading,
-    isError,
-    error,
-  } = useGetProductByIdQuery(id);
+  const { data: product, isLoading, isError } = useGetProductByIdQuery(id);
 
   if (isLoading) return <Loader />;
   if (isError) return <Error />;

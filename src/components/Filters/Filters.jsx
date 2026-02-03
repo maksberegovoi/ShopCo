@@ -48,12 +48,16 @@ const Filters = ({ isOpen, handleClick }) => {
         </button>
       </div>
       <div className={styles.content}>
-        {filters.map(({ name, Component, handler }) => (
-          <div key={name} className={styles.filterWrapper}>
-            <h6>{name}</h6>
-            <Component handler={handler} />
-          </div>
-        ))}
+        {filters.map((filter) => {
+          const { name, Component, handler } = filter;
+
+          return (
+            <div key={name} className={styles.filterWrapper}>
+              <h6>{name}</h6>
+              <Component handler={handler} />
+            </div>
+          );
+        })}
         <MyButton
           handleClick={() => resetFilters()}
           classname={styles.resetFiltersBtn}

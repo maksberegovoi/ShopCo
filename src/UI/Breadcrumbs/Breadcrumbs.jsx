@@ -5,7 +5,8 @@ import styles from "./Breadcrumbs.module.scss";
 import sprite from "../../../assets/icons/sprite.svg";
 
 const Breadcrumbs = ({ items }) => {
-  const breadcrumbs = items ?? useBreadcrumbs();
+  const breadcrumbsFromHook = useBreadcrumbs();
+  const breadcrumbs = items ?? breadcrumbsFromHook;
 
   if (breadcrumbs.length <= 1 && breadcrumbs[0]?.path === "/") {
     return null;
