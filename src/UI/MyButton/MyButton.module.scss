@@ -18,9 +18,9 @@
         opacity: 0.6;
     }
 
-    @include hover{
+    @include hover {
         scale: 1.1;
-        background-color: var(--color-accent)!important;
+        background-color: var(--color-accent) !important;
         color: white !important;
     }
 }
@@ -34,8 +34,8 @@
         opacity: 0.6;
     }
 
-    @include hover{
+    @include hover {
         scale: 1.1;
-        background-color: var(--color-accent)!important;
+        background-color: var(--color-accent) !important;
     }
 }

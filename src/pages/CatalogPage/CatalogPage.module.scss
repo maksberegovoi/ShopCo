@@ -1,7 +1,5 @@
 @use '../../styles/helpers/index' as *;
 
-
-
 .container {
     display: flex;
     flex-direction: column;
@@ -23,13 +21,12 @@
     padding-bottom: rem(20);
     column-gap: rem(30);
     & h3 {
-
     }
 }
 
 .main {
     display: flex;
-//    gap: rem(25);
+    //    gap: rem(25);
 }
 
 .headerContent {
@@ -79,7 +76,6 @@
     height: rem(32);
 }
 
-
 .sort {
     min-width: 0;
     display: flex;
@@ -99,4 +95,3 @@
         }
     }
 }
-

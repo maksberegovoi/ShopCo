@@ -22,14 +22,13 @@ footer {
     gap: 32px;
     padding: rem(32) rem(23);
 
-
     @include tablet-above {
         flex-direction: row;
         padding: rem(36) rem(64);
     }
 
     .subscriptionTitle {
-        @include fluid-text(40,32);
+        @include fluid-text(40, 32);
         color: white;
     }
 
@@ -43,7 +42,7 @@ footer {
         }
     }
 
-    .emailContainer{
+    .emailContainer {
         display: flex;
         align-items: center;
         gap: rem(12);
@@ -115,7 +114,6 @@ footer {
         border-color: var(--color-accent);
     }
 }
-
 
 .socials {
     display: flex;
@@ -207,4 +205,3 @@ footer {
         height: rem(25);
     }
 }
-

@@ -1,7 +1,7 @@
 @use '../../../styles/helpers/index' as *;
 
 .hero {
-    background-color: #F2F0F1;
+    background-color: #f2f0f1;
     overflow: hidden;
 }
 
@@ -55,7 +55,6 @@
     flex-direction: column;
     position: relative;
 
-
     &:not(:last-child)::after {
         position: absolute;
         right: rem(-32);
@@ -67,9 +66,7 @@
         @include mobile-below {
             right: rem(-8);
         }
-
     }
-
 }
 
 .metricsTitle {
@@ -100,5 +97,4 @@
     @include tablet-above {
         height: rem(36);
     }
-
 }

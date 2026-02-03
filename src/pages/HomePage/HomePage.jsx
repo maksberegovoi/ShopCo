@@ -1,16 +1,16 @@
-import React from "react";
-import Categories from "../../components/Categories/Categories.jsx";
-import Hero from "./Hero/Hero.jsx";
-import ProductTypes from "./ProductStyles/ProductStyles.jsx";
+import React from 'react'
+import HomeSections from './HomeSections/HomeSections.jsx'
+import Hero from './Hero/Hero.jsx'
+import ProductTypes from './ProductStyles/ProductStyles.jsx'
 
 const HomePage = () => {
-  return (
-    <main>
-      <Hero />
-      <Categories />
-      <ProductTypes />
-    </main>
-  );
-};
+    return (
+        <main>
+            <Hero />
+            <HomeSections />
+            <ProductTypes />
+        </main>
+    )
+}
 
-export default HomePage;
+export default HomePage
