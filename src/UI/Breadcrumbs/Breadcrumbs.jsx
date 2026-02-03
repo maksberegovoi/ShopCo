@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { useBreadcrumbs } from '../../hooks/useBreadCrumbs/useBreadCrumbs.js'
+import { useBreadcrumbs } from '../../hooks/useBreadcrumbs/useBreadCrumbs.js'
 import styles from './Breadcrumbs.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
 
