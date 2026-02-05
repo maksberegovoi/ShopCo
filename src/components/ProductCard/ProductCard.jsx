@@ -6,6 +6,7 @@ import { DETAILS_ROUTE } from '../../utils/consts.js'
 import { generateSlug } from '../../utils/generateSlug/generateSlug.js'
 import { getColorValue } from '../../utils/getColorValue/getColorValue.js'
 import sprite from '../../../assets/icons/sprite.svg'
+import { optimizeUrl } from '../../utils/optimizeUrl/optimizeUrl.js'
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate()
@@ -14,6 +15,10 @@ const ProductCard = ({ product }) => {
         id: product.id,
         slug: generateSlug(product.name)
     })
+
+    const avatar = product?.avatar?.trim()
+        ? product.avatar
+        : import.meta.env.VITE_FALLBACK_CARD_IMAGE
 
     const handleClick = (e) => {
         if (e.ctrlKey || e.metaKey || e.button === 1) return
@@ -31,7 +36,7 @@ const ProductCard = ({ product }) => {
             >
                 <div className={styles.imgContainer}>
                     <img
-                        src={product.avatar}
+                        src={optimizeUrl(avatar)}
                         alt="product image"
                         className={styles.cardImage}
                     />

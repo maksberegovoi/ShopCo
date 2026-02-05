@@ -11,7 +11,7 @@ import HomePage from '../pages/HomePage/HomePage.jsx'
 import CartPage from '../pages/CartPage/CartPage.jsx'
 import NotFoundPage from '../pages/NotFoundPage/NotFoundPage.jsx'
 import DetailsPage from '../pages/DetailsPage/DetailsPage.jsx'
-import ProductCharacteristics from '../components/ProductCharacteristics/ProductCharacteristics.jsx'
+import ProductAttributes from '../components/ProductAttributes/ProductAttributes.jsx'
 import Reviews from '../components/Reviews/Reviews.jsx'
 import Faq from '../components/Faq/Faq.jsx'
 
@@ -23,7 +23,7 @@ export const publicRoutes = [
         path: DETAILS_ROUTE,
         Component: DetailsPage,
         children: [
-            { index: true, Component: ProductCharacteristics },
+            { index: true, Component: ProductAttributes },
             { path: REVIEWS_ROUTE, Component: Reviews },
             { path: FAQ_ROUTE, Component: Faq }
         ]

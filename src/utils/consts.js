@@ -40,3 +40,5 @@ export const stylesMap = ['Casual', 'Formal', 'Party', 'Gym']
 export const maxProductPrice = 1000
 export const typesMap = ['T-shirts', 'Shorts', 'Shirts', 'Hoodie', 'Jeans']
 export const brandsMap = ['zara', 'gucci', 'versace', 'calvinKlein', 'prada']
+
+export const isDev = import.meta.env.VITE_NODE_ENV === 'dev'

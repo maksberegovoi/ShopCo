@@ -1,64 +1,62 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import styles from './ProductDetails.module.scss'
 import { renderRatingStars } from '../../utils/productRatingStars/productRatingStars.jsx'
 import sprite from '../../../assets/icons/sprite.svg'
-import ColorSelector from '../ColorSelector/ColorSelector.jsx'
-import SizeSelector from '../SizeSelector/SizeSelector.jsx'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
-import Loader from '../../UI/Loader/Loader.jsx'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../../redux/features/cart/slice/cartSlice.js'
-import toast from 'react-hot-toast'
+import { useGetProductByIdQuery } from '../../api/products/productsAPI.js'
+import { useParams } from 'react-router-dom'
+import Error from '../Error/Error.jsx'
+import { optimizeUrl } from '../../utils/optimizeUrl/optimizeUrl.js'
+import { ProductDetailsSkeleton } from './ProductDetailsSkeleton.jsx'
 
-const ProductDetails = ({ product, isLoading }) => {
-    const dispatch = useDispatch()
-    const [selectedColor, setSelectedColor] = useState(null)
-    const [selectedSize, setSelectedSize] = useState(null)
+const ProductDetails = () => {
+    const { id } = useParams()
+    const {
+        data: product,
+        isLoading,
+        isError,
+        error
+    } = useGetProductByIdQuery(id)
+
+    // const [selectedColor, setSelectedColor] = useState(null)
+    // const [selectedSize, setSelectedSize] = useState(null)
     const [quantity, setQuantity] = useState(1)
-    const [mainImage, setMainImage] = useState(product.gallery[0])
+    const [mainImage, setMainImage] = useState(
+        import.meta.env.VITE_FALLBACK_CARD_IMAGE
+    )
 
     const addToCard = () => {
-        if (!selectedColor) {
-            return toast.error('Choose the color')
-        }
-        if (!selectedSize) {
-            return toast.error('Choose the size')
-        }
-        dispatch(
-            addToCart({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                basePrice: product.basePrice,
-                discount: product.discount,
-                img: product.gallery[0],
-                color: selectedColor,
-                size: selectedSize,
-                quantity: quantity
-            })
-        )
-        setSelectedSize(null)
-        setSelectedColor(null)
-        setQuantity(1)
-        toast.success('Added to your cart')
+        console.log('add to cart')
     }
 
-    if (isLoading) return <Loader />
+    useEffect(() => {
+        if (!product) return
+        console.log(product)
+        const mainImage =
+            product.gallery.find((img) => img.isMain)?.url ??
+            import.meta.env.VITE_FALLBACK_CARD_IMAGE
+
+        setMainImage(optimizeUrl(mainImage))
+    }, [product])
+
+    if (isLoading) return <ProductDetailsSkeleton />
+    if (isError) return <Error error={error} />
+
     return (
         <div className={styles.container}>
             <div className={styles.gallery}>
                 <div className={styles.thumbnails}>
-                    {product.gallery.map((image) => (
+                    {product.gallery.map(({ url, isMain }) => (
                         <button
-                            key={image}
+                            key={url}
                             className={`${styles.thumbnail} ${
-                                image === mainImage ? styles.active : ''
+                                isMain ? styles.active : ''
                             }`}
-                            onClick={() => setMainImage(image)}
+                            onClick={() => setMainImage(url)}
                             aria-label="product image"
                         >
                             <img
-                                src={image}
+                                src={optimizeUrl(url)}
                                 alt="product image"
                                 className={styles.thumbnailImage}
                             />
@@ -106,16 +104,16 @@ const ProductDetails = ({ product, isLoading }) => {
                     </div>
                     <p>{product.description}</p>
                 </div>
-                <ColorSelector
-                    colors={product.colors}
-                    selectedColor={selectedColor}
-                    onColorChange={setSelectedColor}
-                />
-                <SizeSelector
-                    sizes={product.sizes}
-                    selectedSize={selectedSize}
-                    onSizeChange={setSelectedSize}
-                />
+                {/*<ColorSelector*/}
+                {/*    colors={product.colors}*/}
+                {/*    selectedColor={selectedColor}*/}
+                {/*    onColorChange={setSelectedColor}*/}
+                {/*/>*/}
+                {/*<SizeSelector*/}
+                {/*    sizes={product.sizes}*/}
+                {/*    selectedSize={selectedSize}*/}
+                {/*    onSizeChange={setSelectedSize}*/}
+                {/*/>*/}
                 <div className={styles.footer}>
                     <div className={styles.quantity}>
                         <button

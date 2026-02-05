@@ -3,7 +3,6 @@ import styles from './Search.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
 import Catalog from '../Catalog/Catalog.jsx'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
-import { useSearchProductsQuery } from '../../api/products/productsAPI.js'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../../UI/Loader/Loader.jsx'
 
@@ -14,9 +13,7 @@ const Search = () => {
     const searchRef = useRef(null)
     const navigate = useNavigate()
 
-    const { data, isLoading } = useSearchProductsQuery(debouncedSearch, {
-        skip: debouncedSearch.trim().length < 2
-    })
+    const { data, isLoading } = { debouncedSearch }
 
     const handleSearch = () => {
         if (search.trim().length < 2) return
