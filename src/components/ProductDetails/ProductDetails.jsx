@@ -77,6 +77,7 @@ const ProductDetails = () => {
 
     if (isLoading) return <ProductDetailsSkeleton />
     if (isError) return <Error error={error} />
+    console.log(product)
 
     return (
         <div className={styles.container}>
