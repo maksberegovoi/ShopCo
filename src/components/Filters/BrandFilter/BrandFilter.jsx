@@ -1,6 +1,5 @@
 import React from 'react'
 import styles from '../FilterButtons.module.scss'
-import { brandsMap } from '../../../utils/consts.js'
 import { useFilters } from '../../../hooks/useFilters/useFilters.js'
 
 const BrandFilter = ({ handler }) => {
@@ -9,6 +8,8 @@ const BrandFilter = ({ handler }) => {
     const handleClick = (brand) => {
         handler(brand)
     }
+
+    const brandsMap = []
 
     return (
         <div className={styles.container}>

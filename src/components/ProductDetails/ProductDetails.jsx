@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './ProductDetails.module.scss'
 import { renderRatingStars } from '../../utils/productRatingStars/productRatingStars.jsx'
 import sprite from '../../../assets/icons/sprite.svg'
@@ -8,6 +8,9 @@ import { useParams } from 'react-router-dom'
 import Error from '../Error/Error.jsx'
 import { optimizeUrl } from '../../utils/optimizeUrl/optimizeUrl.js'
 import { ProductDetailsSkeleton } from './ProductDetailsSkeleton.jsx'
+import SizeSelector from '../SizeSelector/SizeSelector.jsx'
+import ColorSelector from '../ColorSelector/ColorSelector.jsx'
+import { useProductVariants } from '../../hooks/useProductVariants/useProductVariants.js'
 
 const ProductDetails = () => {
     const { id } = useParams()
@@ -17,21 +20,54 @@ const ProductDetails = () => {
         isError,
         error
     } = useGetProductByIdQuery(id)
-
-    // const [selectedColor, setSelectedColor] = useState(null)
-    // const [selectedSize, setSelectedSize] = useState(null)
-    const [quantity, setQuantity] = useState(1)
     const [mainImage, setMainImage] = useState(
         import.meta.env.VITE_FALLBACK_CARD_IMAGE
     )
+    const [quantity, setQuantity] = useState(1)
+
+    const {
+        baseAvailableColors,
+        baseAvailableSizes,
+        availableColors,
+        availableSizes,
+        selectedColor,
+        selectedSize,
+        onSelectColor,
+        onSelectSize,
+        selectedVariant
+    } = useProductVariants(product?.variants ?? [])
 
     const addToCard = () => {
-        console.log('add to cart')
+        if (!selectedSize || !selectedColor) return console.log('eror')
+        console.log(selectedVariant)
     }
+
+    const increment = () => {
+        if (!selectedVariant) return
+
+        setQuantity((q) => Math.min(q + 1, selectedVariant.stock))
+    }
+
+    const decrement = () => {
+        setQuantity((q) => Math.max(q - 1, 1))
+    }
+
+    const gallery = React.useMemo(() => {
+        if (!product) return []
+
+        return product.gallery.map((img) => ({
+            ...img,
+            optimizedUrl: optimizeUrl(img.url)
+        }))
+    }, [product])
+
+    useEffect(() => {
+        if (!selectedVariant) return
+        setQuantity(Math.min(1, selectedVariant.stock))
+    }, [selectedVariant])
 
     useEffect(() => {
         if (!product) return
-        console.log(product)
         const mainImage =
             product.gallery.find((img) => img.isMain)?.url ??
             import.meta.env.VITE_FALLBACK_CARD_IMAGE
@@ -46,17 +82,17 @@ const ProductDetails = () => {
         <div className={styles.container}>
             <div className={styles.gallery}>
                 <div className={styles.thumbnails}>
-                    {product.gallery.map(({ url, isMain }) => (
+                    {gallery.map(({ optimizedUrl }) => (
                         <button
-                            key={url}
+                            key={optimizedUrl}
                             className={`${styles.thumbnail} ${
-                                isMain ? styles.active : ''
+                                optimizedUrl === mainImage ? styles.active : ''
                             }`}
-                            onClick={() => setMainImage(url)}
+                            onClick={() => setMainImage(optimizedUrl)}
                             aria-label="product image"
                         >
                             <img
-                                src={optimizeUrl(url)}
+                                src={optimizedUrl}
                                 alt="product image"
                                 className={styles.thumbnailImage}
                             />
@@ -104,21 +140,23 @@ const ProductDetails = () => {
                     </div>
                     <p>{product.description}</p>
                 </div>
-                {/*<ColorSelector*/}
-                {/*    colors={product.colors}*/}
-                {/*    selectedColor={selectedColor}*/}
-                {/*    onColorChange={setSelectedColor}*/}
-                {/*/>*/}
-                {/*<SizeSelector*/}
-                {/*    sizes={product.sizes}*/}
-                {/*    selectedSize={selectedSize}*/}
-                {/*    onSizeChange={setSelectedSize}*/}
-                {/*/>*/}
+                <ColorSelector
+                    baseAvailableColors={baseAvailableColors}
+                    availableColors={availableColors}
+                    selectedColor={selectedColor}
+                    onSelectColor={onSelectColor}
+                />
+                <SizeSelector
+                    baseAvailableSizes={baseAvailableSizes}
+                    availableSizes={availableSizes}
+                    selectedSize={selectedSize}
+                    onSelectSize={onSelectSize}
+                />
                 <div className={styles.footer}>
                     <div className={styles.quantity}>
                         <button
                             disabled={quantity <= 1}
-                            onClick={() => setQuantity(quantity - 1)}
+                            onClick={decrement}
                             aria-label="minus one item"
                         >
                             <svg className={styles.iconQuantity}>
@@ -127,8 +165,12 @@ const ProductDetails = () => {
                         </button>
                         <p>{quantity}</p>
                         <button
-                            onClick={() => setQuantity(quantity + 1)}
+                            onClick={increment}
                             aria-label="plus one item"
+                            disabled={
+                                !selectedVariant ||
+                                quantity >= selectedVariant.stock
+                            }
                         >
                             <svg className={styles.iconQuantity}>
                                 <use href={`${sprite}#icon-plus`}></use>

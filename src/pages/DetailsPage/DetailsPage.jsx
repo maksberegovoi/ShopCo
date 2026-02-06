@@ -1,7 +1,6 @@
 import React, { Suspense } from 'react'
 import ProductDetails from '../../components/ProductDetails/ProductDetails.jsx'
 import { generatePath, NavLink, Outlet } from 'react-router-dom'
-import Loader from '../../UI/Loader/Loader.jsx'
 import styles from './DetailsPage.module.scss'
 import { FAQ_ROUTE, REVIEWS_ROUTE } from '../../utils/consts.js'
 

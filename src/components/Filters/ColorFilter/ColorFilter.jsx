@@ -1,5 +1,4 @@
 import React from 'react'
-import { colorMap } from '../../../utils/consts.js'
 import styles from './ColorFilter.module.scss'
 import sprite from '../../../../assets/icons/sprite.svg'
 import { useFilters } from '../../../hooks/useFilters/useFilters.js'
@@ -10,6 +9,8 @@ const ColorFilter = ({ handler }) => {
     const handleClick = (color) => {
         handler(color)
     }
+
+    const colorMap = []
 
     return (
         <div className={styles.container}>

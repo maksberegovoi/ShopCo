@@ -1,7 +1,6 @@
 import styles from '../FilterRows.module.scss'
 import sprite from '../../../../assets/icons/sprite.svg'
 import { useFilters } from '../../../hooks/useFilters/useFilters.js'
-import { stylesMap } from '../../../utils/consts.js'
 
 const StyleFilter = ({ handler }) => {
     const { filters } = useFilters()
@@ -9,6 +8,7 @@ const StyleFilter = ({ handler }) => {
     const handleClick = (style) => {
         handler(style)
     }
+    const stylesMap = []
 
     return (
         <div className={styles.container}>

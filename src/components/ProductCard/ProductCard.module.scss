@@ -68,9 +68,11 @@
     display: flex;
     gap: rem(13);
 }
+
 .ratingIconsContainer {
     display: flex;
 }
+
 .ratingNumberAccent {
     color: var(--color-text-grey);
 }
@@ -87,6 +89,7 @@
     text-decoration-line: line-through;
     color: var(--color-text-grey);
 }
+
 .discount {
     position: absolute;
     top: 0;
@@ -128,6 +131,7 @@
     inset: 0;
     transform: translateX(30%) translateY(30%);
     fill: red;
+    opacity: 0.4;
     width: rem(16);
     height: rem(16);
 }

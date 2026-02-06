@@ -1,13 +1,12 @@
 import React, { useEffect, useRef, useState } from 'react'
 import styles from './PriceFilter.module.scss'
-import { maxProductPrice } from '../../../utils/consts.js'
 import { useFilters } from '../../../hooks/useFilters/useFilters.js'
 
 const PriceFilter = ({ handler }) => {
     const rangeRef = useRef(null)
     const valueRef = useRef(null)
     const { filters } = useFilters()
-    const [price, setPrice] = useState(maxProductPrice)
+    const [price, setPrice] = useState(1) // MaxPrice constant
 
     const handleChange = (e) => {
         setPrice(e.target.value)
@@ -39,6 +38,8 @@ const PriceFilter = ({ handler }) => {
             updatePosition(valueRef.current)
         }
     }, [])
+
+    const maxProductPrice = 1
 
     return (
         <div className={styles.content}>

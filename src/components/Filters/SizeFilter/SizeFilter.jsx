@@ -1,7 +1,6 @@
 import React from 'react'
 import styles from '../FilterButtons.module.scss'
 import { useFilters } from '../../../hooks/useFilters/useFilters.js'
-import { sizeMap } from '../../../utils/consts.js'
 
 const SizeFilter = ({ handler }) => {
     const { filters } = useFilters()
@@ -9,6 +8,8 @@ const SizeFilter = ({ handler }) => {
     const handleClick = (size) => {
         handler(size)
     }
+
+    const sizeMap = []
 
     return (
         <div className={styles.container}>

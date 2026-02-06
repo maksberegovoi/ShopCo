@@ -2,7 +2,6 @@ import React from 'react'
 import sprite from '../../../../assets/icons/sprite.svg'
 import styles from '../FilterRows.module.scss'
 import { useFilters } from '../../../hooks/useFilters/useFilters.js'
-import { typesMap } from '../../../utils/consts.js'
 
 const TypeFilter = ({ handler }) => {
     const { filters } = useFilters()
@@ -10,6 +9,8 @@ const TypeFilter = ({ handler }) => {
     const handleClick = (type) => {
         handler(type)
     }
+
+    const typesMap = []
 
     return (
         <div className={styles.container}>

@@ -1,6 +1,5 @@
 import { useSearchParams } from 'react-router-dom'
 import { useCallback, useMemo } from 'react'
-import { maxProductPrice } from '../../utils/consts.js'
 
 export const useFilters = () => {
     const [searchParams, setSearchParams] = useSearchParams()
@@ -142,7 +141,7 @@ export const useFilters = () => {
             setSearchParams((prev) => {
                 const params = new URLSearchParams(prev)
 
-                if (price === maxProductPrice) {
+                if (price === 1) {
                     params.delete('maxPrice')
                 } else {
                     params.set('maxPrice', String(price))
