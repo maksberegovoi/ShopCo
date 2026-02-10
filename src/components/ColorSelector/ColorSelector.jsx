@@ -2,14 +2,7 @@ import React from 'react'
 import styles from './ColorSelector.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
 
-const ColorSelector = ({
-    baseAvailableColors,
-    availableColors,
-    selectedColor,
-    onSelectColor
-}) => {
-    const colors =
-        availableColors?.length > 0 ? availableColors : baseAvailableColors
+const ColorSelector = ({ colors, selectedColor, onSelectColor }) => {
     return (
         <div className={styles.colorSelector}>
             <p>Select Color</p>

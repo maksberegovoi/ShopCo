@@ -5,81 +5,71 @@ import sprite from '../../../assets/icons/sprite.svg'
 import { generatePath, useNavigate } from 'react-router-dom'
 import { DETAILS_ROUTE } from '../../utils/consts.js'
 import { generateSlug } from '../../utils/generateSlug/generateSlug.js'
-import { useDispatch, useSelector } from 'react-redux'
-import {
-    calculateSummary,
-    cartDeliveryFee,
-    cartProducts,
-    cartPromoCodeDiscount
-} from '../../redux/features/cart/selectors/cartSelectors.js'
-import {
-    decrementQuantity,
-    incrementQuantity,
-    removeFromCart,
-    setPromoCodeDiscount
-} from '../../redux/features/cart/slice/cartSlice.js'
-import { useLazyCheckPromoCodeQuery } from '../../api/promocode/promoCodeAPI.js'
-import toast from 'react-hot-toast'
 import Loader from '../../UI/Loader/Loader.jsx'
-import { nanoid } from '@reduxjs/toolkit'
+import {
+    useDeleteCartItemMutation,
+    useGetCartQuery,
+    useUpdateCartItemQuantityMutation
+} from '../../api/cart/cartAPI.js'
+import Error from '../Error/Error.jsx'
 
 const Cart = () => {
-    const dispatch = useDispatch()
     const navigate = useNavigate()
 
-    const products = useSelector(cartProducts)
-
-    const { subTotal, total, discount, promoCodeDiscountValue } =
-        useSelector(calculateSummary)
-    const deliveryFee = useSelector(cartDeliveryFee)
+    const { data, isLoading, isError, error } = useGetCartQuery()
+    const [deleteCartItem] = useDeleteCartItemMutation()
+    const [updateCartItemQuantity] = useUpdateCartItemQuantityMutation()
 
     const [promoCode, setPromoCode] = useState('')
-    const promoCodeDiscount = useSelector(cartPromoCodeDiscount)
-    const [checkPromoCode, { isLoading }] = useLazyCheckPromoCodeQuery()
+    // const promoCodeDiscount = useSelector(cartPromoCodeDiscount)
+    // const [checkPromoCode, { isLoading }] = useLazyCheckPromoCodeQuery()
 
     const handleImgClick = (product) => {
         navigate(
             generatePath(DETAILS_ROUTE, {
-                id: product.id,
+                id: product.productId,
                 slug: generateSlug(product.name)
             })
         )
     }
 
-    const handleCheckPromoCode = async () => {
-        if (!promoCode.trim()) {
-            toast.error('Enter promo code')
-            return
-        }
+    // const handleCheckPromoCode = async () => {
+    //     if (!promoCode.trim()) {
+    //         toast.error('Enter promo code')
+    //         return
+    //     }
+    //
+    //     try {
+    //         const result = await checkPromoCode({ code: promoCode }).unwrap()
+    //         dispatch(setPromoCodeDiscount(Number(result.value)))
+    //         toast.success(`Promo code applied! Discount: ${result.value}%`)
+    //     } catch (err) {
+    //         toast.error(err.data || 'Invalid promo code')
+    //     }
+    // }
 
-        try {
-            const result = await checkPromoCode({ code: promoCode }).unwrap()
-            dispatch(setPromoCodeDiscount(Number(result.value)))
-            toast.success(`Promo code applied! Discount: ${result.value}%`)
-        } catch (err) {
-            toast.error(err.data || 'Invalid promo code')
-        }
-    }
-
-    const removeItem = (product) => {
-        dispatch(removeFromCart(product))
-    }
+    if (isLoading) return <Loader />
+    if (isError) return <Error error={error} />
+    const { items, summary } = data
     return (
         <div className={styles.container}>
             <h2>Your cart</h2>
             <div className={styles.content}>
-                {products.length < 1 ? (
+                {items.length < 1 ? (
                     <div className={styles.empty}>
                         <h3>Cart is empty</h3>
                     </div>
                 ) : (
                     <ul className={styles.list}>
-                        {products.map((product) => (
-                            <li key={nanoid()} className={styles.item}>
+                        {items.map((product) => (
+                            <li
+                                key={product.cartItemId}
+                                className={styles.item}
+                            >
                                 <div className={styles.imageWrapper}>
                                     <img
                                         className={styles.image}
-                                        src={product.img}
+                                        src={product.avatar}
                                         alt={product.name}
                                         onClick={() => handleImgClick(product)}
                                     />
@@ -95,7 +85,9 @@ const Cart = () => {
                                             <h5>{product.name}</h5>
                                             <button
                                                 onClick={() =>
-                                                    removeItem(product)
+                                                    deleteCartItem(
+                                                        product.cartItemId
+                                                    )
                                                 }
                                                 type="button"
                                                 aria-label="delete product"
@@ -128,11 +120,11 @@ const Cart = () => {
                                             <button
                                                 disabled={product.quantity <= 1}
                                                 onClick={() =>
-                                                    dispatch(
-                                                        decrementQuantity(
-                                                            product
-                                                        )
-                                                    )
+                                                    updateCartItemQuantity({
+                                                        id: product.cartItemId,
+                                                        quantity:
+                                                            product.quantity - 1
+                                                    })
                                                 }
                                                 aria-label="minus one item"
                                             >
@@ -148,12 +140,16 @@ const Cart = () => {
                                             </button>
                                             <p>{product.quantity}</p>
                                             <button
+                                                disabled={
+                                                    product.quantity ===
+                                                    product.stock
+                                                }
                                                 onClick={() =>
-                                                    dispatch(
-                                                        incrementQuantity(
-                                                            product
-                                                        )
-                                                    )
+                                                    updateCartItemQuantity({
+                                                        id: product.cartItemId,
+                                                        quantity:
+                                                            product.quantity + 1
+                                                    })
                                                 }
                                                 aria-label="plus one item"
                                             >
@@ -179,39 +175,45 @@ const Cart = () => {
                     <dl className={styles.summaryList}>
                         <div className={styles.summaryItem}>
                             <dt className={styles.label}>Subtotal</dt>
-                            <dd className={styles.amount}>${subTotal}</dd>
-                        </div>
-
-                        <div className={styles.summaryItem}>
-                            <dt className={styles.label}>Discount</dt>
-                            <dd
-                                className={`${styles.amount} ${styles.discount}`}
-                            >
-                                - ${discount}
+                            <dd className={styles.amount}>
+                                ${summary.subTotal}
                             </dd>
                         </div>
 
-                        {promoCodeDiscountValue > 0 && (
+                        {summary.totalDiscount > 0 && (
                             <div className={styles.summaryItem}>
-                                <dt className={styles.label}>
-                                    Promo (-{promoCodeDiscount}%)
-                                </dt>
+                                <dt className={styles.label}>Discount</dt>
                                 <dd
                                     className={`${styles.amount} ${styles.discount}`}
                                 >
-                                    - ${promoCodeDiscountValue}
+                                    - ${summary.totalDiscount}
                                 </dd>
                             </div>
                         )}
 
+                        {/*{promoCodeDiscountValue > 0 && (*/}
+                        {/*    <div className={styles.summaryItem}>*/}
+                        {/*        <dt className={styles.label}>*/}
+                        {/*            Promo (-{promoCodeDiscount}%)*/}
+                        {/*        </dt>*/}
+                        {/*        <dd*/}
+                        {/*            className={`${styles.amount} ${styles.discount}`}*/}
+                        {/*        >*/}
+                        {/*            - ${promoCodeDiscountValue}*/}
+                        {/*        </dd>*/}
+                        {/*    </div>*/}
+                        {/*)}*/}
+
                         <div className={styles.summaryItem}>
                             <dt className={styles.label}>Delivery Fee</dt>
-                            <dd className={styles.amount}>${deliveryFee}</dd>
+                            <dd className={styles.amount}>
+                                ${summary.deliveryFee}
+                            </dd>
                         </div>
                     </dl>
                     <div className={styles.summaryItem}>
                         <dt className={styles.label}>Total</dt>
-                        <dd className={styles.amount}>${total}</dd>
+                        <dd className={styles.amount}>${summary.total}</dd>
                     </div>
                     <div className={styles.promo}>
                         <div className={styles.promoInput}>
@@ -225,18 +227,18 @@ const Cart = () => {
                                 onChange={(e) => setPromoCode(e.target.value)}
                             />
                         </div>
-                        <MyButton
-                            disabled={promoCodeDiscountValue > 0}
-                            handleClick={handleCheckPromoCode}
-                            classname={styles.promoBtn}
-                            color={'white'}
-                        >
-                            {isLoading ? (
-                                <Loader classname={styles.promoLoader} />
-                            ) : (
-                                'Check' + ' code'
-                            )}
-                        </MyButton>
+                        {/*<MyButton*/}
+                        {/*    disabled={promoCodeDiscountValue > 0}*/}
+                        {/*    handleClick={handleCheckPromoCode}*/}
+                        {/*    classname={styles.promoBtn}*/}
+                        {/*    color={'white'}*/}
+                        {/*>*/}
+                        {/*    {isLoading ? (*/}
+                        {/*        <Loader classname={styles.promoLoader} />*/}
+                        {/*    ) : (*/}
+                        {/*        'Check' + ' code'*/}
+                        {/*    )}*/}
+                        {/*</MyButton>*/}
                     </div>
 
                     <MyButton classname={styles.checkoutBtn}>

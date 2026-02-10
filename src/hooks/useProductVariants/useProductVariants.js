@@ -1,94 +1,87 @@
 import { useMemo, useState } from 'react'
 
-export const useProductVariants = (variants) => {
+export const useProductVariants = (variants, cartItems) => {
     const [selectedColor, setSelectedColor] = useState(null)
     const [selectedSize, setSelectedSize] = useState(null)
 
-    /* -------------------------first paint------------------------------- */
-    const baseAvailableColors = useMemo(() => {
+    const availableVariants = useMemo(() => {
+        return variants.map((v) => {
+            const cartItemQuantity =
+                cartItems.find((i) => i.productVariantId === v.id)?.quantity ??
+                0
+
+            return {
+                ...v,
+                availableStockForUser: v.stock - cartItemQuantity
+            }
+        })
+    }, [variants, cartItems])
+
+    /* -------------------------colors-&-sizes------------------------------- */
+    const colors = useMemo(() => {
         const map = new Map()
 
-        variants.forEach((v) => {
+        availableVariants.forEach((v) => {
+            if (selectedSize && v.size !== selectedSize) return
+
             const existing = map.get(v.colorHex)
+
+            const isAvailable = v.availableStockForUser > 0
+
             if (!existing) {
                 map.set(v.colorHex, {
                     name: v.colorName,
                     hex: v.colorHex,
-                    isAvailable: v.stock > 0
+                    isAvailable
                 })
-            } else if (v.stock > 0) {
+            } else if (isAvailable) {
                 existing.isAvailable = true
             }
         })
 
-        return Array.from(map.values()).sort((a, b) =>
-            a.hex.localeCompare(b.hex)
-        )
-    }, [variants])
+        return Array.from(map.values())
+    }, [availableVariants, selectedSize])
 
-    const baseAvailableSizes = useMemo(() => {
+    const sizes = useMemo(() => {
         const map = new Map()
 
-        variants.forEach((v) => {
+        availableVariants.forEach((v) => {
+            if (selectedColor && v.colorHex !== selectedColor) return
+
             const existing = map.get(v.size)
+
+            const isAvailable = v.availableStockForUser > 0
+
             if (!existing) {
                 map.set(v.size, {
                     name: v.size,
-                    isAvailable: v.stock > 0
+                    isAvailable
                 })
-            } else if (v.stock > 0) {
+            } else if (isAvailable) {
                 existing.isAvailable = true
             }
         })
 
-        return Array.from(map.values()).sort((a, b) =>
-            a.name.localeCompare(b.name)
-        )
-    }, [variants])
-
+        return Array.from(map.values())
+    }, [availableVariants, selectedColor])
     /* -------------------------onSelect------------------------------- */
     const onSelectColor = (color) => {
         setSelectedColor(color)
     }
-
     const onSelectSize = (size) => {
         setSelectedSize(size)
     }
-
-    /* -------------------------onSelect------------------------------- */
-    const availableColors = useMemo(() => {
-        return variants
-            .filter((v) => v.size === selectedSize)
-            .map((v) => ({
-                name: v.colorName,
-                hex: v.colorHex,
-                isAvailable: v.stock > 0
-            }))
-            .sort((a, b) => a.hex.localeCompare(b.hex))
-    }, [variants, selectedSize])
-
-    const availableSizes = useMemo(() => {
-        return variants
-            .filter((v) => v.colorHex === selectedColor)
-            .map((v) => ({
-                name: v.size,
-                isAvailable: v.stock > 0
-            }))
-            .sort((a, b) => a.name.localeCompare(b.name))
-    }, [variants, selectedColor])
-
+    /* -------------------------selectedVariant------------------------------- */
     const selectedVariant = useMemo(() => {
         if (!selectedColor || !selectedSize) return null
-        return variants.find(
+        return availableVariants.find(
             (v) => v.size === selectedSize && v.colorHex === selectedColor
         )
-    }, [variants, selectedColor, selectedSize])
+    }, [availableVariants, selectedColor, selectedSize])
 
     return {
-        baseAvailableColors,
-        baseAvailableSizes,
-        availableColors,
-        availableSizes,
+        colors,
+        sizes,
         selectedColor,
         selectedSize,
         onSelectColor,

@@ -1,15 +1,7 @@
 import React from 'react'
 import styles from './SizeSelector.module.scss'
 
-const SizeSelector = ({
-    baseAvailableSizes,
-    availableSizes,
-    selectedSize,
-    onSelectSize
-}) => {
-    const sizes =
-        availableSizes?.length > 0 ? availableSizes : baseAvailableSizes
-
+const SizeSelector = ({ sizes, selectedSize, onSelectSize }) => {
     return (
         <div className={styles.container}>
             <p>Choose Size</p>

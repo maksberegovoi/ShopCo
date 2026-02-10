@@ -12,6 +12,7 @@ import rootReducer from './config/rootReducer.js'
 import { productsApi } from '../api/products/productsAPI.js'
 import { promoCodeApi } from '../api/promocode/promoCodeAPI.js'
 import { homePageApi } from '../api/categories/categoriesAPI.js'
+import { cartApi } from '../api/cart/cartAPI.js'
 
 export const store = configureStore({
     reducer: rootReducer,
@@ -30,7 +31,8 @@ export const store = configureStore({
         }).concat(
             productsApi.middleware,
             promoCodeApi.middleware,
-            homePageApi.middleware
+            homePageApi.middleware,
+            cartApi.middleware
         )
 })
 

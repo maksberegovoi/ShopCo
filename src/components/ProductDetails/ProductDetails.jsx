@@ -11,44 +11,72 @@ import { ProductDetailsSkeleton } from './ProductDetailsSkeleton.jsx'
 import SizeSelector from '../SizeSelector/SizeSelector.jsx'
 import ColorSelector from '../ColorSelector/ColorSelector.jsx'
 import { useProductVariants } from '../../hooks/useProductVariants/useProductVariants.js'
+import {
+    useAddCartItemMutation,
+    useGetCartQuery
+} from '../../api/cart/cartAPI.js'
+import toast from 'react-hot-toast'
+import { isDev } from '../../utils/consts.js'
 
 const ProductDetails = () => {
     const { id } = useParams()
-    const {
-        data: product,
-        isLoading,
-        isError,
-        error
-    } = useGetProductByIdQuery(id)
     const [mainImage, setMainImage] = useState(
         import.meta.env.VITE_FALLBACK_CARD_IMAGE
     )
-    const [quantity, setQuantity] = useState(1)
+    const [quantity, setQuantity] = useState(0)
 
     const {
-        baseAvailableColors,
-        baseAvailableSizes,
-        availableColors,
-        availableSizes,
+        data: product,
+        isLoading: isProductLoading,
+        isError,
+        error
+    } = useGetProductByIdQuery(id)
+    const [addCartItem] = useAddCartItemMutation()
+    const { data: cart, isLoading: isCartLoading } = useGetCartQuery()
+
+    const {
+        colors,
+        sizes,
         selectedColor,
         selectedSize,
         onSelectColor,
         onSelectSize,
         selectedVariant
-    } = useProductVariants(product?.variants ?? [])
+    } = useProductVariants(product?.variants ?? [], cart?.items ?? [])
 
-    const addToCard = () => {
-        if (!selectedSize || !selectedColor) return console.log('eror')
-        console.log(selectedVariant)
+    const addToCard = async () => {
+        if (!selectedSize || !selectedColor) {
+            return toast.error('Choose both: size and color!')
+        }
+        try {
+            await addCartItem({
+                productVariantId: selectedVariant.id,
+                quantity
+            }).unwrap()
+            onSelectColor(null)
+            onSelectSize(null)
+            setQuantity(0)
+
+            toast.success('Added to cart')
+        } catch (err) {
+            if (isDev) {
+                toast.error('ERROR, check console to see more ->')
+                console.log(err)
+            } else {
+                toast.error('Something went wrong... Try again later')
+            }
+        }
     }
 
     const increment = () => {
         if (!selectedVariant) return
-
-        setQuantity((q) => Math.min(q + 1, selectedVariant.stock))
+        setQuantity((q) =>
+            Math.min(q + 1, selectedVariant.availableStockForUser)
+        )
     }
 
     const decrement = () => {
+        if (!selectedVariant) return
         setQuantity((q) => Math.max(q - 1, 1))
     }
 
@@ -63,11 +91,12 @@ const ProductDetails = () => {
 
     useEffect(() => {
         if (!selectedVariant) return
-        setQuantity(Math.min(1, selectedVariant.stock))
+        setQuantity(Math.min(1, selectedVariant.availableStockForUser))
     }, [selectedVariant])
 
     useEffect(() => {
         if (!product) return
+
         const mainImage =
             product.gallery.find((img) => img.isMain)?.url ??
             import.meta.env.VITE_FALLBACK_CARD_IMAGE
@@ -75,9 +104,8 @@ const ProductDetails = () => {
         setMainImage(optimizeUrl(mainImage))
     }, [product])
 
-    if (isLoading) return <ProductDetailsSkeleton />
+    if (isProductLoading || isCartLoading) return <ProductDetailsSkeleton />
     if (isError) return <Error error={error} />
-    console.log(product)
 
     return (
         <div className={styles.container}>
@@ -142,14 +170,12 @@ const ProductDetails = () => {
                     <p>{product.description}</p>
                 </div>
                 <ColorSelector
-                    baseAvailableColors={baseAvailableColors}
-                    availableColors={availableColors}
+                    colors={colors}
                     selectedColor={selectedColor}
                     onSelectColor={onSelectColor}
                 />
                 <SizeSelector
-                    baseAvailableSizes={baseAvailableSizes}
-                    availableSizes={availableSizes}
+                    sizes={sizes}
                     selectedSize={selectedSize}
                     onSelectSize={onSelectSize}
                 />
@@ -170,7 +196,8 @@ const ProductDetails = () => {
                             aria-label="plus one item"
                             disabled={
                                 !selectedVariant ||
-                                quantity >= selectedVariant.stock
+                                quantity >=
+                                    selectedVariant.availableStockForUser
                             }
                         >
                             <svg className={styles.iconQuantity}>

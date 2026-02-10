@@ -6,6 +6,7 @@ export const productsApi = createApi({
     baseQuery: fetchBaseQuery({
         baseUrl: import.meta.env.VITE_BASE_API_URL
     }),
+    tagTypes: ['Product'],
     endpoints: (builder) => ({
         getProducts: builder.query({
             query: () => ({
@@ -19,7 +20,8 @@ export const productsApi = createApi({
                 url: `/products/${id}`,
                 method: 'GET'
             }),
-            transformResponse: (response) => response.data
+            transformResponse: (response) => response.data,
+            providesTags: ['']
         }),
         getProductAttributes: builder.query({
             query: (id) => ({
