@@ -19,7 +19,7 @@
     width: 100%;
     height: 100%;
     justify-content: space-around;
-    border: 1px solid lightgrey;
+    border: 1px solid var(--border);
     border-radius: rem(20);
     padding: rem(20);
 
@@ -29,7 +29,7 @@
 }
 
 .colTitle {
-    border-bottom: 1px solid lightgrey;
+    border-bottom: 1px solid var(--border);
     padding-bottom: rem(15);
 }
 

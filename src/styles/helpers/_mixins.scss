@@ -17,3 +17,33 @@
     clip: rect(0 0 0 0) !important;
     overflow: hidden !important;
 }
+
+@mixin scrollbar( $size: 8px, $thumb: var(--accent), $track: transparent ) {
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: $thumb $track;
+
+    &::-webkit-scrollbar {
+        width: $size;
+        height: $size;
+    }
+
+    &::-webkit-scrollbar-track {
+        background: $track;
+        border: none;
+    }
+
+    &::-webkit-scrollbar-thumb {
+        background: $thumb;
+        border-radius: 999px;
+        border: none;
+    }
+
+    &::-webkit-scrollbar-track-piece {
+        margin: 4px 0;
+    }
+
+    &::-webkit-scrollbar-corner {
+        background: transparent;
+    }
+}

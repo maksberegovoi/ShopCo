@@ -5,7 +5,9 @@ const PAGE_NAMES = {
     '/': 'Home',
     '/catalog': 'Catalog',
     '/cart': 'Cart',
-    '/profile': 'Profile'
+    '/profile': 'Profile',
+    '/auth/login': 'Login',
+    '/auth/signup': 'Sign Up'
 }
 
 const formatSlug = (slug) => {

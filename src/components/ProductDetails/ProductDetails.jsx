@@ -106,7 +106,6 @@ const ProductDetails = () => {
 
     if (isProductLoading || isCartLoading) return <ProductDetailsSkeleton />
     if (isError) return <Error error={error} />
-
     return (
         <div className={styles.container}>
             <div className={styles.gallery}>
@@ -205,10 +204,7 @@ const ProductDetails = () => {
                             </svg>
                         </button>
                     </div>
-                    <MyButton
-                        classname={styles.btnCart}
-                        handleClick={addToCard}
-                    >
+                    <MyButton classname={styles.btnCart} onClick={addToCard}>
                         Add to Cart
                     </MyButton>
                 </div>

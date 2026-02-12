@@ -77,7 +77,7 @@ const Footer = () => {
                             placeholder={'Enter your email address'}
                         />
                     </div>
-                    <MyButton classname={styles.mailButton} color={'white'}>
+                    <MyButton classname={styles.mailButton}>
                         Subscribe to Newsletter
                     </MyButton>
                 </div>
@@ -115,7 +115,10 @@ const Footer = () => {
                                 </h4>
                                 <div className={styles.columnLinks}>
                                     {column.links.map((link) => (
-                                        <NavLink key={link.name}>
+                                        <NavLink
+                                            className={styles.columnLink}
+                                            key={link.name}
+                                        >
                                             {link.name}
                                         </NavLink>
                                     ))}

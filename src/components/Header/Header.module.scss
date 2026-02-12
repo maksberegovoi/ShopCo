@@ -5,10 +5,11 @@ header {
     flex-direction: column;
     position: sticky;
     top: rem(-1);
-    background: rgba(255, 255, 255, 0.9);
-    border-bottom: rem(1) solid lightgrey;
+    background: var(--bg-secondary);
+    border-bottom: rem(1) solid var(--border);
     z-index: 999;
 }
+
 .headerMain {
     position: relative;
     display: flex;
@@ -29,15 +30,16 @@ header {
 
 .promo {
     display: block;
-    background-color: black;
+    background-color: var(--bg-secondary);
 }
 
 .promoContainer {
     display: grid;
     grid-template-columns: 1fr auto;
     align-items: center;
+    border-bottom: 1px solid var(--border);
 
-    color: white;
+    color: var(--text);
     padding-block: rem(9);
 
     @include fluid-text(14, 12);
@@ -49,7 +51,7 @@ header {
 }
 
 .promoBtn {
-    text-decoration: underline;
+    color: var(--primary);
     text-align: center;
     margin-left: rem(5);
 }
@@ -58,7 +60,7 @@ header {
     width: rem(20);
     height: rem(20);
     justify-self: end;
-    fill: white;
+    fill: var(--text);
 }
 
 .navContainer {
@@ -73,11 +75,10 @@ header {
         width: 100%;
         max-width: rem(300);
         height: 100%;
-        background: white;
+        background: var(--bg);
         gap: rem(32);
         z-index: 999;
         transition: left 0.3s ease-in-out;
-        box-shadow: rem(-5) 0 rem(15) rgba(0, 0, 0, 0.1);
         padding: rem(40) rem(20);
     }
 }
@@ -94,6 +95,7 @@ header {
         flex-direction: row;
     }
 }
+
 .mobileNav {
     @include tablet-below {
         left: 0;
@@ -124,7 +126,7 @@ header {
     left: 0;
     right: 0;
     bottom: 0;
-    background: rgba(0, 0, 0, 0.5);
+    background: var(--bg);
     z-index: 998;
 
     @include tablet-above {
@@ -142,16 +144,21 @@ header {
 .searchMobileContainer {
     width: 100%;
     padding-block: rem(8);
-    border-top: rem(1) solid lightgrey;
+    border-top: rem(1) solid var(--border);
 }
 
 .link {
     display: flex;
     align-items: center;
     gap: rem(10);
-    color: var(--color-text-black);
+    color: var(--primary);
     text-decoration: none;
     transition: color 0.3s ease;
+
+    @include hover {
+        color: var(--accent
+        );
+    }
 }
 
 .dropdownContainer {
@@ -164,32 +171,33 @@ header {
 
     @include hover {
         .link {
-            color: var(--color-accent);
+            color: var(--accent);
         }
         .iconArrowRight {
-            fill: var(--color-accent);
+            fill: var(--accent);
         }
     }
 }
 
 .dropdownIcon {
     transform: rotate(-90deg);
-    fill: grey;
+    fill: var(--text);
 }
 
 .iconLink {
+    fill: var(--primary);
     width: rem(24);
     height: rem(24);
     transition: fill 0.3s ease;
 
     @include hover {
-        fill: var(--color-accent);
+        fill: var(--accent);
     }
 }
 
 .iconSearch {
+    fill: var(--primary);
     cursor: pointer;
-    fill: black;
     width: rem(24);
     height: rem(24);
 
@@ -199,17 +207,18 @@ header {
 }
 
 .iconMenu {
+    fill: var(--primary);
     width: rem(24);
     height: rem(24);
 }
 
 .iconClose {
-    color: black;
+    color: var(--primary);
     position: absolute;
     top: rem(-50);
     right: rem(15);
     cursor: pointer;
-    fill: black;
+    fill: var(--text);
     width: rem(24);
     height: rem(24);
 
@@ -223,3 +232,5 @@ header {
     width: rem(16);
     height: rem(16);
 }
+
+

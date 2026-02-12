@@ -12,6 +12,7 @@ import {
     useUpdateCartItemQuantityMutation
 } from '../../api/cart/cartAPI.js'
 import Error from '../Error/Error.jsx'
+import { MyInput } from '../../UI/MyInput/MyInput.jsx'
 
 const Cart = () => {
     const navigate = useNavigate()
@@ -50,6 +51,7 @@ const Cart = () => {
 
     if (isLoading) return <Loader />
     if (isError) return <Error error={error} />
+    if (!data) return null
     const { items, summary } = data
     return (
         <div className={styles.container}>
@@ -60,7 +62,9 @@ const Cart = () => {
                         <h3>Cart is empty</h3>
                     </div>
                 ) : (
-                    <ul className={styles.list}>
+                    <ul
+                        className={`${styles.list} ${items.length > 2 ? styles['has-scroll'] : ''}`}
+                    >
                         {items.map((product) => (
                             <li
                                 key={product.cartItemId}
@@ -115,7 +119,16 @@ const Cart = () => {
                                         </div>
                                     </dl>
                                     <div className={styles.footer}>
-                                        <h4>${product.price}</h4>
+                                        <div className={styles.priceContainer}>
+                                            {product.discount > 0 && (
+                                                <h4
+                                                    className={styles.basePrice}
+                                                >
+                                                    ${product.basePrice}
+                                                </h4>
+                                            )}
+                                            <h4>${product.price}</h4>
+                                        </div>
                                         <div className={styles.quantity}>
                                             <button
                                                 disabled={product.quantity <= 1}
@@ -213,14 +226,14 @@ const Cart = () => {
                     </dl>
                     <div className={styles.summaryItem}>
                         <dt className={styles.label}>Total</dt>
-                        <dd className={styles.amount}>${summary.total}</dd>
+                        <dd className={styles.total}>${summary.total}</dd>
                     </div>
                     <div className={styles.promo}>
                         <div className={styles.promoInput}>
                             <svg className={styles.iconPromo}>
                                 <use href={`${sprite}#icon-promocode`}></use>
                             </svg>
-                            <input
+                            <MyInput
                                 type="text"
                                 placeholder="Add promo code ('FREE' / 'PROMOCODE')"
                                 value={promoCode}

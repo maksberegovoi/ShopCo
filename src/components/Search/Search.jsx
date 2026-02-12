@@ -88,7 +88,7 @@ const Search = () => {
                                 style={styles.catalog}
                             />
                             <MyButton
-                                handleClick={() => setIsOpen(!isOpen)}
+                                onClick={() => setIsOpen(!isOpen)}
                                 classname={styles.searchBtn}
                             >
                                 Close search

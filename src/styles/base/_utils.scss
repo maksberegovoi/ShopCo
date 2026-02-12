@@ -7,7 +7,7 @@
 }
 
 .logo {
-    color: black;
+    color: var(--text);
 
     font-family: var(--font-family-heading);
     font-size: fluid(32, 25);
@@ -26,9 +26,9 @@
 .skeleton {
     background: linear-gradient(
             90deg,
-            #e0e0e0 25%,
-            #f5f5f5 37%,
-            #e0e0e0 63%
+            var(--bg-secondary) 25%,
+            var(--bg) 37%,
+            var(--bg-secondary) 63%
     );
     background-size: 200% 100%;
     animation: shimmer 1.4s ease infinite;

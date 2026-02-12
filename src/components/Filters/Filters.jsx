@@ -74,9 +74,7 @@ const Filters = ({ isOpen, handleClick }) => {
                     Reset Filters
                 </MyButton>
             </div>
-            <MyButton handleClick={() => handleClick()} color={'white'}>
-                Close
-            </MyButton>
+            <MyButton onClick={() => handleClick()}>Close</MyButton>
         </div>
     )
 }

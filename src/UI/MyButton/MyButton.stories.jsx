@@ -8,14 +8,6 @@ export default {
 
 export const BlackButton = {
     args: {
-        color: 'black',
-        children: 'Button'
-    }
-}
-
-export const WhiteButton = {
-    args: {
-        color: 'white',
         children: 'Button'
     }
 }

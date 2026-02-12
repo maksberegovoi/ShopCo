@@ -52,8 +52,10 @@ const ProductCard = ({ product }) => {
                             {renderRatingStars(product.rating)}
                         </div>
                         <p>
-                            {product.rating}/
-                            <span className={styles.ratingNumberAccent}>5</span>
+                            <span className={styles.ratingNumberAccent}>
+                                {product.rating}
+                            </span>
+                            /5
                         </p>
                     </div>
                     <div className={styles.colors}>

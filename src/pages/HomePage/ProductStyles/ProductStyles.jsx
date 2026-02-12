@@ -1,9 +1,5 @@
 import React from 'react'
 import styles from './ProductStyles.module.scss'
-import casualImg from '/images/productStyles/casual.png'
-import gymImg from '/images/productStyles/gym.png'
-import partyImg from '/images/productStyles/party.png'
-import formalImg from '/images/productStyles/formal.png'
 import { NavLink } from 'react-router-dom'
 import { CATALOG_ROUTE } from '../../../utils/consts.js'
 
@@ -17,7 +13,9 @@ const ProductStyles = () => {
                         <NavLink to={`${CATALOG_ROUTE}?style=Casual`}>
                             <div
                                 className={styles.typeContainer}
-                                style={{ backgroundImage: `url(${casualImg})` }}
+                                style={{
+                                    backgroundImage: `url(https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770829069/casual_uynhp3.png)`
+                                }}
                             >
                                 <h3 className={styles.typeTitle}>Casual</h3>
                             </div>
@@ -25,7 +23,9 @@ const ProductStyles = () => {
                         <NavLink to={`${CATALOG_ROUTE}?style=Formal`}>
                             <div
                                 className={styles.typeContainer}
-                                style={{ backgroundImage: `url(${formalImg})` }}
+                                style={{
+                                    backgroundImage: `url(https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770829073/formal_vufucf.png)`
+                                }}
                             >
                                 <h3 className={styles.typeTitle}>Formal</h3>
                             </div>
@@ -35,7 +35,9 @@ const ProductStyles = () => {
                         <NavLink to={`${CATALOG_ROUTE}?style=Party`}>
                             <div
                                 className={styles.typeContainer}
-                                style={{ backgroundImage: `url(${partyImg})` }}
+                                style={{
+                                    backgroundImage: `url(https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770829066/party_m9pkft.png)`
+                                }}
                             >
                                 <h3 className={styles.typeTitle}>Party</h3>
                             </div>
@@ -43,7 +45,9 @@ const ProductStyles = () => {
                         <NavLink to={`${CATALOG_ROUTE}?style=Gym`}>
                             <div
                                 className={styles.typeContainer}
-                                style={{ backgroundImage: `url(${gymImg})` }}
+                                style={{
+                                    backgroundImage: `url(https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770829062/gym_d61kgk.png)`
+                                }}
                             >
                                 <h3 className={styles.typeTitle}>Gym</h3>
                             </div>

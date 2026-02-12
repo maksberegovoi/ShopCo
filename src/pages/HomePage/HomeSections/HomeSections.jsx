@@ -6,6 +6,7 @@ import { useGetHomeSectionsQuery } from '../../../api/categories/categoriesAPI.j
 import Error from '../../../components/Error/Error.jsx'
 import Catalog from '../../../components/Catalog/Catalog.jsx'
 import { HomeSectionsSkeleton } from './HomeSectionsSkeleton.jsx'
+import { Link } from 'react-router-dom'
 
 const HomeSections = () => {
     const { data, isLoading, isError, error } = useGetHomeSectionsQuery()
@@ -24,9 +25,9 @@ const HomeSections = () => {
                         isLoading={isLoading}
                     />
                     <MyButton
+                        as={Link}
                         to={`${CATALOG_ROUTE}?category=${category.title}`}
                         classname={styles.categoryButton}
-                        color={'white'}
                         aria-label={`View ${category.title} products`}
                     >
                         View All

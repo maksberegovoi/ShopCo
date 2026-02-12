@@ -20,13 +20,13 @@
     flex-wrap: wrap;
     padding-bottom: rem(20);
     column-gap: rem(30);
+
     & h3 {
     }
 }
 
 .main {
     display: flex;
-    //    gap: rem(25);
 }
 
 .headerContent {
@@ -48,7 +48,7 @@
             content: '';
             height: rem(30);
             width: rem(1);
-            background-color: lightgrey;
+            background-color: blue;
             top: 50%;
             right: rem(-6);
             transform: translateY(-50%);
@@ -67,7 +67,7 @@
 
     @include hover {
         scale: 1.1;
-        color: black;
+        color: var(--color-accent);
     }
 }
 

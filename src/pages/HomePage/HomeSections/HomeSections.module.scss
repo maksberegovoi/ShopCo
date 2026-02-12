@@ -8,17 +8,12 @@
     padding-block: rem(64);
 
     &:not(:last-child) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border);
     }
 }
 
 .categoryButton {
-    border: rem(1) solid lightgrey;
-    border-radius: rem(62);
-    background-color: white;
-    padding: rem(16) rem(54);
-    color: black;
-    max-width: rem(300) !important;
+    max-width: rem(250) !important;
 }
 
 .list {
@@ -32,6 +27,6 @@
     padding-block: rem(64);
 
     &:not(:last-child) {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid var(--border);
     }
 }

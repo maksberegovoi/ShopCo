@@ -14,7 +14,7 @@
     align-items: center;
 
     &:last-child .current {
-        color: black;
+        color: var(--text);
     }
 }
 
@@ -26,16 +26,16 @@
     text-decoration: none;
 
     @include hover {
-        color: var(--color-accent);
+        color: var(--accent);
     }
 }
 
 .current {
-    color: black;
+    color: var(--primary) !important;
 }
 
 .icon {
-    fill: var(--color-text-grey);
+    fill: var(--text);
     width: rem(14);
     height: rem(14);
     transform: rotate(-90deg);

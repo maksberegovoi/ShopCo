@@ -5,7 +5,26 @@ export const ProductDetailsSkeleton = () => {
     return (
         <div className={styles.container}>
             <div className={styles.gallery}>
-                <Skeleton width="150px" height="550px" radius="1rem" />
+                <div className={styles.thumbnails}>
+                    <Skeleton
+                        height="190px"
+                        width="150px"
+                        radius="1rem"
+                        className={styles.thumbnail}
+                    />
+                    <Skeleton
+                        height="190px"
+                        width="150px"
+                        radius="1rem"
+                        className={styles.thumbnail}
+                    />
+                    <Skeleton
+                        height="190px"
+                        width="150px"
+                        radius="1rem"
+                        className={styles.thumbnail}
+                    />
+                </div>
                 <Skeleton width="600px" height="550px" radius="8px" />
             </div>
 
