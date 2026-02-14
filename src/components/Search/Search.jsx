@@ -65,11 +65,7 @@ const Search = () => {
             document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
-    if (isLoading) return <Loader />
-    if (isError) return <Error error={error} />
-
     const items = data?.items ?? []
-    console.log(items)
     return (
         <div className={styles.container} ref={searchRef}>
             <div className={styles.searchBox}>
@@ -89,7 +85,20 @@ const Search = () => {
             </div>
             {isOpen && (
                 <div className={styles.content}>
-                    <Catalog products={items} style={styles.catalog} />
+                    {isLoading ? (
+                        <Loader />
+                    ) : (
+                        <>
+                            {isError ? (
+                                <Error error={error} />
+                            ) : (
+                                <Catalog
+                                    products={items}
+                                    style={styles.catalog}
+                                />
+                            )}
+                        </>
+                    )}
                     <MyButton
                         onClick={handleSearch}
                         classname={styles.searchBtn}
