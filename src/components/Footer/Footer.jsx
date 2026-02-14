@@ -1,64 +1,32 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import styles from './Footer.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
 import { NavLink } from 'react-router-dom'
-import { HOME_ROUTE } from '../../utils/consts.js'
+import { badges, columns, HOME_ROUTE, socials } from '../../utils/consts.js'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
+import toast from 'react-hot-toast'
+import { z } from 'zod'
 
 const Footer = () => {
-    const columns = [
-        {
-            title: 'Company',
-            links: [
-                { name: 'About', path: '*' },
-                { name: 'Features', path: '*' },
-                { name: 'Works', path: '*' },
-                { name: 'Career', path: '*' }
-            ]
-        },
-        {
-            title: 'Help',
-            links: [
-                { name: 'Customer Support', path: '*' },
-                { name: 'Delivery Details', path: '*' },
-                { name: 'Terms & Conditions', path: '*' },
-                { name: 'Privacy Policy', path: '*' }
-            ]
-        },
-        {
-            title: 'Faq',
-            links: [
-                { name: 'Account', path: '*' },
-                { name: 'Manage Delivers', path: '*' },
-                { name: 'Orders', path: '*' },
-                { name: 'Payments', path: '*' }
-            ]
-        },
-        {
-            title: 'Resources',
-            links: [
-                { name: 'Free eBooks', path: '*' },
-                { name: 'Development Tutorial', path: '*' },
-                { name: 'How to - Blog', path: '*' },
-                { name: 'Youtube Playlist', path: '*' }
-            ]
+    const ref = useRef(null)
+
+    const emailSchema = z.string().email('Некорректный формат email')
+
+    const onSubcribe = () => {
+        if (!ref.current) return
+        const emailValue = ref.current.value
+        const result = emailSchema.safeParse(emailValue)
+
+        if (!result.success) {
+            const errorMessage =
+                result.error?.errors?.[0]?.message || 'Invalid email'
+            toast.error(errorMessage)
+            return
         }
-    ]
 
-    const socials = [
-        { name: 'Twitter', icon: `${sprite}#icon-twitter`, href: '/' },
-        { name: 'Facebook', icon: `${sprite}#icon-facebook`, href: '/' },
-        { name: 'Instagram', icon: `${sprite}#icon-instagram`, href: '/' },
-        { name: 'Github', icon: `${sprite}#icon-github`, href: '/' }
-    ]
-
-    const badges = [
-        { name: 'Visa', icon: `${sprite}#icon-visa` },
-        { name: 'MasterCard', icon: `${sprite}#icon-mastercard` },
-        { name: 'PayPal', icon: `${sprite}#icon-paypal` },
-        { name: 'GooglePay', icon: `${sprite}#icon-google-pay` },
-        { name: 'ApplePay', icon: `${sprite}#icon-apple-pay` }
-    ]
+        ref.current.value = ''
+        toast.success('Subscribed!')
+    }
 
     return (
         <footer className={`container`}>
@@ -72,12 +40,16 @@ const Footer = () => {
                             <use href={`${sprite}#icon-mail`}></use>
                         </svg>
                         <input
+                            type="email"
+                            ref={ref}
                             className={styles.emailInput}
-                            type="text"
                             placeholder={'Enter your email address'}
                         />
                     </div>
-                    <MyButton classname={styles.mailButton}>
+                    <MyButton
+                        onClick={onSubcribe}
+                        classname={styles.mailButton}
+                    >
                         Subscribe to Newsletter
                     </MyButton>
                 </div>

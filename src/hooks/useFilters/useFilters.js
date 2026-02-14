@@ -1,211 +1,94 @@
 import { useSearchParams } from 'react-router-dom'
-import { useCallback, useMemo } from 'react'
+import { useDeviceType } from '../useDeviceType.js'
 
 export const useFilters = () => {
+    const { isDesktop } = useDeviceType()
     const [searchParams, setSearchParams] = useSearchParams()
 
-    const filters = useMemo(() => {
-        const colors =
-            searchParams.get('colors')?.split(',').filter(Boolean) || []
-        const sizes =
-            searchParams.get('sizes')?.split(',').filter(Boolean) || []
-        const brands =
-            searchParams.get('brands')?.split(',').filter(Boolean) || []
+    const limit = isDesktop ? 9 : 6
 
-        return {
-            sortBy: searchParams.get('sortBy') || '',
-            gender: searchParams.get('gender') || '',
-            type: searchParams.get('type') || '',
-            brands,
-            colors,
-            sizes,
-            style: searchParams.get('style') || '',
-            maxPrice: Number(searchParams.get('maxPrice')) || 1000,
-            category: searchParams.get('category') || ''
-        }
-    }, [searchParams])
+    const resetFilters = () => {
+        setSearchParams()
+    }
 
-    const resetFilters = useCallback(() => {
+    const setSingleParam = (name, value) => {
         setSearchParams((prev) => {
             const params = new URLSearchParams(prev)
+            params.set(name, String(value))
 
-            params.delete('colors')
-            params.delete('category')
-            params.delete('sizes')
-            params.delete('brands')
-            params.delete('sortBy')
-            params.delete('gender')
-            params.delete('type')
-            params.delete('style')
-            params.delete('maxPrice')
+            if (name !== 'page') {
+                params.set('page', '1')
+            }
 
             return params
         })
-    }, [setSearchParams])
+    }
 
-    const toggleCategory = useCallback(
-        (category) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                if (params.get('category') === category) {
-                    params.delete('category')
+    const onSetParams = (name, id) => {
+        setSearchParams((prev) => {
+            const params = new URLSearchParams(prev)
+            const current = params.get(name)
+
+            if (!current) {
+                params.set(name, String(id))
+            } else {
+                const values = current.split(',')
+                const exists = values.includes(String(id))
+
+                const nextValues = exists
+                    ? values.filter((v) => v !== String(id))
+                    : [...values, String(id)]
+
+                if (nextValues.length === 0) {
+                    params.delete(name)
                 } else {
-                    params.set('category', category)
+                    params.set(name, nextValues.join(','))
                 }
-                return params
-            })
-        },
-        [setSearchParams]
-    )
+            }
 
-    const toggleType = useCallback(
-        (type) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                if (params.get('type') === type) {
-                    params.delete('type')
-                } else {
-                    params.set('type', type)
-                }
-                return params
-            })
-        },
-        [setSearchParams]
-    )
+            params.set('page', '1')
 
-    const toggleColor = useCallback(
-        (color) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                const colors =
-                    params.get('colors')?.split(',').filter(Boolean) || []
+            return params
+        })
+    }
+    const parseIds = (key) => {
+        const value = searchParams.get(key)
+        if (!value) return undefined
 
-                if (colors.includes(color)) {
-                    const newColors = colors.filter((c) => c !== color)
-                    if (newColors.length > 0) {
-                        params.set('colors', newColors.join(','))
-                    } else {
-                        params.delete('colors')
-                    }
-                } else {
-                    params.set('colors', [...colors, color].join(','))
-                }
+        return value.split(',').map(Number)
+    }
 
-                return params
-            })
-        },
-        [setSearchParams]
-    )
+    const parseStrs = (key) => {
+        const value = searchParams.get(key)
+        if (!value) return undefined
 
-    const toggleSize = useCallback(
-        (size) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                const sizes =
-                    params.get('sizes')?.split(',').filter(Boolean) || []
+        return value.split(',')
+    }
 
-                if (sizes.includes(size)) {
-                    const newSizes = sizes.filter((s) => s !== size)
-                    if (newSizes.length > 0) {
-                        params.set('sizes', newSizes.join(','))
-                    } else {
-                        params.delete('sizes')
-                    }
-                } else {
-                    params.set('sizes', [...sizes, size].join(','))
-                }
-
-                return params
-            })
-        },
-        [setSearchParams]
-    )
-
-    const toggleStyle = useCallback(
-        (style) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                if (params.get('style') === style) {
-                    params.delete('style')
-                } else {
-                    params.set('style', style)
-                }
-                return params
-            })
-        },
-        [setSearchParams]
-    )
-
-    const setMaxPrice = useCallback(
-        (price) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-
-                if (price === 1) {
-                    params.delete('maxPrice')
-                } else {
-                    params.set('maxPrice', String(price))
-                }
-
-                return params
-            })
-        },
-        [setSearchParams]
-    )
-
-    const setSortBy = useCallback(
-        (sortBy) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                if (params.get('sortBy') === sortBy) {
-                    params.delete('sortBy')
-                } else {
-                    params.set('sortBy', sortBy)
-                }
-                return params
-            })
-        },
-        [setSearchParams]
-    )
-
-    const toggleBrand = useCallback(
-        (brand) => {
-            setSearchParams((prev) => {
-                const params = new URLSearchParams(prev)
-                const brands =
-                    params.get('brands')?.split(',').filter(Boolean) || []
-
-                if (brands.includes(brand)) {
-                    const newBrands = brands.filter((c) => c !== brand)
-                    if (newBrands.length > 0) {
-                        params.set('brands', newBrands.join(','))
-                    } else {
-                        params.delete('brands')
-                    }
-                } else {
-                    params.set('brands', [...brands, brand].join(','))
-                }
-
-                return params
-            })
-        },
-        [setSearchParams]
-    )
+    const queryFilters = {
+        limit,
+        page: searchParams.get('page') ? Number(searchParams.get('page')) : 1,
+        sizeIds: parseIds('size'),
+        brandIds: parseIds('brand'),
+        categoryIds: parseIds('category'),
+        typeIds: parseIds('type'),
+        styleIds: parseIds('style'),
+        genderIds: parseStrs('gender'),
+        colors: parseStrs('colors'),
+        sortBy: searchParams.get('sortBy')
+            ? searchParams.get('sortBy')
+            : undefined,
+        maxPrice: searchParams.get('maxPrice')
+            ? Number(searchParams.get('maxPrice'))
+            : undefined
+    }
 
     return {
-        filters,
-        toggleType,
-        toggleColor,
-        toggleSize,
-        toggleStyle,
-        setMaxPrice,
-        setSortBy,
-        toggleBrand,
+        page: queryFilters.page,
+        limit,
+        onSetParams,
+        queryFilters,
         resetFilters,
-        toggleCategory
+        setSingleParam
     }
 }
-
-// useEffect(() => {
-//   setPrice(maxProductPrice);
-// }, [resetFilters]);

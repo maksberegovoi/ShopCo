@@ -13,7 +13,7 @@ header {
 .headerMain {
     position: relative;
     display: flex;
-    gap: rem(16);
+    gap: rem(12);
     align-items: center;
     justify-content: space-between;
     padding-block: rem(16);
@@ -54,6 +54,10 @@ header {
     color: var(--primary);
     text-align: center;
     margin-left: rem(5);
+
+    @include hover {
+        color: var(--accent);
+    }
 }
 
 .iconPromoClose {
@@ -115,6 +119,7 @@ header {
 }
 
 .burgerButton {
+    flex-shrink: 0;
     @include tablet-above {
         display: none;
     }
@@ -150,14 +155,15 @@ header {
 .link {
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    width: 100%;
     gap: rem(10);
     color: var(--primary);
     text-decoration: none;
     transition: color 0.3s ease;
 
     @include hover {
-        color: var(--accent
-        );
+        color: var(--accent);
     }
 }
 

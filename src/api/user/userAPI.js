@@ -1,13 +1,6 @@
-import { fetchBaseQuery } from '@reduxjs/toolkit/query'
-import { createApi } from '@reduxjs/toolkit/query/react'
+import { api } from '../api.jsx'
 
-export const userApi = createApi({
-    reducerPath: 'userApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: import.meta.env.VITE_BASE_API_URL,
-        credentials: 'include'
-    }),
-    tagTypes: ['Auth'],
+export const userApi = api.injectEndpoints({
     endpoints: (builder) => ({
         login: builder.mutation({
             query: (body) => ({
@@ -33,10 +26,12 @@ export const userApi = createApi({
             transformResponse: (response) => response.data
         }),
         logout: builder.mutation({
+            // TODO: delete cart items, all user data
             query: () => ({
                 url: '/user/logout',
                 method: 'POST'
-            })
+            }),
+            invalidateTags: ['Cart', 'User', 'Orders']
         })
     })
 })

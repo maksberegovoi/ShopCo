@@ -3,10 +3,14 @@ import { Route, Routes, useLocation } from 'react-router-dom'
 import Loader from '../../UI/Loader/Loader.jsx'
 import { RequireAuth } from './RequireAuth.jsx'
 import { routes } from '../../routes/routes.jsx'
+import { OnlyGuest } from './OnlyGuest.jsx'
+import { getIsAuth } from '../../redux/features/user/selectors/selectors.js'
+import { useSelector } from 'react-redux'
 
 const AppRouter = () => {
     const location = useLocation()
     const previousPath = useRef(location.pathname)
+    const isAuth = useSelector(getIsAuth)
 
     useEffect(() => {
         const currentPath = location.pathname
@@ -32,12 +36,19 @@ const AppRouter = () => {
 
         previousPath.current = currentPath
     }, [location.pathname])
+
     const renderRoute = (route) => {
-        const { path, element, children, authOnly } = route
+        const { path, element, children, authOnly, guestOnly } = route
 
         let wrappedElement = (
             <Suspense fallback={<Loader />}>{element}</Suspense>
         )
+
+        if (guestOnly) {
+            wrappedElement = (
+                <OnlyGuest isAuth={isAuth}>{wrappedElement}</OnlyGuest>
+            )
+        }
 
         if (authOnly) {
             wrappedElement = <RequireAuth>{wrappedElement}</RequireAuth>

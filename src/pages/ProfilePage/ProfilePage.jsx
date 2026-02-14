@@ -1,21 +1,30 @@
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { userData } from '../../redux/features/user/selectors/selectors.js'
-import Catalog from '../../components/Catalog/Catalog.jsx'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
 import { useNavigate } from 'react-router-dom'
 import { useLogoutMutation } from '../../api/user/userAPI.js'
 import { LOGIN_ROUTE } from '../../utils/consts.js'
+import { api } from '../../api/api.jsx'
+import { userLoggedOut } from '../../redux/features/user/slice/userSlice.js'
 
 const orders = [1, 2, 3]
 
 const ProfilePage = () => {
     const user = useSelector(userData)
+    const dispatch = useDispatch()
     const [logout] = useLogoutMutation()
     const navigate = useNavigate()
 
     const handleLogout = async () => {
-        await logout().unwrap()
-        navigate(LOGIN_ROUTE, { replace: true })
+        try {
+            await logout().unwrap()
+        } catch (err) {
+            console.log(err)
+        } finally {
+            dispatch(userLoggedOut())
+            dispatch(api.util.resetApiState())
+            navigate(LOGIN_ROUTE, { replace: true })
+        }
     }
     return (
         <div className="container">

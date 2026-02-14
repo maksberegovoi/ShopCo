@@ -21,9 +21,9 @@ const menu = [
     { name: 'Catalog', path: CATALOG_ROUTE }
 ]
 const dropdownLinks = [
-    { name: 'Men', path: `${CATALOG_ROUTE}?gender=male` },
-    { name: 'Women', path: `${CATALOG_ROUTE}?gender=female` },
-    { name: 'Unisex', path: `${CATALOG_ROUTE}?gender=unisex` }
+    { name: 'Men', path: `${CATALOG_ROUTE}?gender=MALE` },
+    { name: 'Women', path: `${CATALOG_ROUTE}?gender=FEMALE` },
+    { name: 'Unisex', path: `${CATALOG_ROUTE}?gender=UNISEX` }
 ]
 const iconLinks = [
     { name: 'Cart', path: CART_ROUTE, href: `${sprite}#icon-cart` },
@@ -37,7 +37,6 @@ const Header = () => {
     const [isPromo, setIsPromo] = useState(true)
     const [isAccordion, setIsAccordion] = useState(false)
     const isAuth = useSelector(getIsAuth)
-    console.log(isAuth)
 
     const toggleMenu = () => {
         setIsBurgerMenu(!isBurgerMenu)

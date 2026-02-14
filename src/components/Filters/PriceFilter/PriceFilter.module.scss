@@ -1,48 +1,54 @@
-@use '../../../styles/helpers/index' as *;
-
-.container {
-    display: flex;
-    flex-direction: column;
-    gap: rem(10);
+.track {
+    position: relative;
+    height: 8px;
+    width: 100%;
+    background: var(--primary);
+    border-radius: 999px;
 }
 
-.content {
+.trackFilled {
+    position: absolute;
+    height: 100%;
+    background: var(--accent);
+    border-radius: 999px;
+}
+
+.thumbWrapper {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: rem(5);
+    justify-content: center;
 }
 
-.range {
-    -webkit-appearance: none;
-    background-color: black;
-    border-radius: rem(20);
-    height: rem(10);
-    width: 100%;
-    position: relative;
-    cursor: pointer;
-    caret-color: transparent;
-
-    &::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        appearance: none;
-        width: 20px;
-        height: 20px;
-        background: white;
-
-        border-radius: 50%;
-        cursor: pointer;
-        border: 1px solid black;
-        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
-    }
+.thumb {
+    height: 20px;
+    width: 20px;
+    background: var(--accent);
+    border-radius: 50%;
+    border: 1px solid var(--border);
+    outline: none;
 }
 
-.rangeValue {
+.value {
     position: absolute;
-    bottom: rem(-20);
-    font-weight: bold;
-    color: black;
-    transform: translateX(0);
+    top: 20px;
+    font-size: 12px;
     white-space: nowrap;
+}
+
+.rangeWrapper {
+    position: relative;
+    margin-top: 30px;
+}
+
+.maxPrice {
+    position: absolute;
+    top: -30px;
+    right: -18px;
+}
+
+.minPrice {
+    position: absolute;
+    top: -30px;
+    left: 0;
 }

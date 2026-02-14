@@ -1,16 +1,18 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { api } from '../api.jsx'
 
-export const productsApi = createApi({
-    reducerPath: 'productsApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: import.meta.env.VITE_BASE_API_URL
-    }),
-    tagTypes: ['Product'],
+export const productsApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getProducts: builder.query({
+            query: (params) => ({
+                url: `/products`,
+                method: 'GET',
+                params
+            }),
+            transformResponse: (response) => response.data
+        }),
+        getProductFilters: builder.query({
             query: () => ({
-                url: '/products',
+                url: `/products/filters`,
                 method: 'GET'
             }),
             transformResponse: (response) => response.data
@@ -20,8 +22,7 @@ export const productsApi = createApi({
                 url: `/products/${id}`,
                 method: 'GET'
             }),
-            transformResponse: (response) => response.data,
-            providesTags: ['']
+            transformResponse: (response) => response.data
         }),
         getProductAttributes: builder.query({
             query: (id) => ({
@@ -45,5 +46,6 @@ export const {
     useGetProductsQuery,
     useGetProductByIdQuery,
     useGetProductAttributesQuery,
-    useGetProductReviewsQuery
+    useGetProductReviewsQuery,
+    useGetProductFiltersQuery
 } = productsApi

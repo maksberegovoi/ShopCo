@@ -20,10 +20,8 @@
     }
 
     &:disabled {
-        pointer-events: none;
         cursor: not-allowed;
-        background-color: var(--disabled);
-        color: var(--disabled-foreground);
+        background-color: var(--primary);
     }
 }
 

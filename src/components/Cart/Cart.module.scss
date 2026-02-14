@@ -5,7 +5,6 @@
     flex-direction: column;
     color: var(--text);
     gap: rem(20);
-
     @include tablet-above {
         gap: rem(24);
     }
@@ -18,7 +17,7 @@
     gap: rem(20);
 
     @include tablet-above {
-        align-items: flex-start;
+        align-items: stretch;
         flex-direction: row;
     }
 }
@@ -34,6 +33,7 @@
     border-radius: rem(10);
     padding: rem(14);
     width: 100%;
+    height: 100%;
 
     &.has-scroll {
         overscroll-behavior: contain;
@@ -47,8 +47,8 @@
 }
 
 .item {
-    max-height: 200px;
     position: relative;
+    max-height: 200px;
     display: flex;
     gap: rem(14);
 
@@ -66,6 +66,12 @@
         background: var(--border);
 
     }
+}
+
+.removeBtn {
+    position: absolute;
+    right: 0;
+    top: 2px;
 }
 
 .imageWrapper {
@@ -107,6 +113,10 @@
     }
 }
 
+.name {
+    margin-right: rem(20);
+}
+
 .info {
     display: flex;
     flex-direction: column;
@@ -124,37 +134,58 @@
     gap: rem(4);
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .footer {
     display: flex;
+    flex-wrap: wrap;
+    column-gap: rem(15);
+    row-gap: rem(5);
     justify-content: space-between;
     align-items: center;
 }
 
 .quantity {
+    background-color: var(--primary);
     border-radius: rem(20);
-    padding: rem(7) rem(10);
+    padding: rem(4) rem(8);
     display: flex;
     gap: rem(10);
 
     @include tablet-above {
-        gap: rem(15);
-        padding: rem(14) rem(20);
+        padding: rem(6) rem(10);
     }
 
-    & button {
-        &:disabled {
-            pointer-events: none;
+    @include desktop-above {
+        gap: rem(15);
+        padding: rem(8) rem(12);
+    }
+}
 
-            .iconQuantity {
-                opacity: 0.3;
-            }
+.quantityBtn {
+    flex-shrink: 0;
+
+    &:disabled {
+        cursor: auto;
+
+        .iconQuantity {
+            fill: var(--text) !important;
+            opacity: 0.3;
         }
+    }
+}
+
+.iconQuantity {
+    width: rem(16);
+    height: rem(16);
+    fill: var(--text);
+
+    @include tablet-above {
+        width: rem(20);
+        height: rem(20);
+    }
+
+    @include hover {
+        fill: var(--accent);
     }
 }
 
@@ -164,6 +195,7 @@
 }
 
 .summary {
+    margin-left: auto;
     background: var(--bg-secondary);
     border: 1px solid var(--border);
     border-radius: rem(10);
@@ -174,6 +206,10 @@
     padding: rem(20);
 
     @include tablet-above {
+        max-width: rem(350);
+    }
+
+    @include desktop-above {
         max-width: rem(500);
         gap: rem(28);
         padding: rem(24);
@@ -236,13 +272,13 @@
     flex-wrap: wrap;
 }
 
-.promoInput {
+.promoInputWrapper {
     display: flex;
     align-items: center;
     gap: rem(10);
     background-color: var(--color-bg);
     border-radius: rem(20);
-    padding: rem(12) rem(16);
+    padding: rem(12) rem(0);
     width: 100%;
 
     & > input {
@@ -251,6 +287,12 @@
 
     @include tablet-above {
         gap: rem(12);
+    }
+}
+
+.promoInput {
+    &:disabled {
+        cursor: not-allowed;
     }
 }
 
@@ -301,32 +343,42 @@
     }
 }
 
-.iconQuantity {
-    width: rem(16);
-    height: rem(16);
-    fill: var(--text);
 
-    @include tablet-above {
-        width: rem(20);
-        height: rem(20);
-    }
-
-    @include hover {
-        fill: var(--accent);
-    }
-}
-
-.empty {
-    flex-grow: 1;
+.emptyWrapper {
     width: 100%;
-    height: 100%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
 
     h3 {
-        color: var(--color-text-grey) !important;
+        color: var(--text);
     }
+}
+
+.emptyBtn {
+    margin-top: rem(40);
+    width: rem(200);
+
+    @include desktop-above {
+        width: rem(300);
+    }
+}
+
+.emptyTitle {
+    opacity: 0.5;
 }
 
 .priceContainer {

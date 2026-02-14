@@ -9,7 +9,12 @@ const initialState = {
 const userSlice = createSlice({
     name: 'user',
     initialState,
-    reducers: {},
+    reducers: {
+        userLoggedOut: () => ({
+            isAuth: false,
+            userData: null
+        })
+    },
     extraReducers: (builder) => {
         builder.addMatcher(
             userApi.endpoints.checkAuth.matchFulfilled,
@@ -28,4 +33,5 @@ const userSlice = createSlice({
     }
 })
 
+export const { userLoggedOut } = userSlice.actions
 export default userSlice.reducer

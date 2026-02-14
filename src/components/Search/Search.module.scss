@@ -35,8 +35,6 @@
 
 .content {
     position: absolute;
-    padding: rem(15);
-
     background-color: var(--bg);
     border: 1px solid var(--border);
     border-radius: rem(20);
@@ -50,6 +48,8 @@
     gap: rem(15);
     flex-direction: column;
 
+    @include scrollbar();
+
     & > * {
         a {
             @include mobile-below {
@@ -62,7 +62,9 @@
     }
 }
 
-.catalog {
+.catalog {;
+    border: none;
+    padding: rem(10) rem(10);
     overflow-x: hidden;
     @include tablet-above {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -71,4 +73,5 @@
 
 .searchBtn {
     width: rem(200);
+    margin-bottom: rem(10);
 }

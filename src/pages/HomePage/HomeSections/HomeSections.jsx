@@ -26,7 +26,7 @@ const HomeSections = () => {
                     />
                     <MyButton
                         as={Link}
-                        to={`${CATALOG_ROUTE}?category=${category.title}`}
+                        to={`${CATALOG_ROUTE}?category=${category.categoryId}`}
                         classname={styles.categoryButton}
                         aria-label={`View ${category.title} products`}
                     >

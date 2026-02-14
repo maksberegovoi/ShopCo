@@ -3,7 +3,8 @@ import styles from './Catalog.module.scss'
 import ProductCard from '../ProductCard/ProductCard.jsx'
 
 const Catalog = ({ products, style = '' }) => {
-    if (products.length === 0) return <h3>No products found</h3>
+    if (!products.length)
+        return <h6 className={styles.noProductsTitle}>No products found</h6>
 
     return (
         <ul className={`${styles.catalog} ${style}`}>

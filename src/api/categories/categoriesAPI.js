@@ -1,11 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { api } from '../api.jsx'
 
-export const homePageApi = createApi({
-    reducerPath: 'homePageApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: import.meta.env.VITE_BASE_API_URL
-    }),
+export const homePageApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getHomeSections: builder.query({
             query: () => ({

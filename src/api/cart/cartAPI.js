@@ -1,13 +1,6 @@
-import { createApi } from '@reduxjs/toolkit/query/react'
-import { fetchBaseQuery } from '@reduxjs/toolkit/query'
+import { api } from '../api.jsx'
 
-export const cartApi = createApi({
-    reducerPath: 'cartApi',
-    baseQuery: fetchBaseQuery({
-        baseUrl: import.meta.env.VITE_BASE_API_URL,
-        credentials: 'include'
-    }),
-    tagTypes: ['Cart'],
+export const cartApi = api.injectEndpoints({
     endpoints: (builder) => ({
         getCart: builder.query({
             query: () => ({
@@ -41,6 +34,14 @@ export const cartApi = createApi({
                 method: 'DELETE'
             }),
             invalidatesTags: ['Cart']
+        }),
+        cartPreview: builder.query({
+            query: (body) => ({
+                url: `/cart/preview`,
+                method: 'POST',
+                body
+            }),
+            transformResponse: (response) => response.data
         })
     })
 })
@@ -49,5 +50,6 @@ export const {
     useGetCartQuery,
     useAddCartItemMutation,
     useDeleteCartItemMutation,
-    useUpdateCartItemQuantityMutation
+    useUpdateCartItemQuantityMutation,
+    useCartPreviewQuery
 } = cartApi

@@ -11,28 +11,22 @@ import { ProductDetailsSkeleton } from './ProductDetailsSkeleton.jsx'
 import SizeSelector from '../SizeSelector/SizeSelector.jsx'
 import ColorSelector from '../ColorSelector/ColorSelector.jsx'
 import { useProductVariants } from '../../hooks/useProductVariants/useProductVariants.js'
-import {
-    useAddCartItemMutation,
-    useGetCartQuery
-} from '../../api/cart/cartAPI.js'
+import { useCart } from '../../hooks/useCart/useCart.js'
 import toast from 'react-hot-toast'
-import { isDev } from '../../utils/consts.js'
 
 const ProductDetails = () => {
     const { id } = useParams()
-    const [mainImage, setMainImage] = useState(
-        import.meta.env.VITE_FALLBACK_CARD_IMAGE
-    )
     const [quantity, setQuantity] = useState(0)
 
+    const [mainImage, setMainImage] = useState('')
+
+    const { cartItems, addToCartHandler, isLoading: isCartLoading } = useCart()
     const {
         data: product,
         isLoading: isProductLoading,
         isError,
         error
     } = useGetProductByIdQuery(id)
-    const [addCartItem] = useAddCartItemMutation()
-    const { data: cart, isLoading: isCartLoading } = useGetCartQuery()
 
     const {
         colors,
@@ -42,29 +36,23 @@ const ProductDetails = () => {
         onSelectColor,
         onSelectSize,
         selectedVariant
-    } = useProductVariants(product?.variants ?? [], cart?.items ?? [])
+    } = useProductVariants(product?.variants ?? [], cartItems)
 
-    const addToCard = async () => {
+    const AddToCart = async () => {
         if (!selectedSize || !selectedColor) {
             return toast.error('Choose both: size and color!')
         }
         try {
-            await addCartItem({
+            await addToCartHandler({
                 productVariantId: selectedVariant.id,
                 quantity
-            }).unwrap()
+            })
+
             onSelectColor(null)
             onSelectSize(null)
             setQuantity(0)
-
-            toast.success('Added to cart')
         } catch (err) {
-            if (isDev) {
-                toast.error('ERROR, check console to see more ->')
-                console.log(err)
-            } else {
-                toast.error('Something went wrong... Try again later')
-            }
+            console.log(err)
         }
     }
 
@@ -106,6 +94,7 @@ const ProductDetails = () => {
 
     if (isProductLoading || isCartLoading) return <ProductDetailsSkeleton />
     if (isError) return <Error error={error} />
+
     return (
         <div className={styles.container}>
             <div className={styles.gallery}>
@@ -204,7 +193,12 @@ const ProductDetails = () => {
                             </svg>
                         </button>
                     </div>
-                    <MyButton classname={styles.btnCart} onClick={addToCard}>
+                    <MyButton
+                        disabled={!product?.variants?.length}
+                        disabledMessage={'Product is not available'}
+                        classname={styles.btnCart}
+                        onClick={AddToCart}
+                    >
                         Add to Cart
                     </MyButton>
                 </div>

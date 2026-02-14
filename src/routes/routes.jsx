@@ -22,7 +22,8 @@ import ProfilePage from '../pages/ProfilePage/ProfilePage.jsx'
 export const routes = [
     {
         path: AUTH_ROUTE,
-        element: <AuthPage />
+        element: <AuthPage />,
+        guestOnly: true
     },
     {
         path: PROFILE_ROUTE,

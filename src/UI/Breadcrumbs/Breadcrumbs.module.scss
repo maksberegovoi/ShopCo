@@ -5,8 +5,12 @@
     align-items: center;
     flex-wrap: wrap;
     gap: rem(10);
-    padding-block: rem(20);
+    padding-block: rem(15);
     text-transform: capitalize;
+
+    @include tablet-above {
+        padding-block: rem(20);
+    }
 }
 
 .item {
