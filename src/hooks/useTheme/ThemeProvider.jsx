@@ -1,6 +1,5 @@
-import { useEffect, useState, createContext } from 'react'
-
-export const ThemeContext = createContext(null)
+import { useEffect, useState } from 'react'
+import { ThemeContext } from './ThemeContext'
 
 const ThemeProvider = ({ children }) => {
     const [theme, setTheme] = useState('light')
