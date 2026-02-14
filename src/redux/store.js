@@ -9,9 +9,7 @@ import {
     REHYDRATE
 } from 'redux-persist'
 import rootReducer from './config/rootReducer.js'
-import { productsApi } from '../api/products/productsAPI.js'
-import { promoCodeApi } from '../api/promocode/promoCodeAPI.js'
-import categoriesApi from '../api/categories/categoriesAPI.js'
+import { api } from '../api/api.jsx'
 
 export const store = configureStore({
     reducer: rootReducer,
@@ -27,11 +25,7 @@ export const store = configureStore({
                     REGISTER
                 ]
             }
-        }).concat(
-            productsApi.middleware,
-            promoCodeApi.middleware,
-            categoriesApi.middleware
-        )
+        }).concat(api.middleware)
 })
 
 export const persistor = persistStore(store)

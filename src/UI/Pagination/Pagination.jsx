@@ -1,49 +1,61 @@
 import React from 'react'
 import styles from './Pagination.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
+import MyButton from '../MyButton/MyButton.jsx'
 
-const Pagination = ({ page, total, limit, onPageChange }) => {
+const Pagination = ({ page, total, limit, setSingleParam }) => {
     const totalPages = Math.ceil(total / limit)
     if (totalPages <= 1) return null
 
-    const handlePrev = () => onPageChange(Math.max(page - 1, 1))
-    const handleNext = () => onPageChange(Math.min(page + 1, totalPages))
+    const handlePrev = () => setSingleParam('page', Math.max(page - 1, 1))
+    const handleNext = () =>
+        setSingleParam('page', Math.min(page + 1, totalPages))
 
     const getPageNumbers = () => {
-        const delta = 1
-        const range = []
-        const rangeWithDots = []
-        range.push(1)
+        const siblingCount = 2
+        const totalPages = Math.ceil(total / limit)
 
-        for (let i = page - delta; i <= page + delta; i++) {
-            if (i > 1 && i < totalPages) {
-                range.push(i)
+        const totalNumbers = siblingCount * 2 + 5
+        if (totalPages <= totalNumbers) {
+            return Array.from({ length: totalPages }, (_, i) => i + 1)
+        }
+
+        const leftSiblingIndex = Math.max(page - siblingCount, 1)
+        const rightSiblingIndex = Math.min(page + siblingCount, totalPages)
+
+        const showLeftDots = leftSiblingIndex > 2
+        const showRightDots = rightSiblingIndex < totalPages - 1
+
+        const pages = []
+
+        pages.push(1)
+
+        if (showLeftDots) {
+            pages.push('...')
+        }
+
+        for (let i = leftSiblingIndex; i <= rightSiblingIndex; i++) {
+            if (i !== 1 && i !== totalPages) {
+                pages.push(i)
             }
+        }
+
+        if (showRightDots) {
+            pages.push('...')
         }
 
         if (totalPages > 1) {
-            range.push(totalPages)
+            pages.push(totalPages)
         }
 
-        let prev = 0
-        for (const i of range) {
-            if (i - prev === 2) {
-                rangeWithDots.push(prev + 1)
-            } else if (i - prev > 2) {
-                rangeWithDots.push('...')
-            }
-            rangeWithDots.push(i)
-            prev = i
-        }
-
-        return rangeWithDots
+        return pages
     }
 
     const pages = getPageNumbers()
 
     return (
         <div className={styles.pagination}>
-            <button
+            <MyButton
                 className={styles.navBtn}
                 onClick={handlePrev}
                 disabled={page === 1}
@@ -52,7 +64,7 @@ const Pagination = ({ page, total, limit, onPageChange }) => {
                     <use href={`${sprite}#icon-arrowRight`}></use>
                 </svg>
                 <span className={styles.btnText}>Previous</span>
-            </button>
+            </MyButton>
             <div className={styles.pages}>
                 {pages.map((p, index) => {
                     if (p === '...') {
@@ -63,9 +75,9 @@ const Pagination = ({ page, total, limit, onPageChange }) => {
                         )
                     }
                     return (
-                        <button
+                        <MyButton
                             key={p}
-                            onClick={() => onPageChange(p)}
+                            onClick={() => setSingleParam('page', p)}
                             className={
                                 p === page
                                     ? `${styles.page} ${styles.active}`
@@ -73,11 +85,11 @@ const Pagination = ({ page, total, limit, onPageChange }) => {
                             }
                         >
                             {p}
-                        </button>
+                        </MyButton>
                     )
                 })}
             </div>
-            <button
+            <MyButton
                 className={styles.navBtn}
                 onClick={handleNext}
                 disabled={page === totalPages}
@@ -86,7 +98,7 @@ const Pagination = ({ page, total, limit, onPageChange }) => {
                 <svg className={`${styles.arrow} ${styles.arrowRight}`}>
                     <use href={`${sprite}#icon-arrowRight`}></use>
                 </svg>
-            </button>
+            </MyButton>
         </div>
     )
 }

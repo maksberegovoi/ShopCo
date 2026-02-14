@@ -1,14 +1,12 @@
 import { combineReducers } from '@reduxjs/toolkit'
-import { productsApi } from '../../api/products/productsAPI.js'
 import { persistedCartReducer } from './persistConfig.js'
-import { promoCodeApi } from '../../api/promocode/promoCodeAPI.js'
-import categoriesApi from '../../api/categories/categoriesAPI.js'
+import userReducer from '../features/user/slice/userSlice.js'
+import { api } from '../../api/api.jsx'
 
 const rootReducer = combineReducers({
     cart: persistedCartReducer,
-    [productsApi.reducerPath]: productsApi.reducer,
-    [categoriesApi.reducerPath]: categoriesApi.reducer,
-    [promoCodeApi.reducerPath]: promoCodeApi.reducer
+    user: userReducer,
+    [api.reducerPath]: api.reducer
 })
 
 export default rootReducer

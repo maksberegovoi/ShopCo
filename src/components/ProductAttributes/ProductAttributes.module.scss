@@ -1,0 +1,53 @@
+@use '../../styles/helpers/index' as *;
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    place-items: center;
+    row-gap: rem(20);
+    column-gap: rem(20);
+
+    @include tablet-above {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+.column {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    width: 100%;
+    height: 100%;
+    justify-content: space-around;
+    border: 1px solid var(--border);
+    border-radius: rem(20);
+    padding: rem(20);
+
+    @include tablet-above {
+        padding: rem(24);
+    }
+}
+
+.colTitle {
+    border-bottom: 1px solid var(--border);
+    padding-bottom: rem(15);
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: rem(15);
+}
+
+.title {
+    width: 100%;
+    text-transform: capitalize;
+    font-weight: 700;
+}
+
+.value {
+    width: 100%;
+    text-wrap: balance;
+    text-align: right;
+}

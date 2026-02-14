@@ -14,8 +14,7 @@
 
 .size {
     padding: rem(10) rem(20);
-    border: 1px solid lightgrey;
-    background: #f0f0f0;
+    border: 1px solid var(--border);
     border-radius: rem(62);
     cursor: pointer;
     transition: all 0.2s ease;
@@ -25,17 +24,17 @@
     }
 
     @include hover {
-        border-color: var(--color-accent);
+        border-color: var(--accent);
         scale: 1.1;
     }
 
     &.active {
-        background-color: var(--color-accent);
-        color: white;
+        background-color: var(--accent);
+        color: var(--color-text);
     }
 
     &:disabled {
         cursor: not-allowed;
-        opacity: 0.6;
+        color: oklch(from var(--text) l c h / 0.1);
     }
 }

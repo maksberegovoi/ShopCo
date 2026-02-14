@@ -3,9 +3,8 @@
 .container {
     display: flex;
     flex-direction: column;
-    color: black;
+    color: var(--text);
     gap: rem(20);
-
     @include tablet-above {
         gap: rem(24);
     }
@@ -18,28 +17,38 @@
     gap: rem(20);
 
     @include tablet-above {
-        align-items: flex-start;
+        align-items: stretch;
         flex-direction: row;
     }
 }
 
 .list {
+    background: var(--bg-secondary);
+    overflow-y: auto;
+    max-height: rem(630);
     display: flex;
     flex-direction: column;
     gap: rem(32);
-    border: 1px solid lightgrey;
-    border-radius: rem(20);
+    border: 1px solid var(--border);
+    border-radius: rem(10);
     padding: rem(14);
     width: 100%;
+    height: 100%;
+
+    &.has-scroll {
+        overscroll-behavior: contain;
+    }
+
+    @include scrollbar();
 
     @include tablet-above {
-        gap: rem(48);
         padding: rem(24);
     }
 }
 
 .item {
     position: relative;
+    max-height: 200px;
     display: flex;
     gap: rem(14);
 
@@ -54,12 +63,15 @@
         left: 0;
         height: rem(1);
         width: 100%;
-        background: rgba(0, 0, 0, 0.1);
+        background: var(--border);
 
-        @include tablet-above {
-            bottom: -24px;
-        }
     }
+}
+
+.removeBtn {
+    position: absolute;
+    right: 0;
+    top: 2px;
 }
 
 .imageWrapper {
@@ -77,13 +89,13 @@
     cursor: pointer;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
 }
 
 .imgDiscount {
     border-radius: 62px;
-    background: rgba(255, 51, 51, 0.1);
-    color: red;
+    background: var(--accent);
+    color: var(--accent-foreground);
     padding: rem(2) rem(8);
     display: flex;
     align-items: center;
@@ -99,6 +111,10 @@
     @include desktop-above {
         font-size: rem(12);
     }
+}
+
+.name {
+    margin-right: rem(20);
 }
 
 .info {
@@ -118,48 +134,71 @@
     gap: rem(4);
 }
 
-.header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-}
 
 .footer {
     display: flex;
+    flex-wrap: wrap;
+    column-gap: rem(15);
+    row-gap: rem(5);
     justify-content: space-between;
     align-items: center;
 }
 
 .quantity {
-    background-color: #f0f0f0;
+    background-color: var(--primary);
     border-radius: rem(20);
-    padding: rem(7) rem(10);
+    padding: rem(4) rem(8);
     display: flex;
-    gap: rem(20);
+    gap: rem(10);
 
     @include tablet-above {
-        padding: rem(14) rem(20);
+        padding: rem(6) rem(10);
     }
 
-    & button {
-        &:disabled {
-            pointer-events: none;
+    @include desktop-above {
+        gap: rem(15);
+        padding: rem(8) rem(12);
+    }
+}
 
-            .iconQuantity {
-                opacity: 0.3;
-            }
+.quantityBtn {
+    flex-shrink: 0;
+
+    &:disabled {
+        cursor: auto;
+
+        .iconQuantity {
+            fill: var(--text) !important;
+            opacity: 0.3;
         }
+    }
+}
+
+.iconQuantity {
+    width: rem(16);
+    height: rem(16);
+    fill: var(--text);
+
+    @include tablet-above {
+        width: rem(20);
+        height: rem(20);
+    }
+
+    @include hover {
+        fill: var(--accent);
     }
 }
 
 .value {
     text-transform: capitalize;
-    color: var(--color-text-grey);
+    color: var(--primary);
 }
 
 .summary {
-    border: 1px solid lightgrey;
-    border-radius: rem(20);
+    margin-left: auto;
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: rem(10);
     display: flex;
     flex-direction: column;
     gap: rem(20);
@@ -167,6 +206,10 @@
     padding: rem(20);
 
     @include tablet-above {
+        max-width: rem(350);
+    }
+
+    @include desktop-above {
         max-width: rem(500);
         gap: rem(28);
         padding: rem(24);
@@ -182,7 +225,7 @@
             left: 0;
             height: rem(1);
             width: 100%;
-            background: rgba(0, 0, 0, 0.1);
+            background: var(--border);
 
             @include tablet-above {
                 bottom: -14px;
@@ -202,16 +245,12 @@
     justify-content: space-between;
 }
 
-.label {
-    color: var(--color-text-grey);
-}
-
-.amount {
+.total {
     font-weight: 700;
 }
 
 .discount {
-    color: red;
+    color: var(--destructive);
 }
 
 .checkoutBtn {
@@ -221,7 +260,7 @@
 
     @include hover {
         .iconArrow {
-            fill: black;
+            fill: var(--text);
         }
     }
 }
@@ -233,12 +272,13 @@
     flex-wrap: wrap;
 }
 
-.promoInput {
+.promoInputWrapper {
     display: flex;
+    align-items: center;
     gap: rem(10);
-    background-color: #f0f0f0;
+    background-color: var(--color-bg);
     border-radius: rem(20);
-    padding: rem(12) rem(16);
+    padding: rem(12) rem(0);
     width: 100%;
 
     & > input {
@@ -250,9 +290,15 @@
     }
 }
 
+.promoInput {
+    &:disabled {
+        cursor: not-allowed;
+    }
+}
+
 .promoBtn {
     width: 100%;
-    border: 1px solid lightgrey;
+    border: 1px solid var(--color-border);
 }
 
 .promoLoader {
@@ -262,7 +308,7 @@
 .iconArrow {
     width: rem(20);
     height: rem(20);
-    fill: lightgrey;
+    fill: var(--color-text);
 
     @include tablet-above {
         width: rem(24);
@@ -271,7 +317,7 @@
 }
 
 .iconPromo {
-    fill: white;
+    fill: var(--text);
     width: rem(20);
     height: rem(20);
 
@@ -284,7 +330,8 @@
 .iconTrash {
     width: rem(20);
     height: rem(20);
-    fill: red;
+    fill: var(--destructive);
+    transition: var(--transition-duration);
 
     @include tablet-above {
         width: rem(24);
@@ -296,30 +343,52 @@
     }
 }
 
-.iconQuantity {
-    width: rem(16);
-    height: rem(16);
-    fill: black;
 
-    @include tablet-above {
-        width: rem(20);
-        height: rem(20);
-    }
-
-    @include hover {
-        fill: var(--color-accent);
-    }
-}
-
-.empty {
-    flex-grow: 1;
+.emptyWrapper {
     width: 100%;
-    height: 100%;
+    flex: 1;
     display: flex;
     align-items: center;
     justify-content: center;
+}
+
+.empty {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
 
     h3 {
-        color: var(--color-text-grey) !important;
+        color: var(--text);
     }
+}
+
+.emptyBtn {
+    margin-top: rem(40);
+    width: rem(200);
+
+    @include desktop-above {
+        width: rem(300);
+    }
+}
+
+.emptyTitle {
+    opacity: 0.5;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: rem(5);
+}
+
+.basePrice {
+    color: var(--destructive);
+    opacity: 0.7;
+    text-decoration: line-through;
 }

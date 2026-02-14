@@ -4,8 +4,8 @@ import styles from './ProductCard.module.scss'
 import { generatePath, useNavigate } from 'react-router-dom'
 import { DETAILS_ROUTE } from '../../utils/consts.js'
 import { generateSlug } from '../../utils/generateSlug/generateSlug.js'
-import { getColorValue } from '../../utils/getColorValue/getColorValue.js'
 import sprite from '../../../assets/icons/sprite.svg'
+import { optimizeUrl } from '../../utils/optimizeUrl/optimizeUrl.js'
 
 const ProductCard = ({ product }) => {
     const navigate = useNavigate()
@@ -14,6 +14,10 @@ const ProductCard = ({ product }) => {
         id: product.id,
         slug: generateSlug(product.name)
     })
+
+    const avatar = product?.avatar?.trim()
+        ? product.avatar
+        : import.meta.env.VITE_FALLBACK_CARD_IMAGE
 
     const handleClick = (e) => {
         if (e.ctrlKey || e.metaKey || e.button === 1) return
@@ -31,7 +35,7 @@ const ProductCard = ({ product }) => {
             >
                 <div className={styles.imgContainer}>
                     <img
-                        src={product.gallery[0] || ''}
+                        src={optimizeUrl(avatar)}
                         alt="product image"
                         className={styles.cardImage}
                     />
@@ -48,35 +52,31 @@ const ProductCard = ({ product }) => {
                             {renderRatingStars(product.rating)}
                         </div>
                         <p>
-                            {product.rating}/
-                            <span className={styles.ratingNumberAccent}>5</span>
+                            <span className={styles.ratingNumberAccent}>
+                                {product.rating}
+                            </span>
+                            /5
                         </p>
                     </div>
                     <div className={styles.colors}>
-                        {product.colors.map((color) => (
+                        {product.colors.map(({ name, hex, isAvailable }) => (
                             <span
-                                key={color.name}
+                                key={hex}
                                 className={styles.color}
                                 style={{
-                                    backgroundColor: getColorValue(color.name),
-                                    cursor: color.available
-                                        ? 'auto'
-                                        : 'not-allowed'
+                                    backgroundColor: hex,
+                                    cursor: isAvailable ? 'auto' : 'not-allowed'
                                 }}
                                 title={
-                                    getColorValue(color.name) === 'transparent'
-                                        ? 'unknown'
-                                        : color.name
+                                    isAvailable ? name : `${name} not available`
                                 }
                             >
-                                {!color.available && (
+                                {!isAvailable && (
                                     <svg
                                         className={styles.iconNotAvailiable}
                                         style={{
                                             fill:
-                                                color.name === 'red'
-                                                    ? 'black'
-                                                    : 'red'
+                                                name === 'red' ? 'black' : 'red'
                                         }}
                                     >
                                         <use

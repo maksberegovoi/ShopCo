@@ -3,45 +3,53 @@ import styles from './CatalogPage.module.scss'
 import Filters from '../../components/Filters/Filters.jsx'
 import Loader from '../../UI/Loader/Loader.jsx'
 import Error from '../../components/Error/Error.jsx'
-import { useDeviceType } from '../../hooks/useDeviceType.js'
 import { useFilters } from '../../hooks/useFilters/useFilters.js'
-import { useGetAllProductsQuery } from '../../api/products/productsAPI.js'
 import Pagination from '../../UI/Pagination/Pagination.jsx'
 import Accordion from '../../components/Accordion/Accordion.jsx'
 import sprite from '../../../assets/icons/sprite.svg'
 import Catalog from '../../components/Catalog/Catalog.jsx'
+import { useGetProductsQuery } from '../../api/products/productsAPI.js'
+import { useDeviceType } from '../../hooks/useDeviceType.js'
+import { CatalogPageSkeleton } from './CatalogPageSkeleton.jsx'
 
 const CatalogPage = () => {
     const { isDesktop } = useDeviceType()
-    const [page, setPage] = useState(1)
-    const limit = isDesktop ? 9 : 6
-    const { filters, setSortBy } = useFilters()
-    const { data, isLoading, isError } = useGetAllProductsQuery({
+    const [isFilters, setIsFilters] = useState(false)
+    const [sortTitle, setSortTitle] = useState('Most popular')
+    const isManualToggle = useRef(false)
+    const {
+        queryFilters,
+        setSingleParam,
+        onSetParams,
+        resetFilters,
         page,
-        limit,
-        filters
+        limit
+    } = useFilters()
+    const { data, isLoading, isError } = useGetProductsQuery({
+        ...queryFilters
     })
 
-    const [isFilters, setIsFilters] = useState(false)
-    const isManualToggle = useRef(false)
     const toggleFilters = () => {
         isManualToggle.current = true
         setIsFilters(!isFilters)
     }
 
-    const [sortTitle, setSortTitle] = useState('Most popular')
     const handleSort = (e, sortBy) => {
         setSortTitle(e.target.textContent)
-        setSortBy(sortBy)
+        setSingleParam('sortBy', sortBy)
     }
 
     useEffect(() => {
-        setPage(1)
-    }, [filters])
+        const html = document.documentElement
+        const prevScrollBehavior = html.style.scrollBehavior
 
-    useEffect(() => {
-        window.scrollTo(0, 0)
-    }, [page])
+        html.style.scrollBehavior = 'smooth'
+        window.scrollTo({ top: 0 })
+
+        return () => {
+            html.style.scrollBehavior = prevScrollBehavior
+        }
+    }, [queryFilters.page])
 
     useEffect(() => {
         if (!isManualToggle.current) {
@@ -61,16 +69,13 @@ const CatalogPage = () => {
         }
     }, [isFilters, isDesktop])
 
-    if (isLoading) return <Loader />
+    if (isLoading) return <CatalogPageSkeleton />
     if (isError) return <Error />
+
     return (
         <section className={`container`}>
             <div className={styles.header}>
-                <h3>
-                    {[filters.category, filters.style, filters.type]
-                        .filter(Boolean)
-                        .join(' • ') || 'Catalog'}
-                </h3>
+                <h3 className={styles.title}>Catalog</h3>
                 <div className={styles.headerContent}>
                     <button
                         className={styles.filters}
@@ -83,22 +88,27 @@ const CatalogPage = () => {
                     </button>
                     <p>
                         Showing {(page - 1) * limit + 1} –{' '}
-                        {Math.min(page * limit, data.total)} of {data.total}{' '}
-                        products
+                        {Math.min(page * limit, data.total)} of{' '}
+                        {data?.total || 0} products
                     </p>
                     <div className={styles.sort}>
                         <p>Sort By:</p>
                         <Accordion title={sortTitle} absolute={true}>
                             <div className={styles.sortItems}>
                                 <button
-                                    onClick={(e) => handleSort(e, 'priceUp')}
+                                    onClick={(e) => handleSort(e, 'popular')}
                                 >
-                                    Price Up
+                                    Most popular
                                 </button>
                                 <button
-                                    onClick={(e) => handleSort(e, 'priceDown')}
+                                    onClick={(e) => handleSort(e, 'price_asc')}
                                 >
-                                    Price Down
+                                    Price up
+                                </button>
+                                <button
+                                    onClick={(e) => handleSort(e, 'price_desc')}
+                                >
+                                    Price down
                                 </button>
                                 <button
                                     onClick={(e) => handleSort(e, 'discount')}
@@ -117,15 +127,30 @@ const CatalogPage = () => {
             </div>
             <div className={styles.main} style={{ gap: isFilters ? 25 : 0 }}>
                 <aside>
-                    <Filters isOpen={isFilters} handleClick={setIsFilters} />
+                    <Filters
+                        isOpen={isFilters}
+                        handleClick={setIsFilters}
+                        onSetParams={onSetParams}
+                        setSingleParam={setSingleParam}
+                        queryFilters={queryFilters}
+                        resetFilters={resetFilters}
+                    />
                 </aside>
                 <div className={styles.catalogContainer}>
-                    <Catalog products={data.items} />
+                    {data.items.length ? (
+                        <Catalog products={data.items} />
+                    ) : (
+                        <div className={styles.wrapper}>
+                            <h6 className={styles.notFoundItems}>
+                                No products found
+                            </h6>
+                        </div>
+                    )}
                     <Pagination
                         page={page}
+                        setSingleParam={setSingleParam}
                         total={data.total}
                         limit={data.limit}
-                        onPageChange={setPage}
                     />
                 </div>
             </div>

@@ -9,25 +9,29 @@
     align-items: center;
     gap: rem(8);
     cursor: pointer;
-    color: black;
+    color: var(--primary);
 
     @include hover {
-        color: var(--color-accent);
+        color: var(--accent);
 
         & svg {
-            fill: var(--color-accent);
+            fill: var(--accent);
         }
     }
 }
 
 .accordionContent {
-    display: flex;
-    flex-direction: column;
-    gap: rem(5);
-    margin-top: rem(8);
-    padding-left: rem(10);
-    background-color: white;
+    margin-top: rem(6);
+    padding: rem(0) rem(10);
+    border: 1px solid var(--border);
+    border-top: none;
+    border-bottom-left-radius: var(--border-radius);
+    border-bottom-right-radius: var(--border-radius);
+    background-color: var(--bg-secondary);
+
+
 }
+
 .absolute {
     position: absolute;
     z-index: 998;
@@ -44,6 +48,7 @@
 }
 
 .icon {
+    fill: var(--primary);
     transition: transform 0.3s ease;
     width: rem(16);
     height: rem(16);

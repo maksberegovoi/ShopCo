@@ -1,54 +1,41 @@
 import React from 'react'
 import styles from './ColorSelector.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
-import { getColorValue } from '../../utils/getColorValue/getColorValue.js'
 
-const ColorSelector = ({ colors, selectedColor, onColorChange }) => {
+const ColorSelector = ({ colors, selectedColor, onSelectColor }) => {
     return (
         <div className={styles.colorSelector}>
-            <p>Select Colors</p>
+            <p>Select Color</p>
             <div className={styles.colorOptions}>
-                {colors.map((color) => (
-                    <button
-                        disabled={!color.available}
-                        key={color.name}
-                        className={
-                            selectedColor === color.name
-                                ? `${styles.colorSwatch} ${styles.active}`
-                                : styles.colorSwatch
-                        }
-                        style={{
-                            backgroundColor: getColorValue(color.name)
-                        }}
-                        onClick={() => onColorChange(color.name)}
-                        aria-label={color.name}
-                        title={
-                            getColorValue(color.name) === 'transparent'
-                                ? 'unknown'
-                                : color.name
-                        }
-                    >
-                        {!color.available && (
-                            <svg
-                                className={styles.iconNotAvailiable}
-                                style={{
-                                    fill: color.name === 'red' ? 'black' : 'red'
-                                }}
-                            >
-                                <use href={`${sprite}#icon-close`}></use>
-                            </svg>
-                        )}
-                        <svg
-                            className={
-                                selectedColor === color.name
-                                    ? `${styles.iconCheckMark} ${styles.active}`
-                                    : styles.iconCheckMark
-                            }
+                {colors.map((color) => {
+                    return (
+                        <button
+                            key={color.hex}
+                            disabled={!color.isAvailable}
+                            className={`${styles.colorSwatch} ${
+                                selectedColor === color.hex ? styles.active : ''
+                            }`}
+                            style={{ backgroundColor: color.hex }}
+                            onClick={() => onSelectColor(color.hex)}
                         >
-                            <use href={`${sprite}#icon-check-mark`}></use>
-                        </svg>
-                    </button>
-                ))}
+                            {!color.isAvailable && (
+                                <svg className={styles.iconNotAvailiable}>
+                                    <use href={`${sprite}#icon-close`} />
+                                </svg>
+                            )}
+
+                            <svg
+                                className={
+                                    selectedColor === color.hex
+                                        ? `${styles.iconCheckMark} ${styles.active}`
+                                        : styles.iconCheckMark
+                                }
+                            >
+                                <use href={`${sprite}#icon-check-mark`} />
+                            </svg>
+                        </button>
+                    )
+                })}
             </div>
         </div>
     )

@@ -1,28 +1,53 @@
 import React from 'react'
 import styles from './Hero.module.scss'
 import MyButton from '../../../UI/MyButton/MyButton.jsx'
-import heroBg from '../../../../assets/backgroundImages/herobg.png'
 import { CATALOG_ROUTE } from '../../../utils/consts.js'
-import zara from '../../../../assets/brands/zara.png'
-import versace from '../../../../assets/brands/versace.png'
-import prada from '../../../../assets/brands/prada.png'
-import gucci from '../../../../assets/brands/gucci.png'
-import calvinKlein from '../../../../assets/brands/calvinKlein.png'
+import { Link } from 'react-router-dom'
+import { useTheme } from '../../../hooks/useTheme/useTheme.jsx'
+
+const metrics = [
+    { title: '200+', description: 'International Brands' },
+    { title: '2,000+', description: 'High-Quality Products' },
+    { title: '30,000+', description: 'Happy Customers' }
+]
+
+const brands = [
+    {
+        name: 'zara',
+        src: 'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770843995/zara_jkkwd3.png',
+        srcDark:
+            'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770844225/zara_jkkwd3_4a99a5.png'
+    },
+    {
+        name: 'versace',
+        src: 'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770843995/versace_tkxlnd.png',
+        srcDark:
+            'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770844226/versace_tkxlnd_4a99a5.png'
+    },
+    {
+        name: 'gucci',
+        src: 'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770843994/gucci_exzysw.png',
+        srcDark:
+            'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770844222/gucci_exzysw_4a99a5.png'
+    },
+    {
+        name: 'prada',
+        src: 'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770843994/prada_eygopc.png',
+        srcDark:
+            'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770844221/prada_eygopc_4a99a5.png'
+    },
+    {
+        name: 'calvinKlein',
+        src: 'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770843994/calvinKlein_rszd3i.png',
+        srcDark:
+            'https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770844223/calvinklein_rszd3i_4a99a5.png'
+    }
+]
 
 const Hero = () => {
-    const metrics = [
-        { title: '200+', description: 'International Brands' },
-        { title: '2,000+', description: 'High-Quality Products' },
-        { title: '30,000+', description: 'Happy Customers' }
-    ]
+    const { theme } = useTheme()
 
-    const brands = [
-        { name: 'versace', icon: versace },
-        { name: 'zara', icon: zara },
-        { name: 'gucci', icon: gucci },
-        { name: 'prada', icon: prada },
-        { name: 'calvinKlein', icon: calvinKlein }
-    ]
+    const isDark = theme === 'dark'
 
     return (
         <section className={styles.hero}>
@@ -34,7 +59,11 @@ const Hero = () => {
                         garments, designed to bring out your individuality and
                         cater to your sense of style.
                     </p>
-                    <MyButton to={CATALOG_ROUTE} classname={styles.heroBtn}>
+                    <MyButton
+                        as={Link}
+                        to={CATALOG_ROUTE}
+                        classname={styles.heroBtn}
+                    >
                         Shop Now
                     </MyButton>
                     <dl className={styles.metrics}>
@@ -53,7 +82,7 @@ const Hero = () => {
                 </div>
                 <img
                     className={styles.heroImage}
-                    src={heroBg}
+                    src="https://res.cloudinary.com/dxmxrfqkx/image/upload/v1770815603/herobg_j0kjfi.png"
                     alt="background image"
                 />
             </div>
@@ -63,7 +92,7 @@ const Hero = () => {
                         <img
                             className={styles.brandImg}
                             key={brand.name}
-                            src={brand.icon}
+                            src={isDark ? brand.src : brand.srcDark}
                             alt="brand"
                         />
                     ))}

@@ -1,0 +1,10 @@
+@use '../../styles/helpers/index' as *;
+
+
+.input {
+    width: 100%;
+    color: var(--text);
+    padding: rem(10);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+}

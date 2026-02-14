@@ -3,76 +3,63 @@ import { createSlice } from '@reduxjs/toolkit'
 const cartSlice = createSlice({
     name: 'cart',
     initialState: {
-        items: [],
-        deliveryFee: 15,
-        promoCodeDiscount: 0
+        items: [] // {productVariantId: number, quantity: number}[]
     },
     reducers: {
         addToCart: (state, action) => {
-            const newProduct = action.payload
+            const product = action.payload
 
-            const existingProduct = findCartItem(
-                state.items,
-                newProduct.id,
-                newProduct.color,
-                newProduct.size
+            const existing = state.items.find(
+                (item) => item.productVariantId === product.productVariantId
             )
 
-            if (existingProduct) {
-                existingProduct.quantity += newProduct.quantity
+            if (existing) {
+                existing.quantity += product.quantity
             } else {
-                state.items.push(newProduct)
+                state.items.push(product)
             }
         },
 
         removeFromCart: (state, action) => {
-            const { id, size, color } = action.payload
+            const id = action.payload
 
-            state.items = state.items.filter(
-                (product) =>
-                    !(
-                        product.id === id &&
-                        product.size === size &&
-                        product.color === color
-                    )
+            const existing = state.items.find(
+                (item) => item.productVariantId === id
             )
+
+            if (existing) {
+                state.items = state.items.filter(
+                    (exist) => exist.productVariantId !== id
+                )
+            }
         },
 
         incrementQuantity: (state, action) => {
-            const { id, size, color } = action.payload
+            const id = action.payload
 
-            const product = findCartItem(state.items, id, color, size)
-            if (product) {
-                product.quantity += 1
-            }
+            const existing = state.items.find(
+                (item) => item.productVariantId === id
+            )
+
+            if (existing && existing.quantity > 0) existing.quantity += 1
         },
 
         decrementQuantity: (state, action) => {
-            const { id, size, color } = action.payload
+            const id = action.payload
 
-            const product = findCartItem(state.items, id, color, size)
-            if (product && product.quantity > 1) {
-                product.quantity -= 1
-            }
-        },
+            const existing = state.items.find(
+                (item) => item.productVariantId === id
+            )
 
-        setPromoCodeDiscount: (state, action) => {
-            state.promoCodeDiscount = action.payload
+            if (existing && existing.quantity > 0) existing.quantity -= 1
         }
     }
 })
-
-const findCartItem = (items, id, color, size) => {
-    return items.find(
-        (item) => item.id === id && item.color === color && item.size === size
-    )
-}
 
 export const {
     addToCart,
     removeFromCart,
     incrementQuantity,
-    decrementQuantity,
-    setPromoCodeDiscount
+    decrementQuantity
 } = cartSlice.actions
 export default cartSlice.reducer

@@ -3,9 +3,10 @@ import styles from './Search.module.scss'
 import sprite from '../../../assets/icons/sprite.svg'
 import Catalog from '../Catalog/Catalog.jsx'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
-import { useSearchProductsQuery } from '../../api/products/productsAPI.js'
 import { useNavigate } from 'react-router-dom'
 import Loader from '../../UI/Loader/Loader.jsx'
+import { useGetProductsQuery } from '../../api/products/productsAPI.js'
+import Error from '../Error/Error.jsx'
 
 const Search = () => {
     const [search, setSearch] = useState('')
@@ -14,9 +15,10 @@ const Search = () => {
     const searchRef = useRef(null)
     const navigate = useNavigate()
 
-    const { data, isLoading } = useSearchProductsQuery(debouncedSearch, {
-        skip: debouncedSearch.trim().length < 2
-    })
+    const { data, isLoading, isError, error } = useGetProductsQuery(
+        { search: debouncedSearch },
+        { skip: debouncedSearch.length < 3 }
+    )
 
     const handleSearch = () => {
         if (search.trim().length < 2) return
@@ -27,7 +29,7 @@ const Search = () => {
     useEffect(() => {
         const timer = setTimeout(() => {
             setDebouncedSearch(search)
-        }, 300)
+        }, 500)
 
         return () => clearTimeout(timer)
     }, [search])
@@ -63,6 +65,11 @@ const Search = () => {
             document.removeEventListener('mousedown', handleClickOutside)
     }, [])
 
+    if (isLoading) return <Loader />
+    if (isError) return <Error error={error} />
+
+    const items = data?.items ?? []
+    console.log(items)
     return (
         <div className={styles.container} ref={searchRef}>
             <div className={styles.searchBox}>
@@ -82,22 +89,13 @@ const Search = () => {
             </div>
             {isOpen && (
                 <div className={styles.content}>
-                    {isLoading ? (
-                        <Loader />
-                    ) : (
-                        <>
-                            <Catalog
-                                products={data?.items || []}
-                                style={styles.catalog}
-                            />
-                            <MyButton
-                                handleClick={() => setIsOpen(!isOpen)}
-                                classname={styles.searchBtn}
-                            >
-                                Close search
-                            </MyButton>
-                        </>
-                    )}
+                    <Catalog products={items} style={styles.catalog} />
+                    <MyButton
+                        onClick={handleSearch}
+                        classname={styles.searchBtn}
+                    >
+                        Search in catalog
+                    </MyButton>
                 </div>
             )}
         </div>

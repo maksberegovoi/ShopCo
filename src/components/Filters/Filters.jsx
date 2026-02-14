@@ -1,41 +1,30 @@
 import React from 'react'
 import styles from './Filters.module.scss'
-import StyleFilter from './StyleFilter/StyleFilter.jsx'
-import SizeFilter from './SizeFilter/SizeFilter.jsx'
-import ColorFilter from './ColorFilter/ColorFilter.jsx'
-import PriceFilter from './PriceFilter/PriceFilter.jsx'
-import TypeFilter from './TypeFilter/TypeFilter.jsx'
 import sprite from '../../../assets/icons/sprite.svg'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
-import { useFilters } from '../../hooks/useFilters/useFilters.js'
-import BrandFilter from './BrandFilter/BrandFilter.jsx'
-import CategoryFilter from './CategoryFilter/CategoryFilter.jsx'
+import { useGetProductFiltersQuery } from '../../api/products/productsAPI.js'
+import Error from '../Error/Error.jsx'
+import PriceFilter from './PriceFilter/PriceFilter.jsx'
+import ColorFilter from './ColorFilter/ColorFilter.jsx'
+import Loader from '../../UI/Loader/Loader.jsx'
+import FiltersSkeleton from './FiltersSkeleton.jsx'
 
-const Filters = ({ isOpen, handleClick }) => {
+const Filters = ({
+    isOpen,
+    handleClick,
+    onSetParams,
+    setSingleParam,
+    queryFilters,
+    resetFilters
+}) => {
     const {
-        resetFilters,
-        toggleType,
-        toggleStyle,
-        toggleColor,
-        toggleBrand,
-        toggleSize,
-        toggleCategory,
-        setMaxPrice
-    } = useFilters()
-
-    const filters = [
-        {
-            name: 'Category',
-            Component: CategoryFilter,
-            handler: toggleCategory
-        },
-        { name: 'Type', Component: TypeFilter, handler: toggleType },
-        { name: 'Price', Component: PriceFilter, handler: setMaxPrice },
-        { name: 'Color', Component: ColorFilter, handler: toggleColor },
-        { name: 'Size', Component: SizeFilter, handler: toggleSize },
-        { name: 'Brand', Component: BrandFilter, handler: toggleBrand },
-        { name: 'Style', Component: StyleFilter, handler: toggleStyle }
-    ]
+        data: filters,
+        isLoading,
+        isError,
+        error
+    } = useGetProductFiltersQuery()
+    if (isLoading) return <FiltersSkeleton />
+    if (isError) return <Error error={error} />
 
     return (
         <div
@@ -46,7 +35,7 @@ const Filters = ({ isOpen, handleClick }) => {
             }
         >
             <div className={styles.title}>
-                <h4>Filters</h4>
+                <h3>Filters</h3>
                 <button
                     aria-label="close filters"
                     onClick={() => handleClick()}
@@ -56,27 +45,54 @@ const Filters = ({ isOpen, handleClick }) => {
                     </svg>
                 </button>
             </div>
-            <div className={styles.content}>
-                {filters.map((filter) => {
-                    const { name, Component, handler } = filter
-
+            <ul className={styles.filters}>
+                <li className={styles.column}>
+                    <p className={styles.filterTitle}>Price</p>
+                    <PriceFilter
+                        maxPrice={filters.maxPrice}
+                        setSingleParam={setSingleParam}
+                    />
+                </li>
+                <li className={styles.column}>
+                    <p className={styles.filterTitle}>Color</p>
+                    <ColorFilter
+                        colors={filters.colors}
+                        onSetParams={onSetParams}
+                        queryFilters={queryFilters}
+                    />
+                </li>
+                {filters?.primitives?.map((filter) => {
                     return (
-                        <div key={name} className={styles.filterWrapper}>
-                            <h6>{name}</h6>
-                            <Component handler={handler} />
-                        </div>
+                        <li key={filter.name} className={styles.column}>
+                            <p className={styles.filterTitle}>{filter.name}</p>
+                            <ul className={styles.filterItems}>
+                                {filter.items?.map(({ id, name }) => (
+                                    <li key={id} className={styles.filterItem}>
+                                        <MyButton
+                                            onClick={() =>
+                                                onSetParams(filter.name, id)
+                                            }
+                                            classname={`${styles.filterBtn} ${
+                                                queryFilters[
+                                                    `${filter.name}Ids`
+                                                ]?.includes(id)
+                                                    ? styles.active
+                                                    : ''
+                                            }`}
+                                        >
+                                            {name}
+                                        </MyButton>
+                                    </li>
+                                ))}
+                            </ul>
+                        </li>
                     )
                 })}
-                <MyButton
-                    handleClick={() => resetFilters()}
-                    classname={styles.resetFiltersBtn}
-                >
+                <MyButton onClick={() => resetFilters()}>
                     Reset Filters
                 </MyButton>
-            </div>
-            <MyButton handleClick={() => handleClick()} color={'white'}>
-                Close
-            </MyButton>
+            </ul>
+            <MyButton onClick={() => handleClick()}>Close</MyButton>
         </div>
     )
 }

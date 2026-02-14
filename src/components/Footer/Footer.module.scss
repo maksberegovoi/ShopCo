@@ -13,7 +13,7 @@ footer {
 }
 
 .subscription {
-    background-color: black;
+    background-color: var(--bg-secondary);
     border-radius: rem(20);
     display: flex;
     flex-direction: column;
@@ -29,7 +29,7 @@ footer {
 
     .subscriptionTitle {
         @include fluid-text(40, 32);
-        color: white;
+        color: var(--color-text);
     }
 
     .emailWrapper {
@@ -43,23 +43,23 @@ footer {
     }
 
     .emailContainer {
+
         display: flex;
         align-items: center;
         gap: rem(12);
-        border-radius: rem(62);
-        background-color: white;
+        border-radius: var(--border-radius);
+        background-color: var(--bg);
         padding: rem(12) rem(16);
     }
 
     .emailInput {
+        color: var(--text);
         width: 100%;
     }
-    .mailButton {
-        @include hover {
-            color: white;
-        }
-    }
+
+
     .iconEmail {
+        fill: var(--primary);
         width: rem(20);
         height: rem(20);
 
@@ -100,7 +100,7 @@ footer {
 }
 
 .socialLink {
-    border: rem(1) solid var(--color-text-grey);
+    border: rem(1) solid var(--border);
     border-radius: rem(28);
     padding: rem(7);
     width: rem(28);
@@ -110,8 +110,12 @@ footer {
     justify-content: center;
 
     @include hover {
-        fill: var(--color-accent);
-        border-color: var(--color-accent);
+        fill: var(--accent);
+        border-color: var(--accent-foreground);
+
+        .iconSocial {
+            fill: var(--accent-foreground);
+        }
     }
 }
 
@@ -122,8 +126,11 @@ footer {
 }
 
 .iconSocial {
+    fill: var(--primary);
     width: rem(20);
     height: rem(20);
+
+
 }
 
 .columnsContainer {
@@ -170,8 +177,14 @@ footer {
     }
 }
 
+.columnLink {
+    @include hover {
+        color: var(--accent);
+    }
+}
+
 .columnTitle {
-    color: var(--color-text-black);
+    color: var(--text);
     text-transform: uppercase;
     font-weight: 500;
     line-height: 1.28;
@@ -184,7 +197,7 @@ footer {
     align-items: center;
     gap: rem(16);
     padding-block: rem(16);
-    border-top: rem(1) solid lightgrey;
+    border-top: rem(1) solid var(--border);
 
     @include tablet-above {
         flex-direction: row;
@@ -192,6 +205,7 @@ footer {
         padding-block: 1.25rem;
     }
 }
+
 .badges {
     display: flex;
     gap: rem(10);

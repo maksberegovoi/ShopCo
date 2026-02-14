@@ -29,8 +29,8 @@
     padding: rem(24);
     display: flex;
     flex-direction: column;
-    gap: rem(12);
-    border: rem(1) solid lightgrey;
+    gap: rem(10);
+    border: rem(1) solid var(--border);
     border-radius: rem(20);
     width: 100%;
     height: 100%;
@@ -42,5 +42,5 @@
 
 .btn {
     width: rem(300);
-    border: rem(1) solid lightgrey;
+    border: rem(1) solid var(--border);
 }

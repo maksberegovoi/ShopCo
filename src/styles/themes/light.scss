@@ -1,0 +1,30 @@
+:root {
+    --bg: oklch(0.991 0.003 343.515);
+    --bg-secondary: oklch(0.921 0.012 334.092);
+    //    --bg-secondary: oklch(0.834 0.02 308.2);
+    --text: oklch(0 0 0);
+
+    --disabled: oklch(0.928 0.017 17.455);
+    --disabled-foreground: oklch(0.387 0.02 18.042);
+
+
+    --card: oklch(0.991 0.003 343.515);
+    --card-foreground: oklch(0 0 0);
+
+    --border: oklch(0.83 0.009 17.337);
+
+    --primary: oklch(0.751 0.034 344.529);
+    --primary-foreground: oklch(0.21 0.015 345.202);
+
+    --secondary: oklch(0.923 0 164.055);
+    --secondary-foreground: oklch(0.418 0 173.29);
+
+    --accent: oklch(0.668 0.028 325.884);
+    --accent-foreground: oklch(0.418 0 173.29);
+
+    --destructive: oklch(0.588 0.16 24.265);
+    --destructive-foreground: oklch(0.854 0.071 19.757);
+
+    --ring: oklch(0.751 0.034 344.529);
+
+}

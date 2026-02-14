@@ -5,9 +5,11 @@ html {
         overflow: hidden;
     }
 }
+
 main {
     flex-grow: 1;
 }
+
 body {
     @include fluid_text(16, 14);
     display: flex;
@@ -15,7 +17,8 @@ body {
     min-height: 100dvh;
     min-height: 100vh;
     font-family: var(--font-family-text);
-    color: var(--color-text-grey);
+    background-color: var(--bg);
+    color: var(--text);
     letter-spacing: -0.03em;
     line-height: 1.5;
     font-weight: 400;
@@ -35,7 +38,7 @@ h5,
 h6,
 .h6 {
     font-family: var(--font-family-heading);
-    color: black;
+    color: var(--color-text);
     font-weight: 700;
 }
 

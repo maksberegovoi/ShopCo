@@ -10,34 +10,33 @@
     padding: rem(12) rem(16);
     gap: rem(12);
     border-radius: rem(62);
-    background: #f0f0f0;
+    background: var(--bg);
 
     &:focus-within {
-        border: rem(1) solid var(--color-accent);
+        border: rem(1) solid var(--accent);
     }
 
     @include hover {
-        border: rem(1) solid var(--color-accent);
+        border: rem(1) solid var(--accent);
     }
 }
 
 .search {
+    color: var(--text);
     width: 100%;
 }
 
 .icon {
     cursor: pointer;
-    fill: grey;
-    width: rem(24);
-    height: rem(24);
+    fill: var(--primary);
+    width: rem(22);
+    height: rem(22);
 }
 
 .content {
     position: absolute;
-    padding: rem(15);
-
-    background-color: white;
-    border: 1px solid lightgrey;
+    background-color: var(--bg);
+    border: 1px solid var(--border);
     border-radius: rem(20);
 
     max-height: rem(400);
@@ -48,6 +47,8 @@
     align-items: center;
     gap: rem(15);
     flex-direction: column;
+
+    @include scrollbar();
 
     & > * {
         a {
@@ -60,7 +61,10 @@
         }
     }
 }
-.catalog {
+
+.catalog {;
+    border: none;
+    padding: rem(10) rem(10);
     overflow-x: hidden;
     @include tablet-above {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -69,4 +73,5 @@
 
 .searchBtn {
     width: rem(200);
+    margin-bottom: rem(10);
 }

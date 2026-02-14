@@ -1,0 +1,36 @@
+@use '../../styles/helpers/index' as *;
+
+
+.btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    display: flex;
+    align-items: center;
+    gap: rem(8);
+    border-radius: rem(50);
+    padding: rem(10);
+    cursor: pointer;
+    transition: var(--transition-duration);
+    border: 1px solid var(--border);
+
+    @include hover {
+        scale: 1.1;
+
+        .icon {
+            fill: var(--accent);
+        }
+    }
+}
+
+.icon {
+    fill: var(--primary);
+    width: rem(30);
+    height: rem(30);
+    transition: var(--transition-duration);
+
+    .active & {
+        fill: white;
+    }
+
+}

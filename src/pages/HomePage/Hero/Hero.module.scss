@@ -1,7 +1,6 @@
 @use '../../../styles/helpers/index' as *;
 
 .hero {
-    background-color: #f2f0f1;
     overflow: hidden;
 }
 
@@ -32,6 +31,7 @@
 .heroBtn {
     max-width: 211px;
 }
+
 .metrics {
     display: flex;
     justify-content: center;
@@ -61,7 +61,7 @@
         content: '';
         width: rem(1);
         height: 100%;
-        background-color: lightgrey;
+        background-color: var(--border);
 
         @include mobile-below {
             right: rem(-8);
@@ -72,17 +72,13 @@
 .metricsTitle {
     @include fluid-text(40, 24);
     font-weight: 700;
-    color: black;
-}
-
-.brands {
-    background-color: black;
+    color: var(--text);
 }
 
 .brandContainer {
     display: flex;
     justify-content: space-around;
-    flex-wrap: wrap;
+    align-items: center;
     gap: rem(30);
     padding-block: rem(35);
 
@@ -90,6 +86,16 @@
         padding-block: rem(45);
     }
 }
+
+.brands {
+    background-color: var(--bg-secondary);
+}
+
+.brandIcon {
+    fill: red;
+    height: rem(40);
+}
+
 
 .brandImg {
     height: rem(23);

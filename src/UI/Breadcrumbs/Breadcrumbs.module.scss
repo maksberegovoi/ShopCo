@@ -5,8 +5,12 @@
     align-items: center;
     flex-wrap: wrap;
     gap: rem(10);
-    padding-block: rem(20);
+    padding-block: rem(15);
     text-transform: capitalize;
+
+    @include tablet-above {
+        padding-block: rem(20);
+    }
 }
 
 .item {
@@ -14,7 +18,7 @@
     align-items: center;
 
     &:last-child .current {
-        color: black;
+        color: var(--text);
     }
 }
 
@@ -26,16 +30,16 @@
     text-decoration: none;
 
     @include hover {
-        color: var(--color-accent);
+        color: var(--accent);
     }
 }
 
 .current {
-    color: black;
+    color: var(--primary) !important;
 }
 
 .icon {
-    fill: var(--color-text-grey);
+    fill: var(--text);
     width: rem(14);
     height: rem(14);
     transform: rotate(-90deg);

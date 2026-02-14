@@ -7,7 +7,7 @@
 }
 
 .logo {
-    color: black;
+    color: var(--text);
 
     font-family: var(--font-family-heading);
     font-size: fluid(32, 25);
@@ -20,4 +20,25 @@
 
 .no-translate {
     translate: none;
+}
+
+
+.skeleton {
+    background: linear-gradient(
+            90deg,
+            var(--bg-secondary) 25%,
+            var(--bg) 37%,
+            var(--bg-secondary) 63%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
 }

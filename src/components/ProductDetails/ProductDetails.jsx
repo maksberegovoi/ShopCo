@@ -1,64 +1,115 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './ProductDetails.module.scss'
 import { renderRatingStars } from '../../utils/productRatingStars/productRatingStars.jsx'
 import sprite from '../../../assets/icons/sprite.svg'
-import ColorSelector from '../ColorSelector/ColorSelector.jsx'
-import SizeSelector from '../SizeSelector/SizeSelector.jsx'
 import MyButton from '../../UI/MyButton/MyButton.jsx'
-import Loader from '../../UI/Loader/Loader.jsx'
-import { useDispatch } from 'react-redux'
-import { addToCart } from '../../redux/features/cart/slice/cartSlice.js'
+import { useGetProductByIdQuery } from '../../api/products/productsAPI.js'
+import { useParams } from 'react-router-dom'
+import Error from '../Error/Error.jsx'
+import { optimizeUrl } from '../../utils/optimizeUrl/optimizeUrl.js'
+import { ProductDetailsSkeleton } from './ProductDetailsSkeleton.jsx'
+import SizeSelector from '../SizeSelector/SizeSelector.jsx'
+import ColorSelector from '../ColorSelector/ColorSelector.jsx'
+import { useProductVariants } from '../../hooks/useProductVariants/useProductVariants.js'
+import { useCart } from '../../hooks/useCart/useCart.js'
 import toast from 'react-hot-toast'
 
-const ProductDetails = ({ product, isLoading }) => {
-    const dispatch = useDispatch()
-    const [selectedColor, setSelectedColor] = useState(null)
-    const [selectedSize, setSelectedSize] = useState(null)
-    const [quantity, setQuantity] = useState(1)
-    const [mainImage, setMainImage] = useState(product.gallery[0])
+const ProductDetails = () => {
+    const { id } = useParams()
+    const [quantity, setQuantity] = useState(0)
 
-    const addToCard = () => {
-        if (!selectedColor) {
-            return toast.error('Choose the color')
+    const [mainImage, setMainImage] = useState('')
+
+    const { cartItems, addToCartHandler, isLoading: isCartLoading } = useCart()
+    const {
+        data: product,
+        isLoading: isProductLoading,
+        isError,
+        error
+    } = useGetProductByIdQuery(id)
+
+    const {
+        colors,
+        sizes,
+        selectedColor,
+        selectedSize,
+        onSelectColor,
+        onSelectSize,
+        selectedVariant
+    } = useProductVariants(product?.variants ?? [], cartItems)
+
+    const AddToCart = async () => {
+        if (!selectedSize || !selectedColor) {
+            return toast.error('Choose both: size and color!')
         }
-        if (!selectedSize) {
-            return toast.error('Choose the size')
-        }
-        dispatch(
-            addToCart({
-                id: product.id,
-                name: product.name,
-                price: product.price,
-                basePrice: product.basePrice,
-                discount: product.discount,
-                img: product.gallery[0],
-                color: selectedColor,
-                size: selectedSize,
-                quantity: quantity
+        try {
+            await addToCartHandler({
+                productVariantId: selectedVariant.id,
+                quantity
             })
-        )
-        setSelectedSize(null)
-        setSelectedColor(null)
-        setQuantity(1)
-        toast.success('Added to your cart')
+
+            onSelectColor(null)
+            onSelectSize(null)
+            setQuantity(0)
+        } catch (err) {
+            console.log(err)
+        }
     }
 
-    if (isLoading) return <Loader />
+    const increment = () => {
+        if (!selectedVariant) return
+        setQuantity((q) =>
+            Math.min(q + 1, selectedVariant.availableStockForUser)
+        )
+    }
+
+    const decrement = () => {
+        if (!selectedVariant) return
+        setQuantity((q) => Math.max(q - 1, 1))
+    }
+
+    const gallery = React.useMemo(() => {
+        if (!product) return []
+
+        return product.gallery.map((img) => ({
+            ...img,
+            optimizedUrl: optimizeUrl(img.url)
+        }))
+    }, [product])
+
+    useEffect(() => {
+        if (!selectedVariant) return
+        setQuantity(Math.min(1, selectedVariant.availableStockForUser))
+    }, [selectedVariant])
+
+    useEffect(() => {
+        if (!product) return
+
+        const mainImage =
+            product.gallery.find((img) => img.isMain)?.url ??
+            import.meta.env.VITE_FALLBACK_CARD_IMAGE
+
+        setMainImage(optimizeUrl(mainImage))
+    }, [product])
+
+    if (isProductLoading || isCartLoading) return <ProductDetailsSkeleton />
+    if (isError) return <Error error={error} />
+
     return (
         <div className={styles.container}>
             <div className={styles.gallery}>
                 <div className={styles.thumbnails}>
-                    {product.gallery.map((image) => (
+                    {gallery.map(({ optimizedUrl }) => (
                         <button
-                            key={image}
+                            key={optimizedUrl}
                             className={`${styles.thumbnail} ${
-                                image === mainImage ? styles.active : ''
+                                optimizedUrl === mainImage ? styles.active : ''
                             }`}
-                            onClick={() => setMainImage(image)}
+                            onClick={() => setMainImage(optimizedUrl)}
                             aria-label="product image"
                         >
                             <img
-                                src={image}
+                                src={optimizedUrl}
                                 alt="product image"
                                 className={styles.thumbnailImage}
                             />
@@ -107,20 +158,20 @@ const ProductDetails = ({ product, isLoading }) => {
                     <p>{product.description}</p>
                 </div>
                 <ColorSelector
-                    colors={product.colors}
+                    colors={colors}
                     selectedColor={selectedColor}
-                    onColorChange={setSelectedColor}
+                    onSelectColor={onSelectColor}
                 />
                 <SizeSelector
-                    sizes={product.sizes}
+                    sizes={sizes}
                     selectedSize={selectedSize}
-                    onSizeChange={setSelectedSize}
+                    onSelectSize={onSelectSize}
                 />
                 <div className={styles.footer}>
                     <div className={styles.quantity}>
                         <button
                             disabled={quantity <= 1}
-                            onClick={() => setQuantity(quantity - 1)}
+                            onClick={decrement}
                             aria-label="minus one item"
                         >
                             <svg className={styles.iconQuantity}>
@@ -129,8 +180,13 @@ const ProductDetails = ({ product, isLoading }) => {
                         </button>
                         <p>{quantity}</p>
                         <button
-                            onClick={() => setQuantity(quantity + 1)}
+                            onClick={increment}
                             aria-label="plus one item"
+                            disabled={
+                                !selectedVariant ||
+                                quantity >=
+                                    selectedVariant.availableStockForUser
+                            }
                         >
                             <svg className={styles.iconQuantity}>
                                 <use href={`${sprite}#icon-plus`}></use>
@@ -138,8 +194,10 @@ const ProductDetails = ({ product, isLoading }) => {
                         </button>
                     </div>
                     <MyButton
+                        disabled={!product?.variants?.length}
+                        disabledMessage={'Product is not available'}
                         classname={styles.btnCart}
-                        handleClick={addToCard}
+                        onClick={AddToCart}
                     >
                         Add to Cart
                     </MyButton>

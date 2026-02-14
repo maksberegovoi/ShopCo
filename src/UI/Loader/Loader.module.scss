@@ -10,8 +10,8 @@
 .spinner {
     width: rem(40);
     height: rem(40);
-    border: rem(2) solid #f3f3f3;
-    border-top: rem(4) solid black;
+    border: rem(2) solid var(--primary);
+    border-top: rem(4) solid var(--accent);
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }

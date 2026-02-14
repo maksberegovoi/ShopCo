@@ -7,6 +7,9 @@
     width: 100%;
     place-items: center;
     grid-template-columns: minmax(0, 1fr);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    padding: rem(20);
 
     @include mobile-above {
         grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -15,4 +18,9 @@
     @include tablet-above {
         grid-template-columns: repeat(3, minmax(0, 1fr));
     }
+}
+
+
+.noProductsTitle {
+    @include fluid-text(32, 24)
 }

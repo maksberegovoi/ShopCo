@@ -1,11 +1,34 @@
 import React, { useEffect, useState } from 'react'
 import styles from './Header.module.scss'
 import { NavLink } from 'react-router-dom'
-import { CART_ROUTE, HOME_ROUTE, CATALOG_ROUTE } from '../../utils/consts.js'
+import {
+    CART_ROUTE,
+    HOME_ROUTE,
+    CATALOG_ROUTE,
+    SIGNUP_ROUTE,
+    PROFILE_ROUTE
+} from '../../utils/consts.js'
 import Search from '../Search/Search.jsx'
 import sprite from '../../../assets/icons/sprite.svg'
 import Accordion from '../Accordion/Accordion.jsx'
 import { useDeviceType } from '../../hooks/useDeviceType.js'
+import { ThemeSwitcher } from '../../UI/ThemeSwitcher/ThemeSwitcher.jsx'
+import { useSelector } from 'react-redux'
+import { getIsAuth } from '../../redux/features/user/selectors/selectors.js'
+
+const menu = [
+    { name: 'Home', path: HOME_ROUTE },
+    { name: 'Catalog', path: CATALOG_ROUTE }
+]
+const dropdownLinks = [
+    { name: 'Men', path: `${CATALOG_ROUTE}?gender=MALE` },
+    { name: 'Women', path: `${CATALOG_ROUTE}?gender=FEMALE` },
+    { name: 'Unisex', path: `${CATALOG_ROUTE}?gender=UNISEX` }
+]
+const iconLinks = [
+    { name: 'Cart', path: CART_ROUTE, href: `${sprite}#icon-cart` },
+    { name: 'Profile', path: PROFILE_ROUTE, href: `${sprite}#icon-profile` }
+]
 
 const Header = () => {
     const { isMobile } = useDeviceType()
@@ -13,20 +36,7 @@ const Header = () => {
     const [isBurgerMenu, setIsBurgerMenu] = useState(false)
     const [isPromo, setIsPromo] = useState(true)
     const [isAccordion, setIsAccordion] = useState(false)
-
-    const menu = [
-        { name: 'Home', path: HOME_ROUTE },
-        { name: 'Catalog', path: CATALOG_ROUTE }
-    ]
-    const dropdownLinks = [
-        { name: 'Men', path: `${CATALOG_ROUTE}?gender=male` },
-        { name: 'Women', path: `${CATALOG_ROUTE}?gender=female` },
-        { name: 'Unisex', path: `${CATALOG_ROUTE}?gender=unisex` }
-    ]
-    const iconLinks = [
-        { name: 'Cart', path: CART_ROUTE, href: `${sprite}#icon-cart` }
-        // { name: "Profile", path: "*", href: `${sprite}#icon-profile` },
-    ]
+    const isAuth = useSelector(getIsAuth)
 
     const toggleMenu = () => {
         setIsBurgerMenu(!isBurgerMenu)
@@ -44,22 +54,29 @@ const Header = () => {
 
     return (
         <header>
-            <div className={isPromo ? styles.promo : styles.promoClosed}>
-                <div className={`${styles.promoContainer} container`}>
-                    <p>
-                        Sign up and get 20% off to your first order.
-                        <button className={styles.promoBtn}>Sign Up Now</button>
-                    </p>
-                    <button
-                        onClick={() => setIsPromo(false)}
-                        aria-label="close promo"
-                    >
-                        <svg className={styles.iconPromoClose}>
-                            <use href={`${sprite}#icon-close`}></use>
-                        </svg>
-                    </button>
+            {!isAuth && (
+                <div className={isPromo ? styles.promo : styles.promoClosed}>
+                    <div className={`${styles.promoContainer} container`}>
+                        <p>
+                            Sign up and get 20% off to your first order.
+                            <NavLink
+                                to={SIGNUP_ROUTE}
+                                className={styles.promoBtn}
+                            >
+                                Sign Up Now
+                            </NavLink>
+                        </p>
+                        <button
+                            onClick={() => setIsPromo(false)}
+                            aria-label="close promo"
+                        >
+                            <svg className={styles.iconPromoClose}>
+                                <use href={`${sprite}#icon-close`}></use>
+                            </svg>
+                        </button>
+                    </div>
                 </div>
-            </div>
+            )}
             <div className={`${styles.headerMain} container`}>
                 <button
                     className={styles.burgerButton}
@@ -143,6 +160,7 @@ const Header = () => {
                             <use href={`${sprite}#icon-search`}></use>
                         </svg>
                     </button>
+                    <ThemeSwitcher />
                     {iconLinks.map((link) => (
                         <NavLink
                             to={link.path}
