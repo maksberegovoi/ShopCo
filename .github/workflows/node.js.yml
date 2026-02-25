@@ -2,7 +2,7 @@ name: CI
 
 on:
     push:
-        branches: [main, implementing-backend]
+        branches: [main, implementing-backend, migrate-to-typescript]
     pull_request:
         branches: [main]
 
