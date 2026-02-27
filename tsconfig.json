@@ -1,0 +1,30 @@
+{
+    "compilerOptions": {
+        "types": [
+            "react",
+            "react-dom",
+            "node"
+        ],
+        "target": "ESNext",
+        "module": "ESNext",
+        "moduleResolution": "Bundler",
+        "lib": [
+            "ESNext",
+            "DOM",
+            "DOM.Iterable"
+        ],
+        "jsx": "react-jsx",
+        "strict": true,
+        "exactOptionalPropertyTypes": true,
+        "isolatedModules": true,
+        "verbatimModuleSyntax": true,
+        "useDefineForClassFields": true,
+        "resolveJsonModule": true,
+        "allowSyntheticDefaultImports": true,
+        "skipLibCheck": true,
+        "noEmit": true
+    },
+    "include": [
+        "src"
+    ]
+}

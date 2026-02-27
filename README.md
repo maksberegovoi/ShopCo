@@ -1,7 +1,11 @@
 # 🛍️ ShopCo — Online Clothing Store
 
-**ShopCo** is a modern and responsive **React + Vite** e-commerce project for clothing.  
-It demonstrates a fully functional frontend store experience — including product catalog, filters, sorting, search, cart management, and product detail pages — all powered by mock data and state management via **Redux Toolkit** and **RTK Query**.
+**ShopCo** is a modern and responsive **React + Vite** e-commerce project for
+clothing.  
+It demonstrates a fully functional frontend store experience — including product
+catalog, filters, sorting, search, cart management, and product detail pages —
+all powered by mock data and state management via **Redux Toolkit** and **RTK
+Query**.
 
 ---
 
@@ -50,7 +54,8 @@ It demonstrates a fully functional frontend store experience — including produ
 
 ### 📄 Product Details
 
-- Individual product page with detailed info (name, price, discount, description, rating, etc.)
+- Individual product page with detailed info (name, price, discount,
+  description, rating, etc.)
 
 <img width="1473" height="908" alt="image" src="https://github.com/user-attachments/assets/4e8a518d-3d1f-4ae5-a4dd-9c69ee13932c" />
 
@@ -101,8 +106,8 @@ src/
 ├── 🛠️ utils/ # Helper functions
 │ # (filtering, sorting, etc.)  
 │  
-├── App.jsx  
-├── main.jsx  
+├── App.tsx  
+├── main.tsx  
 └── main.scss
 
 ## 🚀 Live Demo
